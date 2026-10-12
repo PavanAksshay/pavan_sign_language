@@ -1,84 +1,116 @@
-# Indian-Sign-Language-Translator
-[![Info](https://img.shields.io/badge/Usage-Instructions-blue?style=flat-square&logo=data:image/svg%2bxml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggc3R5bGU9ImZpbGw6IzBBNEVBRjsiIGQ9Ik0yNTYsNTEyYy02OC4zOCwwLTEzMi42NjctMjYuNjI5LTE4MS4wMi03NC45OEMyNi42MjksMzg4LjY2NywwLDMyNC4zOCwwLDI1Ng0KCVMyNi42MjksMTIzLjMzMyw3NC45OCw3NC45OEMxMjMuMzMzLDI2LjYyOSwxODcuNjIsMCwyNTYsMHMxMzIuNjY3LDI2LjYyOSwxODEuMDIsNzQuOThDNDg1LjM3MSwxMjMuMzMzLDUxMiwxODcuNjIsNTEyLDI1Ng0KCXMtMjYuNjI5LDEzMi42NjctNzQuOTgsMTgxLjAyQzM4OC42NjcsNDg1LjM3MSwzMjQuMzgsNTEyLDI1Niw1MTJ6Ii8+DQo8cGF0aCBzdHlsZT0iZmlsbDojMDYzRThCOyIgZD0iTTQzNy4wMiw3NC45OEMzODguNjY3LDI2LjYyOSwzMjQuMzgsMCwyNTYsMHY1MTJjNjguMzgsMCwxMzIuNjY3LTI2LjYyOSwxODEuMDItNzQuOTgNCglDNDg1LjM3MSwzODguNjY3LDUxMiwzMjQuMzgsNTEyLDI1NlM0ODUuMzcxLDEyMy4zMzMsNDM3LjAyLDc0Ljk4eiIvPg0KPHBhdGggc3R5bGU9ImZpbGw6I0ZGRkZGRjsiIGQ9Ik0yNTYsMTg1Yy0zMC4zMjcsMC01NS0yNC42NzMtNTUtNTVzMjQuNjczLTU1LDU1LTU1czU1LDI0LjY3Myw1NSw1NVMyODYuMzI3LDE4NSwyNTYsMTg1eiBNMzAxLDM5NQ0KCVYyMTVIMTkxdjMwaDMwdjE1MGgtMzB2MzBoMTQwdi0zMEgzMDF6Ii8+DQo8Zz4NCgk8cGF0aCBzdHlsZT0iZmlsbDojQ0NFRkZGOyIgZD0iTTI1NiwxODVjMzAuMzI3LDAsNTUtMjQuNjczLDU1LTU1cy0yNC42NzMtNTUtNTUtNTVWMTg1eiIvPg0KCTxwb2x5Z29uIHN0eWxlPSJmaWxsOiNDQ0VGRkY7IiBwb2ludHM9IjMwMSwzOTUgMzAxLDIxNSAyNTYsMjE1IDI1Niw0MjUgMzMxLDQyNSAzMzEsMzk1IAkiLz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K)](https://github.com/AbhishekSinghDhadwal/Indian-Sign-Language-Translator/tree/main/App#usage-instructions-)&nbsp; [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) 
+# Indian Sign Language (ISL) AI Translator
 
-This repository consists of the code utilized for creation of an Indian Sign Language Translator satisfying the following criteria :
-- **Near-Real-Time Application**
-- **Achieve background independence**
-- **Attain Illumination independence**
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688.svg)](https://fastapi.tiangolo.com)
+[![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8.svg)](https://opencv.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00.svg)](https://tensorflow.org/)
 
+An end-to-end computer vision and deep learning application for translating Indian Sign Language (ISL) gestures into text in real time. Features a full-stack interactive web studio, live webcam stream processing, image/video upload support, and intermediate pipeline stage visualization.
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/39513876/118981340-dcc48900-b997-11eb-98d8-686dd402f544.png" width="650">
-</p>
+---
 
-<div align="center"> <i>Flow Diagram of the project implementation</i> </div>
-</n>
+## 🚀 Key Features
 
-We achieve these goals by providing the following features :
-1. **Face Detection** 
-: Used as an activation mechanism. We use Haar cascade models from the OpenCV library to detect faces in an image. When a face is detected, the program checks the next few consecutive frames, and when a threshold value of consecutive frames with a face in it is reached, the sign language system is triggered.
+- **Live Webcam Translation Studio**: Real-time browser-based webcam stream with bounding boxes and continuous sign translation.
+- **Deep 4-Stage Visualizer**: Inspect intermediate representations at every stage:
+  1. **Raw Frame**: Initial camera or image capture.
+  2. **YOLOv3 Hand Box**: Hand bounding box localization and confidence score.
+  3. **Crop & Resize**: Centralized 224×224 normalized tensor input.
+  4. **Skin Segmentation**: HSV + YCbCr background-subtracted binary mask.
+- **5-Stage Pipeline Simulation**: Complete research workflow (Face detection trigger $\rightarrow$ 5s gesture recording $\rightarrow$ frame extraction $\rightarrow$ SqueezeNet consensus voting).
+- **Multi-Input**: Supports live webcam feed, drag-and-drop images, and multi-frame video clips (.mp4, .mov).
+- **Audio Output**: Integrated speech synthesis to pronounce translated letters aloud.
+- **10 Supported ISL Classes**:
+  `G`, `I`, `K`, `O`, `P`, `S`, `U`, `V`, `X`, `Y`
 
-2. **Hand Detection** 
-: The first step in preprocessing is preliminary hand detection method, which goes through every frame selected from the clip, and attempts to find a hand in them using a YOLO-v3 pre-trained network. 
-If any hands are found in the frame, an extended bounding box is created around the hand(s). These images are then cropped to contain only the contents of the box, and are passed onto the next step of preprocessing which is resizing. If no hands are found, the frame is discarded entirely. 
+---
 
-3. **Skin Segmentation** 
-: After cropping and resizing, the images are passed through a combination of HSV (Hue, Saturation, Value) and YCbCr (Luminance, Chrominance) based filters to segment out skin and remove background noise present in the box input.
+## 🧠 System Architecture
 
-4. **Sign Recognition** 
-: The processed input is passed through a [SqueezeNet](https://arxiv.org/abs/1602.07360) model trained (via Transfer Learning) on a synthesized and cleaned Indian Sign Language dataset consisting of 10 classes, and ~2300+ images per class.
+```mermaid
+graph LR
+    A[Video / Camera Stream] --> B[Haar Cascade Face Trigger]
+    B --> C[YOLOv3 Hand Detection]
+    C --> D[Adaptive Crop & Pad 224x224]
+    D --> E[Skin Segmentation HSV + YCbCr]
+    E --> F[SqueezeNet Classifier]
+    F --> G[Predicted ISL Letter & Probabilities]
+```
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/39513876/119128821-c54ad600-ba53-11eb-94b1-25727c70800b.jpg" width="500">
-</p>
+1. **Face Detection (Activation Trigger)**: Haar Cascades trigger video recording when the user is focused on the camera.
+2. **Hand Detection (Localization)**: Darknet YOLOv3 network (`cross-hands`) detects hand regions and constructs bounding boxes.
+3. **Preprocessing**: Extracted regions are padded, cropped, and resized to $224 \times 224$.
+4. **Skin Segmentation (Noise Elimination)**: Combines HSV and YCbCr color thresholds with morphological watershed filtering to eliminate background clutter.
+5. **Sign Recognition**: SqueezeNet convolutional neural network (fine-tuned via Transfer Learning) classifies the gesture across 10 distinct Indian Sign Language symbols.
 
-<div align="center"> <i>Hand Detection performed on the Live Feed Input</i> </div>
-</n>
+---
 
-The work performed is divided into the following **folders** :
+## 📦 Quickstart & Installation
 
-### Main App
-The [App](https://github.com/AbhishekSinghDhadwal/Indian-Sign-Language-Translator/tree/main/App) section consists of the files required to run the standalone webcam implementation of the translator. Contains :
-- The trained model
-- The hand segmentation network
-- Preprocessing scripts
-- Main application (main.py)
+### 1. Clone the Repository
+```bash
+git clone https://github.com/PavanAksshay/pavan_sign_language.git
+cd pavan_sign_language
+```
 
+### 2. Set Up Virtual Environment & Dependencies
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-### Dataset Synthesis
-Covers the [scripts](https://github.com/AbhishekSinghDhadwal/Indian-Sign-Language-Translator/tree/main/Dataset_Synthesis) used in :
-- Creating new data, via modifications on brightness, clarity and picture quality (Synthesis)
-- Cleaning noisy generated data from the previous step, by using the YOLO-v3 Hand Detection Network (Cleaning)
+### 3. Launch the Interactive Web Studio
+```bash
+python server.py
+```
+Open your browser and navigate to:
+👉 **`http://localhost:8050`**
 
-### Dataset Preprocessing
-Contains the [scripts](https://github.com/AbhishekSinghDhadwal/Indian-Sign-Language-Translator/tree/main/Dataset_Preprocessing) used in order to perform pre-processing on the input dataset, including image upscaling, skin segmentation and hand centralization. These tasks are performed before entering the image dataset into the neural network.
+*(Note: YOLO weights `cross-hands.weights` (~246MB) are automatically downloaded on first launch if not present).*
 
-### Model Training
-Consists of the [notebook](https://github.com/AbhishekSinghDhadwal/Indian-Sign-Language-Translator/tree/main/Model_Training) used in order to train and save the SqueezeNet model used for the project. Originally made in Colab.
+---
 
-### Dependencies
-- OpenCV
-- Tensorflow
-- Keras
-- Numpy
-- Pillow
-- ImageAI
+## 📡 REST API Endpoints
 
-The specific versions are mentioned in requirements.txt
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/` | Web Studio UI |
+| `GET` | `/api/health` | Model and system readiness status |
+| `GET` | `/api/classes` | Dictionary of supported ISL classes |
+| `POST` | `/api/predict-image` | Full pipeline inference with 4-stage visual masks |
+| `POST` | `/api/predict-stream-frame` | Low-latency endpoint for live streaming |
+| `POST` | `/api/process-video` | Multi-frame video clip analysis & consensus voting |
+| `POST` | `/api/detect-face` | Face detection trigger for activation phase |
 
-### Contributors:
+---
 
-This translator was originally created as part of our Final Year Project, consisting of the following members -
+## 📁 Repository Structure
 
-| Name | GithubID |
-| ----------- | ----------- |
-| Abhishek Singh Dhadwal | [AbhishekSinghDhadwal](https://github.com/AbhishekSinghDhadwal) |
-| Saurabh Pujari | [saurabh0719](https://github.com/saurabh0719) | 
-| Kopal Bhatnagar | [kopalbhatnagar05](https://github.com/kopalbhatnagar05) | 
-| Yash Kumar | [yashKumar2412](https://github.com/yashKumar2412) | 
+```
+pavan_sign_language/
+├── App/
+│   ├── final_model           # Trained SqueezeNet Keras HDF5 model
+│   ├── model_class.json      # Class index mapping (10 ISL letters)
+│   ├── preprocessing.py      # Skin segmentation & resizing routines
+│   ├── select_final.py       # Consensus voting algorithms
+│   ├── yolo.py               # Darknet YOLO inference handler
+│   └── yolo_models/          # YOLOv3 configuration & model metadata
+├── Dataset_Preprocessing/    # Dataset preprocessing scripts
+├── Dataset_Synthesis/        # Synthetic data generation scripts
+├── Model_Training/           # Jupyter notebook for SqueezeNet transfer learning
+├── web/
+│   ├── static/               # Built-in sample test images
+│   └── templates/            # Web studio interface (index.html)
+├── pipeline.py               # Core unified inference engine & auto-download
+├── server.py                 # FastAPI application server
+└── requirements.txt          # Python dependencies
+```
 
-#### Credits:
-1. Jeanvit, for the skin segmentation algorithm [code](https://github.com/Jeanvit/PySkinDetection)
-2. Cansik, for the hand detection [NN](https://github.com/cansik/yolo-hand-detection/)
+---
 
-For further details on the implementation, kindly refer to the **Thesis** folder containing both the project report and the final presentation.
+## 🙏 Acknowledgments & Credits
+
+- Based on the foundational Indian Sign Language Translator implementation by Abhishek Singh Dhadwal et al.
+- Hand detection neural network weights by [Cansik](https://github.com/cansik/yolo-hand-detection/).
+- Skin segmentation algorithm by [Jeanvit](https://github.com/Jeanvit/PySkinDetection).
