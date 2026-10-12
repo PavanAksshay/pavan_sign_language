@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Large Model Weights (>100MB; auto-downloaded on first run)
+*.weights
+*.bin
+
+# Temporary output directories
+videos/
+frames/
+frames_boxed/
+frames_segmented/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

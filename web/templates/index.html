@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Sign Language (ISL) AI Translator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --bg-card-hover: rgba(31, 41, 55, 0.8);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(56, 189, 248, 0.25);
+            --accent-cyan: #38bdf8;
+            --accent-teal: #2dd4bf;
+            --accent-purple: #a855f7;
+            --accent-amber: #fbbf24;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --text-dim: #6b7280;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --radius-sm: 6px;
+            --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(45, 212, 191, 0.03) 0px, transparent 60%);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 14, 23, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 16px 32px;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #38bdf8, #a855f7);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+        }
+
+        .brand-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .header-badges {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(45, 212, 191, 0.1);
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-teal);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-teal);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-teal);
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 28px 24px 60px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* Navigation Tabs */
+        .tabs-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .tab-btn.active {
+            color: #ffffff;
+            background: rgba(56, 189, 248, 0.12);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+        }
+
+        /* Layout Grid */
+        .app-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 24px;
+        }
+
+        @media (max-width: 1080px) {
+            .app-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.25s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.14);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+        }
+
+        /* Video/Webcam Display */
+        .viewport-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000000;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #webcam-video, #webcam-canvas, #display-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        #webcam-video.flipped {
+            transform: scaleX(-1);
+        }
+
+        .viewport-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-dim);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .viewport-placeholder svg {
+            width: 56px;
+            height: 56px;
+            stroke: var(--text-dim);
+        }
+
+        .overlay-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(10, 14, 23, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .overlay-prediction {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 14, 23, 0.88);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--border-glow);
+            padding: 10px 24px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+        }
+
+        .overlay-prediction .letter {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+        }
+
+        .overlay-prediction .conf {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Controls */
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .btn {
+            padding: 11px 22px;
+            border-radius: var(--radius-md);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-main);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, #a855f7, #7e22ce);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(168, 85, 247, 0.25);
+        }
+
+        .btn-accent:hover {
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-danger:hover {
+            background: rgba(239, 68, 68, 0.25);
+        }
+
+        .btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Face Activation Progress */
+        .activation-card {
+            margin-top: 18px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            display: none;
+        }
+
+        .activation-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #38bdf8, #2dd4bf);
+            transition: width 0.15s ease;
+        }
+
+        /* Pipeline Visualizer (Stages) */
+        .pipeline-section {
+            margin-top: 28px;
+        }
+
+        .section-heading {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stages-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .stages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .stage-box {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 12px;
+            text-align: center;
+            transition: border-color 0.2s ease;
+        }
+
+        .stage-box:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .stage-num {
+            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .stage-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .stage-img-wrapper {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #000000;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stage-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .stage-empty {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        /* Sidebar: Output & Metrics */
+        .prediction-hero {
+            background: linear-gradient(145deg, rgba(56, 189, 248, 0.08), rgba(168, 85, 247, 0.05));
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: var(--radius-lg);
+            padding: 28px 20px;
+            text-align: center;
+            margin-bottom: 22px;
+            box-shadow: var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prediction-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .hero-letter {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4.8rem;
+            font-weight: 800;
+            line-height: 1;
+            margin: 8px 0;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 30px rgba(56, 189, 248, 0.4);
+        }
+
+        .hero-confidence {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+            color: var(--accent-teal);
+            font-weight: 600;
+        }
+
+        .speak-btn {
+            margin-top: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            border-radius: 999px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .speak-btn:hover {
+            background: rgba(255, 255, 255, 0.16);
+            transform: scale(1.03);
+        }
+
+        /* Probabilities List */
+        .prob-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .prob-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .prob-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .prob-meta .sign {
+            color: #ffffff;
+        }
+
+        .prob-meta .percent {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+        }
+
+        .prob-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .prob-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #38bdf8, #a855f7);
+            border-radius: 999px;
+            transition: width 0.3s ease;
+        }
+
+        .prob-item:first-child .prob-bar-fill {
+            background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+        }
+
+        /* Metrics Chips */
+        .metrics-card {
+            margin-top: 22px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .metric-chip {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-sm);
+            padding: 8px 10px;
+        }
+
+        .metric-chip .label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .metric-chip .value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            color: var(--text-main);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* Upload Tab */
+        .drop-zone {
+            border: 2px dashed rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-md);
+            padding: 36px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            background: rgba(0, 0, 0, 0.2);
+            margin-bottom: 18px;
+        }
+
+        .drop-zone:hover, .drop-zone.dragover {
+            border-color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .drop-zone svg {
+            width: 48px;
+            height: 48px;
+            stroke: var(--accent-cyan);
+            margin-bottom: 12px;
+        }
+
+        .samples-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .sample-thumb {
+            width: 72px;
+            height: 72px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #000;
+        }
+
+        .sample-thumb:hover {
+            border-color: var(--accent-cyan);
+            transform: scale(1.05);
+        }
+
+        .sample-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Alphabet Reference Tab */
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 16px;
+        }
+
+        .alphabet-card {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+
+        .alphabet-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.15);
+        }
+
+        .alphabet-card .char {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .alphabet-card .id {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Spinner */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffffff;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Toast */
+        #toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            font-size: 0.88rem;
+            font-weight: 500;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="brand">
+                <div class="brand-icon">🤟</div>
+                <div>
+                    <h1 class="brand-title">Indian Sign Language AI Translator</h1>
+                    <div class="brand-subtitle">Haar Cascades • YOLOv3 Cross-Hands • HSV/YCbCr Watershed • SqueezeNet CNN</div>
+                </div>
+            </div>
+            <div class="header-badges">
+                <div class="badge-live">
+                    <span class="badge-dot"></span>
+                    <span>MODELS ONLINE (10 ISL CLASSES)</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Navigation Tabs -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" id="tab-webcam-btn" onclick="switchTab('webcam')">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                Live Webcam Studio
+            </button>
+            <button class="tab-btn" id="tab-upload-btn" onclick="switchTab('upload')">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                Image & Video Upload
+            </button>
+            <button class="tab-btn" id="tab-alphabet-btn" onclick="switchTab('alphabet')">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                ISL Dictionary (10 Classes)
+            </button>
+        </div>
+
+        <!-- Layout Grid -->
+        <div class="app-grid">
+            <!-- Left Column: Input & Pipeline -->
+            <div class="main-column">
+
+                <!-- 1. Webcam Studio View -->
+                <div id="view-webcam" class="glass-card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <span>Webcam Input Feed</span>
+                        </div>
+                        <div id="stream-status" style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+                            Camera Off
+                        </div>
+                    </div>
+
+                    <div class="viewport-wrapper" id="webcam-viewport">
+                        <div class="viewport-placeholder" id="placeholder-box">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            <p>Click <strong>"Start Camera"</strong> below to begin webcam translation</p>
+                        </div>
+                        <video id="webcam-video" autoplay playsinline style="display: none;"></video>
+                        <canvas id="webcam-canvas" style="display: none;"></canvas>
+
+                        <!-- Live overlay letter -->
+                        <div class="overlay-prediction" id="live-prediction-pill" style="display: none;">
+                            <span class="letter" id="live-pill-letter">-</span>
+                            <span class="conf" id="live-pill-conf">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Face Activation simulation bar -->
+                    <div class="activation-card" id="activation-card">
+                        <div class="activation-header">
+                            <span id="activation-status-text">Stage 0: Detecting face for system trigger...</span>
+                            <span id="activation-count-text">0 / 35 frames</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="activation-bar-fill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Webcam Controls -->
+                    <div class="controls-row">
+                        <button class="btn btn-primary" id="btn-toggle-cam" onclick="toggleCamera()">
+                            <span>📷 Start Camera</span>
+                        </button>
+                        <button class="btn btn-accent" id="btn-snap" onclick="captureAndTranslate()" disabled>
+                            <span>⚡ Capture & Translate</span>
+                        </button>
+                        <button class="btn btn-secondary" id="btn-live-stream" onclick="toggleContinuousStream()" disabled>
+                            <span id="stream-btn-text">🔄 Continuous Stream: OFF</span>
+                        </button>
+                        <button class="btn btn-secondary" id="btn-full-flow" onclick="runFullPipelineSimulation()" disabled>
+                            <span>🎬 Run 5-Stage Thesis Pipeline</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Upload Studio View -->
+                <div id="view-upload" class="glass-card" style="display: none;">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <span>Image or Video Upload</span>
+                        </div>
+                    </div>
+
+                    <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                        <p style="font-weight: 600; font-size: 1rem; margin-bottom: 4px;">Drag & Drop hand sign image or video here</p>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">Supports JPG, PNG, MP4, MOV files</p>
+                        <input type="file" id="file-input" style="display: none;" accept="image/*,video/*" onchange="handleFileUpload(event)">
+                    </div>
+
+                    <div style="margin-top: 18px;">
+                        <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Or select a built-in test sample:</span>
+                        <div class="samples-row">
+                            <div class="sample-thumb" onclick="loadSampleImage('/static/samples/sample_sign_1.jpg', 'Sample 1')">
+                                <img src="/static/samples/sample_sign_1.jpg" alt="Sample 1">
+                            </div>
+                            <div class="sample-thumb" onclick="loadSampleImage('/static/samples/sample_sign_2.jpg', 'Sample 2')">
+                                <img src="/static/samples/sample_sign_2.jpg" alt="Sample 2">
+                            </div>
+                            <div class="sample-thumb" onclick="loadSampleImage('/static/samples/sample_sign_3.jpg', 'Sample 3')">
+                                <img src="/static/samples/sample_sign_3.jpg" alt="Sample 3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Alphabet Dictionary View -->
+                <div id="view-alphabet" class="glass-card" style="display: none;">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <span>Trained Indian Sign Language Classes</span>
+                        </div>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">SqueezeNet Transfer Learning Model</span>
+                    </div>
+                    <div class="alphabet-grid" id="alphabet-grid">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- 4. Pipeline Stages Inspector (Visible in all prediction modes) -->
+                <div class="pipeline-section glass-card">
+                    <div class="section-heading">
+                        <span>Deep Pipeline Visualizer (4 Stages)</span>
+                        <span id="pipeline-status-text" style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">Awaiting Input</span>
+                    </div>
+                    <div class="stages-grid">
+                        <div class="stage-box">
+                            <div class="stage-num">Stage 1</div>
+                            <div class="stage-title">Raw Frame</div>
+                            <div class="stage-img-wrapper" id="stage-img-raw">
+                                <span class="stage-empty">No Frame</span>
+                            </div>
+                        </div>
+                        <div class="stage-box">
+                            <div class="stage-num">Stage 2</div>
+                            <div class="stage-title">YOLOv3 Hand Box</div>
+                            <div class="stage-img-wrapper" id="stage-img-yolo">
+                                <span class="stage-empty">No Detections</span>
+                            </div>
+                        </div>
+                        <div class="stage-box">
+                            <div class="stage-num">Stage 3</div>
+                            <div class="stage-title">Crop & Resize (224)</div>
+                            <div class="stage-img-wrapper" id="stage-img-crop">
+                                <span class="stage-empty">No Crop</span>
+                            </div>
+                        </div>
+                        <div class="stage-box">
+                            <div class="stage-num">Stage 4</div>
+                            <div class="stage-title">Skin Segmentation</div>
+                            <div class="stage-img-wrapper" id="stage-img-skin">
+                                <span class="stage-empty">No Mask</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Prediction Output & Confidence -->
+            <div class="sidebar-column">
+                <div class="glass-card" style="position: sticky; top: 96px;">
+                    <div class="card-header">
+                        <div class="card-title">Translation Result</div>
+                    </div>
+
+                    <!-- Glowing Hero Badge -->
+                    <div class="prediction-hero">
+                        <div class="hero-label">Detected ISL Alphabet</div>
+                        <div class="hero-letter" id="output-letter">-</div>
+                        <div class="hero-confidence" id="output-confidence">0.0% Confidence</div>
+                        <button class="speak-btn" onclick="speakCurrentSign()" id="btn-speak">
+                            <span>🔊 Pronounce Letter</span>
+                        </button>
+                    </div>
+
+                    <!-- Probability Distribution -->
+                    <div>
+                        <div style="font-size: 0.85rem; font-weight: 600; color: #ffffff; margin-bottom: 8px;">
+                            Top Class Probabilities
+                        </div>
+                        <div class="prob-list" id="prob-list">
+                            <!-- Populated dynamically -->
+                            <div style="font-size: 0.8rem; color: var(--text-dim); text-align: center; padding: 20px 0;">
+                                Run a translation to view model probability distribution
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Latency Metrics -->
+                    <div class="metrics-card">
+                        <div style="font-size: 0.8rem; font-weight: 600; color: #ffffff;">Inference Latency</div>
+                        <div class="metrics-grid">
+                            <div class="metric-chip">
+                                <div class="label">YOLOv3 Hand</div>
+                                <div class="value" id="latency-yolo">- ms</div>
+                            </div>
+                            <div class="metric-chip">
+                                <div class="label">Skin Filter</div>
+                                <div class="value" id="latency-skin">- ms</div>
+                            </div>
+                            <div class="metric-chip">
+                                <div class="label">SqueezeNet</div>
+                                <div class="value" id="latency-nn">- ms</div>
+                            </div>
+                            <div class="metric-chip">
+                                <div class="label">Total Loop</div>
+                                <div class="value" id="latency-total">- ms</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="toast"></div>
+
+    <script>
+        // State
+        let stream = null;
+        let isStreaming = false;
+        let continuousStreamActive = false;
+        let continuousInterval = null;
+        let currentPredictedSign = "";
+
+        const classMap = {{ classes | tojson }};
+
+        // Initialize Alphabet Grid
+        function populateAlphabetGrid() {
+            const grid = document.getElementById('alphabet-grid');
+            grid.innerHTML = '';
+            for (const [id, char] of Object.entries(classMap)) {
+                const card = document.createElement('div');
+                card.className = 'alphabet-card';
+                card.innerHTML = `
+                    <div class="char">${char}</div>
+                    <div class="id">Class #${id}</div>
+                `;
+                grid.appendChild(card);
+            }
+        }
+        populateAlphabetGrid();
+
+        // Tabs
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('view-webcam').style.display = 'none';
+            document.getElementById('view-upload').style.display = 'none';
+            document.getElementById('view-alphabet').style.display = 'none';
+
+            if (tabId === 'webcam') {
+                document.getElementById('tab-webcam-btn').classList.add('active');
+                document.getElementById('view-webcam').style.display = 'block';
+            } else if (tabId === 'upload') {
+                document.getElementById('tab-upload-btn').classList.add('active');
+                document.getElementById('view-upload').style.display = 'block';
+            } else if (tabId === 'alphabet') {
+                document.getElementById('tab-alphabet-btn').classList.add('active');
+                document.getElementById('view-alphabet').style.display = 'block';
+            }
+        }
+
+        // Camera control
+        async function toggleCamera() {
+            const video = document.getElementById('webcam-video');
+            const placeholder = document.getElementById('placeholder-box');
+            const btn = document.getElementById('btn-toggle-cam');
+            const snapBtn = document.getElementById('btn-snap');
+            const streamBtn = document.getElementById('btn-live-stream');
+            const flowBtn = document.getElementById('btn-full-flow');
+            const statusText = document.getElementById('stream-status');
+
+            if (!stream) {
+                try {
+                    stream = await navigator.mediaDevices.getUserMedia({
+                        video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: "user" }
+                    });
+                    video.srcObject = stream;
+                    video.style.display = 'block';
+                    placeholder.style.display = 'none';
+                    btn.innerHTML = '<span>⏹ Stop Camera</span>';
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-danger');
+
+                    snapBtn.disabled = false;
+                    streamBtn.disabled = false;
+                    flowBtn.disabled = false;
+                    statusText.innerText = "Camera Active (640x480)";
+                    showToast("Webcam connected successfully");
+                } catch (err) {
+                    console.error("Camera error:", err);
+                    showToast("Camera access error: " + err.message);
+                }
+            } else {
+                if (continuousInterval) clearInterval(continuousInterval);
+                continuousStreamActive = false;
+                streamBtn.innerHTML = '<span>🔄 Continuous Stream: OFF</span>';
+                streamBtn.classList.remove('btn-accent');
+
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+                video.style.display = 'none';
+                placeholder.style.display = 'flex';
+                btn.innerHTML = '<span>📷 Start Camera</span>';
+                btn.classList.add('btn-primary');
+                btn.classList.remove('btn-danger');
+
+                snapBtn.disabled = true;
+                streamBtn.disabled = true;
+                flowBtn.disabled = true;
+                statusText.innerText = "Camera Off";
+                document.getElementById('live-prediction-pill').style.display = 'none';
+            }
+        }
+
+        function grabVideoFrameBase64() {
+            const video = document.getElementById('webcam-video');
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth || 640;
+            canvas.height = video.videoHeight || 480;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            return canvas.toDataURL('image/jpeg', 0.85);
+        }
+
+        async function captureAndTranslate() {
+            if (!stream) return;
+            const snapBtn = document.getElementById('btn-snap');
+            snapBtn.disabled = true;
+            snapBtn.innerHTML = '<span class="spinner"></span> Processing...';
+            document.getElementById('pipeline-status-text').innerText = "Running full 4-stage inference...";
+
+            const base64Img = grabVideoFrameBase64();
+
+            try {
+                const response = await fetch('/api/predict-image', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ image: base64Img })
+                });
+                const data = await response.json();
+                renderPredictionResults(data);
+                showToast(`Detected sign: ${data.predicted_sign} (${data.confidence}%)`);
+            } catch (err) {
+                console.error("Inference error:", err);
+                showToast("Inference error: " + err.message);
+            } finally {
+                snapBtn.disabled = false;
+                snapBtn.innerHTML = '<span>⚡ Capture & Translate</span>';
+                document.getElementById('pipeline-status-text').innerText = "Inference Complete";
+            }
+        }
+
+        // Continuous streaming
+        function toggleContinuousStream() {
+            const streamBtn = document.getElementById('btn-live-stream');
+            continuousStreamActive = !continuousStreamActive;
+
+            if (continuousStreamActive) {
+                streamBtn.innerHTML = '<span>⏹ Stop Stream: ACTIVE</span>';
+                streamBtn.classList.add('btn-accent');
+                document.getElementById('live-prediction-pill').style.display = 'flex';
+                continuousInterval = setInterval(sendStreamFrame, 1200);
+            } else {
+                clearInterval(continuousInterval);
+                streamBtn.innerHTML = '<span>🔄 Continuous Stream: OFF</span>';
+                streamBtn.classList.remove('btn-accent');
+                document.getElementById('live-prediction-pill').style.display = 'none';
+            }
+        }
+
+        async function sendStreamFrame() {
+            if (!stream || !continuousStreamActive) return;
+            const b64 = grabVideoFrameBase64();
+            try {
+                const res = await fetch('/api/predict-stream-frame', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ image: b64 })
+                });
+                const data = await res.json();
+                if (data.predicted_sign) {
+                    currentPredictedSign = data.predicted_sign;
+                    document.getElementById('live-pill-letter').innerText = data.predicted_sign;
+                    document.getElementById('live-pill-conf').innerText = `${data.confidence}%`;
+                    document.getElementById('output-letter').innerText = data.predicted_sign;
+                    document.getElementById('output-confidence').innerText = `${data.confidence}% Confidence`;
+                    renderProbabilities(data.probabilities);
+                    renderLatencies(data.timing_ms);
+                }
+            } catch (e) {
+                console.error("Stream frame error", e);
+            }
+        }
+
+        // Run 5-stage simulation as defined in thesis
+        async function runFullPipelineSimulation() {
+            if (!stream) return;
+            const card = document.getElementById('activation-card');
+            const statusText = document.getElementById('activation-status-text');
+            const countText = document.getElementById('activation-count-text');
+            const barFill = document.getElementById('activation-bar-fill');
+            card.style.display = 'block';
+
+            let faceCount = 0;
+            const requiredFrames = 15; // smooth threshold for demo
+
+            statusText.innerText = "Stage 0: Detecting user face for activation trigger...";
+
+            for (let i = 0; i < 30; i++) {
+                const b64 = grabVideoFrameBase64();
+                try {
+                    const res = await fetch('/api/detect-face', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ image: b64 })
+                    });
+                    const d = await res.json();
+                    if (d.face_detected) {
+                        faceCount++;
+                    }
+                    const pct = Math.min(100, Math.round((faceCount / requiredFrames) * 100));
+                    barFill.style.width = pct + '%';
+                    countText.innerText = `${faceCount} / ${requiredFrames} frames`;
+
+                    if (faceCount >= requiredFrames) {
+                        break;
+                    }
+                } catch (e) {}
+                await new Promise(r => setTimeout(r, 120));
+            }
+
+            statusText.innerText = "Face confirmed! Stage 1: Capturing gesture sign...";
+            await new Promise(r => setTimeout(r, 600));
+
+            card.style.display = 'none';
+            await captureAndTranslate();
+        }
+
+        // Load built-in sample
+        async function loadSampleImage(url, name) {
+            document.getElementById('pipeline-status-text').innerText = `Loading ${name}...`;
+            try {
+                const imgRes = await fetch(url);
+                const blob = await imgRes.blob();
+                const formData = new FormData();
+                formData.append('file', blob, 'sample.jpg');
+
+                const res = await fetch('/api/predict-image', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                renderPredictionResults(data);
+                showToast(`Loaded ${name} -> Predicted: ${data.predicted_sign}`);
+            } catch (e) {
+                showToast("Sample loading error: " + e.message);
+            }
+        }
+
+        // File upload
+        async function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (file.type.startsWith('video/')) {
+                // Video processing
+                showToast("Analyzing video clip across sampled frames...");
+                document.getElementById('pipeline-status-text').innerText = "Processing video frames...";
+                const formData = new FormData();
+                formData.append('file', file);
+                try {
+                    const res = await fetch('/api/process-video', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    if (data.consensus_sign) {
+                        document.getElementById('output-letter').innerText = data.consensus_sign;
+                        document.getElementById('output-confidence').innerText = `${data.consensus_confidence}% Consensus (${data.total_frames_analyzed} frames)`;
+                        currentPredictedSign = data.consensus_sign;
+                        showToast(`Video Consensus: ${data.consensus_sign} with ${data.consensus_confidence}%`);
+                        if (data.frame_results && data.frame_results.length > 0) {
+                            renderStageImages(data.frame_results[0].images);
+                        }
+                    }
+                } catch (e) {
+                    showToast("Video error: " + e.message);
+                }
+            } else {
+                // Image processing
+                const formData = new FormData();
+                formData.append('file', file);
+                try {
+                    const res = await fetch('/api/predict-image', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    renderPredictionResults(data);
+                    showToast(`Image processed -> Predicted: ${data.predicted_sign}`);
+                } catch (e) {
+                    showToast("Image error: " + e.message);
+                }
+            }
+        }
+
+        // Rendering helpers
+        function renderPredictionResults(data) {
+            currentPredictedSign = data.predicted_sign;
+            document.getElementById('output-letter').innerText = data.predicted_sign;
+            document.getElementById('output-confidence').innerText = `${data.confidence}% Confidence`;
+
+            renderProbabilities(data.probabilities);
+            renderLatencies(data.timing_ms);
+            if (data.images) {
+                renderStageImages(data.images);
+            }
+        }
+
+        function renderStageImages(images) {
+            if (images.original) {
+                document.getElementById('stage-img-raw').innerHTML = `<img src="data:image/jpeg;base64,${images.original}" alt="Raw">`;
+            }
+            if (images.annotated) {
+                document.getElementById('stage-img-yolo').innerHTML = `<img src="data:image/jpeg;base64,${images.annotated}" alt="YOLO">`;
+            }
+            if (images.cropped) {
+                document.getElementById('stage-img-crop').innerHTML = `<img src="data:image/jpeg;base64,${images.cropped}" alt="Cropped">`;
+            }
+            if (images.segmented) {
+                document.getElementById('stage-img-skin').innerHTML = `<img src="data:image/jpeg;base64,${images.segmented}" alt="Segmented">`;
+            }
+        }
+
+        function renderProbabilities(probs) {
+            if (!probs) return;
+            const list = document.getElementById('prob-list');
+            list.innerHTML = '';
+            probs.slice(0, 6).forEach(p => {
+                const item = document.createElement('div');
+                item.className = 'prob-item';
+                item.innerHTML = `
+                    <div class="prob-meta">
+                        <span class="sign">Letter ${p.sign}</span>
+                        <span class="percent">${p.probability}%</span>
+                    </div>
+                    <div class="prob-bar-bg">
+                        <div class="prob-bar-fill" style="width: ${p.probability}%"></div>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function renderLatencies(timings) {
+            if (!timings) return;
+            document.getElementById('latency-yolo').innerText = (timings.yolo || 0) + ' ms';
+            document.getElementById('latency-skin').innerText = (timings.skin_segmentation || 0) + ' ms';
+            document.getElementById('latency-nn').innerText = (timings.squeezenet || 0) + ' ms';
+            document.getElementById('latency-total').innerText = (timings.total || 0) + ' ms';
+        }
+
+        function speakCurrentSign() {
+            if (!currentPredictedSign || currentPredictedSign === "-") {
+                showToast("No sign detected yet to pronounce");
+                return;
+            }
+            const utterance = new SpeechSynthesisUtterance(`Letter ${currentPredictedSign}`);
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
