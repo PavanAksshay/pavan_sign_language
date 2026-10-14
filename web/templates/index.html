@@ -1718,9 +1718,15 @@
 
         // Single snapshot & letter translate
         async function captureAndTranslate() {
-            if (!stream) return;
+            if (!stream) {
+                showToast("Please click 'Start Camera' first.");
+                return;
+            }
             const b64 = captureCurrentFrameBase64();
-            if (!b64) return;
+            if (!b64) {
+                showToast("Camera frame not ready. Please try again.");
+                return;
+            }
 
             document.getElementById('pipeline-status-text').innerText = "Processing frame...";
             try {
@@ -1729,12 +1735,24 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ image: b64 })
                 });
+                if (!res.ok) {
+                    const errData = await res.json().catch(() => ({}));
+                    showToast("Server error: " + (errData.error || res.statusText));
+                    document.getElementById('pipeline-status-text').innerText = "Capture error";
+                    return;
+                }
                 const data = await res.json();
                 renderPredictionResults(data);
-                appendGestureLetter(data.predicted_sign, true);
-                document.getElementById('pipeline-status-text').innerText = "Prediction complete";
+                if (data.hand_detected && data.predicted_sign && data.predicted_sign !== "-") {
+                    appendGestureLetter(data.predicted_sign, true);
+                    document.getElementById('pipeline-status-text').innerText = `Recognized: Letter ${data.predicted_sign} (${data.confidence}%)`;
+                } else {
+                    showToast("No hand detected in frame. Hold hand clearly in camera view.");
+                    document.getElementById('pipeline-status-text').innerText = "No hand detected";
+                }
             } catch (err) {
                 showToast("Prediction error: " + err.message);
+                document.getElementById('pipeline-status-text').innerText = "Prediction error";
             }
         }
 

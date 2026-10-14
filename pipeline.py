@@ -122,6 +122,12 @@ class ISLPipeline:
         # 2. Early return if no hand detected: avoid running SqueezeNet on background/center crops
         if not hand_detected or box_coords is None:
             t_total_ms = round((time.time() - t_start) * 1000, 1)
+            # Center crop for stage visualizer
+            side = min(w, h)
+            sx = (w - side) // 2
+            sy = (h - side) // 2
+            c_crop = cv2.resize(frame_bgr[sy:sy + side, sx:sx + side], (224, 224))
+            c_seg = skinDetector(c_crop).find_skin()
             res = {
                 "predicted_sign": "-",
                 "confidence": 0.0,
@@ -139,48 +145,43 @@ class ISLPipeline:
                 res["images"] = {
                     "original": self._encode_jpeg(frame_bgr),
                     "annotated": self._encode_jpeg(annotated_frame),
-                    "cropped": "",
-                    "segmented": ""
+                    "cropped": self._encode_jpeg(c_crop),
+                    "segmented": self._encode_jpeg(c_seg)
                 }
             return res
 
-        # 3. Crop Hand with zero-distortion square crop
-        # Preserves 1:1 aspect ratio perfectly without stretching.
-        # The hand is centered, with 12% proportional margin matching training distribution.
+        # 3. Crop Hand Region
+        # Crucial for recognition accuracy:
+        # In ISL, two-handed signs have wide horizontal spans. If we artificially expand vertical
+        # height to equal width (side = max(box_w, box_h)), the box climbs hundreds of pixels upward
+        # into the user's face, eyes, glasses, and mouth, causing the classifier to categorize the face
+        # instead of the hands!
+        # Instead, we apply clean proportional margins around the detected hand bounding box, matching
+        # how the original training dataset was preprocessed.
         x, y, x1, y1 = box_coords
         box_w = x1 - x
         box_h = y1 - y
 
-        cx = (x + x1) // 2
-        cy = (y + y1) // 2
-        side = int(max(box_w, box_h) * 1.20)
-        half_side = side // 2
+        pad_x = max(10, int(box_w * 0.12))
+        pad_y = max(10, int(box_h * 0.12))
 
-        x_min = cx - half_side
-        x_max = cx + half_side
-        y_min = cy - half_side
-        y_max = cy + half_side
+        crop_x = max(0, x - pad_x)
+        crop_y = max(0, y - pad_y)
+        crop_x1 = min(w, x1 + pad_x)
+        crop_y1 = min(h, y1 + pad_y)
 
-        pad_top = max(0, -y_min)
-        pad_bottom = max(0, y_max - h)
-        pad_left = max(0, -x_min)
-        pad_right = max(0, x_max - w)
+        # Detect face to ensure hand crop does not inadvertently include the user's face
+        has_face, face_boxes = self.detect_face(frame_bgr)
+        if has_face and len(face_boxes) > 0:
+            for fb in face_boxes:
+                f_bottom = fb["y"] + fb["h"]
+                # If face is directly above the hand bounding box, clamp top of crop to chin level
+                if f_bottom <= y1 and crop_y < f_bottom:
+                    crop_y = max(0, min(y, f_bottom))
 
-        crop_y1 = max(0, y_min)
-        crop_y2 = min(h, y_max)
-        crop_x1 = max(0, x_min)
-        crop_x2 = min(w, x_max)
-
-        cropped_sub = frame_bgr[crop_y1:crop_y2, crop_x1:crop_x2]
-        if cropped_sub.size == 0 or cropped_sub.shape[0] < 10 or cropped_sub.shape[1] < 10:
+        cropped = frame_bgr[crop_y:crop_y1, crop_x:crop_x1]
+        if cropped.size == 0 or cropped.shape[0] < 10 or cropped.shape[1] < 10:
             cropped = frame_bgr
-        elif pad_top > 0 or pad_bottom > 0 or pad_left > 0 or pad_right > 0:
-            cropped = cv2.copyMakeBorder(
-                cropped_sub, pad_top, pad_bottom, pad_left, pad_right,
-                cv2.BORDER_REPLICATE
-            )
-        else:
-            cropped = cropped_sub
 
         resized = cv2.resize(cropped, (224, 224), interpolation=cv2.INTER_LINEAR)
 

@@ -158,18 +158,35 @@ async def detect_face(data: FrameData):
         raise HTTPException(status_code=400, detail=str(e))
 
 @app.post("/api/predict-image")
-async def predict_image(file: Optional[UploadFile] = File(None), data: Optional[FrameData] = None):
+async def predict_image(request: Request, file: Optional[UploadFile] = File(None)):
     try:
-        if file is not None:
+        frame = None
+        content_type = request.headers.get("content-type", "")
+        if "application/json" in content_type:
+            body = await request.json()
+            b64_str = body.get("image")
+            if not b64_str:
+                raise ValueError("No image provided in JSON")
+            frame = decode_base64_image(b64_str)
+        elif file is not None:
             contents = await file.read()
             nparr = np.frombuffer(contents, np.uint8)
             frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
             if frame is None:
                 raise ValueError("Could not decode uploaded file")
-        elif data is not None and data.image:
-            frame = decode_base64_image(data.image)
         else:
-            raise ValueError("No image provided")
+            form = await request.form()
+            if "file" in form and hasattr(form["file"], "read"):
+                contents = await form["file"].read()
+                nparr = np.frombuffer(contents, np.uint8)
+                frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+            elif "image" in form:
+                frame = decode_base64_image(str(form["image"]))
+            else:
+                raise ValueError("No image provided")
+
+        if frame is None:
+            raise ValueError("Could not decode image frame")
 
         result = pipeline_instance.process_frame(frame, return_images=True)
         return result
