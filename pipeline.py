@@ -35,13 +35,20 @@ class ISLPipeline:
             weights_url = 'https://github.com/cansik/yolo-hand-detection/releases/download/pretrained/cross-hands.weights'
             urllib.request.urlretrieve(weights_url, weights_path)
             print('[Pipeline] Weights downloaded successfully!')
-        model_path = os.path.join(APP_DIR, 'final_model')
-        class_json_path = os.path.join(APP_DIR, 'model_class.json')
+        # Load 26-class model if available, otherwise fallback to 10-class model
+        model_26_path = os.path.join(APP_DIR, 'final_model_26')
+        class_26_json_path = os.path.join(APP_DIR, 'model_class_26.json')
+        if os.path.exists(model_26_path) and os.path.exists(class_26_json_path):
+            model_path = model_26_path
+            class_json_path = class_26_json_path
+        else:
+            model_path = os.path.join(APP_DIR, 'final_model')
+            class_json_path = os.path.join(APP_DIR, 'model_class.json')
 
         print(f"[Pipeline] Loading YOLO from {cfg_path}...")
         self.yolo = YOLO(cfg_path, weights_path, ['hand'])
-        self.yolo.confidence = 0.35
-        self.yolo.threshold = 0.3
+        self.yolo.confidence = 0.25
+        self.yolo.threshold = 0.25
 
         print(f"[Pipeline] Loading SqueezeNet model from {model_path}...")
         self.model = tf_keras.models.load_model(model_path)
@@ -112,36 +119,58 @@ class ISLPipeline:
                 y1 = max(d[4] + d[6] for d in detections)
             box_coords = (x, y, x1, y1)
 
-        # 2. Crop & Resize
-        if hand_detected and box_coords is not None:
-            x, y, x1, y1 = box_coords
-            # Add padding as defined in original research implementation
-            pad_x, pad_y = 54, 30
-            x = max(0, x - pad_x)
-            y = max(0, y - pad_y)
-            x1 = min(w, x1 + pad_x)
-            y1 = min(h, y1 + pad_y)
-            cropped = frame_bgr[y:y1, x:x1]
-            if cropped.size == 0 or cropped.shape[0] < 10 or cropped.shape[1] < 10:
-                cropped = frame_bgr
-        else:
-            # Center crop fallback
-            side = min(w, h)
-            sx = (w - side) // 2
-            sy = (h - side) // 2
-            cropped = frame_bgr[sy:sy + side, sx:sx + side]
+        # 2. Early return if no hand detected: avoid running SqueezeNet on background/center crops
+        if not hand_detected or box_coords is None:
+            t_total_ms = round((time.time() - t_start) * 1000, 1)
+            res = {
+                "predicted_sign": "-",
+                "confidence": 0.0,
+                "hand_detected": False,
+                "detections": [],
+                "probabilities": [],
+                "timing_ms": {
+                    "yolo": round((t_yolo_end - t_yolo_start) * 1000, 1),
+                    "skin_segmentation": 0.0,
+                    "squeezenet": 0.0,
+                    "total": t_total_ms
+                }
+            }
+            if return_images:
+                res["images"] = {
+                    "original": self._encode_jpeg(frame_bgr),
+                    "annotated": self._encode_jpeg(annotated_frame),
+                    "cropped": "",
+                    "segmented": ""
+                }
+            return res
+
+        # 3. Crop Hand with bounding box padding
+        x, y, x1, y1 = box_coords
+        pad_x, pad_y = 40, 25
+        x = max(0, x - pad_x)
+        y = max(0, y - pad_y)
+        x1 = min(w, x1 + pad_x)
+        y1 = min(h, y1 + pad_y)
+        cropped = frame_bgr[y:y1, x:x1]
+        if cropped.size == 0 or cropped.shape[0] < 10 or cropped.shape[1] < 10:
+            cropped = frame_bgr
 
         resized = cv2.resize(cropped, (224, 224), interpolation=cv2.INTER_LINEAR)
 
-        # 3. Skin Segmentation
+        # 4. Skin Segmentation with fallback to raw RGB if mask is empty
         t_skin_start = time.time()
         detector = skinDetector(resized)
         segmented = detector.find_skin()
         t_skin_end = time.time()
 
-        # 4. SqueezeNet Sign Recognition
+        # The model was trained on natural RGB hand crops (via tf.keras image_dataset_from_directory).
+        # OpenCV frames are in BGR format; converting BGR to RGB restores correct color channels
+        # and eliminates the channel-swap distortion that caused predictions to collapse into V.
+        inp_rgb = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
+
+        # 5. SqueezeNet Sign Recognition
         t_nn_start = time.time()
-        inp = (segmented.astype(np.float32) / 255.0)
+        inp = (inp_rgb.astype(np.float32) / 255.0)
         inp = np.expand_dims(inp, axis=0)
 
         preds = self.model.predict(inp, verbose=0)[0]
@@ -163,7 +192,7 @@ class ISLPipeline:
             })
         prob_breakdown = sorted(prob_breakdown, key=lambda x: x["probability"], reverse=True)
 
-        total_time_ms = round((time.time() - t_start) * 100, 1)
+        total_time_ms = round((time.time() - t_start) * 1000, 1)
 
         result = {
             "predicted_sign": predicted_sign,

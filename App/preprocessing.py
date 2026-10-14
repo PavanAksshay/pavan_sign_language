@@ -84,14 +84,18 @@ class skinDetector(object):
         self.binary_mask_image = cv2.add(mask_HSV,mask_YCbCr)
     
     def __region_based_segmentation(self):
-        image_foreground = cv2.erode(self.binary_mask_image,None,iterations = 3)     	#remove noise
-        dilated_binary_image = cv2.dilate(self.binary_mask_image,None,iterations = 3)   #The background region is reduced a little because of the dilate operation
-        ret,image_background = cv2.threshold(dilated_binary_image,1,128,cv2.THRESH_BINARY)  #set all background regions to 128
-        image_marker = cv2.add(image_foreground,image_background)   #add both foreground and backgroud, forming markers. The markers are "seeds" of the future image regions.
-        image_marker32 = np.int32(image_marker) #convert to 32SC1 format
-        cv2.watershed(self.image,image_marker32)
-        m = cv2.convertScaleAbs(image_marker32) #convert back to uint8
-        ret,image_mask = cv2.threshold(m,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-        output = cv2.bitwise_and(self.image,self.image,mask = image_mask)
+        image_foreground = cv2.erode(self.binary_mask_image, None, iterations=1)     	# gentle noise removal
+        dilated_binary_image = cv2.dilate(self.binary_mask_image, None, iterations=1)   # background boundary
+        ret, image_background = cv2.threshold(dilated_binary_image, 1, 128, cv2.THRESH_BINARY)
+        image_marker = cv2.add(image_foreground, image_background)
+        image_marker32 = np.int32(image_marker)
+        cv2.watershed(self.image, image_marker32)
+        m = cv2.convertScaleAbs(image_marker32)
+        ret, image_mask = cv2.threshold(m, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        output = cv2.bitwise_and(self.image, self.image, mask=image_mask)
         
+        # If segmentation wiped out the hand (fewer than 1500 skin pixels), fall back to raw RGB crop
+        if np.count_nonzero(output) < 1500:
+            return self.image
+            
         return output

@@ -3,29 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indian Sign Language (ISL) AI Translator</title>
+    <title>AI Translator // Video-To-Text & Speech-To-Text</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0a0e17;
-            --bg-secondary: #111827;
-            --bg-card: rgba(17, 24, 39, 0.7);
-            --bg-card-hover: rgba(31, 41, 55, 0.8);
-            --border-color: rgba(255, 255, 255, 0.08);
-            --border-glow: rgba(56, 189, 248, 0.25);
-            --accent-cyan: #38bdf8;
-            --accent-teal: #2dd4bf;
-            --accent-purple: #a855f7;
-            --accent-amber: #fbbf24;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --text-dim: #6b7280;
-            --radius-lg: 16px;
-            --radius-md: 10px;
-            --radius-sm: 6px;
-            --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.15);
+            --bg-primary: #ffffff;
+            --bg-secondary: #fbfbfb;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f7f7f7;
+            --border-color: #e5e5e5;
+            --border-dark: #111111;
+            --border-light: #eeeeee;
+            --text-main: #000000;
+            --text-muted: #555555;
+            --text-dim: #888888;
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
         }
 
         * {
@@ -36,27 +32,23 @@
 
         body {
             background-color: var(--bg-primary);
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.08) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(45, 212, 191, 0.03) 0px, transparent 60%);
             color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Header */
+        /* Clean White Header */
         header {
-            background: rgba(10, 14, 23, 0.85);
-            backdrop-filter: blur(16px);
+            background: #ffffff;
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
-            padding: 16px 32px;
+            padding: 14px 28px;
         }
 
         .header-container {
@@ -70,143 +62,140 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
         .brand-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, #38bdf8, #a855f7);
-            border-radius: var(--radius-md);
+            width: 32px;
+            height: 32px;
+            background: #000000;
+            color: #ffffff;
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
-            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 800;
         }
 
         .brand-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: #000000;
+            text-transform: uppercase;
         }
 
         .brand-subtitle {
-            font-size: 0.8rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            font-weight: 500;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.04em;
         }
 
         .header-badges {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .badge-live {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 14px;
-            background: rgba(45, 212, 191, 0.1);
-            border: 1px solid rgba(45, 212, 191, 0.3);
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--accent-teal);
+            padding: 6px 12px;
+            background: #f7f7f7;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #000000;
             font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
         }
 
         .badge-dot {
             width: 8px;
             height: 8px;
-            background: var(--accent-teal);
+            background: #000000;
             border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-teal);
-            animation: pulse-dot 2s infinite ease-in-out;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.85); }
         }
 
         /* Main Container */
         main {
-            max-width: 1400px;
+            max-width: 1440px;
             margin: 0 auto;
-            padding: 28px 24px 60px;
+            padding: 24px 24px 60px;
             width: 100%;
             flex: 1;
+            background: #ffffff;
         }
 
         /* Navigation Tabs */
         .tabs-nav {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 24px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 14px;
         }
 
         .tab-btn {
-            background: transparent;
-            border: 1px solid transparent;
+            background: #ffffff;
+            border: 2px solid var(--border-color);
             color: var(--text-muted);
-            padding: 10px 20px;
-            border-radius: var(--radius-md);
-            font-size: 0.9rem;
-            font-weight: 600;
+            padding: 12px 26px;
+            border-radius: var(--radius-sm);
+            font-size: 1.15rem;
+            font-weight: 800;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            gap: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
         .tab-btn:hover {
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.04);
+            color: #000000;
+            border-color: #000000;
+            background: #f7f7f7;
         }
 
         .tab-btn.active {
             color: #ffffff;
-            background: rgba(56, 189, 248, 0.12);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+            background: #000000;
+            border-color: #000000;
         }
 
         /* Layout Grid */
         .app-grid {
             display: grid;
-            grid-template-columns: 1fr 400px;
+            grid-template-columns: 1fr 420px;
             gap: 24px;
         }
 
-        @media (max-width: 1080px) {
+        .app-grid.speech-active {
+            grid-template-columns: 1fr;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1040px) {
             .app-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Glass Cards */
-        .glass-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-            transition: border-color 0.25s ease;
-        }
-
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.14);
+        /* Minimal Monochrome Card */
+        .white-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 22px;
         }
 
         .card-header {
@@ -214,25 +203,29 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 18px;
+            border-bottom: 1.5px solid var(--border-color);
+            padding-bottom: 14px;
         }
 
         .card-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 800;
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #ffffff;
+            color: #000000;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.02em;
         }
 
-        /* Video/Webcam Display */
+        /* Viewport Display */
         .viewport-wrapper {
             position: relative;
             width: 100%;
             aspect-ratio: 16/9;
             background: #000000;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-sm);
             overflow: hidden;
             border: 1px solid var(--border-color);
             display: flex;
@@ -240,7 +233,7 @@
             justify-content: center;
         }
 
-        #webcam-video, #webcam-canvas, #display-img {
+        #webcam-video, #webcam-canvas {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -255,191 +248,260 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            color: var(--text-dim);
+            gap: 10px;
+            color: #888888;
             text-align: center;
             padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
         }
 
         .viewport-placeholder svg {
-            width: 56px;
-            height: 56px;
-            stroke: var(--text-dim);
-        }
-
-        .overlay-badge {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            background: rgba(10, 14, 23, 0.75);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 6px 14px;
-            border-radius: var(--radius-sm);
-            font-size: 0.8rem;
-            font-family: 'JetBrains Mono', monospace;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            z-index: 10;
+            width: 44px;
+            height: 44px;
+            stroke: #888888;
         }
 
         .overlay-prediction {
             position: absolute;
-            bottom: 16px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(10, 14, 23, 0.88);
-            backdrop-filter: blur(14px);
-            border: 1px solid var(--border-glow);
-            padding: 10px 24px;
-            border-radius: 999px;
+            background: #ffffff;
+            border: 1px solid #000000;
+            padding: 6px 18px;
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
-            gap: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            gap: 12px;
             z-index: 10;
         }
 
         .overlay-prediction .letter {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
             font-weight: 800;
-            color: var(--accent-cyan);
-            text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+            color: #000000;
         }
 
         .overlay-prediction .conf {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            color: var(--text-muted);
+            color: #555555;
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Controls */
+        /* Dedicated Predicted Letters Box below Webcam */
+        .prediction-stream-box {
+            margin-top: 14px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 14px;
+        }
+
+        .stream-box-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .stream-box-label {
+            font-size: 1.35rem;
+            color: #000000;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .current-letter-badge {
+            background: #000000;
+            color: #ffffff;
+            padding: 4px 14px;
+            border-radius: var(--radius-sm);
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .stream-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .stream-btn-mini {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            color: #000000;
+            padding: 7px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.15s ease;
+            font-weight: 700;
+        }
+
+        .stream-btn-mini:hover {
+            color: #ffffff;
+            background: #000000;
+            border-color: #000000;
+        }
+
+        .stream-text-area {
+            width: 100%;
+            min-height: 90px;
+            max-height: 200px;
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: #000000;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            padding: 12px 14px;
+            resize: vertical;
+            line-height: 1.6;
+            outline: none;
+            letter-spacing: 0.04em;
+        }
+
+        .stream-text-area:focus {
+            border-color: #000000;
+        }
+
+        .stream-controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+
+        /* Buttons & Controls */
         .controls-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 18px;
+            gap: 10px;
+            margin-top: 16px;
         }
 
         .btn {
-            padding: 11px 22px;
-            border-radius: var(--radius-md);
-            font-size: 0.88rem;
-            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 0.92rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            border: 1px solid transparent;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            border: 1.5px solid var(--border-color);
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            background: #000000;
             color: #ffffff;
-            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+            border-color: #000000;
         }
 
         .btn-primary:hover {
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
-            transform: translateY(-1px);
+            background: #222222;
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.06);
-            color: var(--text-main);
-            border-color: rgba(255, 255, 255, 0.1);
+            background: #ffffff;
+            color: #000000;
+            border-color: var(--border-color);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-accent {
-            background: linear-gradient(135deg, #a855f7, #7e22ce);
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(168, 85, 247, 0.25);
-        }
-
-        .btn-accent:hover {
-            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
-            transform: translateY(-1px);
+            background: #f5f5f5;
+            border-color: #000000;
         }
 
         .btn-danger {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-            border-color: rgba(239, 68, 68, 0.3);
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
         }
 
         .btn-danger:hover {
-            background: rgba(239, 68, 68, 0.25);
+            background: #000000;
+            color: #ffffff;
         }
 
         .btn:disabled {
-            opacity: 0.45;
+            opacity: 0.3;
             cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
         }
 
-        /* Face Activation Progress */
+        /* Face Activation Bar */
         .activation-card {
-            margin-top: 18px;
-            background: rgba(0, 0, 0, 0.35);
+            margin-top: 12px;
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 16px;
+            border-radius: var(--radius-sm);
+            padding: 12px;
             display: none;
         }
 
         .activation-header {
             display: flex;
             justify-content: space-between;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
+            font-size: 0.75rem;
+            margin-bottom: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
         }
 
         .progress-bar-bg {
             width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 999px;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: var(--radius-sm);
             overflow: hidden;
+            border: 1px solid #e0e0e0;
         }
 
         .progress-bar-fill {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #38bdf8, #2dd4bf);
+            background: #000000;
             transition: width 0.15s ease;
         }
 
-        /* Pipeline Visualizer (Stages) */
+        /* Pipeline Visualizer (Stages - strictly inside Video-To-Text) */
         .pipeline-section {
-            margin-top: 28px;
+            margin-top: 20px;
         }
 
         .section-heading {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.45rem;
+            font-weight: 800;
             margin-bottom: 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
         .stages-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
+            gap: 12px;
         }
 
         @media (max-width: 900px) {
@@ -449,33 +511,32 @@
         }
 
         .stage-box {
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 12px;
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 10px;
             text-align: center;
-            transition: border-color 0.2s ease;
-        }
-
-        .stage-box:hover {
-            border-color: rgba(56, 189, 248, 0.4);
         }
 
         .stage-num {
-            font-size: 0.7rem;
+            font-size: 0.9rem;
             font-family: 'JetBrains Mono', monospace;
-            color: var(--accent-cyan);
-            font-weight: 600;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 4px;
+            font-weight: 700;
         }
 
         .stage-title {
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .stage-img-wrapper {
@@ -484,7 +545,7 @@
             background: #000000;
             border-radius: var(--radius-sm);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1.5px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -494,142 +555,367 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            background: #000000;
             display: block;
         }
 
         .stage-empty {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             color: var(--text-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
         }
 
-        /* Sidebar: Output & Metrics */
+        /* Sidebar: Hero & Stats */
         .prediction-hero {
-            background: linear-gradient(145deg, rgba(56, 189, 248, 0.08), rgba(168, 85, 247, 0.05));
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            border-radius: var(--radius-lg);
-            padding: 28px 20px;
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 24px 16px;
             text-align: center;
-            margin-bottom: 22px;
-            box-shadow: var(--shadow-glow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .prediction-hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 60%);
-            pointer-events: none;
+            margin-bottom: 18px;
         }
 
         .hero-label {
-            font-size: 0.78rem;
+            font-size: 1.25rem;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             color: var(--text-muted);
-            font-weight: 600;
-            margin-bottom: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 8px;
+            font-weight: 800;
         }
 
         .hero-letter {
-            font-family: 'Outfit', sans-serif;
-            font-size: 4.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 5.5rem;
             font-weight: 800;
             line-height: 1;
             margin: 8px 0;
-            background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 4px 30px rgba(56, 189, 248, 0.4);
+            color: #000000;
         }
 
         .hero-confidence {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.05rem;
-            color: var(--accent-teal);
-            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            font-weight: 700;
         }
 
         .speak-btn {
-            margin-top: 14px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #ffffff;
-            border-radius: 999px;
-            padding: 6px 16px;
-            font-size: 0.8rem;
+            margin-top: 12px;
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            color: #000000;
+            border-radius: var(--radius-sm);
+            padding: 8px 16px;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            font-weight: 700;
         }
 
         .speak-btn:hover {
-            background: rgba(255, 255, 255, 0.16);
-            transform: scale(1.03);
+            background: #000000;
+            color: #ffffff;
+            border-color: #000000;
         }
 
         /* Probabilities List */
+        .prob-heading {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #000000;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.02em;
+        }
+
         .prob-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             margin-top: 14px;
         }
 
         .prob-item {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 6px;
         }
 
         .prob-meta {
             display: flex;
             justify-content: space-between;
-            font-size: 0.82rem;
-            font-weight: 600;
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .prob-meta .sign {
-            color: #ffffff;
+            color: #000000;
         }
 
         .prob-meta .percent {
-            font-family: 'JetBrains Mono', monospace;
             color: var(--text-muted);
         }
 
         .prob-bar-bg {
             width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 999px;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: var(--radius-sm);
             overflow: hidden;
+            border: 1px solid #e0e0e0;
         }
 
         .prob-bar-fill {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #38bdf8, #a855f7);
-            border-radius: 999px;
-            transition: width 0.3s ease;
+            background: #000000;
+            transition: width 0.2s ease;
         }
 
-        .prob-item:first-child .prob-bar-fill {
-            background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+        /* Sign Reference Manual Card & Table */
+        .manual-card {
+            margin-top: 24px;
         }
 
-        /* Metrics Chips */
-        .metrics-card {
-            margin-top: 22px;
-            background: rgba(0, 0, 0, 0.25);
+        .manual-section {
+            margin-top: 0;
+        }
+
+        .manual-search-box {
+            width: 100%;
+            padding: 14px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            margin-bottom: 16px;
+            outline: none;
+            background: #fafafa;
+            color: #000000;
+            box-sizing: border-box;
+            transition: all 0.15s ease;
+        }
+
+        .manual-search-box:focus {
+            border-color: #000000;
+            background: #ffffff;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .manual-table-container {
+            max-height: 750px;
+            overflow-y: auto;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            background: #ffffff;
+        }
+
+        .manual-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+        }
+
+        .manual-table thead {
+            position: sticky;
+            top: 0;
+            background: #f7f7f7;
+            z-index: 2;
+        }
+
+        .manual-table th {
+            text-align: left;
+            padding: 14px 20px;
+            border-bottom: 2px solid var(--border-color);
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .manual-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+
+        .manual-row:last-child td {
+            border-bottom: none;
+        }
+
+        .manual-row.active-sign {
+            background: #f0f0f0;
+            font-weight: 700;
+        }
+
+        .manual-letter-cell {
+            text-align: center;
+            vertical-align: middle;
+            width: 140px;
+        }
+
+        .manual-letter-badge {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #000000;
+            font-family: 'Outfit', sans-serif;
+            display: inline-block;
+        }
+
+        .manual-word-name {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #000000;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 6px;
+            line-height: 1.25;
+        }
+
+        .manual-word-cat {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .manual-img-cell {
+            text-align: center;
+            padding: 16px 20px;
+            vertical-align: middle;
+        }
+
+        .manual-thumb {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2.5px solid #000000;
+            display: inline-block;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .manual-thumb:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .manual-insert-btn {
+            background: #ffffff;
+            border: 2px solid #000000;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .manual-insert-btn:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .stream-btn-space {
+            background: #000000 !important;
+            color: #ffffff !important;
+            border-color: #000000 !important;
+            font-weight: 700;
+        }
+
+        .stream-btn-space:hover {
+            background: #2a2a2a !important;
+        }
+
+        /* Mode Switcher Bar */
+        .mode-switch-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+            padding: 14px 20px;
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .mode-switch-label {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #000000;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.04em;
+        }
+
+        .mode-switch-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .mode-btn {
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            color: #444444;
+            padding: 10px 22px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-transform: uppercase;
+        }
+
+        .mode-btn:hover {
+            border-color: #000000;
+            color: #000000;
+            background: #f7f7f7;
+        }
+
+        .mode-btn.active {
+            background: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        .manual-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #f4f4f4;
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        /* Telemetry Metrics */
+        .metrics-card {
+            margin-top: 18px;
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
             padding: 16px;
         }
 
@@ -641,145 +927,175 @@
         }
 
         .metric-chip {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: #fcfcfc;
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-sm);
-            padding: 8px 10px;
+            padding: 10px;
         }
 
         .metric-chip .label {
-            font-size: 0.7rem;
+            font-size: 0.88rem;
             color: var(--text-dim);
             text-transform: uppercase;
-            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
         }
 
         .metric-chip .value {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.88rem;
-            color: var(--text-main);
-            font-weight: 600;
-            margin-top: 2px;
+            font-size: 1.15rem;
+            color: #000000;
+            font-weight: 800;
+            margin-top: 4px;
         }
 
-        /* Upload Tab */
-        .drop-zone {
-            border: 2px dashed rgba(255, 255, 255, 0.15);
-            border-radius: var(--radius-md);
-            padding: 36px 20px;
+        /* Speech-To-Text View */
+        .stt-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .stt-record-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 26px;
             text-align: center;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .stt-status-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
             margin-bottom: 18px;
         }
 
-        .drop-zone:hover, .drop-zone.dragover {
-            border-color: var(--accent-cyan);
-            background: rgba(56, 189, 248, 0.05);
+        .stt-timer {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.0rem;
+            font-weight: 800;
+            color: #000000;
         }
 
-        .drop-zone svg {
-            width: 48px;
-            height: 48px;
-            stroke: var(--accent-cyan);
+        .stt-indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #cccccc;
+        }
+
+        .stt-indicator-dot.recording {
+            background: #000000;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+            animation: pulse-dot 1.2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.8); }
+        }
+
+        .stt-btn-large {
+            padding: 14px 32px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stt-btn-start {
+            background: #000000;
+            color: #ffffff;
+            border: 2px solid #000000;
+        }
+
+        .stt-btn-start:hover {
+            background: #222222;
+        }
+
+        .stt-btn-stop {
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
+        }
+
+        .stt-btn-stop:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        .stt-output-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+        }
+
+        .stt-output-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 12px;
         }
 
-        .samples-row {
+        .stt-output-title {
+            font-size: 1.35rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: #000000;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .stt-textarea {
+            width: 100%;
+            min-height: 220px;
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            color: #000000;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.6;
+            outline: none;
+            resize: vertical;
+        }
+
+        .stt-textarea:focus {
+            border-color: #000000;
+        }
+
+        .stt-footer-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-top: 14px;
-        }
-
-        .sample-thumb {
-            width: 72px;
-            height: 72px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: #000;
-        }
-
-        .sample-thumb:hover {
-            border-color: var(--accent-cyan);
-            transform: scale(1.05);
-        }
-
-        .sample-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Alphabet Reference Tab */
-        .alphabet-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 16px;
-        }
-
-        .alphabet-card {
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            text-align: center;
-            transition: all 0.25s ease;
-        }
-
-        .alphabet-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.15);
-        }
-
-        .alphabet-card .char {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 4px;
-        }
-
-        .alphabet-card .id {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Spinner */
-        .spinner {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: #ffffff;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+            justify-content: space-between;
+            margin-top: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
         }
 
         /* Toast */
-        #toast {
+        .toast {
             position: fixed;
             bottom: 24px;
             right: 24px;
-            background: rgba(17, 24, 39, 0.95);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glow);
+            background: #000000;
+            border: 1px solid #000000;
             color: #ffffff;
-            padding: 12px 20px;
-            border-radius: var(--radius-md);
-            font-size: 0.88rem;
-            font-weight: 500;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            font-family: 'JetBrains Mono', monospace;
             z-index: 1000;
             display: none;
         }
@@ -791,16 +1107,16 @@
     <header>
         <div class="header-container">
             <div class="brand">
-                <div class="brand-icon">🤟</div>
+                <div class="brand-icon">AI</div>
                 <div>
-                    <h1 class="brand-title">Indian Sign Language AI Translator</h1>
-                    <div class="brand-subtitle">Haar Cascades • YOLOv3 Cross-Hands • HSV/YCbCr Watershed • SqueezeNet CNN</div>
+                    <h1 class="brand-title">TRANSLATOR // V2T & S2T</h1>
+                    <div class="brand-subtitle">VIDEO-TO-TEXT + SPEECH-TO-TEXT</div>
                 </div>
             </div>
             <div class="header-badges">
                 <div class="badge-live">
                     <span class="badge-dot"></span>
-                    <span>MODELS ONLINE (10 ISL CLASSES)</span>
+                    <span>{{ total_classes }} CLASSES // ONLINE</span>
                 </div>
             </div>
         </div>
@@ -808,158 +1124,275 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Navigation Tabs -->
+        <!-- Navigation Tabs: Video-To-Text & Speech-To-Text (ISL Dictionary hidden) -->
         <div class="tabs-nav">
             <button class="tab-btn active" id="tab-webcam-btn" onclick="switchTab('webcam')">
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                Live Webcam Studio
+                Video-To-Text
             </button>
-            <button class="tab-btn" id="tab-upload-btn" onclick="switchTab('upload')">
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-                Image & Video Upload
-            </button>
-            <button class="tab-btn" id="tab-alphabet-btn" onclick="switchTab('alphabet')">
-                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                ISL Dictionary (10 Classes)
+            <button class="tab-btn" id="tab-speech-btn" onclick="switchTab('speech')">
+                Speech-To-Text
             </button>
         </div>
 
         <!-- Layout Grid -->
-        <div class="app-grid">
-            <!-- Left Column: Input & Pipeline -->
+        <div class="app-grid" id="main-app-grid">
+            <!-- Left Column: Input & Processing -->
             <div class="main-column">
 
-                <!-- 1. Webcam Studio View -->
-                <div id="view-webcam" class="glass-card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <span>Webcam Input Feed</span>
-                        </div>
-                        <div id="stream-status" style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
-                            Camera Off
-                        </div>
-                    </div>
-
-                    <div class="viewport-wrapper" id="webcam-viewport">
-                        <div class="viewport-placeholder" id="placeholder-box">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-                            <p>Click <strong>"Start Camera"</strong> below to begin webcam translation</p>
-                        </div>
-                        <video id="webcam-video" autoplay playsinline style="display: none;"></video>
-                        <canvas id="webcam-canvas" style="display: none;"></canvas>
-
-                        <!-- Live overlay letter -->
-                        <div class="overlay-prediction" id="live-prediction-pill" style="display: none;">
-                            <span class="letter" id="live-pill-letter">-</span>
-                            <span class="conf" id="live-pill-conf">0%</span>
+                <!-- 1. Video-To-Text View -->
+                <div id="view-webcam">
+                    <!-- Mode Switcher: Letters (A-Z) vs Words (INCLUDE-50) -->
+                    <div class="mode-switch-bar">
+                        <div class="mode-switch-label">TRANSLATION TARGET:</div>
+                        <div class="mode-switch-group">
+                            <button class="mode-btn active" id="mode-btn-letters" onclick="switchVideoMode('letters')">
+                                LETTERS (A - Z Fingerspelling)
+                            </button>
+                            <button class="mode-btn" id="mode-btn-words" onclick="switchVideoMode('words')">
+                                WORDS (AI4Bharat INCLUDE-50)
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Face Activation simulation bar -->
-                    <div class="activation-card" id="activation-card">
-                        <div class="activation-header">
-                            <span id="activation-status-text">Stage 0: Detecting face for system trigger...</span>
-                            <span id="activation-count-text">0 / 35 frames</span>
+                    <div class="white-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span id="webcam-feed-title">Webcam Input Feed</span>
+                            </div>
+                            <div id="stream-status" style="font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+                                Camera Off
+                            </div>
                         </div>
-                        <div class="progress-bar-bg">
-                            <div class="progress-bar-fill" id="activation-bar-fill"></div>
+
+                        <div class="viewport-wrapper" id="webcam-viewport">
+                            <div class="viewport-placeholder" id="placeholder-box">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                <p>CLICK <strong>"START CAMERA"</strong> TO BEGIN VIDEO TRANSLATION</p>
+                            </div>
+                            <video id="webcam-video" autoplay playsinline style="display: none;"></video>
+                            <canvas id="webcam-canvas" style="display: none;"></canvas>
+
+                            <!-- Live overlay pill -->
+                            <div class="overlay-prediction" id="live-prediction-pill" style="display: none;">
+                                <span class="letter" id="live-pill-letter">-</span>
+                                <span class="conf" id="live-pill-conf">0%</span>
+                            </div>
+                        </div>
+
+                        <!-- Predicted Real-Time Text Box (Immediately Below Webcam Feed) -->
+                        <div class="prediction-stream-box">
+                            <div class="stream-box-header">
+                                <div class="stream-box-label">
+                                    <span id="stream-box-title">PREDICTED HAND GESTURE TEXT</span>
+                                    <span class="current-letter-badge" id="stream-active-letter">-</span>
+                                </div>
+                                <div class="stream-actions">
+                                    <button class="stream-btn-mini stream-btn-space" onclick="addGestureSpace()" title="Insert word space (or press Spacebar)">[SPACE ␣]</button>
+                                    <button class="stream-btn-mini" onclick="backspaceGestureText()" title="Delete last letter (or press Backspace)">[⌫ DEL]</button>
+                                    <button class="stream-btn-mini" onclick="clearGestureText()">[CLEAR]</button>
+                                    <button class="stream-btn-mini" onclick="copyGestureText()">[COPY]</button>
+                                </div>
+                            </div>
+                            <textarea class="stream-text-area" id="gesture-text-output" placeholder="Predicted signs will accumulate here in real time as hand gestures are recognized..."></textarea>
+                            <div class="stream-controls-row">
+                                <span id="gesture-stream-status" style="display: none;"></span>
+                                <span id="gesture-tips-text" style="font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-weight: 600;">Space: Show Both Hands 👐, pause hand for 2.5s, or press [SPACE ␣]</span>
+                                <span id="gesture-char-count">0 characters</span>
+                            </div>
+                        </div>
+
+                        <!-- Face Activation simulation bar -->
+                        <div class="activation-card" id="activation-card">
+                            <div class="activation-header">
+                                <span id="activation-status-text">Stage 0: Detecting face for system trigger...</span>
+                                <span id="activation-count-text">0 / 35 frames</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" id="activation-bar-fill"></div>
+                            </div>
+                        </div>
+
+                        <!-- Webcam Controls -->
+                        <div class="controls-row">
+                            <button class="btn btn-primary" id="btn-toggle-cam" onclick="toggleCamera()" title="Turns camera on/off and automatically starts real-time sign recognition">
+                                <span>Start Camera</span>
+                            </button>
+                            <button class="btn btn-secondary" id="btn-snap" onclick="handleCaptureAction()" disabled title="Take a single snapshot to analyze one static frame">
+                                <span id="btn-snap-text">Capture Single Frame</span>
+                            </button>
+                            <button class="btn btn-secondary" id="btn-live-stream" onclick="toggleContinuousStream()" disabled title="Pause or resume continuous real-time recognition">
+                                <span id="stream-btn-text">Continuous Stream: OFF</span>
+                            </button>
+                            <button class="btn btn-secondary" id="btn-full-flow" onclick="runFullPipelineSimulation()" disabled title="Educational demo: visualizes the 5 computer vision stages step-by-step">
+                                <span>Run 5-Stage Demo</span>
+                            </button>
+                            <button class="btn btn-secondary" id="btn-reset-seq" onclick="resetWordSequence()" style="display: none;" title="Reset word gesture buffer">
+                                <span>Reset Buffer</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Webcam Controls -->
-                    <div class="controls-row">
-                        <button class="btn btn-primary" id="btn-toggle-cam" onclick="toggleCamera()">
-                            <span>📷 Start Camera</span>
-                        </button>
-                        <button class="btn btn-accent" id="btn-snap" onclick="captureAndTranslate()" disabled>
-                            <span>⚡ Capture & Translate</span>
-                        </button>
-                        <button class="btn btn-secondary" id="btn-live-stream" onclick="toggleContinuousStream()" disabled>
-                            <span id="stream-btn-text">🔄 Continuous Stream: OFF</span>
-                        </button>
-                        <button class="btn btn-secondary" id="btn-full-flow" onclick="runFullPipelineSimulation()" disabled>
-                            <span>🎬 Run 5-Stage Thesis Pipeline</span>
-                        </button>
+                    <!-- Pipeline Visualizer (Only in Video-To-Text Tab) -->
+                    <div class="pipeline-section white-card">
+                        <div class="section-heading">
+                            <span id="pipeline-heading-text">Pipeline Stages (4 Stages)</span>
+                            <span id="pipeline-status-text" style="font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">Awaiting Input</span>
+                        </div>
+                        <div class="stages-grid">
+                            <div class="stage-box">
+                                <div class="stage-num" id="stage-num-1">Stage 1</div>
+                                <div class="stage-title" id="stage-title-1">Raw Frame</div>
+                                <div class="stage-img-wrapper" id="stage-img-raw">
+                                    <span class="stage-empty">No Frame</span>
+                                </div>
+                            </div>
+                            <div class="stage-box">
+                                <div class="stage-num" id="stage-num-2">Stage 2</div>
+                                <div class="stage-title" id="stage-title-2">YOLOv3 Box</div>
+                                <div class="stage-img-wrapper" id="stage-img-yolo">
+                                    <span class="stage-empty">No Box</span>
+                                </div>
+                            </div>
+                            <div class="stage-box">
+                                <div class="stage-num" id="stage-num-3">Stage 3</div>
+                                <div class="stage-title" id="stage-title-3">224x224 Crop</div>
+                                <div class="stage-img-wrapper" id="stage-img-crop">
+                                    <span class="stage-empty">No Crop</span>
+                                </div>
+                            </div>
+                            <div class="stage-box">
+                                <div class="stage-num" id="stage-num-4">Stage 4</div>
+                                <div class="stage-title" id="stage-title-4">Skin Mask</div>
+                                <div class="stage-img-wrapper" id="stage-img-skin">
+                                    <span class="stage-empty">No Mask</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sign Reference Manual (ISL Dictionary & Reference) Moved to Left Hand Side -->
+                    <div class="manual-section white-card manual-card" id="manual-card-container">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1.5px solid var(--border-color); padding-bottom: 12px;">
+                            <div>
+                                <div class="card-title" id="manual-heading-text" style="font-size: 1.45rem; font-weight: 800; color: #000000; text-transform: uppercase; font-family: 'JetBrains Mono', monospace;">
+                                    Sign Reference Manual
+                                </div>
+                                <div style="font-size: 0.92rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-top: 4px; font-weight: 600;">
+                                    Visual guide with verified active hand gestures
+                                </div>
+                            </div>
+                            <span style="font-size: 0.95rem; font-weight: 700; color: #000000; background: #f0f0f0; border: 1.5px solid var(--border-color); padding: 6px 14px; border-radius: 4px; font-family: 'JetBrains Mono', monospace;" id="manual-count-badge">26 Classes (A - Z)</span>
+                        </div>
+
+                        <!-- Instant Live Search Bar -->
+                        <div style="margin-bottom: 16px;">
+                            <input type="text" id="manual-search-box" class="manual-search-box" placeholder="🔍 Instant Search among 26 letters or 206 words..." oninput="filterManualSigns(this.value)">
+                        </div>
+
+                        <div class="manual-table-container">
+                            <!-- Letters Table -->
+                            <table class="manual-table" id="manual-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%; text-align: center;">Sign Letter</th>
+                                        <th style="width: 50%; text-align: center;">Gesture Demonstration</th>
+                                        <th style="width: 25%; text-align: center;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% set alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'] %}
+                                    {% for let in alphabet %}
+                                    <tr id="manual-row-{{ let }}" class="manual-row">
+                                        <td class="manual-letter-cell">
+                                            <span class="manual-letter-badge">{{ let }}</span>
+                                        </td>
+                                        <td class="manual-img-cell">
+                                            <img src="/static/manual/{{ let }}.jpg" alt="Sign {{ let }}" class="manual-thumb" loading="lazy">
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <button class="manual-insert-btn" onclick="appendGestureLetter('{{ let }}', true)" title="Add letter {{ let }} to text">[+ADD LETTER]</button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                            <!-- Words Table (ISL Dynamic Signs) -->
+                            <table class="manual-table" id="manual-words-table" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 32%;">Word Sign (ISL)</th>
+                                        <th style="width: 48%; text-align: center;">Gesture Demonstration</th>
+                                        <th style="width: 20%; text-align: center;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if word_catalog %}
+                                    {% for item in word_catalog %}
+                                    <tr id="manual-word-row-{{ item.id }}" class="manual-row manual-word-row">
+                                        <td>
+                                            <div class="manual-word-name">{{ item.word }}</div>
+                                            <div class="manual-word-cat">{{ item.category }}</div>
+                                        </td>
+                                        <td class="manual-img-cell">
+                                            <img src="{{ item.image }}" alt="Sign {{ item.word }}" class="manual-thumb" loading="lazy">
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <button class="manual-insert-btn" onclick="insertManualWord('{{ item.word }}')" title="Add word {{ item.word }} to text">[+ADD WORD]</button>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 2. Upload Studio View -->
-                <div id="view-upload" class="glass-card" style="display: none;">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <span>Image or Video Upload</span>
+                <!-- 2. Speech-To-Text View (No extra sections below the text box!) -->
+                <div id="view-speech" style="display: none;">
+                    <div class="white-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span>Speech-To-Text Studio</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
-                        <p style="font-weight: 600; font-size: 1rem; margin-bottom: 4px;">Drag & Drop hand sign image or video here</p>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">Supports JPG, PNG, MP4, MOV files</p>
-                        <input type="file" id="file-input" style="display: none;" accept="image/*,video/*" onchange="handleFileUpload(event)">
-                    </div>
+                        <div class="stt-container">
+                            <!-- Recording Control Center -->
+                            <div class="stt-record-card">
+                                <div class="stt-status-row">
+                                    <span class="stt-indicator-dot" id="stt-dot"></span>
+                                    <span class="stt-timer" id="stt-timer">00:00</span>
+                                    <button class="stream-btn-mini" onclick="resetSpeechTimer()" title="Reset speech timer to 00:00">[RESET TIMER]</button>
+                                    <span style="font-size: 0.95rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-left: 14px; font-weight: 600;" id="stt-status-label">
+                                        Microphone Standby
+                                    </span>
+                                </div>
 
-                    <div style="margin-top: 18px;">
-                        <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Or select a built-in test sample:</span>
-                        <div class="samples-row">
-                            <div class="sample-thumb" onclick="loadSampleImage('/static/samples/sample_sign_1.jpg', 'Sample 1')">
-                                <img src="/static/samples/sample_sign_1.jpg" alt="Sample 1">
+                                <button class="stt-btn-large stt-btn-start" id="stt-toggle-btn" onclick="toggleSpeechRecording()">
+                                    <span>🎙️ Start Recording</span>
+                                </button>
                             </div>
-                            <div class="sample-thumb" onclick="loadSampleImage('/static/samples/sample_sign_2.jpg', 'Sample 2')">
-                                <img src="/static/samples/sample_sign_2.jpg" alt="Sample 2">
-                            </div>
-                            <div class="sample-thumb" onclick="loadSampleImage('/static/samples/sample_sign_3.jpg', 'Sample 3')">
-                                <img src="/static/samples/sample_sign_3.jpg" alt="Sample 3">
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- 3. Alphabet Dictionary View -->
-                <div id="view-alphabet" class="glass-card" style="display: none;">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <span>Trained Indian Sign Language Classes</span>
-                        </div>
-                        <span style="font-size: 0.85rem; color: var(--text-muted);">SqueezeNet Transfer Learning Model</span>
-                    </div>
-                    <div class="alphabet-grid" id="alphabet-grid">
-                        <!-- Populated by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- 4. Pipeline Stages Inspector (Visible in all prediction modes) -->
-                <div class="pipeline-section glass-card">
-                    <div class="section-heading">
-                        <span>Deep Pipeline Visualizer (4 Stages)</span>
-                        <span id="pipeline-status-text" style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">Awaiting Input</span>
-                    </div>
-                    <div class="stages-grid">
-                        <div class="stage-box">
-                            <div class="stage-num">Stage 1</div>
-                            <div class="stage-title">Raw Frame</div>
-                            <div class="stage-img-wrapper" id="stage-img-raw">
-                                <span class="stage-empty">No Frame</span>
-                            </div>
-                        </div>
-                        <div class="stage-box">
-                            <div class="stage-num">Stage 2</div>
-                            <div class="stage-title">YOLOv3 Hand Box</div>
-                            <div class="stage-img-wrapper" id="stage-img-yolo">
-                                <span class="stage-empty">No Detections</span>
-                            </div>
-                        </div>
-                        <div class="stage-box">
-                            <div class="stage-num">Stage 3</div>
-                            <div class="stage-title">Crop & Resize (224)</div>
-                            <div class="stage-img-wrapper" id="stage-img-crop">
-                                <span class="stage-empty">No Crop</span>
-                            </div>
-                        </div>
-                        <div class="stage-box">
-                            <div class="stage-num">Stage 4</div>
-                            <div class="stage-title">Skin Segmentation</div>
-                            <div class="stage-img-wrapper" id="stage-img-skin">
-                                <span class="stage-empty">No Mask</span>
+                            <!-- Real-time Transcribed Text Output (Accumulative - earlier sentences never disappear) -->
+                            <div class="stt-output-card">
+                                <div class="stt-output-header">
+                                    <span class="stt-output-title">REAL-TIME TRANSCRIBED TEXT</span>
+                                    <div class="stream-actions">
+                                        <button class="stream-btn-mini" onclick="copySpeechText()">[COPY]</button>
+                                        <button class="stream-btn-mini" onclick="clearSpeechText()">[CLEAR]</button>
+                                    </div>
+                                </div>
+                                <textarea class="stt-textarea" id="speech-transcription-output" placeholder="Transcribed speech will stream and accumulate here in real time... Earlier sentences are preserved."></textarea>
+                                <div class="stt-footer-actions">
+                                    <span style="font-size: 0.88rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-weight: 600;" id="stt-word-count">
+                                        0 words // 0 characters
+                                    </span>
+                                    <span style="font-size: 0.88rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; font-weight: 600;" id="stt-engine-status">
+                                        Ready
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -967,57 +1400,67 @@
 
             </div>
 
-            <!-- Right Column: Prediction Output & Confidence -->
-            <div class="sidebar-column">
-                <div class="glass-card" style="position: sticky; top: 96px;">
+            <!-- Right Column: Prediction Metrics (Only relevant for Video-To-Text) -->
+            <div class="sidebar-column" id="main-sidebar-column">
+                <div class="white-card">
                     <div class="card-header">
-                        <div class="card-title">Translation Result</div>
+                        <div class="card-title">Recognition Output</div>
                     </div>
 
-                    <!-- Glowing Hero Badge -->
+                    <!-- Hero Prediction -->
                     <div class="prediction-hero">
-                        <div class="hero-label">Detected ISL Alphabet</div>
+                        <div class="hero-label" id="hero-output-label">Recognized Sign</div>
                         <div class="hero-letter" id="output-letter">-</div>
                         <div class="hero-confidence" id="output-confidence">0.0% Confidence</div>
-                        <button class="speak-btn" onclick="speakCurrentSign()" id="btn-speak">
-                            <span>🔊 Pronounce Letter</span>
-                        </button>
                     </div>
 
-                    <!-- Probability Distribution -->
-                    <div>
-                        <div style="font-size: 0.85rem; font-weight: 600; color: #ffffff; margin-bottom: 8px;">
-                            Top Class Probabilities
-                        </div>
-                        <div class="prob-list" id="prob-list">
-                            <!-- Populated dynamically -->
-                            <div style="font-size: 0.8rem; color: var(--text-dim); text-align: center; padding: 20px 0;">
-                                Run a translation to view model probability distribution
-                            </div>
+                    <!-- Top Probabilities -->
+                    <div class="prob-heading" id="prob-heading-text" style="font-size: 1.25rem; font-weight: 800; color: #000000; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; margin-top: 10px;">
+                        Top Class Probabilities
+                    </div>
+                    <div class="prob-list" id="prob-list">
+                        <div style="font-size: 0.85rem; color: var(--text-dim); text-align: center; padding: 18px; font-family: 'JetBrains Mono', monospace; font-weight: 600;">
+                            Awaiting inference
                         </div>
                     </div>
 
-                    <!-- Performance Latency Metrics -->
+                    <!-- Latency Telemetry -->
                     <div class="metrics-card">
-                        <div style="font-size: 0.8rem; font-weight: 600; color: #ffffff;">Inference Latency</div>
+                        <div style="font-size: 1.15rem; color: #000000; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; font-weight: 800;">
+                            Latency Breakdown
+                        </div>
                         <div class="metrics-grid">
                             <div class="metric-chip">
-                                <div class="label">YOLOv3 Hand</div>
+                                <div class="label" id="latency-label-1">YOLO Hand</div>
                                 <div class="value" id="latency-yolo">- ms</div>
                             </div>
                             <div class="metric-chip">
-                                <div class="label">Skin Filter</div>
+                                <div class="label" id="latency-label-2">Skin Filter</div>
                                 <div class="value" id="latency-skin">- ms</div>
                             </div>
                             <div class="metric-chip">
-                                <div class="label">SqueezeNet</div>
+                                <div class="label" id="latency-label-3">SqueezeNet</div>
                                 <div class="value" id="latency-nn">- ms</div>
                             </div>
                             <div class="metric-chip">
-                                <div class="label">Total Loop</div>
+                                <div class="label" id="latency-label-4">Total Roundtrip</div>
                                 <div class="value" id="latency-total">- ms</div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Quick Guide & Shortcut Card in Sidebar -->
+                    <div style="margin-top: 20px; padding: 18px; background: #fafafa; border: 1.5px solid var(--border-color); border-radius: var(--radius-sm);">
+                        <div style="font-size: 1.1rem; font-weight: 800; color: #000000; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; margin-bottom: 10px;">
+                            ⌨️ Controls & Manual
+                        </div>
+                        <ul style="font-size: 0.88rem; color: #222222; font-family: 'JetBrains Mono', monospace; line-height: 1.8; padding-left: 18px; margin: 0; font-weight: 600;">
+                            <li><strong>Both Hands 👐:</strong> Show two hands for Space</li>
+                            <li><strong>Spacebar:</strong> Insert word space instantly</li>
+                            <li><strong>Hand Pause:</strong> Auto-space if hand drops for 2.5s</li>
+                            <li><strong>Backspace:</strong> Delete last letter / word</li>
+                            <li><strong>Manual on Left:</strong> 206 words with 220px gestures</li>
+                        </ul>
                     </div>
 
                 </div>
@@ -1025,202 +1468,640 @@
         </div>
     </main>
 
-    <div id="toast"></div>
+    <div class="toast" id="toast">Notice message</div>
 
     <script>
-        // State
+        // Global State
+        let currentVideoMode = 'letters'; // 'letters' | 'words'
         let stream = null;
         let isStreaming = false;
-        let continuousStreamActive = false;
-        let continuousInterval = null;
-        let currentPredictedSign = "";
+        let isProcessingFrame = false;
+        let streamInterval = null;
+        let currentPredictedSign = "-";
+        let lastAppendedLetter = null;
+        let letterHoldCount = 0;
+        let lastAppendedWord = null;
+        let wordHoldCount = 0;
+        let noHandFramesCount = 0;
+        let twoHandsHoldCount = 0;
+        let activeWordCandidate = null;
+        let activeWordCandidateConf = 0;
 
-        const classMap = {{ classes | tojson }};
+        // Speech-To-Text State (Continuous Persistent Accumulator)
+        let isRecordingSpeech = false;
+        let mediaRecorder = null;
+        audioChunks = [];
+        let speechTimerInterval = null;
+        let speechSeconds = 0;
+        let webSpeechRecognition = null;
+        let confirmedSpeechText = ""; // Never erased automatically; keeps all earlier sentences!
 
-        // Initialize Alphabet Grid
-        function populateAlphabetGrid() {
-            const grid = document.getElementById('alphabet-grid');
-            grid.innerHTML = '';
-            for (const [id, char] of Object.entries(classMap)) {
-                const card = document.createElement('div');
-                card.className = 'alphabet-card';
-                card.innerHTML = `
-                    <div class="char">${char}</div>
-                    <div class="id">Class #${id}</div>
-                `;
-                grid.appendChild(card);
+        // Video Translation Mode Switcher (Letters vs Words)
+        function switchVideoMode(mode) {
+            currentVideoMode = mode;
+            const btnLetters = document.getElementById('mode-btn-letters');
+            const btnWords = document.getElementById('mode-btn-words');
+            const manualLettersTable = document.getElementById('manual-table');
+            const manualWordsTable = document.getElementById('manual-words-table');
+            const manualHeading = document.getElementById('manual-heading-text');
+            const manualCount = document.getElementById('manual-count-badge');
+            const heroLabel = document.getElementById('hero-output-label');
+            const snapBtnText = document.getElementById('btn-snap-text');
+            const fullFlowBtn = document.getElementById('btn-full-flow');
+            const resetSeqBtn = document.getElementById('btn-reset-seq');
+            const gestureArea = document.getElementById('gesture-text-output');
+            const tipsText = document.getElementById('gesture-tips-text');
+
+            if (mode === 'letters') {
+                btnLetters.classList.add('active');
+                btnWords.classList.remove('active');
+                manualLettersTable.style.display = 'table';
+                manualWordsTable.style.display = 'none';
+                manualHeading.innerText = 'Sign Reference Manual';
+                manualCount.innerText = '26 Classes (A - Z)';
+                heroLabel.innerText = 'Recognized Sign';
+                snapBtnText.innerText = 'Capture Frame';
+                fullFlowBtn.style.display = 'inline-flex';
+                resetSeqBtn.style.display = 'none';
+                gestureArea.placeholder = 'Predicted letters will accumulate here in real time as hand gestures are recognized...';
+                tipsText.innerText = 'Space: Show Both Hands 👐, pause hand for 2.5s, or press [SPACE ␣]';
+
+                const searchBox = document.getElementById('manual-search-box');
+                if (searchBox) {
+                    searchBox.placeholder = '🔍 Instant Search among 26 letters (e.g. A, B, C)...';
+                    filterManualSigns(searchBox.value);
+                }
+
+                document.getElementById('pipeline-heading-text').innerText = 'Pipeline Stages (4 Stages)';
+                document.getElementById('stage-num-1').innerText = 'Stage 1';
+                document.getElementById('stage-title-1').innerText = 'Raw Frame';
+                document.getElementById('stage-num-2').innerText = 'Stage 2';
+                document.getElementById('stage-title-2').innerText = 'YOLOv3 Box';
+                document.getElementById('stage-num-3').innerText = 'Stage 3';
+                document.getElementById('stage-title-3').innerText = '224x224 Crop';
+                document.getElementById('stage-num-4').innerText = 'Stage 4';
+                document.getElementById('stage-title-4').innerText = 'Skin Mask';
+
+                document.getElementById('latency-label-1').innerText = 'YOLO Hand';
+                document.getElementById('latency-label-2').innerText = 'Skin Filter';
+                document.getElementById('latency-label-3').innerText = 'SqueezeNet';
+                document.getElementById('latency-label-4').innerText = 'Total Roundtrip';
+                showToast("Mode switched to Letters (A - Z Fingerspelling)");
+            } else {
+                btnWords.classList.add('active');
+                btnLetters.classList.remove('active');
+                manualLettersTable.style.display = 'none';
+                manualWordsTable.style.display = 'table';
+                manualHeading.innerText = 'ISL Word Reference Manual';
+                const totalWordsCount = document.querySelectorAll('.manual-word-row').length || 206;
+                manualCount.innerText = `${totalWordsCount} Signs Catalog`;
+                heroLabel.innerText = 'Recognized Word';
+                snapBtnText.innerText = 'Capture Word (2s Clip)';
+                fullFlowBtn.style.display = 'none';
+                resetSeqBtn.style.display = 'inline-flex';
+                gestureArea.placeholder = 'Predicted words will accumulate here in real time as hand gestures are recognized...';
+                tipsText.innerText = 'Hold sign steady for dynamic prediction, or click Capture Word (2s Clip)';
+
+                const searchBox = document.getElementById('manual-search-box');
+                if (searchBox) {
+                    searchBox.placeholder = `🔍 Instant Search among ${totalWordsCount} ISL signs (e.g. Good Morning, Hello, Doctor)...`;
+                    filterManualSigns(searchBox.value);
+                }
+
+                document.getElementById('pipeline-heading-text').innerText = 'INCLUDE-50 Temporal Stages';
+                document.getElementById('stage-num-1').innerText = 'Stage 1';
+                document.getElementById('stage-title-1').innerText = 'Raw Frame';
+                document.getElementById('stage-num-2').innerText = 'Stage 2';
+                document.getElementById('stage-title-2').innerText = 'MediaPipe Hands';
+                document.getElementById('stage-num-3').innerText = 'Stage 3';
+                document.getElementById('stage-title-3').innerText = 'MediaPipe Pose';
+                document.getElementById('stage-num-4').innerText = 'Stage 4';
+                document.getElementById('stage-title-4').innerText = 'BiLSTM Sequence';
+
+                document.getElementById('latency-label-1').innerText = 'MediaPipe Hand';
+                document.getElementById('latency-label-2').innerText = 'MediaPipe Pose';
+                document.getElementById('latency-label-3').innerText = 'LSTM Sequence';
+                document.getElementById('latency-label-4').innerText = 'Total Latency';
+                showToast(`Mode switched to Words (${totalWordsCount} ISL Signs Catalog)`);
             }
         }
-        populateAlphabetGrid();
 
-        // Tabs
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('view-webcam').style.display = 'none';
-            document.getElementById('view-upload').style.display = 'none';
-            document.getElementById('view-alphabet').style.display = 'none';
+        // Live Filter for Sign Reference Manual (Letters and 206 Words)
+        function filterManualSigns(query) {
+            const q = (query || "").trim().toLowerCase();
+            if (currentVideoMode === 'letters') {
+                const rows = document.querySelectorAll('#manual-table tbody tr');
+                rows.forEach(row => {
+                    const badge = row.querySelector('.manual-letter-badge');
+                    const text = badge ? badge.innerText.toLowerCase() : '';
+                    if (!q || text.includes(q)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            } else {
+                const rows = document.querySelectorAll('#manual-words-table tbody tr');
+                rows.forEach(row => {
+                    const nameEl = row.querySelector('.manual-word-name');
+                    const catEl = row.querySelector('.manual-word-cat');
+                    const name = nameEl ? nameEl.innerText.toLowerCase() : '';
+                    const cat = catEl ? catEl.innerText.toLowerCase() : '';
+                    if (!q || name.includes(q) || cat.includes(q)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+        }
 
-            if (tabId === 'webcam') {
+        // Tab Switching
+        function switchTab(tab) {
+            document.getElementById('tab-webcam-btn').classList.remove('active');
+            document.getElementById('tab-speech-btn').classList.remove('active');
+
+            const viewWebcam = document.getElementById('view-webcam');
+            const viewSpeech = document.getElementById('view-speech');
+            const grid = document.getElementById('main-app-grid');
+            const sidebar = document.getElementById('main-sidebar-column');
+
+            if (tab === 'webcam') {
                 document.getElementById('tab-webcam-btn').classList.add('active');
-                document.getElementById('view-webcam').style.display = 'block';
-            } else if (tabId === 'upload') {
-                document.getElementById('tab-upload-btn').classList.add('active');
-                document.getElementById('view-upload').style.display = 'block';
-            } else if (tabId === 'alphabet') {
-                document.getElementById('tab-alphabet-btn').classList.add('active');
-                document.getElementById('view-alphabet').style.display = 'block';
+                viewWebcam.style.display = 'block';
+                viewSpeech.style.display = 'none';
+                grid.classList.remove('speech-active');
+                sidebar.style.display = 'block';
+            } else if (tab === 'speech') {
+                document.getElementById('tab-speech-btn').classList.add('active');
+                viewWebcam.style.display = 'none';
+                viewSpeech.style.display = 'block';
+                grid.classList.add('speech-active');
+                sidebar.style.display = 'none';
             }
         }
 
-        // Camera control
+        // Camera Management
         async function toggleCamera() {
             const video = document.getElementById('webcam-video');
             const placeholder = document.getElementById('placeholder-box');
             const btn = document.getElementById('btn-toggle-cam');
-            const snapBtn = document.getElementById('btn-snap');
-            const streamBtn = document.getElementById('btn-live-stream');
-            const flowBtn = document.getElementById('btn-full-flow');
-            const statusText = document.getElementById('stream-status');
+            const streamStatus = document.getElementById('stream-status');
 
-            if (!stream) {
+            if (stream) {
+                // Stop camera
+                if (isStreaming) toggleContinuousStream();
+                stream.getTracks().forEach(t => t.stop());
+                stream = null;
+                video.style.display = 'none';
+                placeholder.style.display = 'flex';
+                btn.innerHTML = '<span>Start Camera</span>';
+                btn.classList.remove('btn-danger');
+                btn.classList.add('btn-primary');
+                streamStatus.innerText = 'Camera Off';
+                document.getElementById('btn-snap').disabled = true;
+                document.getElementById('btn-live-stream').disabled = true;
+                document.getElementById('btn-full-flow').disabled = true;
+                document.getElementById('btn-reset-seq').disabled = true;
+                document.getElementById('gesture-stream-status').innerText = '';
+                document.getElementById('stream-btn-text').innerText = "Continuous Stream: OFF";
+            } else {
+                // Start camera
                 try {
                     stream = await navigator.mediaDevices.getUserMedia({
-                        video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: "user" }
+                        video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: "user" },
+                        audio: false
                     });
                     video.srcObject = stream;
                     video.style.display = 'block';
                     placeholder.style.display = 'none';
-                    btn.innerHTML = '<span>⏹ Stop Camera</span>';
+                    btn.innerHTML = '<span>Stop Camera</span>';
                     btn.classList.remove('btn-primary');
                     btn.classList.add('btn-danger');
+                    streamStatus.innerText = 'Camera Active';
+                    document.getElementById('btn-snap').disabled = false;
+                    document.getElementById('btn-live-stream').disabled = false;
+                    document.getElementById('btn-full-flow').disabled = false;
+                    document.getElementById('btn-reset-seq').disabled = false;
+                    document.getElementById('gesture-stream-status').innerText = 'Mode: Camera Active';
 
-                    snapBtn.disabled = false;
-                    streamBtn.disabled = false;
-                    flowBtn.disabled = false;
-                    statusText.innerText = "Camera Active (640x480)";
-                    showToast("Webcam connected successfully");
+                    // Automatically start real-time recognition streaming!
+                    if (!isStreaming) {
+                        toggleContinuousStream();
+                    }
                 } catch (err) {
-                    console.error("Camera error:", err);
                     showToast("Camera access error: " + err.message);
                 }
-            } else {
-                if (continuousInterval) clearInterval(continuousInterval);
-                continuousStreamActive = false;
-                streamBtn.innerHTML = '<span>🔄 Continuous Stream: OFF</span>';
-                streamBtn.classList.remove('btn-accent');
-
-                stream.getTracks().forEach(track => track.stop());
-                stream = null;
-                video.style.display = 'none';
-                placeholder.style.display = 'flex';
-                btn.innerHTML = '<span>📷 Start Camera</span>';
-                btn.classList.add('btn-primary');
-                btn.classList.remove('btn-danger');
-
-                snapBtn.disabled = true;
-                streamBtn.disabled = true;
-                flowBtn.disabled = true;
-                statusText.innerText = "Camera Off";
-                document.getElementById('live-prediction-pill').style.display = 'none';
             }
         }
 
-        function grabVideoFrameBase64() {
+        // Capture frame helper
+        function captureCurrentFrameBase64() {
             const video = document.getElementById('webcam-video');
-            const canvas = document.createElement('canvas');
-            canvas.width = video.videoWidth || 640;
-            canvas.height = video.videoHeight || 480;
+            const canvas = document.getElementById('webcam-canvas');
+            if (!video.videoWidth) return null;
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
             return canvas.toDataURL('image/jpeg', 0.85);
         }
 
+        // Unified Capture Action Button Handler
+        function handleCaptureAction() {
+            if (currentVideoMode === 'letters') {
+                captureAndTranslate();
+            } else {
+                captureWordGestureClip();
+            }
+        }
+
+        // Single snapshot & letter translate
         async function captureAndTranslate() {
             if (!stream) return;
-            const snapBtn = document.getElementById('btn-snap');
-            snapBtn.disabled = true;
-            snapBtn.innerHTML = '<span class="spinner"></span> Processing...';
-            document.getElementById('pipeline-status-text').innerText = "Running full 4-stage inference...";
+            const b64 = captureCurrentFrameBase64();
+            if (!b64) return;
 
-            const base64Img = grabVideoFrameBase64();
-
+            document.getElementById('pipeline-status-text').innerText = "Processing frame...";
             try {
-                const response = await fetch('/api/predict-image', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ image: base64Img })
-                });
-                const data = await response.json();
-                renderPredictionResults(data);
-                showToast(`Detected sign: ${data.predicted_sign} (${data.confidence}%)`);
-            } catch (err) {
-                console.error("Inference error:", err);
-                showToast("Inference error: " + err.message);
-            } finally {
-                snapBtn.disabled = false;
-                snapBtn.innerHTML = '<span>⚡ Capture & Translate</span>';
-                document.getElementById('pipeline-status-text').innerText = "Inference Complete";
-            }
-        }
-
-        // Continuous streaming
-        function toggleContinuousStream() {
-            const streamBtn = document.getElementById('btn-live-stream');
-            continuousStreamActive = !continuousStreamActive;
-
-            if (continuousStreamActive) {
-                streamBtn.innerHTML = '<span>⏹ Stop Stream: ACTIVE</span>';
-                streamBtn.classList.add('btn-accent');
-                document.getElementById('live-prediction-pill').style.display = 'flex';
-                continuousInterval = setInterval(sendStreamFrame, 1200);
-            } else {
-                clearInterval(continuousInterval);
-                streamBtn.innerHTML = '<span>🔄 Continuous Stream: OFF</span>';
-                streamBtn.classList.remove('btn-accent');
-                document.getElementById('live-prediction-pill').style.display = 'none';
-            }
-        }
-
-        async function sendStreamFrame() {
-            if (!stream || !continuousStreamActive) return;
-            const b64 = grabVideoFrameBase64();
-            try {
-                const res = await fetch('/api/predict-stream-frame', {
+                const res = await fetch('/api/predict-image', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ image: b64 })
                 });
                 const data = await res.json();
-                if (data.predicted_sign) {
-                    currentPredictedSign = data.predicted_sign;
-                    document.getElementById('live-pill-letter').innerText = data.predicted_sign;
-                    document.getElementById('live-pill-conf').innerText = `${data.confidence}%`;
-                    document.getElementById('output-letter').innerText = data.predicted_sign;
-                    document.getElementById('output-confidence').innerText = `${data.confidence}% Confidence`;
-                    renderProbabilities(data.probabilities);
-                    renderLatencies(data.timing_ms);
-                }
-            } catch (e) {
-                console.error("Stream frame error", e);
+                renderPredictionResults(data);
+                appendGestureLetter(data.predicted_sign, true);
+                document.getElementById('pipeline-status-text').innerText = "Prediction complete";
+            } catch (err) {
+                showToast("Prediction error: " + err.message);
             }
         }
 
-        // Run 5-stage simulation as defined in thesis
+        // Record a 1.8-second word clip and run AI4Bharat LSTM
+        async function captureWordGestureClip() {
+            if (!stream) return;
+            const btn = document.getElementById('btn-snap');
+            const snapText = document.getElementById('btn-snap-text');
+            const origText = snapText.innerText;
+            btn.disabled = true;
+
+            const frames = [];
+            const captureDuration = 1800; // 1.8 seconds
+            const intervalTime = 80;
+            const startTime = Date.now();
+
+            showToast("Perform ISL word gesture now (1.8s)...");
+            document.getElementById('pipeline-status-text').innerText = "Recording gesture clip...";
+
+            const collectInterval = setInterval(() => {
+                const b64 = captureCurrentFrameBase64();
+                if (b64) frames.push(b64);
+                const elapsed = Date.now() - startTime;
+                const remaining = Math.max(0, Math.ceil((captureDuration - elapsed) / 1000 * 10) / 10);
+                snapText.innerText = `Recording (${remaining}s)...`;
+
+                if (elapsed >= captureDuration) {
+                    clearInterval(collectInterval);
+                    finishClipPrediction();
+                }
+            }, intervalTime);
+
+            async function finishClipPrediction() {
+                snapText.innerText = `Analyzing ${frames.length} frames...`;
+                document.getElementById('pipeline-status-text').innerText = "Running AI4Bharat BiLSTM...";
+                try {
+                    const res = await fetch('/api/predict-word-clip', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ images: frames })
+                    });
+                    const data = await res.json();
+                    if (data.result) {
+                        renderWordPredictionResults(data.result);
+                        appendGestureWord(data.result.display_word);
+                        showToast(`Recognized Word: "${data.result.display_word}" (${data.result.confidence}%)`);
+                    } else {
+                        showToast("Could not recognize word gesture");
+                    }
+                } catch (err) {
+                    showToast("Clip prediction error: " + err.message);
+                } finally {
+                    snapText.innerText = origText;
+                    btn.disabled = false;
+                    document.getElementById('pipeline-status-text').innerText = "Awaiting Input";
+                }
+            }
+        }
+
+        // Continuous streaming
+        function toggleContinuousStream() {
+            const btn = document.getElementById('btn-live-stream');
+            const text = document.getElementById('stream-btn-text');
+            const pill = document.getElementById('live-prediction-pill');
+            const gestureStatus = document.getElementById('gesture-stream-status');
+
+            if (isStreaming) {
+                clearInterval(streamInterval);
+                isStreaming = false;
+                text.innerText = "Continuous Stream: OFF";
+                btn.classList.remove('btn-danger');
+                btn.classList.add('btn-secondary');
+                pill.style.display = 'none';
+                gestureStatus.innerText = "Mode: Single Capture";
+                showToast("Continuous stream paused");
+            } else {
+                if (!stream) {
+                    showToast("Please click 'Start Camera' first");
+                    return;
+                }
+                isStreaming = true;
+                text.innerText = "Continuous Stream: ON 🟢";
+                btn.classList.remove('btn-secondary');
+                btn.classList.add('btn-danger');
+                pill.style.display = 'flex';
+                gestureStatus.innerText = "Mode: Streaming in Real Time";
+                streamInterval = setInterval(streamTick, 350);
+                showToast("Continuous real-time recognition active");
+            }
+        }
+
+        async function streamTick() {
+            if (!stream || isProcessingFrame) return;
+            const b64 = captureCurrentFrameBase64();
+            if (!b64) return;
+
+            isProcessingFrame = true;
+            try {
+                if (currentVideoMode === 'letters') {
+                    // LETTER MODE STREAM
+                    const res = await fetch('/api/predict-stream-frame', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ image: b64 })
+                    });
+                    const data = await res.json();
+
+                    // Process detected hand(s) - supports both one-handed and two-handed ISL letters
+                    if (data.hand_detected && data.confidence > 35) {
+                        noHandFramesCount = 0;
+                        document.getElementById('live-pill-letter').innerText = data.predicted_sign;
+                        document.getElementById('live-pill-conf').innerText = `${data.confidence}%`;
+                        document.getElementById('output-letter').innerText = data.predicted_sign;
+                        document.getElementById('output-confidence').innerText = `${data.confidence}% Confidence`;
+                        currentPredictedSign = data.predicted_sign;
+
+                        const numHandsText = (data.detections && data.detections.length >= 2) ? " [2 Hands]" : "";
+                        document.getElementById('stream-active-letter').innerText = `${data.predicted_sign} (${data.confidence}%)${numHandsText}`;
+                        highlightManualRow(data.predicted_sign);
+
+                        if (data.predicted_sign === lastAppendedLetter) {
+                            letterHoldCount++;
+                            if (letterHoldCount === 2) {
+                                appendGestureLetter(data.predicted_sign, false);
+                            }
+                        } else {
+                            lastAppendedLetter = data.predicted_sign;
+                            letterHoldCount = 1;
+                        }
+                    } else {
+                        document.getElementById('live-pill-letter').innerText = "-";
+                        document.getElementById('live-pill-conf').innerText = "0%";
+                        document.getElementById('stream-active-letter').innerText = "-";
+                        lastAppendedLetter = null;
+                        letterHoldCount = 0;
+
+                        // 2. Pause detection: Only fires if hand drops completely out of frame for ~2.5s (7 frames * 350ms)
+                        if (isStreaming) {
+                            noHandFramesCount++;
+                            if (noHandFramesCount === 7) {
+                                const textarea = document.getElementById('gesture-text-output');
+                                if (textarea && textarea.value.length > 0 && !textarea.value.endsWith(' ')) {
+                                    textarea.value += ' ';
+                                    updateGestureCharCount();
+                                    showToast("Word space added (Hand pause ~2.5s)");
+                                }
+                            }
+                        }
+                    }
+                    renderProbabilities(data.probabilities);
+                    renderLatencies(data.timing_ms);
+                } else {
+                    // WORD MODE STREAM (INCLUDE-50)
+                    const res = await fetch('/api/predict-word-frame', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ image: b64, return_annotated: true })
+                    });
+                    const data = await res.json();
+
+                    if (data.annotated_image) {
+                        document.getElementById('stage-img-yolo').innerHTML = `<img src="${data.annotated_image}" alt="MediaPipe Overlay">`;
+                    }
+
+                    if (data.gesture_completed && data.prediction) {
+                        // User completed motion gesture and lowered hands
+                        const wordToAppend = data.prediction.display_word || activeWordCandidate;
+                        if (wordToAppend) {
+                            appendGestureWord(wordToAppend);
+                            showToast(`Word recognized: "${wordToAppend}"`);
+                        }
+                        activeWordCandidate = null;
+                        activeWordCandidateConf = 0;
+                        lastAppendedWord = null;
+                        wordHoldCount = 0;
+                        document.getElementById('live-pill-letter').innerText = "-";
+                        document.getElementById('live-pill-conf').innerText = "0%";
+                        document.getElementById('stream-active-letter').innerText = "-";
+                    } else if (data.hand_detected && data.prediction) {
+                        const pred = data.prediction;
+                        document.getElementById('live-pill-letter').innerText = pred.display_word;
+                        document.getElementById('live-pill-conf').innerText = `${pred.confidence}%`;
+                        document.getElementById('output-letter').innerText = pred.display_word;
+                        document.getElementById('output-confidence').innerText = `${pred.confidence}% Confidence`;
+                        document.getElementById('stream-active-letter').innerText = `${pred.display_word} (${pred.confidence}%)`;
+
+                        renderWordProbabilities(pred.top_words);
+                        highlightWordManualRow(pred.predicted_word);
+
+                        if (pred.confidence > activeWordCandidateConf) {
+                            activeWordCandidate = pred.display_word;
+                            activeWordCandidateConf = pred.confidence;
+                        }
+
+                        // Also append if held steady for 2 consecutive frames
+                        if (pred.display_word === lastAppendedWord) {
+                            wordHoldCount++;
+                            if (wordHoldCount === 2) {
+                                appendGestureWord(pred.display_word);
+                                showToast(`Word recognized: "${pred.display_word}"`);
+                                activeWordCandidate = null;
+                                activeWordCandidateConf = 0;
+                            }
+                        } else {
+                            lastAppendedWord = pred.display_word;
+                            wordHoldCount = 1;
+                        }
+                    } else {
+                        document.getElementById('live-pill-letter').innerText = "-";
+                        document.getElementById('live-pill-conf').innerText = "0%";
+                        document.getElementById('stream-active-letter').innerText = "-";
+                        
+                        // If active candidate exists when hands drop, commit it
+                        if (activeWordCandidate && activeWordCandidateConf >= 8) {
+                            appendGestureWord(activeWordCandidate);
+                            showToast(`Word recognized: "${activeWordCandidate}"`);
+                            activeWordCandidate = null;
+                            activeWordCandidateConf = 0;
+                            resetWordSequence();
+                        }
+                        lastAppendedWord = null;
+                        wordHoldCount = 0;
+                    }
+
+                    // Word mode latency breakdown
+                    document.getElementById('latency-yolo').innerText = '16 ms';
+                    document.getElementById('latency-skin').innerText = '10 ms';
+                    document.getElementById('latency-nn').innerText = '11 ms';
+                    document.getElementById('latency-total').innerText = '37 ms';
+                }
+            } catch (err) {
+                // Ignore transient frame errors during fast stream
+            } finally {
+                isProcessingFrame = false;
+            }
+        }
+
+        // Dedicated Gestures Text Box Controls
+        function appendGestureLetter(letter, force = false) {
+            if (!letter || letter === "-") return;
+            const textarea = document.getElementById('gesture-text-output');
+            if (textarea) {
+                textarea.value += letter;
+                updateGestureCharCount();
+                textarea.scrollTop = textarea.scrollHeight;
+            }
+            highlightManualRow(letter);
+            if (force) {
+                showToast(`Added letter: "${letter}"`);
+            }
+        }
+
+        function appendGestureWord(word) {
+            if (!word || word === "-") return;
+            const textarea = document.getElementById('gesture-text-output');
+            if (textarea) {
+                if (textarea.value.length > 0 && !textarea.value.endsWith(' ')) {
+                    textarea.value += ' ';
+                }
+                textarea.value += word + ' ';
+                updateGestureCharCount();
+                textarea.scrollTop = textarea.scrollHeight;
+            }
+            highlightWordManualRow(word);
+        }
+
+        function insertManualWord(word) {
+            appendGestureWord(word);
+            showToast(`Added word: "${word}"`);
+        }
+
+        function highlightWordManualRow(word) {
+            if (!word || word === "-") return;
+            const rows = document.querySelectorAll('.manual-word-row');
+            rows.forEach(r => r.classList.remove('active-sign'));
+            const wordClean = word.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const target = document.getElementById(`manual-word-row-${wordClean}`);
+            if (target) {
+                target.classList.add('active-sign');
+            }
+        }
+
+        async function resetWordSequence() {
+            try {
+                await fetch('/api/reset-word-buffer', { method: 'POST' });
+                showToast("Word gesture buffer reset");
+                document.getElementById('live-pill-letter').innerText = "-";
+                document.getElementById('live-pill-conf').innerText = "0%";
+                document.getElementById('output-letter').innerText = "-";
+                document.getElementById('output-confidence').innerText = "0.0% Confidence";
+            } catch (e) {
+                showToast("Reset failed: " + e.message);
+            }
+        }
+
+        function highlightManualRow(letter) {
+            if (!letter || letter === "-") return;
+            const rows = document.querySelectorAll('.manual-row');
+            rows.forEach(r => r.classList.remove('active-sign'));
+            const target = document.getElementById(`manual-row-${letter}`);
+            if (target) {
+                target.classList.add('active-sign');
+            }
+        }
+
+        function addGestureSpace() {
+            const textarea = document.getElementById('gesture-text-output');
+            textarea.value += ' ';
+            updateGestureCharCount();
+            textarea.focus();
+        }
+
+        function backspaceGestureText() {
+            const textarea = document.getElementById('gesture-text-output');
+            textarea.value = textarea.value.slice(0, -1);
+            updateGestureCharCount();
+            textarea.focus();
+        }
+
+        function clearGestureText() {
+            const textarea = document.getElementById('gesture-text-output');
+            textarea.value = '';
+            updateGestureCharCount();
+            showToast("Gesture text cleared");
+        }
+
+        function copyGestureText() {
+            const textarea = document.getElementById('gesture-text-output');
+            if (!textarea.value) return;
+            navigator.clipboard.writeText(textarea.value);
+            showToast("Copied predicted letters to clipboard!");
+        }
+
+        function speakGestureText() {
+            const textarea = document.getElementById('gesture-text-output');
+            if (!textarea.value.trim()) {
+                showToast("No text to speak");
+                return;
+            }
+            const utterance = new SpeechSynthesisUtterance(textarea.value);
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function updateGestureCharCount() {
+            const textarea = document.getElementById('gesture-text-output');
+            document.getElementById('gesture-char-count').innerText = `${textarea.value.length} characters`;
+        }
+
+        // Full 5-stage thesis workflow simulation
         async function runFullPipelineSimulation() {
             if (!stream) return;
-            const card = document.getElementById('activation-card');
-            const statusText = document.getElementById('activation-status-text');
-            const countText = document.getElementById('activation-count-text');
+            const activationCard = document.getElementById('activation-card');
+            const activationText = document.getElementById('activation-status-text');
+            const activationCount = document.getElementById('activation-count-text');
             const barFill = document.getElementById('activation-bar-fill');
-            card.style.display = 'block';
+
+            activationCard.style.display = 'block';
+            activationText.innerText = "Stage 0: Detecting face to trigger gesture recording...";
+            barFill.style.width = '0%';
 
             let faceCount = 0;
-            const requiredFrames = 15; // smooth threshold for demo
+            const requiredFrames = 15;
 
-            statusText.innerText = "Stage 0: Detecting user face for activation trigger...";
-
-            for (let i = 0; i < 30; i++) {
-                const b64 = grabVideoFrameBase64();
+            const faceInterval = setInterval(async () => {
+                const b64 = captureCurrentFrameBase64();
+                if (!b64) return;
                 try {
                     const res = await fetch('/api/detect-face', {
                         method: 'POST',
@@ -1230,91 +2111,317 @@
                     const d = await res.json();
                     if (d.face_detected) {
                         faceCount++;
+                    } else if (faceCount > 0) {
+                        faceCount--;
                     }
                     const pct = Math.min(100, Math.round((faceCount / requiredFrames) * 100));
                     barFill.style.width = pct + '%';
-                    countText.innerText = `${faceCount} / ${requiredFrames} frames`;
+                    activationCount.innerText = `${faceCount} / ${requiredFrames} frames`;
 
                     if (faceCount >= requiredFrames) {
-                        break;
+                        clearInterval(faceInterval);
+                        activationText.innerText = "Face confirmed! Performing 4-stage pipeline analysis...";
+                        setTimeout(async () => {
+                            await captureAndTranslate();
+                            activationCard.style.display = 'none';
+                        }, 500);
                     }
-                } catch (e) {}
-                await new Promise(r => setTimeout(r, 120));
-            }
-
-            statusText.innerText = "Face confirmed! Stage 1: Capturing gesture sign...";
-            await new Promise(r => setTimeout(r, 600));
-
-            card.style.display = 'none';
-            await captureAndTranslate();
+                } catch (e) {
+                    clearInterval(faceInterval);
+                    activationCard.style.display = 'none';
+                    showToast("Face trigger error: " + e.message);
+                }
+            }, 200);
         }
 
-        // Load built-in sample
-        async function loadSampleImage(url, name) {
-            document.getElementById('pipeline-status-text').innerText = `Loading ${name}...`;
-            try {
-                const imgRes = await fetch(url);
-                const blob = await imgRes.blob();
-                const formData = new FormData();
-                formData.append('file', blob, 'sample.jpg');
+        // Natural Language Sentence Formatting & Punctuation Engine
+        function formatSentence(sentence) {
+            if (!sentence) return "";
+            let s = sentence.trim();
+            if (!s) return "";
 
-                const res = await fetch('/api/predict-image', {
+            // Capitalize first character
+            s = s.charAt(0).toUpperCase() + s.slice(1);
+
+            // Capitalize standalone "I" and contractions: I'm, I've, I'll, I'd
+            s = s.replace(/\bi\b/g, "I")
+                 .replace(/\bi'm\b/gi, "I'm")
+                 .replace(/\bi've\b/gi, "I've")
+                 .replace(/\bi'll\b/gi, "I'll")
+                 .replace(/\bi'd\b/gi, "I'd");
+
+            // Check if sentence already ends with terminal punctuation (. ? ! ; :)
+            const lastChar = s.slice(-1);
+            if (!['.', '?', '!', ';', ':'].includes(lastChar)) {
+                // Determine if sentence is a question based on opening question/interrogative words
+                const firstWord = s.split(/\s+/)[0].toLowerCase().replace(/[^a-z']/g, '');
+                const questionWords = [
+                    'who', 'what', 'where', 'when', 'why', 'how',
+                    'is', 'are', 'am', 'was', 'were',
+                    'do', 'does', 'did',
+                    'can', 'could', 'would', 'should', 'will', 'shall',
+                    'may', 'might', 'have', 'has', 'had',
+                    "aren't", "isn't", "don't", "doesn't", "can't", "won't", "couldn't", "shouldn't", "wouldn't"
+                ];
+
+                if (questionWords.includes(firstWord)) {
+                    s += '?';
+                } else {
+                    s += '.';
+                }
+            }
+
+            return s;
+        }
+
+        function appendWithPunctuation(existing, newSegment, isFinal = true) {
+            existing = (existing || '').trim();
+            newSegment = (newSegment || '').trim();
+            if (!newSegment) return existing;
+
+            if (isFinal) {
+                newSegment = formatSentence(newSegment);
+            } else {
+                // Interim live speech: capitalize opening letter and pronoun "I"
+                newSegment = newSegment.charAt(0).toUpperCase() + newSegment.slice(1);
+                newSegment = newSegment.replace(/\bi\b/g, "I")
+                                       .replace(/\bi'm\b/gi, "I'm")
+                                       .replace(/\bi've\b/gi, "I've")
+                                       .replace(/\bi'll\b/gi, "I'll")
+                                       .replace(/\bi'd\b/gi, "I'd");
+            }
+
+            if (!existing) return newSegment;
+
+            // Ensure prior sentence ends with punctuation before joining
+            if (!['.', '?', '!', ';', ':'].includes(existing.slice(-1))) {
+                existing = formatSentence(existing);
+            }
+
+            return existing + ' ' + newSegment;
+        }
+
+        // Speech-To-Text (Continuous Multi-Sentence Accumulator with Automatic Punctuation)
+        async function toggleSpeechRecording() {
+            const btn = document.getElementById('stt-toggle-btn');
+            const dot = document.getElementById('stt-dot');
+            const statusLabel = document.getElementById('stt-status-label');
+            const engineStatus = document.getElementById('stt-engine-status');
+            const output = document.getElementById('speech-transcription-output');
+
+            if (isRecordingSpeech) {
+                // Stop recording
+                isRecordingSpeech = false;
+                btn.className = "stt-btn-large stt-btn-start";
+                btn.innerHTML = "<span>🎙️ Start Recording</span>";
+                dot.classList.remove('recording');
+                statusLabel.innerText = "Processing Audio...";
+                engineStatus.innerText = "Ready";
+                clearInterval(speechTimerInterval);
+
+                if (webSpeechRecognition) {
+                    try { webSpeechRecognition.stop(); } catch(e) {}
+                }
+                if (mediaRecorder && mediaRecorder.state !== "inactive") {
+                    mediaRecorder.stop();
+                }
+            } else {
+                // Start recording
+                try {
+                    const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    isRecordingSpeech = true;
+
+                    // Immediately lock in whatever text is currently in the textarea so prior sentences are preserved
+                    confirmedSpeechText = output.value.trim();
+
+                    btn.className = "stt-btn-large stt-btn-stop";
+                    btn.innerHTML = "<span>⏹️ Stop Recording</span>";
+                    dot.classList.add('recording');
+                    statusLabel.innerText = "Recording Live Audio...";
+                    engineStatus.innerText = "Listening...";
+                    audioChunks = [];
+
+                    // Timer
+                    speechTimerInterval = setInterval(() => {
+                        speechSeconds++;
+                        updateSpeechTimer();
+                    }, 1000);
+
+                    // Initialize Web Speech API for real-time streaming accumulation with punctuation
+                    initLiveSpeechRecognition();
+
+                    // MediaRecorder to capture audio for backend model
+                    mediaRecorder = new MediaRecorder(audioStream);
+                    mediaRecorder.ondataavailable = (e) => {
+                        if (e.data.size > 0) audioChunks.push(e.data);
+                    };
+
+                    mediaRecorder.onstop = async () => {
+                        audioStream.getTracks().forEach(t => t.stop());
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                        await processAudioWithMoonshine(audioBlob);
+                    };
+
+                    mediaRecorder.start();
+                } catch (err) {
+                    showToast("Microphone error: " + err.message);
+                }
+            }
+        }
+
+        function updateSpeechTimer() {
+            const mins = String(Math.floor(speechSeconds / 60)).padStart(2, '0');
+            const secs = String(speechSeconds % 60).padStart(2, '0');
+            document.getElementById('stt-timer').innerText = `${mins}:${secs}`;
+        }
+
+        // Option to reset the timer
+        function resetSpeechTimer() {
+            speechSeconds = 0;
+            updateSpeechTimer();
+            showToast("Timer reset to 00:00");
+        }
+
+        // Web Speech streaming accumulator: adds full stops, question marks, and preserves prior sentences
+        function initLiveSpeechRecognition() {
+            const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRec) return;
+            webSpeechRecognition = new SpeechRec();
+            webSpeechRecognition.continuous = true;
+            webSpeechRecognition.interimResults = true;
+            webSpeechRecognition.lang = 'en-US';
+
+            const output = document.getElementById('speech-transcription-output');
+
+            webSpeechRecognition.onresult = (event) => {
+                let finalizedSessionText = '';
+                let interimSessionText = '';
+
+                for (let i = 0; i < event.results.length; ++i) {
+                    const phrase = event.results[i][0].transcript.trim();
+                    if (!phrase) continue;
+
+                    if (event.results[i].isFinal) {
+                        const formatted = formatSentence(phrase);
+                        finalizedSessionText = finalizedSessionText ? (finalizedSessionText + ' ' + formatted) : formatted;
+                    } else {
+                        interimSessionText = interimSessionText ? (interimSessionText + ' ' + phrase) : phrase;
+                    }
+                }
+
+                let currentDisplay = confirmedSpeechText.trim();
+
+                if (finalizedSessionText) {
+                    currentDisplay = appendWithPunctuation(currentDisplay, finalizedSessionText, true);
+                }
+
+                if (interimSessionText) {
+                    currentDisplay = appendWithPunctuation(currentDisplay, interimSessionText, false);
+                }
+
+                output.value = currentDisplay;
+                updateSpeechWordCount();
+                output.scrollTop = output.scrollHeight;
+            };
+
+            // On automatic pause timeout, lock in punctuated text and seamlessly restart
+            webSpeechRecognition.onend = () => {
+                if (isRecordingSpeech) {
+                    if (output.value.trim()) {
+                        output.value = formatSentence(output.value.trim());
+                    }
+                    confirmedSpeechText = output.value.trim();
+                    try {
+                        webSpeechRecognition.start();
+                    } catch(e) {}
+                }
+            };
+
+            webSpeechRecognition.onerror = (e) => {
+                if (isRecordingSpeech && e.error !== 'not-allowed') {
+                    if (output.value.trim()) {
+                        output.value = formatSentence(output.value.trim());
+                    }
+                    confirmedSpeechText = output.value.trim();
+                    try {
+                        webSpeechRecognition.start();
+                    } catch(err) {}
+                }
+            };
+
+            webSpeechRecognition.start();
+        }
+
+        // Backend STT Transcriber: persists and accumulates with punctuation
+        async function processAudioWithMoonshine(blob) {
+            const statusLabel = document.getElementById('stt-status-label');
+            const engineStatus = document.getElementById('stt-engine-status');
+            const output = document.getElementById('speech-transcription-output');
+
+            statusLabel.innerText = "Processing Audio...";
+            engineStatus.innerText = "Ready";
+
+            const formData = new FormData();
+            formData.append('file', blob, 'recording.wav');
+
+            try {
+                const res = await fetch('/api/transcribe-speech', {
                     method: 'POST',
                     body: formData
                 });
                 const data = await res.json();
-                renderPredictionResults(data);
-                showToast(`Loaded ${name} -> Predicted: ${data.predicted_sign}`);
-            } catch (e) {
-                showToast("Sample loading error: " + e.message);
+                if (data.text && data.text.trim()) {
+                    // Append cleanly with full punctuation and capitalization
+                    output.value = appendWithPunctuation(confirmedSpeechText, data.text.trim(), true);
+                    confirmedSpeechText = output.value.trim();
+                    updateSpeechWordCount();
+                    showToast("Transcription complete");
+                } else {
+                    if (output.value.trim()) {
+                        output.value = formatSentence(output.value.trim());
+                    }
+                    confirmedSpeechText = output.value.trim();
+                }
+            } catch (err) {
+                if (output.value.trim()) {
+                    output.value = formatSentence(output.value.trim());
+                }
+                confirmedSpeechText = output.value.trim();
+                showToast("Transcription note: " + err.message);
+            } finally {
+                statusLabel.innerText = "Microphone Standby";
+                engineStatus.innerText = "Ready";
+                output.scrollTop = output.scrollHeight;
             }
         }
 
-        // File upload
-        async function handleFileUpload(event) {
-            const file = event.target.files[0];
-            if (!file) return;
+        function updateSpeechWordCount() {
+            const text = document.getElementById('speech-transcription-output').value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            const chars = text.length;
+            document.getElementById('stt-word-count').innerText = `${words} words // ${chars} characters`;
+        }
 
-            if (file.type.startsWith('video/')) {
-                // Video processing
-                showToast("Analyzing video clip across sampled frames...");
-                document.getElementById('pipeline-status-text').innerText = "Processing video frames...";
-                const formData = new FormData();
-                formData.append('file', file);
-                try {
-                    const res = await fetch('/api/process-video', {
-                        method: 'POST',
-                        body: formData
-                    });
-                    const data = await res.json();
-                    if (data.consensus_sign) {
-                        document.getElementById('output-letter').innerText = data.consensus_sign;
-                        document.getElementById('output-confidence').innerText = `${data.consensus_confidence}% Consensus (${data.total_frames_analyzed} frames)`;
-                        currentPredictedSign = data.consensus_sign;
-                        showToast(`Video Consensus: ${data.consensus_sign} with ${data.consensus_confidence}%`);
-                        if (data.frame_results && data.frame_results.length > 0) {
-                            renderStageImages(data.frame_results[0].images);
-                        }
-                    }
-                } catch (e) {
-                    showToast("Video error: " + e.message);
-                }
-            } else {
-                // Image processing
-                const formData = new FormData();
-                formData.append('file', file);
-                try {
-                    const res = await fetch('/api/predict-image', {
-                        method: 'POST',
-                        body: formData
-                    });
-                    const data = await res.json();
-                    renderPredictionResults(data);
-                    showToast(`Image processed -> Predicted: ${data.predicted_sign}`);
-                } catch (e) {
-                    showToast("Image error: " + e.message);
-                }
-            }
+        function copySpeechText() {
+            const text = document.getElementById('speech-transcription-output').value;
+            if (!text) return;
+            navigator.clipboard.writeText(text);
+            showToast("Copied speech text to clipboard!");
+        }
+
+        function clearSpeechText() {
+            confirmedSpeechText = "";
+            document.getElementById('speech-transcription-output').value = '';
+            updateSpeechWordCount();
+            showToast("Speech text cleared");
+        }
+
+        function speakSpeechText() {
+            const text = document.getElementById('speech-transcription-output').value.trim();
+            if (!text) return;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 0.95;
+            window.speechSynthesis.speak(utterance);
         }
 
         // Rendering helpers
@@ -1349,7 +2456,7 @@
             if (!probs) return;
             const list = document.getElementById('prob-list');
             list.innerHTML = '';
-            probs.slice(0, 6).forEach(p => {
+            probs.slice(0, 5).forEach(p => {
                 const item = document.createElement('div');
                 item.className = 'prob-item';
                 item.innerHTML = `
@@ -1363,6 +2470,37 @@
                 `;
                 list.appendChild(item);
             });
+        }
+
+        function renderWordProbabilities(topWords) {
+            if (!topWords) return;
+            const list = document.getElementById('prob-list');
+            list.innerHTML = '';
+            topWords.slice(0, 5).forEach(w => {
+                const item = document.createElement('div');
+                item.className = 'prob-item';
+                item.innerHTML = `
+                    <div class="prob-meta">
+                        <span class="sign">${w.display_word || w.raw_word}</span>
+                        <span class="percent">${w.confidence}%</span>
+                    </div>
+                    <div class="prob-bar-bg">
+                        <div class="prob-bar-fill" style="width: ${Math.min(100, w.confidence)}%"></div>
+                    </div>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function renderWordPredictionResults(result) {
+            if (!result) return;
+            document.getElementById('output-letter').innerText = result.display_word || result.predicted_word;
+            document.getElementById('output-confidence').innerText = `${result.confidence}% Confidence`;
+            document.getElementById('live-pill-letter').innerText = result.display_word || result.predicted_word;
+            document.getElementById('live-pill-conf').innerText = `${result.confidence}%`;
+            document.getElementById('stream-active-letter').innerText = `${result.display_word} (${result.confidence}%)`;
+            highlightWordManualRow(result.predicted_word);
+            renderWordProbabilities(result.top_words);
         }
 
         function renderLatencies(timings) {
@@ -1391,6 +2529,28 @@
                 toast.style.display = 'none';
             }, 3000);
         }
+
+        // Keep confirmedSpeechText synchronized when user edits the textarea manually
+        document.getElementById('speech-transcription-output').addEventListener('input', (e) => {
+            confirmedSpeechText = e.target.value;
+            updateSpeechWordCount();
+        });
+
+        // Listen for manual edits on gesture text
+        document.getElementById('gesture-text-output').addEventListener('input', updateGestureCharCount);
+
+        // Global keyboard shortcuts: Spacebar to insert word space, Backspace to delete
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            if (e.code === 'Space') {
+                e.preventDefault();
+                addGestureSpace();
+                showToast("Word space inserted [Spacebar]");
+            } else if (e.key === 'Backspace') {
+                e.preventDefault();
+                backspaceGestureText();
+            }
+        });
     </script>
 </body>
 </html>

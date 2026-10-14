@@ -10,7 +10,20 @@ venv/
 
 # Large Model Weights (>100MB; auto-downloaded on first run)
 *.weights
+
+# Large binary model files (auto-downloaded or trained locally)
+*.pth
+*.task
 *.bin
+
+# Dataset (too large for git, download separately)
+dataset/
+
+# Scratch / temporary files
+scratch_*.json
+scratch_*.parquet
+hf_islrtc_tree.json
+vaccumop_videos.json
 
 # Temporary output directories
 videos/
@@ -23,3 +36,4 @@ frames_segmented/
 Thumbs.db
 .vscode/
 .idea/
+

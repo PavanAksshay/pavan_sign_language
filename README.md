@@ -4,44 +4,67 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688.svg)](https://fastapi.tiangolo.com)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8.svg)](https://opencv.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00.svg)](https://tensorflow.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.x-EE4C2C.svg)](https://pytorch.org/)
+[![MediaPipe](https://img.shields.io/badge/MediaPipe-Latest-00A67E.svg)](https://ai.google.dev/edge/mediapipe)
 
-An end-to-end computer vision and deep learning application for translating Indian Sign Language (ISL) gestures into text in real time. Features a full-stack interactive web studio, live webcam stream processing, image/video upload support, and intermediate pipeline stage visualization.
+An end-to-end computer vision and deep learning application for translating Indian Sign Language (ISL) gestures into text in real time. Features a dual-mode interactive web studio supporting both **fingerspelling (A-Z)** and **word-level sign recognition (50 words)**, with live webcam streaming, image/video upload, intermediate pipeline visualization, and speech-to-text input.
 
 ---
 
 ## 🚀 Key Features
 
-- **Live Webcam Translation Studio**: Real-time browser-based webcam stream with bounding boxes and continuous sign translation.
-- **Deep 4-Stage Visualizer**: Inspect intermediate representations at every stage:
-  1. **Raw Frame**: Initial camera or image capture.
-  2. **YOLOv3 Hand Box**: Hand bounding box localization and confidence score.
-  3. **Crop & Resize**: Centralized 224×224 normalized tensor input.
-  4. **Skin Segmentation**: HSV + YCbCr background-subtracted binary mask.
-- **5-Stage Pipeline Simulation**: Complete research workflow (Face detection trigger $\rightarrow$ 5s gesture recording $\rightarrow$ frame extraction $\rightarrow$ SqueezeNet consensus voting).
-- **Multi-Input**: Supports live webcam feed, drag-and-drop images, and multi-frame video clips (.mp4, .mov).
-- **Audio Output**: Integrated speech synthesis to pronounce translated letters aloud.
-- **10 Supported ISL Classes**:
-  `G`, `I`, `K`, `O`, `P`, `S`, `U`, `V`, `X`, `Y`
+- **Dual-Mode Translation Studio**:
+  - **Fingerspelling Mode**: Real-time recognition of all 26 ISL alphabet letters (A–Z) using a SqueezeNet CNN classifier with **96.5% accuracy**.
+  - **Word Mode**: Real-time recognition of 50 ISL word-level gestures using a BiLSTM temporal model with MediaPipe landmarks.
+- **Deep 4-Stage Pipeline Visualizer**: Inspect intermediate representations at every stage:
+  1. **Raw Frame** — Initial camera or image capture.
+  2. **YOLOv3 Hand Box** — Hand bounding box localization and confidence score.
+  3. **Crop & Resize** — Centralized 224×224 normalized tensor input.
+  4. **Skin Segmentation** — HSV + YCbCr background-subtracted binary mask.
+- **5-Stage Pipeline Simulation**: Complete research workflow (Face detection trigger → 5s gesture recording → frame extraction → SqueezeNet consensus voting).
+- **Multi-Input Support**: Live webcam feed, drag-and-drop images, and multi-frame video clips (.mp4, .mov).
+- **Speech-to-Text**: Integrated Moonshine STT model for voice input alongside sign language.
+- **Audio Output**: Browser-native speech synthesis to pronounce translated letters and words aloud.
+- **Interactive Manual & Catalog**: Visual reference for all 26 ISL letters and 50 word gestures with images organized by category.
 
 ---
 
 ## 🧠 System Architecture
 
+### Fingerspelling Pipeline (Letters A–Z)
+
 ```mermaid
 graph LR
-    A[Video / Camera Stream] --> B[Haar Cascade Face Trigger]
+    A[Webcam Frame] --> B[Haar Cascade Face Trigger]
     B --> C[YOLOv3 Hand Detection]
-    C --> D[Adaptive Crop & Pad 224x224]
-    D --> E[Skin Segmentation HSV + YCbCr]
-    E --> F[SqueezeNet Classifier]
-    F --> G[Predicted ISL Letter & Probabilities]
+    C --> D["Adaptive Crop & Pad (224×224)"]
+    D --> E[BGR → RGB Conversion]
+    E --> F[SqueezeNet CNN Classifier]
+    F --> G["Predicted Letter & Confidence (26 classes)"]
 ```
 
+### Word-Level Pipeline (50 ISL Words)
+
+```mermaid
+graph LR
+    A[Webcam Frame] --> B[MediaPipe Hand Landmarker]
+    A --> C[MediaPipe Pose Landmarker]
+    B --> D["134-D Feature Vector (50 pose + 42 hand₁ + 42 hand₂)"]
+    C --> D
+    D --> E[Rolling Frame Buffer]
+    E --> F["BiLSTM Network (5 layers, bidirectional)"]
+    F --> G["Predicted Word & Confidence (50 classes)"]
+```
+
+### Processing Steps
+
 1. **Face Detection (Activation Trigger)**: Haar Cascades trigger video recording when the user is focused on the camera.
-2. **Hand Detection (Localization)**: Darknet YOLOv3 network (`cross-hands`) detects hand regions and constructs bounding boxes.
-3. **Preprocessing**: Extracted regions are padded, cropped, and resized to $224 \times 224$.
+2. **Hand Detection (Localization)**: Darknet YOLOv3 (`cross-hands`) detects hand regions and constructs bounding boxes. Supports both single-hand and two-handed ISL gestures via merged bounding boxes.
+3. **Preprocessing**: Extracted regions are padded, cropped, resized to 224×224, and converted from BGR to RGB color space to match training distribution.
 4. **Skin Segmentation (Noise Elimination)**: Combines HSV and YCbCr color thresholds with morphological watershed filtering to eliminate background clutter.
-5. **Sign Recognition**: SqueezeNet convolutional neural network (fine-tuned via Transfer Learning) classifies the gesture across 10 distinct Indian Sign Language symbols.
+5. **Sign Recognition**:
+   - **Letters**: SqueezeNet CNN (fine-tuned via Transfer Learning) classifies across 26 ISL alphabet classes.
+   - **Words**: BiLSTM network processes temporal sequences of MediaPipe hand + pose landmarks across 50 word classes.
 
 ---
 
@@ -67,7 +90,7 @@ python server.py
 Open your browser and navigate to:
 👉 **`http://localhost:8050`**
 
-*(Note: YOLO weights `cross-hands.weights` (~246MB) are automatically downloaded on first launch if not present).*
+*(Note: YOLO weights `cross-hands.weights` (~246MB) are automatically downloaded on first launch if not present.)*
 
 ---
 
@@ -77,11 +100,16 @@ Open your browser and navigate to:
 | :--- | :--- | :--- |
 | `GET` | `/` | Web Studio UI |
 | `GET` | `/api/health` | Model and system readiness status |
-| `GET` | `/api/classes` | Dictionary of supported ISL classes |
+| `GET` | `/api/classes` | Supported ISL letter classes (A–Z) |
+| `GET` | `/api/words/classes` | Supported ISL word classes (50 words) |
 | `POST` | `/api/predict-image` | Full pipeline inference with 4-stage visual masks |
-| `POST` | `/api/predict-stream-frame` | Low-latency endpoint for live streaming |
+| `POST` | `/api/predict-stream-frame` | Low-latency letter recognition for live streaming |
+| `POST` | `/api/predict-word-frame` | Word-level frame processing with landmark extraction |
+| `POST` | `/api/predict-word-clip` | Batch word recognition from multi-frame gesture clip |
+| `POST` | `/api/reset-word-buffer` | Reset the word pipeline's rolling frame buffer |
 | `POST` | `/api/process-video` | Multi-frame video clip analysis & consensus voting |
 | `POST` | `/api/detect-face` | Face detection trigger for activation phase |
+| `POST` | `/api/transcribe-speech` | Speech-to-text transcription via Moonshine STT |
 
 ---
 
@@ -90,27 +118,27 @@ Open your browser and navigate to:
 ```
 pavan_sign_language/
 ├── App/
-│   ├── final_model           # Trained SqueezeNet Keras HDF5 model
-│   ├── model_class.json      # Class index mapping (10 ISL letters)
-│   ├── preprocessing.py      # Skin segmentation & resizing routines
-│   ├── select_final.py       # Consensus voting algorithms
-│   ├── yolo.py               # Darknet YOLO inference handler
-│   └── yolo_models/          # YOLOv3 configuration & model metadata
-├── Dataset_Preprocessing/    # Dataset preprocessing scripts
-├── Dataset_Synthesis/        # Synthetic data generation scripts
-├── Model_Training/           # Jupyter notebook for SqueezeNet transfer learning
+│   ├── final_model_26/         # Trained SqueezeNet model (26 ISL letters)
+│   ├── model_class_26.json     # Class index mapping (A–Z)
+│   ├── include50_model/        # BiLSTM model + MediaPipe tasks (50 words)
+│   │   ├── include50_lstm.pth  # Trained BiLSTM weights
+│   │   ├── label_map_include50.json
+│   │   ├── word_catalog.json   # Word catalog with categories & images
+│   │   ├── hand_landmarker.task
+│   │   └── pose_landmarker.task
+│   ├── include50_pipeline.py   # Word-level BiLSTM inference pipeline
+│   ├── preprocessing.py        # Skin segmentation & resizing routines
+│   ├── select_final.py         # Consensus voting algorithms
+│   ├── yolo.py                 # Darknet YOLO inference handler
+│   └── yolo_models/            # YOLOv3 configuration & weights
+├── Dataset_Preprocessing/      # Dataset preprocessing scripts
+├── Dataset_Synthesis/          # Synthetic data generation scripts
+├── Model_Training/             # Jupyter notebook for SqueezeNet transfer learning
 ├── web/
-│   ├── static/               # Built-in sample test images
-│   └── templates/            # Web studio interface (index.html)
-├── pipeline.py               # Core unified inference engine & auto-download
-├── server.py                 # FastAPI application server
-└── requirements.txt          # Python dependencies
+│   ├── static/                 # Sample test images & word gesture images
+│   └── templates/              # Web studio interface (index.html)
+├── pipeline.py                 # Core letter-level inference engine
+├── server.py                   # FastAPI application server
+└── requirements.txt            # Python dependencies
 ```
 
----
-
-## 🙏 Acknowledgments & Credits
-
-- Based on the foundational Indian Sign Language Translator implementation by Abhishek Singh Dhadwal et al.
-- Hand detection neural network weights by [Cansik](https://github.com/cansik/yolo-hand-detection/).
-- Skin segmentation algorithm by [Jeanvit](https://github.com/Jeanvit/PySkinDetection).

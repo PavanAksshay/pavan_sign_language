@@ -1,0 +1,1238 @@
+[
+  {
+    "id": "hello",
+    "word": "Hello",
+    "category": "Greetings & Polite",
+    "image": "/static/manual/words/hello.jpg"
+  },
+  {
+    "id": "goodmorning",
+    "word": "Good Morning",
+    "category": "Greetings & Polite",
+    "image": "/static/manual/words/goodmorning.jpg"
+  },
+  {
+    "id": "thankyou",
+    "word": "Thank You",
+    "category": "Greetings & Polite",
+    "image": "/static/manual/words/thankyou.jpg"
+  },
+  {
+    "id": "welcome",
+    "word": "Welcome",
+    "category": "Greetings & Polite",
+    "image": "/static/manual/words/welcome.jpg"
+  },
+  {
+    "id": "morning",
+    "word": "Morning",
+    "category": "Greetings & Polite",
+    "image": "/static/manual/words/morning.jpg"
+  },
+  {
+    "id": "afternoon",
+    "word": "Afternoon",
+    "category": "Greetings & Polite",
+    "image": "/static/manual/words/afternoon.jpg"
+  },
+  {
+    "id": "night",
+    "word": "Night",
+    "category": "Greetings & Polite",
+    "image": "/static/manual/words/night.jpg"
+  },
+  {
+    "id": "nice",
+    "word": "Nice",
+    "category": "Greetings & Polite",
+    "image": "/static/manual/words/nice.jpg"
+  },
+  {
+    "id": "wish",
+    "word": "Wish",
+    "category": "Greetings & Polite",
+    "image": "/static/manual/words/wish.jpg"
+  },
+  {
+    "id": "happy",
+    "word": "Happy",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/happy.jpg"
+  },
+  {
+    "id": "angry",
+    "word": "Angry",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/angry.jpg"
+  },
+  {
+    "id": "hate",
+    "word": "Hate",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/hate.jpg"
+  },
+  {
+    "id": "love",
+    "word": "Love",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/love.jpg"
+  },
+  {
+    "id": "tired",
+    "word": "Tired",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/tired.jpg"
+  },
+  {
+    "id": "sad",
+    "word": "Sad",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/sad.jpg"
+  },
+  {
+    "id": "hungry",
+    "word": "Hungry",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/hungry.jpg"
+  },
+  {
+    "id": "cold",
+    "word": "Cold",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/cold.jpg"
+  },
+  {
+    "id": "warm",
+    "word": "Warm",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/warm.jpg"
+  },
+  {
+    "id": "nervous",
+    "word": "Nervous",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/nervous.jpg"
+  },
+  {
+    "id": "busy",
+    "word": "Busy",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/busy.jpg"
+  },
+  {
+    "id": "urgent",
+    "word": "Urgent",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/urgent.jpg"
+  },
+  {
+    "id": "good",
+    "word": "Good",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/good.jpg"
+  },
+  {
+    "id": "bad",
+    "word": "Bad",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/bad.jpg"
+  },
+  {
+    "id": "dangerous",
+    "word": "Dangerous",
+    "category": "Feelings & States",
+    "image": "/static/manual/words/dangerous.jpg"
+  },
+  {
+    "id": "father",
+    "word": "Father",
+    "category": "Family & People",
+    "image": "/static/manual/words/father.jpg"
+  },
+  {
+    "id": "mother",
+    "word": "Mother",
+    "category": "Family & People",
+    "image": "/static/manual/words/mother.jpg"
+  },
+  {
+    "id": "brother",
+    "word": "Brother",
+    "category": "Family & People",
+    "image": "/static/manual/words/brother.jpg"
+  },
+  {
+    "id": "daughter",
+    "word": "Daughter",
+    "category": "Family & People",
+    "image": "/static/manual/words/daughter.jpg"
+  },
+  {
+    "id": "husband",
+    "word": "Husband",
+    "category": "Family & People",
+    "image": "/static/manual/words/husband.jpg"
+  },
+  {
+    "id": "family",
+    "word": "Family",
+    "category": "Family & People",
+    "image": "/static/manual/words/family.jpg"
+  },
+  {
+    "id": "grandfather",
+    "word": "Grandfather",
+    "category": "Family & People",
+    "image": "/static/manual/words/grandfather.jpg"
+  },
+  {
+    "id": "grandmother",
+    "word": "Grandmother",
+    "category": "Family & People",
+    "image": "/static/manual/words/grandmother.jpg"
+  },
+  {
+    "id": "boy",
+    "word": "Boy",
+    "category": "Family & People",
+    "image": "/static/manual/words/boy.jpg"
+  },
+  {
+    "id": "girl",
+    "word": "Girl",
+    "category": "Family & People",
+    "image": "/static/manual/words/girl.jpg"
+  },
+  {
+    "id": "teacher",
+    "word": "Teacher",
+    "category": "Family & People",
+    "image": "/static/manual/words/teacher.jpg"
+  },
+  {
+    "id": "doctor",
+    "word": "Doctor",
+    "category": "Family & People",
+    "image": "/static/manual/words/doctor.jpg"
+  },
+  {
+    "id": "nurse",
+    "word": "Nurse",
+    "category": "Family & People",
+    "image": "/static/manual/words/nurse.jpg"
+  },
+  {
+    "id": "farmer",
+    "word": "Farmer",
+    "category": "Family & People",
+    "image": "/static/manual/words/farmer.jpg"
+  },
+  {
+    "id": "priest",
+    "word": "Priest",
+    "category": "Family & People",
+    "image": "/static/manual/words/priest.jpg"
+  },
+  {
+    "id": "i",
+    "word": "I",
+    "category": "Family & People",
+    "image": "/static/manual/words/i.jpg"
+  },
+  {
+    "id": "me",
+    "word": "Me",
+    "category": "Family & People",
+    "image": "/static/manual/words/me.jpg"
+  },
+  {
+    "id": "my",
+    "word": "My",
+    "category": "Family & People",
+    "image": "/static/manual/words/my.jpg"
+  },
+  {
+    "id": "he",
+    "word": "He",
+    "category": "Family & People",
+    "image": "/static/manual/words/he.jpg"
+  },
+  {
+    "id": "him",
+    "word": "Him",
+    "category": "Family & People",
+    "image": "/static/manual/words/him.jpg"
+  },
+  {
+    "id": "her",
+    "word": "Her",
+    "category": "Family & People",
+    "image": "/static/manual/words/her.jpg"
+  },
+  {
+    "id": "they",
+    "word": "They",
+    "category": "Family & People",
+    "image": "/static/manual/words/they.jpg"
+  },
+  {
+    "id": "yourself",
+    "word": "Yourself",
+    "category": "Family & People",
+    "image": "/static/manual/words/yourself.jpg"
+  },
+  {
+    "id": "young",
+    "word": "Young",
+    "category": "Family & People",
+    "image": "/static/manual/words/young.jpg"
+  },
+  {
+    "id": "name",
+    "word": "Name",
+    "category": "Family & People",
+    "image": "/static/manual/words/name.jpg"
+  },
+  {
+    "id": "home",
+    "word": "Home",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/home.jpg"
+  },
+  {
+    "id": "house",
+    "word": "House",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/house.jpg"
+  },
+  {
+    "id": "hospital",
+    "word": "Hospital",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/hospital.jpg"
+  },
+  {
+    "id": "school",
+    "word": "School",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/school.jpg"
+  },
+  {
+    "id": "bank",
+    "word": "Bank",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/bank.jpg"
+  },
+  {
+    "id": "court",
+    "word": "Court",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/court.jpg"
+  },
+  {
+    "id": "market",
+    "word": "Market",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/market.jpg"
+  },
+  {
+    "id": "library",
+    "word": "Library",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/library.jpg"
+  },
+  {
+    "id": "office",
+    "word": "Office",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/office.jpg"
+  },
+  {
+    "id": "park",
+    "word": "Park",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/park.jpg"
+  },
+  {
+    "id": "policestation",
+    "word": "Police Station",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/policestation.jpg"
+  },
+  {
+    "id": "zoo",
+    "word": "Zoo",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/zoo.jpg"
+  },
+  {
+    "id": "storeorshop",
+    "word": "Store / Shop",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/storeorshop.jpg"
+  },
+  {
+    "id": "zone",
+    "word": "Zone",
+    "category": "Places & Buildings",
+    "image": "/static/manual/words/zone.jpg"
+  },
+  {
+    "id": "car",
+    "word": "Car",
+    "category": "Travel & Transport",
+    "image": "/static/manual/words/car.jpg"
+  },
+  {
+    "id": "aeroplane",
+    "word": "Aeroplane",
+    "category": "Travel & Transport",
+    "image": "/static/manual/words/aeroplane.jpg"
+  },
+  {
+    "id": "train",
+    "word": "Train",
+    "category": "Travel & Transport",
+    "image": "/static/manual/words/train.jpg"
+  },
+  {
+    "id": "vehicle",
+    "word": "Vehicle",
+    "category": "Travel & Transport",
+    "image": "/static/manual/words/vehicle.jpg"
+  },
+  {
+    "id": "trainticket",
+    "word": "Train Ticket",
+    "category": "Travel & Transport",
+    "image": "/static/manual/words/trainticket.jpg"
+  },
+  {
+    "id": "travel",
+    "word": "Travel",
+    "category": "Travel & Transport",
+    "image": "/static/manual/words/travel.jpg"
+  },
+  {
+    "id": "visit",
+    "word": "Visit",
+    "category": "Travel & Transport",
+    "image": "/static/manual/words/visit.jpg"
+  },
+  {
+    "id": "vacation",
+    "word": "Vacation",
+    "category": "Travel & Transport",
+    "image": "/static/manual/words/vacation.jpg"
+  },
+  {
+    "id": "holiday",
+    "word": "Holiday",
+    "category": "Travel & Transport",
+    "image": "/static/manual/words/holiday.jpg"
+  },
+  {
+    "id": "water",
+    "word": "Water",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/water.jpg"
+  },
+  {
+    "id": "tea",
+    "word": "Tea",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/tea.jpg"
+  },
+  {
+    "id": "coffee",
+    "word": "Coffee",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/coffee.jpg"
+  },
+  {
+    "id": "milk",
+    "word": "Milk",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/milk.jpg"
+  },
+  {
+    "id": "apple",
+    "word": "Apple",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/apple.jpg"
+  },
+  {
+    "id": "bread",
+    "word": "Bread",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/bread.jpg"
+  },
+  {
+    "id": "fruit",
+    "word": "Fruit",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/fruit.jpg"
+  },
+  {
+    "id": "ginger",
+    "word": "Ginger",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/ginger.jpg"
+  },
+  {
+    "id": "icecream",
+    "word": "Ice Cream",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/icecream.jpg"
+  },
+  {
+    "id": "rice1",
+    "word": "Rice1",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/rice1.jpg"
+  },
+  {
+    "id": "rice2",
+    "word": "Rice2",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/rice2.jpg"
+  },
+  {
+    "id": "drink",
+    "word": "Drink",
+    "category": "Food & Drinks",
+    "image": "/static/manual/words/drink.jpg"
+  },
+  {
+    "id": "dog",
+    "word": "Dog",
+    "category": "Animals & Nature",
+    "image": "/static/manual/words/dog.jpg"
+  },
+  {
+    "id": "bird",
+    "word": "Bird",
+    "category": "Animals & Nature",
+    "image": "/static/manual/words/bird.jpg"
+  },
+  {
+    "id": "animals",
+    "word": "Animals",
+    "category": "Animals & Nature",
+    "image": "/static/manual/words/animals.jpg"
+  },
+  {
+    "id": "cow",
+    "word": "Cow",
+    "category": "Animals & Nature",
+    "image": "/static/manual/words/cow.jpg"
+  },
+  {
+    "id": "fish",
+    "word": "Fish",
+    "category": "Animals & Nature",
+    "image": "/static/manual/words/fish.jpg"
+  },
+  {
+    "id": "zebra",
+    "word": "Zebra",
+    "category": "Animals & Nature",
+    "image": "/static/manual/words/zebra.jpg"
+  },
+  {
+    "id": "clouds",
+    "word": "Clouds",
+    "category": "Animals & Nature",
+    "image": "/static/manual/words/clouds.jpg"
+  },
+  {
+    "id": "rainbow",
+    "word": "Rainbow",
+    "category": "Animals & Nature",
+    "image": "/static/manual/words/rainbow.jpg"
+  },
+  {
+    "id": "computer",
+    "word": "Computer",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/computer.jpg"
+  },
+  {
+    "id": "phone",
+    "word": "Phone",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/phone.jpg"
+  },
+  {
+    "id": "cellphone",
+    "word": "Cell Phone",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/cellphone.jpg"
+  },
+  {
+    "id": "pen",
+    "word": "Pen",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/pen.jpg"
+  },
+  {
+    "id": "paper",
+    "word": "Paper",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/paper.jpg"
+  },
+  {
+    "id": "videocamera",
+    "word": "Video Camera",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/videocamera.jpg"
+  },
+  {
+    "id": "book",
+    "word": "Book",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/book.jpg"
+  },
+  {
+    "id": "clock",
+    "word": "Clock",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/clock.jpg"
+  },
+  {
+    "id": "chair",
+    "word": "Chair",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/chair.jpg"
+  },
+  {
+    "id": "hammer",
+    "word": "Hammer",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/hammer.jpg"
+  },
+  {
+    "id": "money",
+    "word": "Money",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/money.jpg"
+  },
+  {
+    "id": "password",
+    "word": "Password",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/password.jpg"
+  },
+  {
+    "id": "picture",
+    "word": "Picture",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/picture.jpg"
+  },
+  {
+    "id": "fan",
+    "word": "Fan",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/fan.jpg"
+  },
+  {
+    "id": "window",
+    "word": "Window",
+    "category": "Objects & Tech",
+    "image": "/static/manual/words/window.jpg"
+  },
+  {
+    "id": "shoes",
+    "word": "Shoes",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/shoes.jpg"
+  },
+  {
+    "id": "hat",
+    "word": "Hat",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/hat.jpg"
+  },
+  {
+    "id": "tshirt",
+    "word": "T-Shirt",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/tshirt.jpg"
+  },
+  {
+    "id": "wear",
+    "word": "Wear",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/wear.jpg"
+  },
+  {
+    "id": "black",
+    "word": "Black",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/black.jpg"
+  },
+  {
+    "id": "white",
+    "word": "White",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/white.jpg"
+  },
+  {
+    "id": "red",
+    "word": "Red",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/red.jpg"
+  },
+  {
+    "id": "blue",
+    "word": "Blue",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/blue.jpg"
+  },
+  {
+    "id": "green",
+    "word": "Green",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/green.jpg"
+  },
+  {
+    "id": "yellow",
+    "word": "Yellow",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/yellow.jpg"
+  },
+  {
+    "id": "pink",
+    "word": "Pink",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/pink.jpg"
+  },
+  {
+    "id": "brown",
+    "word": "Brown",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/brown.jpg"
+  },
+  {
+    "id": "orange",
+    "word": "Orange",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/orange.jpg"
+  },
+  {
+    "id": "hair",
+    "word": "Hair",
+    "category": "Clothes & Colors",
+    "image": "/static/manual/words/hair.jpg"
+  },
+  {
+    "id": "walk",
+    "word": "Walk",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/walk.jpg"
+  },
+  {
+    "id": "run",
+    "word": "Run",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/run.jpg"
+  },
+  {
+    "id": "jump",
+    "word": "Jump",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/jump.jpg"
+  },
+  {
+    "id": "take",
+    "word": "Take",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/take.jpg"
+  },
+  {
+    "id": "give",
+    "word": "Give",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/give.jpg"
+  },
+  {
+    "id": "ask",
+    "word": "Ask",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/ask.jpg"
+  },
+  {
+    "id": "call",
+    "word": "Call",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/call.jpg"
+  },
+  {
+    "id": "chat",
+    "word": "Chat",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/chat.jpg"
+  },
+  {
+    "id": "do",
+    "word": "Do",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/do.jpg"
+  },
+  {
+    "id": "exchange",
+    "word": "Exchange",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/exchange.jpg"
+  },
+  {
+    "id": "fail",
+    "word": "Fail",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/fail.jpg"
+  },
+  {
+    "id": "hear",
+    "word": "Hear",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/hear.jpg"
+  },
+  {
+    "id": "help",
+    "word": "Help",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/help.jpg"
+  },
+  {
+    "id": "improve",
+    "word": "Improve",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/improve.jpg"
+  },
+  {
+    "id": "introduce",
+    "word": "Introduce",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/introduce.jpg"
+  },
+  {
+    "id": "join",
+    "word": "Join",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/join.jpg"
+  },
+  {
+    "id": "keep",
+    "word": "Keep",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/keep.jpg"
+  },
+  {
+    "id": "know",
+    "word": "Know",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/know.jpg"
+  },
+  {
+    "id": "learn",
+    "word": "Learn",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/learn.jpg"
+  },
+  {
+    "id": "listen",
+    "word": "Listen",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/listen.jpg"
+  },
+  {
+    "id": "open",
+    "word": "Open",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/open.jpg"
+  },
+  {
+    "id": "pay",
+    "word": "Pay",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/pay.jpg"
+  },
+  {
+    "id": "read",
+    "word": "Read",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/read.jpg"
+  },
+  {
+    "id": "sell",
+    "word": "Sell",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/sell.jpg"
+  },
+  {
+    "id": "understand",
+    "word": "Understand",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/understand.jpg"
+  },
+  {
+    "id": "vote",
+    "word": "Vote",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/vote.jpg"
+  },
+  {
+    "id": "wash",
+    "word": "Wash",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/wash.jpg"
+  },
+  {
+    "id": "waste",
+    "word": "Waste",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/waste.jpg"
+  },
+  {
+    "id": "weigh",
+    "word": "Weigh",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/weigh.jpg"
+  },
+  {
+    "id": "work",
+    "word": "Work",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/work.jpg"
+  },
+  {
+    "id": "write",
+    "word": "Write",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/write.jpg"
+  },
+  {
+    "id": "paint",
+    "word": "Paint",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/paint.jpg"
+  },
+  {
+    "id": "fall",
+    "word": "Fall",
+    "category": "Actions & Movement",
+    "image": "/static/manual/words/fall.jpg"
+  },
+  {
+    "id": "time",
+    "word": "Time",
+    "category": "Time & Calendar",
+    "image": "/static/manual/words/time.jpg"
+  },
+  {
+    "id": "today",
+    "word": "Today",
+    "category": "Time & Calendar",
+    "image": "/static/manual/words/today.jpg"
+  },
+  {
+    "id": "tomorrow",
+    "word": "Tomorrow",
+    "category": "Time & Calendar",
+    "image": "/static/manual/words/tomorrow.jpg"
+  },
+  {
+    "id": "yesterday",
+    "word": "Yesterday",
+    "category": "Time & Calendar",
+    "image": "/static/manual/words/yesterday.jpg"
+  },
+  {
+    "id": "monday",
+    "word": "Monday",
+    "category": "Time & Calendar",
+    "image": "/static/manual/words/monday.jpg"
+  },
+  {
+    "id": "year",
+    "word": "Year",
+    "category": "Time & Calendar",
+    "image": "/static/manual/words/year.jpg"
+  },
+  {
+    "id": "age",
+    "word": "Age",
+    "category": "Time & Calendar",
+    "image": "/static/manual/words/age.jpg"
+  },
+  {
+    "id": "election",
+    "word": "Election",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/election.jpg"
+  },
+  {
+    "id": "death",
+    "word": "Death",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/death.jpg"
+  },
+  {
+    "id": "different",
+    "word": "Different",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/different.jpg"
+  },
+  {
+    "id": "same",
+    "word": "Same",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/same.jpg"
+  },
+  {
+    "id": "more",
+    "word": "More",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/more.jpg"
+  },
+  {
+    "id": "new",
+    "word": "New",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/new.jpg"
+  },
+  {
+    "id": "next",
+    "word": "Next",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/next.jpg"
+  },
+  {
+    "id": "left",
+    "word": "Left",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/left.jpg"
+  },
+  {
+    "id": "right",
+    "word": "Right",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/right.jpg"
+  },
+  {
+    "id": "down",
+    "word": "Down",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/down.jpg"
+  },
+  {
+    "id": "outside",
+    "word": "Outside",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/outside.jpg"
+  },
+  {
+    "id": "safeguard",
+    "word": "Safe Guard",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/safeguard.jpg"
+  },
+  {
+    "id": "big",
+    "word": "Big",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/big.jpg"
+  },
+  {
+    "id": "biglarge",
+    "word": "Big / Large",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/biglarge.jpg"
+  },
+  {
+    "id": "small",
+    "word": "Small",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/small.jpg"
+  },
+  {
+    "id": "smalllittle",
+    "word": "Small / Little",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/smalllittle.jpg"
+  },
+  {
+    "id": "long",
+    "word": "Long",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/long.jpg"
+  },
+  {
+    "id": "short",
+    "word": "Short",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/short.jpg"
+  },
+  {
+    "id": "loud",
+    "word": "Loud",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/loud.jpg"
+  },
+  {
+    "id": "quiet",
+    "word": "Quiet",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/quiet.jpg"
+  },
+  {
+    "id": "hot",
+    "word": "Hot",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/hot.jpg"
+  },
+  {
+    "id": "summer",
+    "word": "Summer",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/summer.jpg"
+  },
+  {
+    "id": "dry",
+    "word": "Dry",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/dry.jpg"
+  },
+  {
+    "id": "xray",
+    "word": "Xray",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/xray.jpg"
+  },
+  {
+    "id": "no",
+    "word": "No",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/no.jpg"
+  },
+  {
+    "id": "how",
+    "word": "How",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/how.jpg"
+  },
+  {
+    "id": "what",
+    "word": "What",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/what.jpg"
+  },
+  {
+    "id": "who",
+    "word": "Who",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/who.jpg"
+  },
+  {
+    "id": "why",
+    "word": "Why",
+    "category": "Concepts & Society",
+    "image": "/static/manual/words/why.jpg"
+  },
+  {
+    "id": "arm",
+    "word": "Arm",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/arm.jpg"
+  },
+  {
+    "id": "fast",
+    "word": "Fast",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/fast.jpg"
+  },
+  {
+    "id": "in",
+    "word": "In",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/in.jpg"
+  },
+  {
+    "id": "it",
+    "word": "It",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/it.jpg"
+  },
+  {
+    "id": "light",
+    "word": "Light",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/light.jpg"
+  },
+  {
+    "id": "medicine",
+    "word": "Medicine",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/medicine.jpg"
+  },
+  {
+    "id": "metting",
+    "word": "Metting",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/metting.jpg"
+  },
+  {
+    "id": "movie",
+    "word": "Movie",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/movie.jpg"
+  },
+  {
+    "id": "music",
+    "word": "Music",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/music.jpg"
+  },
+  {
+    "id": "near",
+    "word": "Near",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/near.jpg"
+  },
+  {
+    "id": "need",
+    "word": "Need",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/need.jpg"
+  },
+  {
+    "id": "present",
+    "word": "Present",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/present.jpg"
+  },
+  {
+    "id": "pune",
+    "word": "Pune",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/pune.jpg"
+  },
+  {
+    "id": "questions",
+    "word": "Questions",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/questions.jpg"
+  },
+  {
+    "id": "warn",
+    "word": "Warn",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/warn.jpg"
+  },
+  {
+    "id": "youplural",
+    "word": "Youplural",
+    "category": "General Vocabulary",
+    "image": "/static/manual/words/youplural.jpg"
+  }
+]
