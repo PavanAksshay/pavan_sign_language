@@ -47,8 +47,8 @@ class ISLPipeline:
 
         print(f"[Pipeline] Loading YOLO from {cfg_path}...")
         self.yolo = YOLO(cfg_path, weights_path, ['hand'])
-        self.yolo.confidence = 0.25
-        self.yolo.threshold = 0.25
+        self.yolo.confidence = 0.20
+        self.yolo.threshold = 0.20
 
         print(f"[Pipeline] Loading SqueezeNet model from {model_path}...")
         self.model = tf_keras.models.load_model(model_path)
@@ -144,18 +144,55 @@ class ISLPipeline:
                 }
             return res
 
-        # 3. Crop Hand with bounding box padding
+        # 3. Crop Hand with zero-distortion square crop
+        # Preserves 1:1 aspect ratio perfectly without stretching.
+        # The hand is centered, with 12% proportional margin matching training distribution.
         x, y, x1, y1 = box_coords
-        pad_x, pad_y = 40, 25
-        x = max(0, x - pad_x)
-        y = max(0, y - pad_y)
-        x1 = min(w, x1 + pad_x)
-        y1 = min(h, y1 + pad_y)
-        cropped = frame_bgr[y:y1, x:x1]
-        if cropped.size == 0 or cropped.shape[0] < 10 or cropped.shape[1] < 10:
+        box_w = x1 - x
+        box_h = y1 - y
+
+        cx = (x + x1) // 2
+        cy = (y + y1) // 2
+        side = int(max(box_w, box_h) * 1.20)
+        half_side = side // 2
+
+        x_min = cx - half_side
+        x_max = cx + half_side
+        y_min = cy - half_side
+        y_max = cy + half_side
+
+        pad_top = max(0, -y_min)
+        pad_bottom = max(0, y_max - h)
+        pad_left = max(0, -x_min)
+        pad_right = max(0, x_max - w)
+
+        crop_y1 = max(0, y_min)
+        crop_y2 = min(h, y_max)
+        crop_x1 = max(0, x_min)
+        crop_x2 = min(w, x_max)
+
+        cropped_sub = frame_bgr[crop_y1:crop_y2, crop_x1:crop_x2]
+        if cropped_sub.size == 0 or cropped_sub.shape[0] < 10 or cropped_sub.shape[1] < 10:
             cropped = frame_bgr
+        elif pad_top > 0 or pad_bottom > 0 or pad_left > 0 or pad_right > 0:
+            cropped = cv2.copyMakeBorder(
+                cropped_sub, pad_top, pad_bottom, pad_left, pad_right,
+                cv2.BORDER_REPLICATE
+            )
+        else:
+            cropped = cropped_sub
 
         resized = cv2.resize(cropped, (224, 224), interpolation=cv2.INTER_LINEAR)
+
+        # Debug: save periodic crops for verification
+        self._debug_frame_count = getattr(self, '_debug_frame_count', 0) + 1
+        if self._debug_frame_count % 30 == 0:
+            debug_dir = '/tmp/isl_debug'
+            os.makedirs(debug_dir, exist_ok=True)
+            idx = (self._debug_frame_count // 30) % 10
+            cv2.imwrite(os.path.join(debug_dir, f'crop_{idx}.jpg'), resized)
+
+
 
         # 4. Skin Segmentation with fallback to raw RGB if mask is empty
         t_skin_start = time.time()
