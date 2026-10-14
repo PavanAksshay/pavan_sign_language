@@ -1869,7 +1869,7 @@
                         document.getElementById('output-confidence').innerText = `${data.confidence}% Confidence`;
                         currentPredictedSign = data.predicted_sign;
 
-                        const numHandsText = (data.detections && data.detections.length >= 2) ? " [2 Hands]" : "";
+                        const numHandsText = data.is_two_handed ? " [2 Hands]" : "";
                         document.getElementById('stream-active-letter').innerText = `${data.predicted_sign} (${data.confidence}%)${numHandsText}`;
                         highlightManualRow(data.predicted_sign);
 

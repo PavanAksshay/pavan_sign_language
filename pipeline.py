@@ -108,16 +108,45 @@ class ISLPipeline:
                 cv2.putText(annotated_frame, f"{name}: {conf*100:.1f}%", (bx, max(20, by - 8)),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 128), 2)
 
-            # Use primary detection (or merged bbox if multiple)
+            # Determine whether to use primary hand or merge two hands:
+            # In true 2-handed ISL gestures (e.g. A, B, P), both hands interact close together in the center.
+            # If detections are far apart (e.g. active hand on left + resting arm on right),
+            # merging them creates an absurd box across the entire torso!
+            is_two_handed = False
             if len(detections) == 1:
                 _, _, _, bx, by, bw, bh = detections[0]
-                x, y, x1, y1 = bx, by, bx + bw, by + bh
+                box_coords = (bx, by, bx + bw, by + bh)
             else:
-                x = min(d[3] for d in detections)
-                y = min(d[4] for d in detections)
-                x1 = max(d[3] + d[5] for d in detections)
-                y1 = max(d[4] + d[6] for d in detections)
-            box_coords = (x, y, x1, y1)
+                det1 = detections[0]  # highest confidence
+                det2 = detections[1]  # second highest
+                b1_x, b1_y, b1_w, b1_h = det1[3], det1[4], det1[5], det1[6]
+                b2_x, b2_y, b2_w, b2_h = det2[3], det2[4], det2[5], det2[6]
+
+                # Check horizontal gap between the two detections
+                left_box = det1 if b1_x < b2_x else det2
+                right_box = det2 if b1_x < b2_x else det1
+                gap_x = right_box[3] - (left_box[3] + left_box[5])
+
+                # Hands interacting in 2-handed signs must be close together (gap < 1.2 * hand width)
+                max_hand_w = max(b1_w, b2_w)
+                is_close_interaction = (gap_x < max_hand_w * 1.2)
+                vertical_overlap = min(b1_y + b1_h, b2_y + b2_h) - max(b1_y, b2_y)
+                is_vertically_aligned = (vertical_overlap > -max(b1_h, b2_h) * 0.6)
+
+                if is_close_interaction and is_vertically_aligned and det2[2] >= 0.30:
+                    # Genuine 2-handed gesture (touching or close)
+                    is_two_handed = True
+                    x = min(det1[3], det2[3])
+                    y = min(det1[4], det2[4])
+                    x1 = max(det1[3] + det1[5], det2[3] + det2[5])
+                    y1 = max(det1[4] + det1[6], det2[4] + det2[6])
+                    box_coords = (x, y, x1, y1)
+                else:
+                    # Single active hand gesture: use primary detection, ignore resting elbow/background
+                    box_coords = (b1_x, b1_y, b1_x + b1_w, b1_y + b1_h)
+            self._last_is_two_handed = is_two_handed
+        else:
+            self._last_is_two_handed = False
 
         # 2. Early return if no hand detected: avoid running SqueezeNet on background/center crops
         if not hand_detected or box_coords is None:
@@ -132,6 +161,7 @@ class ISLPipeline:
                 "predicted_sign": "-",
                 "confidence": 0.0,
                 "hand_detected": False,
+                "is_two_handed": False,
                 "detections": [],
                 "probabilities": [],
                 "timing_ms": {
@@ -152,18 +182,13 @@ class ISLPipeline:
 
         # 3. Crop Hand Region
         # Crucial for recognition accuracy:
-        # In ISL, two-handed signs have wide horizontal spans. If we artificially expand vertical
-        # height to equal width (side = max(box_w, box_h)), the box climbs hundreds of pixels upward
-        # into the user's face, eyes, glasses, and mouth, causing the classifier to categorize the face
-        # instead of the hands!
-        # Instead, we apply clean proportional margins around the detected hand bounding box, matching
-        # how the original training dataset was preprocessed.
+        # We apply clean proportional margins around the detected hand bounding box.
         x, y, x1, y1 = box_coords
         box_w = x1 - x
         box_h = y1 - y
 
-        pad_x = max(10, int(box_w * 0.12))
-        pad_y = max(10, int(box_h * 0.12))
+        pad_x = max(10, int(box_w * 0.10))
+        pad_y = max(10, int(box_h * 0.10))
 
         crop_x = max(0, x - pad_x)
         crop_y = max(0, y - pad_y)
@@ -175,7 +200,6 @@ class ISLPipeline:
         if has_face and len(face_boxes) > 0:
             for fb in face_boxes:
                 f_bottom = fb["y"] + fb["h"]
-                # If face is directly above the hand bounding box, clamp top of crop to chin level
                 if f_bottom <= y1 and crop_y < f_bottom:
                     crop_y = max(0, min(y, f_bottom))
 
@@ -183,7 +207,19 @@ class ISLPipeline:
         if cropped.size == 0 or cropped.shape[0] < 10 or cropped.shape[1] < 10:
             cropped = frame_bgr
 
-        resized = cv2.resize(cropped, (224, 224), interpolation=cv2.INTER_LINEAR)
+        # Aspect-Ratio Preserving Letterbox Resize:
+        # Non-uniform stretching deforms curved hand gestures (e.g. C) into vertical sticks (V/S).
+        # Letterboxing with black canvas preserves exact gesture geometry 100%.
+        ch, cw = cropped.shape[:2]
+        scale = 224.0 / max(cw, ch)
+        nw = max(1, int(cw * scale))
+        nh = max(1, int(ch * scale))
+        scaled = cv2.resize(cropped, (nw, nh), interpolation=cv2.INTER_LINEAR)
+
+        resized = np.zeros((224, 224, 3), dtype=np.uint8)
+        dx = (224 - nw) // 2
+        dy = (224 - nh) // 2
+        resized[dy:dy+nh, dx:dx+nw] = scaled
 
         # Debug: save periodic crops for verification
         self._debug_frame_count = getattr(self, '_debug_frame_count', 0) + 1
@@ -236,6 +272,7 @@ class ISLPipeline:
             "predicted_sign": predicted_sign,
             "confidence": top_confidence,
             "hand_detected": hand_detected,
+            "is_two_handed": getattr(self, '_last_is_two_handed', False),
             "detections": box_info,
             "probabilities": prob_breakdown,
             "timing_ms": {
