@@ -1,0 +1,47 @@
+{
+  "phase": "Phase 22 \u2014 Multi-Signer Training and Controlled Ablation",
+  "timestamp": "2026-10-23T04:49:57Z",
+  "signers_included_in_training": [
+    "signer_01",
+    "signer_04"
+  ],
+  "signers_strictly_excluded_holdout": [
+    "signer_02",
+    "signer_03"
+  ],
+  "training_samples_total": 4698,
+  "signer_01_training_samples": 3077,
+  "signer_04_training_samples": 1621,
+  "models": {
+    "Model_A_Landmark_RF_v1": {
+      "model_path": "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_A_Landmark_RF_v1_multisigner.joblib",
+      "scaler_path": "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_A_Landmark_RF_v1_multisigner_scaler.joblib",
+      "total_training_samples": 4698,
+      "legacy_s1_val_metrics": {
+        "top1_accuracy": 0.7451,
+        "macro_f1": 0.7312,
+        "balanced_accuracy": 0.7372
+      }
+    },
+    "Model_B_Regularized_Geometry_RF_v2": {
+      "model_path": "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_B_Regularized_Geometry_RF_v2_multisigner.joblib",
+      "scaler_path": "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_B_Regularized_Geometry_RF_v2_multisigner_scaler.joblib",
+      "total_training_samples": 4698,
+      "legacy_s1_val_metrics": {
+        "top1_accuracy": 0.6596,
+        "macro_f1": 0.6328,
+        "balanced_accuracy": 0.65
+      }
+    },
+    "Model_C_Occlusion_Aware_RF": {
+      "model_path": "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib",
+      "scaler_path": "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib",
+      "total_training_samples": 4698,
+      "legacy_s1_val_metrics": {
+        "top1_accuracy": 0.6905,
+        "macro_f1": 0.6688,
+        "balanced_accuracy": 0.6805
+      }
+    }
+  }
+}

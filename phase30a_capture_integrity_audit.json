@@ -1,0 +1,111 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 30A — Implement Signer 05 Independent Data Collection in the Website",
+    "timestamp": "2026-10-25T14:15:00Z",
+    "auditor": "Antigravity Autonomous Engineering Pair",
+    "status": "PASSED_IMPLEMENTATION_GATE",
+    "evaluation_holdout_participant": "signer_05 (Volunteer D - Evaluation Only)"
+  },
+  "authoritative_artifact_hashes": {
+    "model_c_rf": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib",
+      "expected_sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "actual_sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "match": true
+    },
+    "model_c_scaler": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib",
+      "expected_sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "actual_sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "match": true
+    },
+    "phase19_frozen_manifest": {
+      "path": "phase19_frozen_manifest.json",
+      "expected_sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "actual_sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "match": true
+    },
+    "phase23_predictions": {
+      "path": "phase23_predictions.csv",
+      "expected_sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "actual_sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "match": true
+    },
+    "train_manifest": {
+      "path": "models/mediapipe_squeezenet_v1/splits/train_manifest.json",
+      "expected_sha256": "fc71e5940dcc12b7bf9c42d6ce125099c560d35e4f38b36486ac285f9c203b73",
+      "actual_sha256": "fc71e5940dcc12b7bf9c42d6ce125099c560d35e4f38b36486ac285f9c203b73",
+      "match": true,
+      "signer_05_sample_count": 0
+    },
+    "val_manifest": {
+      "path": "models/mediapipe_squeezenet_v1/splits/val_manifest.json",
+      "expected_sha256": "3a5a9cea0163a04baa4546749306cea3383cfd06b4ae2fa758f6995620b5514c",
+      "actual_sha256": "3a5a9cea0163a04baa4546749306cea3383cfd06b4ae2fa758f6995620b5514c",
+      "match": true,
+      "signer_05_sample_count": 0
+    }
+  },
+  "production_runtime_defaults": {
+    "ISL_BACKEND_DETECTOR": "yolo",
+    "ISL_RECOGNITION_ARCH": "standard",
+    "ISL_TEMPORAL_SMOOTHING": 0,
+    "ISL_SHADOW_MODE": 0,
+    "ISL_MEDIAPIPE_DELEGATE": "cpu",
+    "ISL_MODEL_C_RESOLUTION": "native",
+    "defaults_preserved": true
+  },
+  "schema_and_authorization": {
+    "metadata_schema_path": "phase14b_analysis/metadata_schema.json",
+    "metadata_schema_signer_enum": [
+      "signer_01",
+      "signer_02",
+      "signer_03",
+      "signer_04",
+      "signer_05"
+    ],
+    "phase18_collector_allowed_signers": [
+      "signer_02",
+      "signer_03",
+      "signer_04",
+      "signer_05"
+    ],
+    "evaluation_only_signers": [
+      "signer_05"
+    ],
+    "authorization_passed": true
+  },
+  "training_isolation_audit": {
+    "train_manifest_leakage_detected": false,
+    "val_manifest_leakage_detected": false,
+    "signer_05_allow_training_policy": false,
+    "designated_split": "external_test_signer_05",
+    "designated_dataset_role": "independent_evaluation_holdout",
+    "dedicated_manifest_path": "data/manifests/signer_05_manifest.json",
+    "isolation_safeguard_active": true
+  },
+  "retake_and_supersession_integrity": {
+    "frame_overwrite_prevention": "ENABLED (Collision detection generates unique take-tagged filenames _t{rec_tag}_)",
+    "audit_trail_preservation": "ENABLED (Superseded takes marked status='superseded' with superseded_by pointer in collection_ledger.json)",
+    "manifest_supersession_marking": "ENABLED (Superseded samples marked quality.is_usable=False and eligible_for_evaluation=False)",
+    "duplicate_detection_sha256": "ENABLED (Frame hashes cross-referenced against known test manifest frames)"
+  },
+  "signer_05_dataset_readiness_status": {
+    "total_matrix_cells": 52,
+    "condition_1_target_cells": 26,
+    "condition_2_target_cells": 26,
+    "actual_recorded_cells": 0,
+    "is_dataset_ready": false,
+    "readiness_summary": "Capture infrastructure fully wired and tested. Dataset is currently empty and un-recorded awaiting real volunteer participant sessions. No placeholder or synthetic data has been committed to permanent manifests.",
+    "evaluation_phase_30_triggered": false
+  },
+  "test_suite_verification": {
+    "test_command": "/Users/pavanaksshay/venv/bin/python3 -m unittest discover tests -p 'test_*.py'",
+    "total_tests_discovered": 234,
+    "tests_passed": 234,
+    "tests_failed": 0,
+    "tests_errored": 0,
+    "phase30a_dedicated_tests": 11,
+    "pass_rate": "100%"
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "timestamp": "2026-10-15T16:51:10Z",
+  "phase": "Phase 17",
+  "physical_collection": {
+    "planned_target": {
+      "target_signers": [
+        "signer_02",
+        "signer_03"
+      ],
+      "target_conditions_per_signer": 2,
+      "target_letters": 26,
+      "target_frames_per_letter": 30,
+      "nominal_target_frames": 3120,
+      "actual_new_frames_collected": 0,
+      "physical_capture_status": "PENDING_PHYSICAL_RECORDING",
+      "zero_fabrication_confirmed": true
+    },
+    "signer_02_recordings": [],
+    "signer_03_recordings": [],
+    "preserved_webcam_videos": [
+      "recording_C_20261014_165234.mp4",
+      "recording_C_lateral_profile_calibrated.mp4",
+      "recording_L_20261014_165754.mp4",
+      "recording_A_20261014_165529.mp4",
+      "recording_C_20261014_164912.mp4"
+    ],
+    "inventory_status_message": "No physical video recordings for signer_02 or signer_03 have been provided or recorded in this workspace. In strict compliance with non-negotiable constraints, zero fake frames, synthetic landmarks, or fabricated labels have been created. Generalization to unseen signers remains honestly documented as empirically unverified."
+  },
+  "splits_integrity": {
+    "manifest_sizes": {
+      "train_manifest.json": 3077,
+      "val_manifest.json": 1134,
+      "test_al_manifest.json": 381,
+      "test_mz_manifest.json": 720
+    },
+    "hash_overlaps": {
+      "test_al_with_train": 0,
+      "test_al_with_val": 0,
+      "test_mz_with_train": 0,
+      "test_mz_with_val": 0
+    },
+    "sessions_per_split": {
+      "train_manifest.json": {
+        "session_20200515_04h": 1270,
+        "session_20200515_00h": 153,
+        "session_20200515_03h": 345,
+        "session_20200515_05h": 20,
+        "session_20200516_12h": 1289
+      },
+      "val_manifest.json": {
+        "session_20200515_03h": 405,
+        "session_20200515_00h": 26,
+        "session_20200515_04h": 56,
+        "session_20200516_12h": 647
+      },
+      "test_al_manifest.json": {
+        "session_20200514_16h": 381
+      },
+      "test_mz_manifest.json": {
+        "session_20200516_12h": 720
+      }
+    },
+    "session_leakage": {
+      "test_al_with_train": [],
+      "test_mz_with_train": [
+        "session_20200516_12h"
+      ]
+    },
+    "classes_per_split": {
+      "train_manifest.json": {
+        "A": 164,
+        "B": 155,
+        "C": 159,
+        "D": 149,
+        "E": 176,
+        "F": 144,
+        "G": 153,
+        "H": 140,
+        "I": 141,
+        "J": 158,
+        "K": 139,
+        "L": 110,
+        "M": 100,
+        "N": 52,
+        "O": 79,
+        "P": 99,
+        "Q": 79,
+        "R": 126,
+        "S": 70,
+        "T": 139,
+        "U": 131,
+        "V": 85,
+        "W": 61,
+        "X": 67,
+        "Y": 114,
+        "Z": 87
+      },
+      "val_manifest.json": {
+        "A": 45,
+        "B": 44,
+        "C": 48,
+        "D": 44,
+        "E": 33,
+        "F": 37,
+        "G": 45,
+        "H": 42,
+        "I": 36,
+        "J": 41,
+        "K": 25,
+        "L": 47,
+        "M": 37,
+        "N": 54,
+        "O": 60,
+        "P": 50,
+        "Q": 65,
+        "R": 39,
+        "S": 67,
+        "T": 49,
+        "U": 38,
+        "V": 36,
+        "W": 43,
+        "X": 23,
+        "Y": 37,
+        "Z": 49
+      },
+      "test_al_manifest.json": {
+        "A": 23,
+        "B": 27,
+        "C": 25,
+        "D": 22,
+        "E": 27,
+        "F": 17,
+        "G": 23,
+        "H": 23,
+        "I": 18,
+        "J": 22,
+        "K": 80,
+        "L": 74,
+        "M": 0,
+        "N": 0,
+        "O": 0,
+        "P": 0,
+        "Q": 0,
+        "R": 0,
+        "S": 0,
+        "T": 0,
+        "U": 0,
+        "V": 0,
+        "W": 0,
+        "X": 0,
+        "Y": 0,
+        "Z": 0
+      },
+      "test_mz_manifest.json": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0,
+        "F": 0,
+        "G": 0,
+        "H": 0,
+        "I": 0,
+        "J": 0,
+        "K": 0,
+        "L": 0,
+        "M": 38,
+        "N": 52,
+        "O": 43,
+        "P": 67,
+        "Q": 80,
+        "R": 51,
+        "S": 68,
+        "T": 61,
+        "U": 46,
+        "V": 38,
+        "W": 36,
+        "X": 39,
+        "Y": 47,
+        "Z": 54
+      }
+    }
+  },
+  "video_quality_audit": {
+    "recording_C_20261014_164912.mp4": {
+      "ground_truth": "C",
+      "condition": "webcam_frontal",
+      "signer_id": "webcam_signer_01",
+      "total_frames": 146,
+      "accepted_frames": 146,
+      "rejected_frames": 0,
+      "mean_blur_var": 91.31,
+      "mean_brightness": 104.69,
+      "quality_decision": "ACCEPTED"
+    },
+    "recording_C_20261014_165234.mp4": {
+      "ground_truth": "C",
+      "condition": "webcam_second",
+      "signer_id": "webcam_signer_01",
+      "total_frames": 143,
+      "accepted_frames": 143,
+      "rejected_frames": 0,
+      "mean_blur_var": 105.47,
+      "mean_brightness": 109.59,
+      "quality_decision": "ACCEPTED"
+    },
+    "recording_L_20261014_165754.mp4": {
+      "ground_truth": "L",
+      "condition": "webcam_standard",
+      "signer_id": "webcam_signer_01",
+      "total_frames": 146,
+      "accepted_frames": 146,
+      "rejected_frames": 0,
+      "mean_blur_var": 72.21,
+      "mean_brightness": 107.76,
+      "quality_decision": "ACCEPTED"
+    },
+    "recording_A_20261014_165529.mp4": {
+      "ground_truth": "A",
+      "condition": "webcam_standard",
+      "signer_id": "webcam_signer_01",
+      "total_frames": 143,
+      "accepted_frames": 143,
+      "rejected_frames": 0,
+      "mean_blur_var": 259.09,
+      "mean_brightness": 143.66,
+      "quality_decision": "ACCEPTED"
+    },
+    "recording_C_lateral_profile_calibrated.mp4": {
+      "ground_truth": "C",
+      "condition": "webcam_lateral_dark",
+      "signer_id": "webcam_signer_01",
+      "total_frames": 84,
+      "accepted_frames": 0,
+      "rejected_frames": 84,
+      "mean_blur_var": 4.87,
+      "mean_brightness": 9.51,
+      "quality_decision": "REJECTED_ENTIRELY"
+    }
+  }
+}

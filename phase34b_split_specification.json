@@ -1,0 +1,109 @@
+{
+  "specification_metadata": {
+    "title": "ISL Multi-Signer Development Split Specification",
+    "phase": "Phase 34B — Dataset Quality Audit, Leakage Forensics, and Signer-Level Split Freeze",
+    "timestamp": "2026-10-26T17:30:00Z",
+    "status": "PROVISIONAL",
+    "freeze_status": "UNFROZEN_PENDING_DATA_COLLECTION",
+    "version": "1.0.0-provisional",
+    "governance_note": "This specification is strictly PROVISIONAL and cannot be frozen or approved until physical collection, quality auditing, and manifest reconciliation for signer_06 through signer_11 are completed."
+  },
+  "dataset_roles": {
+    "development_train": {
+      "role": "development_train",
+      "target_signers": [
+        "signer_06",
+        "signer_07",
+        "signer_08",
+        "signer_09"
+      ],
+      "approved_legacy_signers": [
+        "signer_01",
+        "signer_04_train"
+      ],
+      "legacy_inclusion_conditions": {
+        "signer_01": "Permitted for training pool only; strictly prohibited from within-signer validation claims due to historical adjacent-frame leakage.",
+        "signer_04_train": "Approved 26 recordings (Letters A-M Condition 1, Letters N-Z Condition 2; 810 frames) with zero recording overlap with signer_04_val."
+      },
+      "manifest_path": "data/collection_manifests/dev_train_manifest.json",
+      "allow_training": true,
+      "collection_target": {
+        "planned_participants": 4,
+        "conditions_per_participant": 3,
+        "letters_per_condition": 26,
+        "takes_per_letter_condition": 3,
+        "planned_takes": 936,
+        "nominal_frames_per_cell": 30,
+        "planned_frames": 28080
+      },
+      "current_status": "NOT_COLLECTED",
+      "actual_takes_collected": 0,
+      "actual_frames_collected": 0
+    },
+    "development_validation": {
+      "role": "development_validation",
+      "target_signers": [
+        "signer_10",
+        "signer_11"
+      ],
+      "approved_legacy_signers": [
+        "signer_04_val"
+      ],
+      "legacy_inclusion_conditions": {
+        "signer_04_val": "Approved 26 recordings (Letters A-M Condition 2, Letters N-Z Condition 1; 811 frames) with zero recording overlap with signer_04_train."
+      },
+      "manifest_path": "data/collection_manifests/dev_val_manifest.json",
+      "allow_training": false,
+      "collection_target": {
+        "planned_participants": 2,
+        "conditions_per_participant": 3,
+        "letters_per_condition": 26,
+        "takes_per_letter_condition": 3,
+        "planned_takes": 468,
+        "nominal_frames_per_cell": 30,
+        "planned_frames": 14040
+      },
+      "current_status": "NOT_COLLECTED",
+      "actual_takes_collected": 0,
+      "actual_frames_collected": 0
+    },
+    "external_holdout": {
+      "role": "external_holdout",
+      "target_signers": [
+        "signer_05"
+      ],
+      "manifest_path": "data/collection_manifests/signer_05_manifest.json",
+      "allow_training": false,
+      "status": "SEALED_QUARANTINED",
+      "takes_count": 52,
+      "frames_count": 1638,
+      "governance_contract": "Permanently sealed and excluded from training, feature engineering, normalization tuning, hyperparameter search, and model selection. Accessible only for final zero-shot generalization evaluation."
+    },
+    "frozen_benchmark": {
+      "role": "frozen_benchmark",
+      "target_signers": [
+        "signer_02",
+        "signer_03"
+      ],
+      "manifest_path": "phase19_frozen_manifest.json",
+      "allow_training": false,
+      "status": "FROZEN_BENCHMARK",
+      "takes_count": 130,
+      "frames_count": 5835,
+      "governance_contract": "Fixed external benchmark. Permanently excluded from training and tuning under the historical governance protocol."
+    }
+  },
+  "freeze_prerequisites": [
+    "1. Complete collection of planned 234 takes for each of signer_06 through signer_11 (total 1,404 takes).",
+    "2. 100% manifest-to-disk reconciliation (zero missing frame files, zero orphaned media).",
+    "3. Quality gate compliance: zero blur failures (<50), brightness in [40, 220], zero unaddressed duplicate hashes.",
+    "4. Split isolation verification: 0 sample overlap, 0 recording overlap, 0 session overlap between dev_train and dev_val.",
+    "5. Cryptographic manifest hashing: Compute and record immutable SHA-256 checksums for dev_train_manifest.json and dev_val_manifest.json."
+  ],
+  "fail_closed_governance_rules": {
+    "unknown_signer_handling": "REJECT with ValueError if signer_id is not in permitted role mapping.",
+    "unauthorized_training_attempt": "REJECT with ValueError if any sample has allow_training=False or originates from signer_05, signer_10, signer_11, signer_02, or signer_03.",
+    "missing_metadata_handling": "REJECT with ValueError if required schema fields (signer_id, letter, condition, source) are absent or null.",
+    "tampered_manifest_handling": "REJECT if SHA-256 manifest hash does not match frozen registry."
+  }
+}

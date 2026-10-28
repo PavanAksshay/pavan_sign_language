@@ -1,0 +1,383 @@
+{
+  "audit_phase": "Phase 21C",
+  "target_signer": "signer_04",
+  "timestamp": "2026-10-23T01:45:00Z",
+  "counts": {
+    "raw_videos_on_disk": 54,
+    "extracted_frames_on_disk": 1625,
+    "manifest_samples_total": 1682,
+    "manifest_samples_superseded": 57,
+    "manifest_samples_quality_rejected": 4,
+    "manifest_samples_usable": 1621,
+    "ledger_records_total": 54,
+    "authoritative_session": "session_20261022_01"
+  },
+  "explanation_57_sample_discrepancy": {
+    "root_cause": "Path collision and frame overwrite caused by identical frame naming templates ({signer}_{session}_{letter}_{frame_index:04d}.jpg) during retakes of Condition 1 E and H.",
+    "superseded_recordings": [
+      {
+        "recording_id": "rec_signer_04_condition_1_E_1792698353",
+        "letter": "E",
+        "condition": "condition_1",
+        "timestamp": "2026-10-22T19:45:58Z",
+        "overwritten_sample_count": 30,
+        "superseded_by": "rec_signer_04_condition_1_E_1792698428"
+      },
+      {
+        "recording_id": "rec_signer_04_condition_1_H_1792698394",
+        "letter": "H",
+        "condition": "condition_1",
+        "timestamp": "2026-10-22T19:46:44Z",
+        "overwritten_sample_count": 27,
+        "superseded_by": "rec_signer_04_condition_1_H_1792698452"
+      }
+    ],
+    "total_superseded_samples": 57,
+    "action_taken": "Preserved in manifest with is_usable=False and rejection_reason='superseded_and_overwritten_by_retake'. Original raw video recordings preserved on disk."
+  },
+  "quality_failures_investigation": {
+    "blur_failures": [
+      {
+        "sample_id": "signer_04_session_20261015_01_D_0003",
+        "frame_path": "data/extracted_frames/signer_04/condition_1/D/signer_04_session_20261015_01_D_0003.jpg",
+        "recording_id": "rec_signer_04_condition_1_D_1792698340",
+        "condition": "condition_1",
+        "letter": "D",
+        "frame_index": 3,
+        "blur_laplacian_var": 49.77,
+        "threshold": 50.0,
+        "forensic_finding": "Sign onset transition motion blur (hands moving up into initial posture at 0.099s).",
+        "status": "rejected_unusable"
+      },
+      {
+        "sample_id": "signer_04_session_20261015_01_W_0003",
+        "frame_path": "data/extracted_frames/signer_04/condition_1/W/signer_04_session_20261015_01_W_0003.jpg",
+        "recording_id": "rec_signer_04_condition_1_W_1792698681",
+        "condition": "condition_1",
+        "letter": "W",
+        "frame_index": 3,
+        "blur_laplacian_var": 49.81,
+        "threshold": 50.0,
+        "forensic_finding": "Sign onset transition motion blur (hands raising into posture at 0.100s).",
+        "status": "rejected_unusable"
+      }
+    ],
+    "zero_hand_failures": [
+      {
+        "sample_id": "signer_04_session_20261015_01_W_0078",
+        "frame_path": "data/extracted_frames/signer_04/condition_1/W/signer_04_session_20261015_01_W_0078.jpg",
+        "recording_id": "rec_signer_04_condition_1_W_1792698681",
+        "condition": "condition_1",
+        "letter": "W",
+        "frame_index": 78,
+        "hands_detected": 0,
+        "forensic_finding": "Sign retraction phase (volunteer lowering hands to lap at 2.60s); landmark confidence dropped below 0.40.",
+        "status": "rejected_unusable"
+      },
+      {
+        "sample_id": "signer_04_session_20261015_01_W_0081",
+        "frame_path": "data/extracted_frames/signer_04/condition_1/W/signer_04_session_20261015_01_W_0081.jpg",
+        "recording_id": "rec_signer_04_condition_1_W_1792698681",
+        "condition": "condition_1",
+        "letter": "W",
+        "frame_index": 81,
+        "hands_detected": 0,
+        "forensic_finding": "Sign retraction phase (volunteer lowering hands to lap at 2.70s); landmark confidence dropped below 0.40.",
+        "status": "rejected_unusable"
+      }
+    ],
+    "impact_on_cell_counts": {
+      "condition_1_D": {
+        "original_frames": 31,
+        "rejected_frames": 1,
+        "usable_frames": 30,
+        "target_satisfied": true
+      },
+      "condition_1_W": {
+        "original_frames": 29,
+        "rejected_frames": 3,
+        "usable_frames": 26,
+        "target_satisfied": true
+      }
+    }
+  },
+  "coverage_matrix": {
+    "condition_1": {
+      "A": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "B": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "C": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "D": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "E": {
+        "usable_count": 31,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "F": {
+        "usable_count": 31,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "G": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "H": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "I": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "J": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "K": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "L": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "M": {
+        "usable_count": 31,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "N": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "O": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "P": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Q": {
+        "usable_count": 31,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "R": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "S": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "T": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "U": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "V": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "W": {
+        "usable_count": 26,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "X": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Y": {
+        "usable_count": 30,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Z": {
+        "usable_count": 31,
+        "meets_target_16": true,
+        "status": "sufficient"
+      }
+    },
+    "condition_2": {
+      "A": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "B": {
+        "usable_count": 33,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "C": {
+        "usable_count": 33,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "D": {
+        "usable_count": 31,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "E": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "F": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "G": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "H": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "I": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "J": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "K": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "L": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "M": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "N": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "O": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "P": {
+        "usable_count": 31,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Q": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "R": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "S": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "T": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "U": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "V": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "W": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "X": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Y": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Z": {
+        "usable_count": 32,
+        "meets_target_16": true,
+        "status": "sufficient"
+      }
+    }
+  },
+  "leakage_checks": {
+    "exact_duplicate_hashes_intra_signer": 0,
+    "historical_split_leakage_hashes": 0,
+    "phase19_frozen_test_leakage_hashes": 0,
+    "is_strictly_leakage_free": true
+  },
+  "verdict": {
+    "status": "READY FOR PHASE 22",
+    "total_usable_frames": 1621,
+    "cells_complete": 52,
+    "min_frames_per_cell": 26,
+    "recommendation": "All 52 signer-condition-letter cells retain between 26 and 33 usable frames (exceeding the >= 16 threshold). Zero data leakage, zero exact duplicates. Fully validated and ready for Phase 22 multi-signer training."
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "phase": "Phase 6 \u2014 Isolate C Classification Errors",
+  "environment_vars": {
+    "ISL_FILTER_EDGE_DETECTIONS": "0",
+    "ISL_CONSERVATIVE_FACE_CLAMP": "0",
+    "ISL_FACE_CLAMP_REQUIRE_HORIZONTAL_OVERLAP": "0",
+    "ISL_FACE_CLAMP_PRIMARY_SAFEGUARD": "0",
+    "ISL_IMPROVED_TWO_HAND_MERGE": "0"
+  },
+  "step1_training_analysis": {
+    "total_images": 486,
+    "aspect_ratio_stats": {
+      "mean": 1.0,
+      "std": 0.0,
+      "min": 1.0,
+      "max": 1.0
+    },
+    "skin_pct_stats": {
+      "mean": 38.0,
+      "std": 25.8
+    },
+    "c_confidence_stats": {
+      "mean": 98.9,
+      "std": 4.9,
+      "median": 100.0,
+      "min": 17.2
+    },
+    "misclassified": [
+      {
+        "filename": "C4.jpg",
+        "predicted": "U",
+        "correct": false,
+        "c_confidence": 17.19,
+        "top_confidence": 49.92,
+        "top3": [
+          [
+            "U",
+            49.92
+          ],
+          [
+            "C",
+            17.19
+          ],
+          [
+            "O",
+            13.36
+          ]
+        ],
+        "aspect_ratio": 1.0,
+        "skin_pct": 24.0
+      }
+    ],
+    "properties_sample": [
+      {
+        "width": 100,
+        "height": 100,
+        "aspect_ratio_h_w": 1.0,
+        "skin_pct": 18.5,
+        "black_pct": 0.0,
+        "edge_pct": 4.1,
+        "mean_brightness": 70.8,
+        "std_brightness": 23.4,
+        "filename": "C1.jpg"
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "aspect_ratio_h_w": 1.0,
+        "skin_pct": 60.3,
+        "black_pct": 5.6,
+        "edge_pct": 15.3,
+        "mean_brightness": 126.7,
+        "std_brightness": 67.2,
+        "filename": "C10.jpg"
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "aspect_ratio_h_w": 1.0,
+        "skin_pct": 23.1,
+        "black_pct": 5.5,
+        "edge_pct": 12.2,
+        "mean_brightness": 62.3,
+        "std_brightness": 62.5,
+        "filename": "C100.jpg"
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "aspect_ratio_h_w": 1.0,
+        "skin_pct": 86.4,
+        "black_pct": 0.5,
+        "edge_pct": 8.9,
+        "mean_brightness": 88.4,
+        "std_brightness": 57.6,
+        "filename": "C101.jpg"
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "aspect_ratio_h_w": 1.0,
+        "skin_pct": 18.8,
+        "black_pct": 0.0,
+        "edge_pct": 3.8,
+        "mean_brightness": 69.0,
+        "std_brightness": 22.7,
+        "filename": "C102.jpg"
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "aspect_ratio_h_w": 1.0,
+        "skin_pct": 35.9,
+        "black_pct": 1.2,
+        "edge_pct": 19.6,
+        "mean_brightness": 155.3,
+        "std_brightness": 49.0,
+        "filename": "C103.jpg"
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "aspect_ratio_h_w": 1.0,
+        "skin_pct": 19.1,
+        "black_pct": 0.0,
+        "edge_pct": 3.9,
+        "mean_brightness": 78.4,
+        "std_brightness": 23.1,
+        "filename": "C104.jpg"
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "aspect_ratio_h_w": 1.0,
+        "skin_pct": 16.6,
+        "black_pct": 0.0,
+        "edge_pct": 3.5,
+        "mean_brightness": 74.0,
+        "std_brightness": 21.6,
+        "filename": "C105.jpg"
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "aspect_ratio_h_w": 1.0,
+        "skin_pct": 36.2,
+        "black_pct": 8.9,
+        "edge_pct": 20.6,
+        "mean_brightness": 83.3,
+        "std_brightness": 63.9,
+        "filename": "C106.jpg"
+      },
+      {
+        "width": 100,
+        "height": 100,
+        "aspect_ratio_h_w": 1.0,
+        "skin_pct": 58.4,
+        "black_pct": 1.2,
+        "edge_pct": 24.6,
+        "mean_brightness": 128.5,
+        "std_brightness": 55.2,
+        "filename": "C107.jpg"
+      }
+    ],
+    "unique_dimensions": [
+      [
+        100,
+        100
+      ]
+    ]
+  },
+  "step2_webcam_analysis_count": 24,
+  "step3_crop_experiments": {
+    "A_production_default": {
+      "config": "A_production_default",
+      "description": "Production defaults (all fixes OFF)",
+      "total_frames_sampled": 30,
+      "detected": 30,
+      "correct_top1": 3,
+      "top1_accuracy_pct": 10.0,
+      "top3_inclusion_pct": 30.0,
+      "c_confidence_mean": 12.3,
+      "c_confidence_max": 93.2,
+      "face_clamps": 20
+    },
+    "B_phase5_all_fixes": {
+      "config": "B_phase5_all_fixes",
+      "description": "Phase 5 all fixes ON",
+      "total_frames_sampled": 30,
+      "detected": 30,
+      "correct_top1": 4,
+      "top1_accuracy_pct": 13.3,
+      "top3_inclusion_pct": 26.7,
+      "c_confidence_mean": 11.3,
+      "c_confidence_max": 84.5,
+      "face_clamps": 0
+    }
+  },
+  "step4_orientation_comparison": {
+    "frontal_original": {
+      "total_detected_frames": 49,
+      "correct_top1": 6,
+      "top1_accuracy_pct": 12.2,
+      "c_confidence_mean": 13.1,
+      "c_confidence_std": 20.9,
+      "c_confidence_max": 70.8,
+      "crop_aspect_mean": 0.654,
+      "crop_aspect_std": 0.149,
+      "prediction_distribution": {
+        "G": 34,
+        "C": 6,
+        "R": 5,
+        "L": 2,
+        "H": 1,
+        "O": 1
+      }
+    },
+    "second_frontal": {
+      "total_detected_frames": 48,
+      "correct_top1": 0,
+      "top1_accuracy_pct": 0.0,
+      "c_confidence_mean": 0.1,
+      "c_confidence_std": 0.1,
+      "c_confidence_max": 0.7,
+      "crop_aspect_mean": 0.884,
+      "crop_aspect_std": 0.056,
+      "prediction_distribution": {
+        "G": 26,
+        "R": 9,
+        "S": 7,
+        "F": 5,
+        "W": 1
+      }
+    }
+  },
+  "step5_confusion_analysis": {
+    "G": {
+      "webcam_confusion_count": 11,
+      "training_samples_checked": 5,
+      "samples": [
+        {
+          "file": "G1.jpg",
+          "predicted": "G",
+          "c_confidence": 0.0,
+          "top_confidence": 99.46
+        },
+        {
+          "file": "G10.jpg",
+          "predicted": "G",
+          "c_confidence": 0.0,
+          "top_confidence": 100.0
+        },
+        {
+          "file": "G100.jpg",
+          "predicted": "G",
+          "c_confidence": 0.0,
+          "top_confidence": 99.95
+        },
+        {
+          "file": "G101.jpg",
+          "predicted": "G",
+          "c_confidence": 0.0,
+          "top_confidence": 97.27
+        },
+        {
+          "file": "G102.jpg",
+          "predicted": "G",
+          "c_confidence": 0.0,
+          "top_confidence": 99.99
+        }
+      ]
+    },
+    "R": {
+      "webcam_confusion_count": 8,
+      "training_samples_checked": 5,
+      "samples": [
+        {
+          "file": "R1.jpg",
+          "predicted": "R",
+          "c_confidence": 0.0,
+          "top_confidence": 97.85
+        },
+        {
+          "file": "R10.jpg",
+          "predicted": "R",
+          "c_confidence": 0.0,
+          "top_confidence": 55.85
+        },
+        {
+          "file": "R100.jpg",
+          "predicted": "R",
+          "c_confidence": 0.0,
+          "top_confidence": 87.82
+        },
+        {
+          "file": "R101.jpg",
+          "predicted": "R",
+          "c_confidence": 0.0,
+          "top_confidence": 97.57
+        },
+        {
+          "file": "R102.jpg",
+          "predicted": "R",
+          "c_confidence": 0.0,
+          "top_confidence": 95.65
+        }
+      ]
+    },
+    "S": {
+      "webcam_confusion_count": 1,
+      "training_samples_checked": 5,
+      "samples": [
+        {
+          "file": "S1.jpg",
+          "predicted": "S",
+          "c_confidence": 0.0,
+          "top_confidence": 99.43
+        },
+        {
+          "file": "S10.jpg",
+          "predicted": "S",
+          "c_confidence": 0.0,
+          "top_confidence": 98.88
+        },
+        {
+          "file": "S100.jpg",
+          "predicted": "S",
+          "c_confidence": 0.0,
+          "top_confidence": 98.91
+        },
+        {
+          "file": "S101.jpg",
+          "predicted": "S",
+          "c_confidence": 0.0,
+          "top_confidence": 99.7
+        },
+        {
+          "file": "S102.jpg",
+          "predicted": "S",
+          "c_confidence": 0.0,
+          "top_confidence": 99.55
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "timestamp": "2026-10-26T03:30:00Z",
+  "feature_pipeline_version": "Model C (Geometry v2 + Occlusion Aware Proxies)",
+  "total_dimensions": 280,
+  "feature_ordering_specification": {
+    "hand_0_wrist_relative_coords": {
+      "index_range": [
+        0,
+        62
+      ],
+      "dimension_count": 63,
+      "description": "21 3D landmarks centered at wrist and normalized by palm scale (||mid_mcp - wrist||)",
+      "translation_invariant": true,
+      "scale_invariant": true,
+      "rotation_invariant": false,
+      "perspective_invariant": false,
+      "rf_feature_importance_pct": 30.61
+    },
+    "hand_0_internal_geometry": {
+      "index_range": [
+        63,
+        124
+      ],
+      "dimension_count": 62,
+      "description": "Normalized distances, angles, curl ratios, palm normal, bounding span",
+      "translation_invariant": true,
+      "scale_invariant": true,
+      "rotation_invariant": true,
+      "perspective_invariant": false,
+      "rf_feature_importance_pct": 37.61,
+      "subgroups": {
+        "tip_to_wrist_dist": 3.221,
+        "tip_to_mcp_dist": 2.229,
+        "extension_ratios": 3.622,
+        "inter_tip_distances": 5.291,
+        "pip_flexion_angles": 3.553,
+        "palm_normal": 1.536,
+        "metadata": 0.393,
+        "curl_ratios": 3.701,
+        "dip_flexion_angles": 2.618,
+        "mcp_base_angles": 2.687,
+        "palm_plane_depths": 2.017,
+        "add_tip_dists": 1.612,
+        "spread_angles": 2.656,
+        "span_features": 2.472
+      }
+    },
+    "hand_1_wrist_relative_coords": {
+      "index_range": [
+        125,
+        187
+      ],
+      "dimension_count": 63,
+      "description": "21 3D landmarks for Hand 1 (zero-padded for 1-hand signs)",
+      "translation_invariant": true,
+      "scale_invariant": true,
+      "rotation_invariant": false,
+      "perspective_invariant": false,
+      "rf_feature_importance_pct": 12.97
+    },
+    "hand_1_internal_geometry": {
+      "index_range": [
+        188,
+        249
+      ],
+      "dimension_count": 62,
+      "description": "Internal geometry features for Hand 1 (zero-padded for 1-hand signs)",
+      "translation_invariant": true,
+      "scale_invariant": true,
+      "rotation_invariant": true,
+      "perspective_invariant": false,
+      "rf_feature_importance_pct": 11.6
+    },
+    "inter_hand_features": {
+      "index_range": [
+        250,
+        263
+      ],
+      "dimension_count": 14,
+      "description": "Wrist distance, 3D displacement, fingertip contact distances, normal alignment",
+      "translation_invariant": true,
+      "scale_invariant": true,
+      "rotation_invariant": false,
+      "perspective_invariant": false,
+      "rf_feature_importance_pct": 4.05
+    },
+    "occlusion_and_contact_proxies": {
+      "index_range": [
+        264,
+        279
+      ],
+      "dimension_count": 16,
+      "description": "Hand presence one-hot, 2D bbox IoU, signed depth offset, palm contact, cross cosines",
+      "translation_invariant": true,
+      "scale_invariant": true,
+      "rotation_invariant": false,
+      "perspective_invariant": false,
+      "rf_feature_importance_pct": 3.16,
+      "features": {
+        "has_0_hands": 0.0,
+        "has_1_hand": 0.004,
+        "has_2_hands": 0.007,
+        "bbox_iou": 0.273,
+        "signed_depth_offset": 0.101,
+        "tip1_to_palm0": 0.204,
+        "mid1_to_palm0": 0.342,
+        "tip0_to_palm1": 0.203,
+        "mid0_to_palm1": 0.265,
+        "min_knuckle_dist": 0.252,
+        "w0_to_idx1": 0.206,
+        "w1_to_idx0": 0.242,
+        "w0_to_w1": 0.302,
+        "scale_ratio": 0.07,
+        "cross_cos0": 0.524,
+        "cross_cos1": 0.162
+      }
+    }
+  },
+  "aggregate_rf_importance_summary": {
+    "raw_3d_coordinates_total_pct": 43.58,
+    "internal_geometry_total_pct": 49.21,
+    "inter_hand_total_pct": 4.05,
+    "occlusion_contact_total_pct": 3.16,
+    "hand_0_total_pct": 68.21,
+    "hand_1_total_pct": 24.57
+  },
+  "invariance_analysis": {
+    "translation_invariance": {
+      "status": "PROVEN_INVARIANT",
+      "mechanism": "All landmark coordinates centered at pts[WRIST] before scaling; inter-hand features compute relative differences"
+    },
+    "scale_invariance": {
+      "status": "PROVEN_INVARIANT",
+      "mechanism": "All distances divided by palm scale ||pts[MID_MCP] - pts[WRIST]||"
+    },
+    "rotation_invariance_3d": {
+      "status": "PROVEN_NON_INVARIANT_FAILING",
+      "impact": "CRITICAL",
+      "details": "Dims 0-62 and 125-187 (126 features, 43.58% total model importance) are raw (x,y,z) relative coordinates in camera space. When a signer tilts their hand or the camera angle changes, coordinates rotate across tree decision boundaries trained on signer_01 and signer_04."
+    },
+    "perspective_invariance": {
+      "status": "PROVEN_NON_INVARIANT_FAILING",
+      "impact": "HIGH",
+      "details": "MediaPipe extracts landmarks from 2D pixel projections. A 15\u00b0 lateral rotation causes finger self-occlusion (H->G) and foreshortening."
+    },
+    "handedness_ordering_invariance": {
+      "status": "SYSTEMATIC_BIAS_IDENTIFIED",
+      "impact": "CRITICAL",
+      "details": "Multi-hand processing sorts hands by horizontal screen coordinate (wrist_x). One-hand signs always place active hand in Hand 0. If a resting lap hand is misidentified as active and sits to the left of the signing hand, the resting hand becomes Hand 0 and the signing hand becomes Hand 1, completely inverting the feature vector."
+    }
+  },
+  "scaler_audit": {
+    "scaler_type": "StandardScaler",
+    "n_features_in": 280,
+    "mean_shape": [
+      280
+    ],
+    "scale_shape": [
+      280
+    ],
+    "zero_scale_dimensions": 0,
+    "min_scale_value": 1.0082487650641095e-06,
+    "max_scale_value": 1.375641594825357,
+    "applied_once_in_inference": true,
+    "training_inference_scaler_alignment": "MATCHED"
+  },
+  "verified_pipeline_findings": [
+    {
+      "id": "FINDING-PIPE-01",
+      "category": "Representation Limitation",
+      "description": "43.58% of Random Forest feature importance relies on un-rotated 3D coordinate features (dims 0-62 and 125-187). These features are not canonicalized to the palm coordinate frame (e.g., wrist-to-middle-MCP axis and palm normal plane).",
+      "status": "VERIFIED_FACT"
+    },
+    {
+      "id": "FINDING-PIPE-02",
+      "category": "Sorting Logic Flaw",
+      "description": "Sorting by screen wrist_x instead of anatomical handedness causes catastrophic Hand 0 / Hand 1 channel inversion whenever a secondary hand is detected to the left of the signing hand.",
+      "status": "VERIFIED_FACT"
+    },
+    {
+      "id": "FINDING-PIPE-03",
+      "category": "Threshold Edge Case",
+      "description": "Lap-hand suppression threshold in select_active_hands requires wrist distance >= 0.35. Signer_05 resting hand in Condition 2 exhibited wrist distance = 0.31, preventing suppression and generating false two-handed signs for L and T.",
+      "status": "VERIFIED_FACT"
+    },
+    {
+      "id": "FINDING-PIPE-04",
+      "category": "Resolution Invariance",
+      "description": "Rescaling from 640x360 to native coordinates has zero effect on geometry features because MediaPipe outputs normalized [0.0, 1.0] coordinates.",
+      "status": "VERIFIED_FACT"
+    }
+  ]
+}

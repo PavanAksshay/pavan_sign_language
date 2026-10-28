@@ -1,0 +1,55 @@
+{
+  "status": "partial_collected",
+  "planning_target_frames": 4680,
+  "signers_target": 3,
+  "conditions_per_signer": 2,
+  "letters_target": 26,
+  "frames_per_class_target": 30,
+  "existing_partitions": {
+    "historical_static_crops": {
+      "signer_count": 1,
+      "signer_ids": [
+        "historical_signer_01"
+      ],
+      "sample_count": 5312,
+      "coverage": "A-Z (26 classes, May 2020 sessions)"
+    },
+    "diagnostic_webcam_videos": {
+      "signer_count": 1,
+      "signer_ids": [
+        "webcam_signer_01"
+      ],
+      "video_count": 5,
+      "total_frames": 662,
+      "videos": [
+        {
+          "video": "recording_A_20261014_165529.mp4",
+          "frame_count": 143
+        },
+        {
+          "video": "recording_C_20261014_164912.mp4",
+          "frame_count": 146
+        },
+        {
+          "video": "recording_C_20261014_165234.mp4",
+          "frame_count": 143
+        },
+        {
+          "video": "recording_C_lateral_profile_calibrated.mp4",
+          "frame_count": 84
+        },
+        {
+          "video": "recording_L_20261014_165754.mp4",
+          "frame_count": 146
+        }
+      ],
+      "coverage": "A, C, L only (October 2026)"
+    }
+  },
+  "missing_requirements": [
+    "Signer 2 data collection across all 26 letters (A-Z) in Condition 1 and Condition 2",
+    "Signer 3 data collection across all 26 letters (A-Z) in Condition 1 and Condition 2",
+    "Complete 26-class continuous video recordings for Signer 1 under Condition 2",
+    "Minimum 30 accepted usable frames per class per condition for Signers 2 and 3"
+  ]
+}

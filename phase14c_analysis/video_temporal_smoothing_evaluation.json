@@ -1,0 +1,442 @@
+{
+  "Frontal C": {
+    "ground_truth": "C",
+    "total_frames": 146,
+    "models": {
+      "YOLO Baseline": {
+        "frame_accuracy": 39.73,
+        "majority_class": "C",
+        "majority_count": 58,
+        "majority_vote_accuracy": 100.0,
+        "flip_rate": 46.9,
+        "max_stable_run": 6,
+        "mean_latency_ms": 365.7,
+        "top3_distribution": [
+          [
+            "C",
+            58
+          ],
+          [
+            "G",
+            38
+          ],
+          [
+            "R",
+            30
+          ]
+        ]
+      },
+      "MediaPipe v1 CNN": {
+        "frame_accuracy": 100.0,
+        "majority_class": "C",
+        "majority_count": 146,
+        "majority_vote_accuracy": 100.0,
+        "flip_rate": 0.0,
+        "max_stable_run": 146,
+        "mean_latency_ms": 72.5,
+        "top3_distribution": [
+          [
+            "C",
+            146
+          ]
+        ]
+      },
+      "Landmark-Only RF": {
+        "frame_accuracy": 0.0,
+        "majority_class": "D",
+        "majority_count": 96,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 17.93,
+        "max_stable_run": 0,
+        "mean_latency_ms": 78.4,
+        "top3_distribution": [
+          [
+            "D",
+            96
+          ],
+          [
+            "P",
+            38
+          ],
+          [
+            "K",
+            12
+          ]
+        ]
+      },
+      "Late-Fusion Raw": {
+        "frame_accuracy": 100.0,
+        "majority_class": "C",
+        "majority_count": 146,
+        "majority_vote_accuracy": 100.0,
+        "flip_rate": 0.0,
+        "max_stable_run": 146,
+        "mean_latency_ms": 78.4,
+        "top3_distribution": [
+          [
+            "C",
+            146
+          ]
+        ]
+      },
+      "Late-Fusion + Smoothed": {
+        "frame_accuracy": 100.0,
+        "majority_class": "C",
+        "majority_count": 146,
+        "majority_vote_accuracy": 100.0,
+        "flip_rate": 0.0,
+        "max_stable_run": 146,
+        "mean_latency_ms": 80.0,
+        "top3_distribution": [
+          [
+            "C",
+            146
+          ]
+        ]
+      }
+    }
+  },
+  "Second C": {
+    "ground_truth": "C",
+    "total_frames": 143,
+    "models": {
+      "YOLO Baseline": {
+        "frame_accuracy": 0.0,
+        "majority_class": "G",
+        "majority_count": 80,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 16.9,
+        "max_stable_run": 0,
+        "mean_latency_ms": 339.6,
+        "top3_distribution": [
+          [
+            "G",
+            80
+          ],
+          [
+            "F",
+            60
+          ],
+          [
+            "R",
+            2
+          ]
+        ]
+      },
+      "MediaPipe v1 CNN": {
+        "frame_accuracy": 30.77,
+        "majority_class": "W",
+        "majority_count": 99,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 4.93,
+        "max_stable_run": 34,
+        "mean_latency_ms": 83.2,
+        "top3_distribution": [
+          [
+            "W",
+            99
+          ],
+          [
+            "C",
+            44
+          ]
+        ]
+      },
+      "Landmark-Only RF": {
+        "frame_accuracy": 0.0,
+        "majority_class": "D",
+        "majority_count": 140,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 4.23,
+        "max_stable_run": 0,
+        "mean_latency_ms": 70.9,
+        "top3_distribution": [
+          [
+            "D",
+            140
+          ],
+          [
+            "L",
+            3
+          ]
+        ]
+      },
+      "Late-Fusion Raw": {
+        "frame_accuracy": 30.77,
+        "majority_class": "W",
+        "majority_count": 99,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 4.93,
+        "max_stable_run": 34,
+        "mean_latency_ms": 70.9,
+        "top3_distribution": [
+          [
+            "W",
+            99
+          ],
+          [
+            "C",
+            44
+          ]
+        ]
+      },
+      "Late-Fusion + Smoothed": {
+        "frame_accuracy": 32.17,
+        "majority_class": "W",
+        "majority_count": 97,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 2.11,
+        "max_stable_run": 37,
+        "mean_latency_ms": 70.2,
+        "top3_distribution": [
+          [
+            "W",
+            97
+          ],
+          [
+            "C",
+            46
+          ]
+        ]
+      }
+    }
+  },
+  "Standard L": {
+    "ground_truth": "L",
+    "total_frames": 146,
+    "models": {
+      "YOLO Baseline": {
+        "frame_accuracy": 87.67,
+        "majority_class": "L",
+        "majority_count": 128,
+        "majority_vote_accuracy": 100.0,
+        "flip_rate": 16.55,
+        "max_stable_run": 38,
+        "mean_latency_ms": 366.4,
+        "top3_distribution": [
+          [
+            "L",
+            128
+          ],
+          [
+            "Y",
+            14
+          ],
+          [
+            "U",
+            3
+          ]
+        ]
+      },
+      "MediaPipe v1 CNN": {
+        "frame_accuracy": 12.33,
+        "majority_class": "Y",
+        "majority_count": 63,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 29.66,
+        "max_stable_run": 6,
+        "mean_latency_ms": 65.4,
+        "top3_distribution": [
+          [
+            "Y",
+            63
+          ],
+          [
+            "U",
+            40
+          ],
+          [
+            "Z",
+            22
+          ]
+        ]
+      },
+      "Landmark-Only RF": {
+        "frame_accuracy": 76.71,
+        "majority_class": "L",
+        "majority_count": 112,
+        "majority_vote_accuracy": 100.0,
+        "flip_rate": 28.28,
+        "max_stable_run": 15,
+        "mean_latency_ms": 74.7,
+        "top3_distribution": [
+          [
+            "L",
+            112
+          ],
+          [
+            "D",
+            34
+          ]
+        ]
+      },
+      "Late-Fusion Raw": {
+        "frame_accuracy": 23.29,
+        "majority_class": "Y",
+        "majority_count": 63,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 28.97,
+        "max_stable_run": 8,
+        "mean_latency_ms": 74.7,
+        "top3_distribution": [
+          [
+            "Y",
+            63
+          ],
+          [
+            "L",
+            34
+          ],
+          [
+            "U",
+            33
+          ]
+        ]
+      },
+      "Late-Fusion + Smoothed": {
+        "frame_accuracy": 25.34,
+        "majority_class": "Y",
+        "majority_count": 64,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 11.72,
+        "max_stable_run": 27,
+        "mean_latency_ms": 71.6,
+        "top3_distribution": [
+          [
+            "Y",
+            64
+          ],
+          [
+            "L",
+            37
+          ],
+          [
+            "U",
+            26
+          ]
+        ]
+      }
+    }
+  },
+  "Webcam A": {
+    "ground_truth": "A",
+    "total_frames": 143,
+    "models": {
+      "YOLO Baseline": {
+        "frame_accuracy": 9.09,
+        "majority_class": "G",
+        "majority_count": 56,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 48.59,
+        "max_stable_run": 2,
+        "mean_latency_ms": 436.8,
+        "top3_distribution": [
+          [
+            "G",
+            56
+          ],
+          [
+            "-",
+            26
+          ],
+          [
+            "C",
+            25
+          ]
+        ]
+      },
+      "MediaPipe v1 CNN": {
+        "frame_accuracy": 7.69,
+        "majority_class": "I",
+        "majority_count": 86,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 26.06,
+        "max_stable_run": 2,
+        "mean_latency_ms": 81.8,
+        "top3_distribution": [
+          [
+            "I",
+            86
+          ],
+          [
+            "J",
+            31
+          ],
+          [
+            "A",
+            11
+          ]
+        ]
+      },
+      "Landmark-Only RF": {
+        "frame_accuracy": 58.04,
+        "majority_class": "A",
+        "majority_count": 83,
+        "majority_vote_accuracy": 100.0,
+        "flip_rate": 43.66,
+        "max_stable_run": 43,
+        "mean_latency_ms": 85.2,
+        "top3_distribution": [
+          [
+            "A",
+            83
+          ],
+          [
+            "G",
+            24
+          ],
+          [
+            "Y",
+            23
+          ]
+        ]
+      },
+      "Late-Fusion Raw": {
+        "frame_accuracy": 15.38,
+        "majority_class": "I",
+        "majority_count": 86,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 23.94,
+        "max_stable_run": 4,
+        "mean_latency_ms": 85.2,
+        "top3_distribution": [
+          [
+            "I",
+            86
+          ],
+          [
+            "J",
+            23
+          ],
+          [
+            "A",
+            22
+          ]
+        ]
+      },
+      "Late-Fusion + Smoothed": {
+        "frame_accuracy": 16.08,
+        "majority_class": "I",
+        "majority_count": 88,
+        "majority_vote_accuracy": 0.0,
+        "flip_rate": 11.97,
+        "max_stable_run": 9,
+        "mean_latency_ms": 84.6,
+        "top3_distribution": [
+          [
+            "I",
+            88
+          ],
+          [
+            "A",
+            23
+          ],
+          [
+            "J",
+            22
+          ]
+        ]
+      }
+    }
+  }
+}

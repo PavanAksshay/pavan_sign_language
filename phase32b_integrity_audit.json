@@ -1,0 +1,133 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 32B — Palm-Canonical Rotation-Invariant Feature Ablation",
+    "timestamp": "2026-10-26T06:42:00Z",
+    "overall_integrity_status": "PASS",
+    "evaluator": "Antigravity Engineering Pair"
+  },
+  "governance_isolation": {
+    "signer_05_holdout_quarantine": {
+      "status": "VERIFIED_SEALED_UNTOUCHED",
+      "inspected_for_tuning": false,
+      "recordings_evaluated": 0,
+      "notes": "signer_05 was strictly preserved as a sealed external holdout. No models, scalers, features, or thresholds used signer_05."
+    },
+    "signer_02_signer_03_benchmark": {
+      "status": "VERIFIED_UNTOUCHED",
+      "used_for_tuning": false,
+      "notes": "Frozen benchmark data from signer_02 and signer_03 were not used for development, training, or tuning."
+    },
+    "permitted_development_data_used": {
+      "signer_01_train": {
+        "samples": 3077,
+        "source": "phase22_analysis/features_cache/signer_01_train_landmarks.json"
+      },
+      "signer_01_val": {
+        "samples": 1134,
+        "source": "phase22_analysis/features_cache/signer_01_val_landmarks.json"
+      },
+      "signer_04_train": {
+        "samples": 810,
+        "recordings": 26,
+        "condition_1_samples": 395,
+        "condition_2_samples": 415
+      },
+      "signer_04_val": {
+        "samples": 811,
+        "recordings": 26,
+        "condition_1_samples": 394,
+        "condition_2_samples": 417
+      },
+      "signer_04_recording_leakage": "0 shared recordings (PASS)"
+    }
+  },
+  "immutable_artifact_hashes": {
+    "model_c_rf": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib",
+      "sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "status": "MATCH"
+    },
+    "model_c_scaler": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib",
+      "sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "status": "MATCH"
+    },
+    "hand_landmarker_task": {
+      "path": "App/include50_model/hand_landmarker.task",
+      "sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+      "status": "MATCH"
+    },
+    "phase19_frozen_manifest": {
+      "path": "phase19_frozen_manifest.json",
+      "sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "status": "MATCH"
+    },
+    "phase23_predictions": {
+      "path": "phase23_predictions.csv",
+      "sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "status": "MATCH"
+    },
+    "phase30_evaluation_manifest": {
+      "path": "phase30_evaluation_manifest.json",
+      "sha256": "81e2efee5b3c74d1a5b39146888b34e63915802b02f64cc2c55f2b84ec1bf4de",
+      "status": "MATCH"
+    },
+    "phase30_independent_signer_metrics": {
+      "path": "phase30_independent_signer_metrics.json",
+      "sha256": "b420dc17b1b0d772133c3c6335e9b5f4d9a8242b97c375dcd8fcda19878a6460",
+      "status": "MATCH"
+    }
+  },
+  "production_defaults_verified": {
+    "ISL_BACKEND_DETECTOR": "yolo",
+    "ISL_RECOGNITION_ARCH": "standard",
+    "ISL_TEMPORAL_SMOOTHING": 0,
+    "ISL_SHADOW_MODE": 0,
+    "ISL_MEDIAPIPE_DELEGATE": "cpu",
+    "ISL_MODEL_C_RESOLUTION": "native",
+    "status": "VERIFIED_INTACT"
+  },
+  "experimental_model_provenance": {
+    "models_evaluated": [
+      {
+        "name": "Variant A (Production Baseline)",
+        "classifier": "Frozen Model C RF (multisigner)",
+        "features": "280d Camera-space Phase 32A features",
+        "signer_04_val_acc": 1.0,
+        "signer_01_val_acc": 0.6869
+      },
+      {
+        "name": "Variant B (Zero-Shot Canonical)",
+        "classifier": "Frozen Model C RF (multisigner)",
+        "features": "280d Palm-canonical features",
+        "signer_04_val_acc": 0.6794,
+        "signer_01_val_acc": 0.2090
+      },
+      {
+        "name": "Variant C (Retrained Canonical)",
+        "classifier": "Experimental RF (300 trees, depth=14, leaf=2)",
+        "features": "280d Palm-canonical features (non-mirrored)",
+        "signer_04_val_acc": 0.9334,
+        "signer_01_val_acc": 0.6279
+      },
+      {
+        "name": "Variant D (Retrained Mirrored Canonical)",
+        "classifier": "Experimental RF (300 trees, depth=14, leaf=2)",
+        "features": "280d Palm-canonical features (anatomically mirrored for left hand)",
+        "signer_04_val_acc": 0.9383,
+        "signer_01_val_acc": 0.6358
+      }
+    ]
+  },
+  "final_scientific_verdict": {
+    "verdict": "FEATURE STABILITY OR SIGN DISTINCTION REGRESSED",
+    "rationale": "Expressing hand landmarks strictly in a local palm-canonical frame successfully achieves mathematical in-plane rotation robustness (+8.26% advantage at -45 deg rotation over baseline). However, in Indian Sign Language, global hand orientation relative to the signer/camera is phonemic, not noise. Local palm canonicalization normalizes out the global hand orientation, causing recognition of orientation-dependent signs to regress sharply on standard upright signing: Letter H recall collapses from 100% to 41%, Letter R collapses from 100% to 67%, Letter L collapses from 74% to 49%, and overall signer_04_val accuracy drops from 100.00% to 93.34%. Consequently, pure palm canonicalization cannot replace the existing camera-space feature representation without severe performance loss."
+  },
+  "test_suite_status": {
+    "total_tests": 265,
+    "passed": 265,
+    "failed": 0,
+    "errors": 0,
+    "status": "PASS"
+  }
+}

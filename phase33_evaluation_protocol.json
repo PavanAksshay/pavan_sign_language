@@ -1,0 +1,164 @@
+{
+  "protocol_metadata": {
+    "title": "Phase 33 — Cross-Signer Generalization Evaluation Protocol & Next-Phase Acceptance Gates",
+    "version": "1.0.0",
+    "status": "APPROVED_FOR_FUTURE_PHASES",
+    "governance": {
+      "sealed_holdout": "signer_05 (STRICTLY_ISOLATED)",
+      "frozen_benchmark": "signer_02, signer_03 (STRICTLY_ISOLATED)",
+      "permitted_signers_current": ["signer_01", "signer_04"],
+      "model_retraining_permitted_in_phase33": false
+    }
+  },
+  "current_two_signer_evaluation_protocol": {
+    "fold_1_zero_shot_cross_signer": {
+      "name": "Signer-01 -> Signer-04 Zero-Shot Cross-Signer Generalization",
+      "train_partition": "signer_01_train (3,077 frames)",
+      "test_partition": "signer_04_usable (1,621 frames)",
+      "purpose": "Directly measures zero-shot transfer to an unseen signer with different hand proportions and camera angles without any training exposure to that person."
+    },
+    "fold_2_multi_signer_recording_holdout": {
+      "name": "Phase 22/32 Multi-Signer Balanced Recording Holdout",
+      "train_partition": "signer_01_train (3,077 frames) + signer_04_train (810 frames, 26 recordings)",
+      "test_partition": "signer_04_val (811 frames, 26 recordings, zero recording overlap)",
+      "purpose": "Measures within-signer condition generalization and recording holdout performance."
+    },
+    "acknowledged_limitation": "With only 2 development signers, N=2 is mathematically insufficient to conduct high-variance k-fold cross-validation across diverse physical phenotypes, skin tones, hand sizes, and lighting conditions. Expanding the development pool is an imperative prerequisite for next-generation model training."
+  },
+  "future_multi_signer_collection_plan": {
+    "target_cohort": {
+      "new_signers_count": 6,
+      "signer_id_range": ["signer_06", "signer_07", "signer_08", "signer_09", "signer_10", "signer_11"],
+      "demographic_diversity": {
+        "biological_sex": "50% female, 50% male",
+        "hand_sizes": "2 small (<17cm), 2 medium (17-19cm), 2 large (>19cm) hand length",
+        "skin_tones": "Fitzpatrick scale representation across Types I-VI",
+        "age_range": "18 - 60 years"
+      }
+    },
+    "capture_matrix_per_signer": {
+      "classes": "All 26 ISL letters (A through Z)",
+      "conditions": [
+        {
+          "condition_id": "condition_1",
+          "name": "Standard Desktop Frontal",
+          "camera_angle": "0 deg pitch, 0 deg yaw, eye/chest level",
+          "distance": "0.7m - 0.8m",
+          "resting_hands": "Both hands active or inactive hand completely out of frame",
+          "lighting": "Neutral indoor diffuse lighting"
+        },
+        {
+          "condition_id": "condition_2",
+          "name": "Angled Laptop with Lap Rest",
+          "camera_angle": "25-35 deg downward pitch, elevated view",
+          "distance": "0.6m - 0.8m",
+          "resting_hands": "For 1-handed signs, inactive hand rests visibly in lap/lower torso",
+          "lighting": "Single-source side/overhead lighting"
+        },
+        {
+          "condition_id": "condition_3",
+          "name": "Distance & Ambient Variation",
+          "camera_angle": "Variable (5-15 deg lateral tilt)",
+          "distance": "1.0m - 1.2m (smaller hand bounding box in frame)",
+          "resting_hands": "Natural relaxed posture",
+          "lighting": "Warm/dim or back-lit ambient challenge"
+        }
+      ],
+      "takes_per_cell": 3,
+      "total_takes_per_signer": 234,
+      "take_duration_seconds": 2.5,
+      "stable_keyframes_per_take": 15,
+      "expected_usable_frames_per_signer": 3510,
+      "total_cohort_frames": 21060
+    },
+    "quality_control_gates": {
+      "min_video_resolution": "1920x1080 @ 30fps (or minimum 1280x720)",
+      "laplacian_blur_threshold": 60.0,
+      "mediapipe_hand_confidence": 0.50,
+      "min_hand_bounding_box_ratio": 0.025,
+      "duplicate_rejection": "Deterministic CRC32 and perceptual hash check to reject duplicate takes"
+    },
+    "dataset_role_assignments": {
+      "development_training_pool": ["signer_06", "signer_07", "signer_08", "signer_09", "signer_01", "signer_04_train"],
+      "development_validation_pool": ["signer_10", "signer_11", "signer_04_val"],
+      "quarantined_sealed_holdout": ["signer_05"],
+      "quarantined_frozen_benchmark": ["signer_02", "signer_03"]
+    }
+  },
+  "candidate_modeling_strategies_audit": [
+    {
+      "strategy_id": "M1_DATA_SCALING",
+      "name": "Multi-Signer Data Expansion with Frozen Feature Schema (280d)",
+      "description": "Retrain Model C Random Forest using 280d features on the expanded 6-signer cohort (15,000+ diverse frames) without altering the feature schema or pipeline architecture.",
+      "complexity": "LOW",
+      "risk": "LOW",
+      "rationale": "Directly addresses the root cause of cross-signer failure (N=2) without introducing feature dimensionality or compatibility regressions."
+    },
+    {
+      "strategy_id": "M2_EXPLICIT_ORIENTATION_EXPANSION",
+      "name": "Variant B 296d Feature Augmentation",
+      "description": "Include the 16 explicit orientation dimensions (longitudinal and transverse unit vectors, roll angles) validated in Phase 32C alongside the 280d baseline.",
+      "complexity": "LOW",
+      "risk": "LOW-MEDIUM",
+      "rationale": "Showed consistent +2.22% zero-shot cross-signer gains and protected Letter R (97%) and H (47%) in Phase 32C."
+    },
+    {
+      "strategy_id": "M3_TEMPORAL_MODELING",
+      "name": "Sliding-Window Temporal Sequence Model (GRU / 1D-CNN)",
+      "description": "Evaluate temporal aggregation across 5-10 consecutive landmark frames to disambiguate dynamic transitions (e.g., J, Z, motion artifacts).",
+      "complexity": "MEDIUM-HIGH",
+      "risk": "MEDIUM",
+      "rationale": "Cannot be evaluated on isolated static frames; requires continuous multi-frame video takes from new data collection."
+    },
+    {
+      "strategy_id": "M4_APPEARANCE_LANDMARK_HYBRID",
+      "name": "Late-Fusion Landmark + Visual Feature Embedding",
+      "description": "Combine the 280d landmark vector with compact CNN/MobileNet visual embeddings from the hand crop.",
+      "complexity": "HIGH",
+      "risk": "HIGH",
+      "rationale": "High computational cost, risk of skin-tone overfitting, and exceeds 30ms latency budget on CPU."
+    }
+  ],
+  "predeclared_acceptance_gates": {
+    "gate_1_overall_accuracy": {
+      "metric": "Macro Top-1 Accuracy across held-out development signers (signer_10, signer_11)",
+      "threshold": ">= 75.0%",
+      "rationale": "Represents a decisive jump from the current 40-59% cross-signer baseline."
+    },
+    "gate_2_overall_macro_f1": {
+      "metric": "Macro-F1 across all 26 classes on held-out signers",
+      "threshold": ">= 0.7200",
+      "rationale": "Ensures balanced recognition across both common and rare signs."
+    },
+    "gate_3_per_letter_minimum_recall": {
+      "metric": "Per-class recall on held-out signers",
+      "threshold": ">= 50.0% on all 26 classes, >= 75.0% on at least 20 classes",
+      "rationale": "Guarantees no dead classes."
+    },
+    "gate_4_orientation_sensitive_safety": {
+      "metric": "Recall on critical orientation signs (H, R, L, Y, P, Q)",
+      "threshold": "No drop greater than 2.0% relative to upright baseline",
+      "rationale": "Guarantees no regression on phonemic orientation."
+    },
+    "gate_5_cross_signer_consistency": {
+      "metric": "Accuracy variance across independent held-out signers",
+      "threshold": "|Acc(signer_10) - Acc(signer_11)| <= 12.0%",
+      "rationale": "Verifies that the model is truly signer-independent."
+    },
+    "gate_6_condition_robustness": {
+      "metric": "Condition 2 vs Condition 1 accuracy gap",
+      "threshold": "Acc(Condition 2) >= Acc(Condition 1) - 5.0%",
+      "rationale": "Ensures robustness against elevated camera angles and lap hands."
+    },
+    "gate_7_latency_budget": {
+      "metric": "Single-frame CPU inference latency",
+      "threshold": "p50 <= 25.0ms, p95 <= 33.0ms",
+      "rationale": "Strictly guarantees 30 FPS real-time operation on CPU."
+    },
+    "gate_8_governance_and_leakage": {
+      "metric": "Sealed holdout quarantine & zero recording leakage",
+      "threshold": "100% verified (0 shared recordings between train and val; signer_05 completely sealed)",
+      "rationale": "Mandatory scientific integrity requirement."
+    }
+  }
+}

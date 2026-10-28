@@ -1,0 +1,22 @@
+{
+  "audit_timestamp": "2026-10-15T16:14:42Z",
+  "phase": "Phase 16",
+  "target_planned_frames": 3120,
+  "target_planned_recordings": 104,
+  "signer_02_recordings_found": 0,
+  "signer_03_recordings_found": 0,
+  "existing_webcam_recordings": [
+    "recording_C_20261014_165234.mp4",
+    "recording_C_lateral_profile_calibrated.mp4",
+    "recording_L_20261014_165754.mp4",
+    "recording_A_20261014_165529.mp4",
+    "recording_C_20261014_164912.mp4"
+  ],
+  "letters_covered_in_video": [
+    "A",
+    "C",
+    "L"
+  ],
+  "physical_collection_complete": false,
+  "status_message": "Capture protocol, ingestion hooks, and quality gates are validated and armed. Physical recording sessions for signer_02 and signer_03 have not yet been performed in this workspace. Zero fake frames or synthetic labels have been fabricated."
+}

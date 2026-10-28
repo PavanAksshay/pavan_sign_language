@@ -1,0 +1,209 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ISL_MultiSigner_Benchmark_Sample",
+  "type": "object",
+  "required": [
+    "sample_id",
+    "signer_id",
+    "session_id",
+    "recording_id",
+    "letter",
+    "confirmation_method",
+    "condition",
+    "detection",
+    "quality",
+    "source"
+  ],
+  "properties": {
+    "sample_id": {
+      "type": "string"
+    },
+    "signer_id": {
+      "type": "string",
+      "enum": [
+        "signer_01",
+        "signer_02",
+        "signer_03",
+        "signer_04",
+        "signer_05",
+        "signer_06",
+        "signer_07",
+        "signer_08",
+        "signer_09",
+        "signer_10",
+        "signer_11"
+      ]
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "recording_id": {
+      "type": "string"
+    },
+    "letter": {
+      "type": "string",
+      "pattern": "^[A-Z]$"
+    },
+    "confirmation_method": {
+      "type": "string",
+      "enum": [
+        "signer_confirmed",
+        "expert_verified",
+        "dual_annotator_consensus"
+      ]
+    },
+    "condition": {
+      "type": "object",
+      "required": [
+        "lighting",
+        "background",
+        "camera_position",
+        "distance_cm"
+      ],
+      "properties": {
+        "lighting": {
+          "type": "string",
+          "enum": [
+            "ambient_natural",
+            "indoor_overhead",
+            "low_light"
+          ]
+        },
+        "background": {
+          "type": "string",
+          "enum": [
+            "plain_wall",
+            "textured_office",
+            "cluttered_home"
+          ]
+        },
+        "camera_position": {
+          "type": "string",
+          "enum": [
+            "frontal_eye_level",
+            "frontal_low_angle",
+            "diagonal_15deg"
+          ]
+        },
+        "distance_cm": {
+          "type": "integer",
+          "minimum": 40,
+          "maximum": 150
+        },
+        "camera_yaw_deg": {
+          "type": "number",
+          "minimum": -90.0,
+          "maximum": 90.0
+        },
+        "camera_pitch_deg": {
+          "type": "number",
+          "minimum": -90.0,
+          "maximum": 90.0
+        },
+        "distance_measurement_method": {
+          "type": "string",
+          "enum": [
+            "measured",
+            "operator_reported",
+            "nominal"
+          ]
+        },
+        "lap_hand_resting": {
+          "type": "boolean"
+        },
+        "measured_resolution": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "observed_fps": {
+          "type": "number",
+          "minimum": 0.0
+        }
+      }
+    },
+    "detection": {
+      "type": "object",
+      "required": [
+        "hands_detected",
+        "handedness",
+        "scores",
+        "lap_hand_suppressed"
+      ],
+      "properties": {
+        "hands_detected": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "handedness": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Left",
+              "Right",
+              "unknown"
+            ]
+          }
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "lap_hand_suppressed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": [
+        "blur_laplacian_var",
+        "mean_brightness",
+        "is_usable"
+      ],
+      "properties": {
+        "blur_laplacian_var": {
+          "type": "number"
+        },
+        "mean_brightness": {
+          "type": "number"
+        },
+        "is_usable": {
+          "type": "boolean"
+        },
+        "rejection_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "video_path",
+        "frame_index",
+        "timestamp_sec"
+      ],
+      "properties": {
+        "video_path": {
+          "type": "string"
+        },
+        "frame_index": {
+          "type": "integer"
+        },
+        "timestamp_sec": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,325 @@
+{
+  "phase": 25,
+  "title": "Model C Performance Optimization, Delegate Benchmarking, and Shadow Isolation Audit",
+  "system_profile": {
+    "os": "Darwin",
+    "os_version": "26.6.2",
+    "darwin_release": "25.6.0",
+    "machine": "arm64",
+    "processor": "Apple M1",
+    "cpu_count_logical": 8,
+    "python_version": "3.12.4",
+    "numpy_version": "2.5.4",
+    "scikit_learn_version": "1.9.1",
+    "joblib_version": "1.6.0",
+    "opencv_version": "4.10.0",
+    "mediapipe_version": "1.1.0",
+    "mediapipe_model_path": "/Users/pavanaksshay/pavan_sign_language/App/include50_model/hand_landmarker.task",
+    "mediapipe_model_bytes": 7819105
+  },
+  "classifier_timing_investigation": {
+    "discrepancy_explanation": "Phase 23 reported 0.16 ms because it measured AMORTIZED batch throughput over N=3,329 frames (total_batch_time / 3,329). Phase 22 (27.15 ms) and Phase 24 (27.23 ms) measured SINGLE-SAMPLE (N=1) sequential inference latency. In single-sample mode with n_jobs=-1, joblib thread-pool management and IPC synchronization across 8 CPU cores consumes ~14-16 ms of overhead per call. Setting n_jobs=1 bypasses thread synchronization completely, dropping single-sample classifier inference from 26.28 ms to 12.09 ms (>2.1x speedup) with 100% bit-exact probability outputs.",
+    "mathematical_invariance": {
+      "max_absolute_probability_difference": 0.0,
+      "predictions_identical": true,
+      "strictly_equivalent": true
+    },
+    "single_sample_njobs_neg1_ms": {
+      "scaler_transform": {
+        "count": 100,
+        "mean": 0.233,
+        "median": 0.202,
+        "p90": 0.264,
+        "p95": 0.353,
+        "p99": 0.877,
+        "min": 0.176,
+        "max": 1.118,
+        "std": 0.125
+      },
+      "predict_proba": {
+        "count": 100,
+        "mean": 29.611,
+        "median": 26.848,
+        "p90": 38.64,
+        "p95": 41.832,
+        "p99": 87.689,
+        "min": 22.765,
+        "max": 115.667,
+        "std": 12.546
+      },
+      "predict_only": {
+        "count": 100,
+        "mean": 31.199,
+        "median": 26.683,
+        "p90": 36.446,
+        "p95": 53.468,
+        "p99": 89.975,
+        "min": 23.736,
+        "max": 157.944,
+        "std": 17.845
+      },
+      "scaler_plus_predict_proba": {
+        "count": 100,
+        "mean": 29.844,
+        "median": 27.048,
+        "p90": 38.911,
+        "p95": 42.673,
+        "p99": 88.266,
+        "min": 22.967,
+        "max": 116.785,
+        "std": 12.651
+      }
+    },
+    "single_sample_njobs_1_ms": {
+      "scaler_transform": {
+        "count": 100,
+        "mean": 0.174,
+        "median": 0.161,
+        "p90": 0.219,
+        "p95": 0.238,
+        "p99": 0.266,
+        "min": 0.116,
+        "max": 0.425,
+        "std": 0.042
+      },
+      "predict_proba": {
+        "count": 100,
+        "mean": 14.184,
+        "median": 13.772,
+        "p90": 14.598,
+        "p95": 15.323,
+        "p99": 18.895,
+        "min": 13.137,
+        "max": 35.631,
+        "std": 2.287
+      },
+      "predict_only": {
+        "count": 100,
+        "mean": 14.615,
+        "median": 13.851,
+        "p90": 14.903,
+        "p95": 15.895,
+        "p99": 26.674,
+        "min": 13.21,
+        "max": 54.345,
+        "std": 4.272
+      },
+      "scaler_plus_predict_proba": {
+        "count": 100,
+        "mean": 14.358,
+        "median": 13.932,
+        "p90": 14.818,
+        "p95": 15.548,
+        "p99": 19.161,
+        "min": 13.292,
+        "max": 36.057,
+        "std": 2.317
+      }
+    },
+    "amortized_batch_3329_samples_ms": {
+      "amortized_per_sample_njobs_neg1_ms": 0.019,
+      "amortized_per_sample_njobs_1_ms": 0.036
+    }
+  },
+  "mediapipe_delegate_benchmarking": {
+    "coreml_delegate_evaluation": {
+      "supported_in_tasks_api": false,
+      "delegate_enum_members": [
+        "CPU",
+        "GPU"
+      ],
+      "notes": "MediaPipe 1.1.0 Python Tasks API only exposes CPU and GPU delegates. Core ML delegate is not exposed or supported in the Python mediapipe-tasks-vision package on macOS."
+    },
+    "cpu_delegate_benchmark": {
+      "initialization_ms": 739.55,
+      "steady_state_detection_ms": {
+        "count": 60,
+        "mean": 60.069,
+        "median": 59.159,
+        "p90": 61.522,
+        "p95": 70.678,
+        "p99": 88.405,
+        "min": 40.643,
+        "max": 93.716,
+        "std": 7.612
+      },
+      "failure_rate_pct": 0.0,
+      "avg_hands_detected": 1.68
+    },
+    "gpu_delegate_benchmark": {
+      "supported": true,
+      "backend": "Metal (Apple Silicon)",
+      "required_image_format": "SRGBA (4-channel)",
+      "initialization_ms": 636.58,
+      "steady_state_detection_ms": {
+        "count": 60,
+        "mean": 18.537,
+        "median": 16.31,
+        "p90": 20.96,
+        "p95": 40.65,
+        "p99": 44.891,
+        "min": 10.214,
+        "max": 48.533,
+        "std": 7.415
+      },
+      "failure_rate_pct": 0.0,
+      "avg_hands_detected": 1.68,
+      "speedup_vs_cpu": 3.63
+    },
+    "cpu_gpu_output_parity": {
+      "evaluated_pairs": 60,
+      "hand_count_match_pct": 100.0,
+      "mean_feature_vector_cosine_similarity": 0.9909,
+      "predicted_letter_agreement_pct": 100.0
+    }
+  },
+  "shadow_mode_isolation_audit": {
+    "mode_a_production_baseline_ms": {
+      "count": 60,
+      "mean": 9775.314,
+      "median": 7010.836,
+      "p90": 25727.496,
+      "p95": 28538.888,
+      "p99": 35088.333,
+      "min": 433.615,
+      "max": 36767.781,
+      "std": 9419.616
+    },
+    "mode_b1_model_c_cpu_baseline_ms": {
+      "count": 60,
+      "mean": 336.787,
+      "median": 249.833,
+      "p90": 533.255,
+      "p95": 900.722,
+      "p99": 1486.085,
+      "min": 148.628,
+      "max": 1736.185,
+      "std": 273.654
+    },
+    "mode_b2_model_c_gpu_optimized_ms": {
+      "count": 60,
+      "mean": 227.077,
+      "median": 200.85,
+      "p90": 386.397,
+      "p95": 415.842,
+      "p99": 524.901,
+      "min": 105.531,
+      "max": 616.977,
+      "std": 105.844
+    },
+    "mode_c1_synchronous_shadow_ms": {
+      "production_response_latency": {
+        "count": 60,
+        "mean": 4096.078,
+        "median": 1551.979,
+        "p90": 9375.433,
+        "p95": 14472.542,
+        "p99": 27150.513,
+        "min": 498.646,
+        "max": 29740.857,
+        "std": 5948.284
+      },
+      "response_latency_overhead_vs_mode_a_ms": {
+        "count": 60,
+        "mean": -5679.236,
+        "median": -4122.307,
+        "p90": 6305.456,
+        "p95": 12999.638,
+        "p99": 23171.562,
+        "min": -35363.022,
+        "max": 25893.723,
+        "std": 12182.579
+      },
+      "predictions_identical_to_baseline": true,
+      "confidences_identical_to_baseline": true
+    },
+    "mode_c2_asynchronous_bounded_shadow_ms": {
+      "production_response_latency": {
+        "count": 60,
+        "mean": 1309.126,
+        "median": 698.314,
+        "p90": 1863.838,
+        "p95": 5476.799,
+        "p99": 7464.359,
+        "min": 354.521,
+        "max": 7903.69,
+        "std": 1661.801
+      },
+      "response_latency_overhead_vs_mode_a_ms": {
+        "count": 60,
+        "mean": -8466.188,
+        "median": -6161.018,
+        "p90": -305.386,
+        "p95": -169.363,
+        "p99": 71.717,
+        "min": -35817.895,
+        "max": 205.36,
+        "std": 8844.322
+      },
+      "predictions_identical_to_baseline": true,
+      "confidences_identical_to_baseline": true,
+      "shadow_worker_telemetry": {
+        "running": true,
+        "submitted_count": 60,
+        "processed_count": 60,
+        "dropped_count": 0,
+        "error_count": 0,
+        "drop_rate_pct": 0.0,
+        "last_result": {
+          "enabled": true,
+          "mode": "async",
+          "status": "success",
+          "model_name": "Model C (Occlusion-Aware Geometry Random Forest)",
+          "predicted_letter": "Z",
+          "confidence": 83.75,
+          "top_3": [
+            [
+              "Z",
+              83.75
+            ],
+            [
+              "R",
+              2.89
+            ],
+            [
+              "Y",
+              2.41
+            ]
+          ],
+          "hand_count": 2,
+          "feature_status": "detected_2_hands",
+          "landmark_detection_latency_ms": 16.9,
+          "feature_extraction_latency_ms": 1.47,
+          "classifier_inference_latency_ms": 45.11,
+          "shadow_execution_latency_ms": 64.82,
+          "queue_wait_ms": 0.32,
+          "frame_age_ms": 794.96,
+          "production_response_latency_ms": 729.82,
+          "production_predicted_letter": "I",
+          "production_confidence": 42.54,
+          "match_production": false,
+          "queue_stats": {
+            "submitted": 60,
+            "processed": 60,
+            "dropped": 0,
+            "drop_rate_pct": 0.0
+          }
+        }
+      }
+    },
+    "production_safety_invariance": {
+      "c1_sync_zero_production_drift": true,
+      "c2_async_zero_production_drift": true
+    }
+  },
+  "performance_gate_evaluation": {
+    "target_metric": "End-to-end full-pipeline p95 latency <= 100 ms",
+    "cpu_baseline_p50_ms": 249.833,
+    "cpu_baseline_p95_ms": 900.722,
+    "accelerated_gpu_p50_ms": 200.85,
+    "accelerated_gpu_p95_ms": 415.842,
+    "speedup_ratio": 2.17,
+    "gate_passed_under_gpu_delegate": false,
+    "verdict": "IMPROVED BUT PERFORMANCE GATE NOT MET"
+  }
+}

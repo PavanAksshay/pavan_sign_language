@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-10-26T03:30:00Z",
+  "phase": "Phase 31 \u2014 Cross-Signer Generalization Root-Cause Audit",
+  "overall_integrity_status": "PASS",
+  "quarantined_holdout_status": "VERIFIED_UNTOUCHED",
+  "signer_05_holdout_audit": {
+    "used_in_training": false,
+    "used_in_validation": false,
+    "used_in_fitting": false,
+    "used_in_calibration": false,
+    "used_in_hyperparameter_tuning": false,
+    "used_in_feature_selection": false,
+    "total_signer_05_frames_in_manifest": 1638,
+    "holdout_leakage_detected": false
+  },
+  "production_defaults_verified": {
+    "ISL_BACKEND_DETECTOR": "yolo",
+    "ISL_RECOGNITION_ARCH": "standard",
+    "ISL_TEMPORAL_SMOOTHING": false,
+    "ISL_SHADOW_MODE": false,
+    "ISL_MEDIAPIPE_DELEGATE": "cpu",
+    "ISL_MODEL_C_RESOLUTION": "native",
+    "production_defaults_intact": true
+  },
+  "repository_test_suite": {
+    "command": "/Users/pavanaksshay/venv/bin/python3 -m unittest discover tests -p 'test_*.py'",
+    "tests_run": 246,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "status": "OK",
+    "pass_rate_pct": 100.0,
+    "duration_seconds": 80.28
+  },
+  "artifacts_audited": {
+    "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib": {
+      "exists": true,
+      "current_sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "expected_sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "matches": true
+    },
+    "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib": {
+      "exists": true,
+      "current_sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "expected_sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "matches": true
+    },
+    "App/include50_model/hand_landmarker.task": {
+      "exists": true,
+      "current_sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+      "expected_sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+      "matches": true
+    },
+    "phase19_frozen_manifest.json": {
+      "exists": true,
+      "current_sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "expected_sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "matches": true
+    },
+    "phase23_predictions.csv": {
+      "exists": true,
+      "current_sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "expected_sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "matches": true
+    },
+    "phase30_evaluation_manifest.json": {
+      "exists": true,
+      "current_sha256": "81e2efee5b3c74d1a5b39146888b34e63915802b02f64cc2c55f2b84ec1bf4de",
+      "expected_sha256": "81e2efee5b3c74d1a5b39146888b34e63915802b02f64cc2c55f2b84ec1bf4de",
+      "matches": true
+    },
+    "phase30_independent_signer_metrics.json": {
+      "exists": true,
+      "current_sha256": "b420dc17b1b0d772133c3c6335e9b5f4d9a8242b97c375dcd8fcda19878a6460",
+      "expected_sha256": "b420dc17b1b0d772133c3c6335e9b5f4d9a8242b97c375dcd8fcda19878a6460",
+      "matches": true
+    }
+  }
+}

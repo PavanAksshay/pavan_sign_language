@@ -15,11 +15,23 @@ venv/
 *.pth
 *.task
 *.bin
+*.joblib
+*.npz
 
 # Dataset (too large for git, download separately)
 dataset/
 
+# Local video and frame capture data (keep manifests)
+data/extracted_frames/
+data/raw_recordings/
+data/rejected_recordings/
+data/incoming_recordings/
+data/staging/
+data/webcam_recordings/
+
 # Scratch / temporary files
+*.bak
+*.bak_*
 scratch_*.json
 scratch_*.parquet
 hf_islrtc_tree.json

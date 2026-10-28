@@ -1,0 +1,441 @@
+{
+  "metadata": {
+    "title": "Phase 35B \u2014 signer_04 Recording-Disjoint Split Audit",
+    "phase": "Phase 35B",
+    "timestamp": "2026-10-28T10:45:46Z",
+    "governance_note": "Rigorous investigation of recording disjointness, letter representation, and letter-condition confounding."
+  },
+  "signer_04_inventory": {
+    "total_usable_frames": 1621,
+    "total_recordings": 52,
+    "recordings_per_letter": 2,
+    "condition_distribution": {
+      "condition_1_frames": 789,
+      "condition_2_frames": 832,
+      "condition_1_recordings": 26,
+      "condition_2_recordings": 26
+    },
+    "session_provenance": "session_20261022_01",
+    "prior_model_exposure": "Exposed in Phase 22 training (all 1,621 frames in production Model C checkpoint) and validation tuning."
+  },
+  "confound_analysis": {
+    "confound_identified": true,
+    "description": "In the historical alternating split (Split 1), letters A-M are trained exclusively under Condition 1 and evaluated under Condition 2, while letters N-Z are trained exclusively under Condition 2 and evaluated under Condition 1. This creates a 100% block confound between letter group and evaluation condition.",
+    "mathematical_limitation": "Because signer_04 has exactly 1 recording per letter in Condition 1 and 1 recording per letter in Condition 2, any single recording-disjoint split that includes all 26 letters in both Train and Val MUST assign one condition to Train and the other condition to Val for every letter. Thus, each letter is only observed under a single condition in validation.",
+    "mitigation_protocol": "A 2-fold cross-condition cross-validation scheme (Fold 1: A-M C1->C2, N-Z C2->C1; Fold 2: A-M C2->C1, N-Z C1->C2) unmasks the confound. Across both folds, every letter is evaluated under both Condition 1 and Condition 2."
+  },
+  "split_configurations": {
+    "fold_1_alternating_balanced": {
+      "description": "Primary development baseline split (Phase 22 Split 1 reproduction)",
+      "train_frames": 810,
+      "val_frames": 811,
+      "train_recordings": 26,
+      "val_recordings": 26,
+      "recording_overlap": 0,
+      "train_conditions": {
+        "condition_2": 415,
+        "condition_1": 395
+      },
+      "val_conditions": {
+        "condition_2": 417,
+        "condition_1": 394
+      },
+      "letters_in_train": 26,
+      "letters_in_val": 26
+    },
+    "fold_2_inverted_dual": {
+      "description": "Inverted dual fold of Split 1",
+      "train_frames": 811,
+      "val_frames": 810,
+      "train_recordings": 26,
+      "val_recordings": 26,
+      "recording_overlap": 0,
+      "train_conditions": {
+        "condition_2": 417,
+        "condition_1": 394
+      },
+      "val_conditions": {
+        "condition_2": 415,
+        "condition_1": 395
+      },
+      "letters_in_train": 26,
+      "letters_in_val": 26
+    },
+    "pure_cross_condition": {
+      "description": "Condition 1 (Train) to Condition 2 (Val) transfer across all 26 letters",
+      "train_frames": 789,
+      "val_frames": 832,
+      "train_recordings": 26,
+      "val_recordings": 26,
+      "recording_overlap": 0,
+      "letters_in_train": 26,
+      "letters_in_val": 26
+    }
+  },
+  "all_recordings_inventory": [
+    {
+      "recording_id": "rec_signer_04_condition_2_A_1792696652",
+      "letter": "A",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_B_1792696671",
+      "letter": "B",
+      "condition": "condition_2",
+      "frame_count": 33,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_C_1792696684",
+      "letter": "C",
+      "condition": "condition_2",
+      "frame_count": 33,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_D_1792696698",
+      "letter": "D",
+      "condition": "condition_2",
+      "frame_count": 31,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_E_1792696710",
+      "letter": "E",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_F_1792696723",
+      "letter": "F",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_G_1792696737",
+      "letter": "G",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_H_1792696754",
+      "letter": "H",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_I_1792696768",
+      "letter": "I",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_J_1792696781",
+      "letter": "J",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_K_1792696794",
+      "letter": "K",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_L_1792696807",
+      "letter": "L",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_M_1792696822",
+      "letter": "M",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_N_1792696835",
+      "letter": "N",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_O_1792696848",
+      "letter": "O",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_P_1792696862",
+      "letter": "P",
+      "condition": "condition_2",
+      "frame_count": 31,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_Q_1792696875",
+      "letter": "Q",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_R_1792696889",
+      "letter": "R",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_S_1792696903",
+      "letter": "S",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_T_1792696916",
+      "letter": "T",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_U_1792696928",
+      "letter": "U",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_V_1792696942",
+      "letter": "V",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_W_1792696954",
+      "letter": "W",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_X_1792696968",
+      "letter": "X",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_Y_1792696981",
+      "letter": "Y",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_2_Z_1792696998",
+      "letter": "Z",
+      "condition": "condition_2",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_A_1792698298",
+      "letter": "A",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_B_1792698315",
+      "letter": "B",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_C_1792698328",
+      "letter": "C",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_D_1792698340",
+      "letter": "D",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_F_1792698366",
+      "letter": "F",
+      "condition": "condition_1",
+      "frame_count": 31,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_G_1792698379",
+      "letter": "G",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_E_1792698428",
+      "letter": "E",
+      "condition": "condition_1",
+      "frame_count": 31,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_H_1792698452",
+      "letter": "H",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_I_1792698470",
+      "letter": "I",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_J_1792698484",
+      "letter": "J",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_K_1792698507",
+      "letter": "K",
+      "condition": "condition_1",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_L_1792698521",
+      "letter": "L",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_M_1792698540",
+      "letter": "M",
+      "condition": "condition_1",
+      "frame_count": 31,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_N_1792698559",
+      "letter": "N",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_O_1792698572",
+      "letter": "O",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_P_1792698586",
+      "letter": "P",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_Q_1792698599",
+      "letter": "Q",
+      "condition": "condition_1",
+      "frame_count": 31,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_R_1792698613",
+      "letter": "R",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_S_1792698626",
+      "letter": "S",
+      "condition": "condition_1",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_T_1792698639",
+      "letter": "T",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_U_1792698651",
+      "letter": "U",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_V_1792698666",
+      "letter": "V",
+      "condition": "condition_1",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_W_1792698681",
+      "letter": "W",
+      "condition": "condition_1",
+      "frame_count": 26,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_X_1792698695",
+      "letter": "X",
+      "condition": "condition_1",
+      "frame_count": 32,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_Y_1792698710",
+      "letter": "Y",
+      "condition": "condition_1",
+      "frame_count": 30,
+      "session_id": "session_20261022_01"
+    },
+    {
+      "recording_id": "rec_signer_04_condition_1_Z_1792698724",
+      "letter": "Z",
+      "condition": "condition_1",
+      "frame_count": 31,
+      "session_id": "session_20261022_01"
+    }
+  ]
+}

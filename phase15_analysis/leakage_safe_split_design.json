@@ -1,0 +1,70 @@
+{
+  "design_principles": [
+    "1. Atomic Recording Rule: Every video frame from recording_id R must belong to exactly one split.",
+    "2. Complete Signer Holdout Rule: If >= 3 signers are available, Signer 3 is strictly held out for final testing, Signer 2 for validation, Signer 1 for training.",
+    "3. Two-Signer Adaptation Rule: If exactly 2 signers are available, Signer 2 is strictly held out for final testing, and Signer 1 sessions are partitioned into train and validation.",
+    "4. Zero Temporal Leakage: No adjacent frames from the same continuous sign take are split across partitions.",
+    "5. Deterministic Manifest Generation: All splits generated with fixed seed (seed=42) and recorded SHA-256 manifest hashes."
+  ],
+  "current_repository_audits": {
+    "test_al_independent": {
+      "evaluation_status": "VALID_INDEPENDENT_SESSION",
+      "sample_count": 381,
+      "classes": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L"
+      ],
+      "session_id": "session_20200514_16h",
+      "session_leakage_detected": false,
+      "signer_independence": false
+    },
+    "test_mz_provisional": {
+      "evaluation_status": "PROVISIONAL_SESSION_LEAKAGE",
+      "sample_count": 720,
+      "classes": [
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "session_id": "session_20200516_12h",
+      "session_leakage_detected": true,
+      "shared_sessions": [
+        "session_20200516_12h"
+      ],
+      "signer_independence": false
+    },
+    "webcam_video_recordings": {
+      "evaluation_status": "VALID_INDEPENDENT_SIGNER_VIDEO",
+      "sample_count": 662,
+      "classes": [
+        "A",
+        "C",
+        "L"
+      ],
+      "signer_id": "webcam_signer_01",
+      "session_leakage_detected": false,
+      "signer_independence": true
+    }
+  }
+}

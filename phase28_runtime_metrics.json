@@ -1,0 +1,281 @@
+{
+  "phase": 28,
+  "title": "Sustained GPU Latency Stabilization and Benchmark Integrity",
+  "timestamp": "2026-10-25T05:55:36Z",
+  "hardware": {
+    "machine": "arm64",
+    "processor": "arm",
+    "system": "Darwin",
+    "release": "25.6.0",
+    "python_version": "3.12.4"
+  },
+  "runtime_configuration": {
+    "backend_detector": "mediapipe",
+    "recognition_arch": "model_c",
+    "mediapipe_delegate": "gpu (Apple Metal)",
+    "model_c_input_resolution": "native (1280x720)",
+    "streaming_mode": "return_images=False",
+    "production_defaults_preserved": true
+  },
+  "benchmark_sample": {
+    "dataset": "signer_04_development_recordings",
+    "warmup_frames_count": 30,
+    "evaluated_unique_frames_count": 1000,
+    "all_frames_unique": true,
+    "zero_frame_cycling": true
+  },
+  "sustained_latency_benchmark": {
+    "throughput_fps": 14.41,
+    "latency_distribution_ms": {
+      "count": 1000,
+      "mean": 58.093,
+      "median": 38.781,
+      "p90": 94.316,
+      "p95": 120.516,
+      "p99": 370.112,
+      "min": 27.575,
+      "max": 1272.624,
+      "std": 76.822
+    },
+    "p95_gate_target_ms": 100.0,
+    "p95_gate_passed": false,
+    "stage_breakdowns_ms": {
+      "1_receipt": {
+        "count": 1000,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "min": 0.0,
+        "max": 0.001,
+        "std": 0.0
+      },
+      "2_validation": {
+        "count": 1000,
+        "mean": 0.003,
+        "median": 0.002,
+        "p90": 0.004,
+        "p95": 0.006,
+        "p99": 0.024,
+        "min": 0.001,
+        "max": 0.203,
+        "std": 0.008
+      },
+      "3_copy": {
+        "count": 1000,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "min": 0.0,
+        "max": 0.076,
+        "std": 0.003
+      },
+      "4_resize": {
+        "count": 1000,
+        "mean": 0.003,
+        "median": 0.001,
+        "p90": 0.002,
+        "p95": 0.002,
+        "p99": 0.015,
+        "min": 0.001,
+        "max": 0.999,
+        "std": 0.032
+      },
+      "5_color_conversion": {
+        "count": 1000,
+        "mean": 3.543,
+        "median": 1.018,
+        "p90": 8.841,
+        "p95": 17.209,
+        "p99": 39.535,
+        "min": 0.126,
+        "max": 130.021,
+        "std": 8.319
+      },
+      "6_mp_image_construction": {
+        "count": 1000,
+        "mean": 1.176,
+        "median": 0.252,
+        "p90": 1.215,
+        "p95": 2.154,
+        "p99": 7.78,
+        "min": 0.151,
+        "max": 298.249,
+        "std": 10.258
+      },
+      "7_detection": {
+        "count": 1000,
+        "mean": 23.774,
+        "median": 19.337,
+        "p90": 28.999,
+        "p95": 36.592,
+        "p99": 92.52,
+        "min": 10.253,
+        "max": 982.743,
+        "std": 39.404
+      },
+      "8_postprocessing": {
+        "count": 1000,
+        "mean": 0.031,
+        "median": 0.02,
+        "p90": 0.041,
+        "p95": 0.056,
+        "p99": 0.157,
+        "min": 0.01,
+        "max": 5.756,
+        "std": 0.183
+      },
+      "9_feature_extraction": {
+        "count": 1000,
+        "mean": 1.718,
+        "median": 1.158,
+        "p90": 2.832,
+        "p95": 4.115,
+        "p99": 10.409,
+        "min": 0.466,
+        "max": 58.193,
+        "std": 2.969
+      },
+      "10_scaler_transform": {
+        "count": 1000,
+        "mean": 0.496,
+        "median": 0.225,
+        "p90": 0.526,
+        "p95": 0.829,
+        "p99": 1.774,
+        "min": 0.179,
+        "max": 142.718,
+        "std": 4.54
+      },
+      "11_classifier_prediction": {
+        "count": 1000,
+        "mean": 26.957,
+        "median": 15.848,
+        "p90": 47.882,
+        "p95": 65.122,
+        "p99": 167.095,
+        "min": 13.25,
+        "max": 545.697,
+        "std": 40.9
+      },
+      "12_formatting": {
+        "count": 1000,
+        "mean": 0.027,
+        "median": 0.013,
+        "p90": 0.025,
+        "p95": 0.041,
+        "p99": 0.152,
+        "min": 0.01,
+        "max": 4.725,
+        "std": 0.167
+      }
+    },
+    "slowest_frames_gt_100ms_count": 82,
+    "top_5_slowest_frames": [
+      {
+        "frame_index": 701,
+        "path": "signer_04_session_20261015_01_X_0090.jpg",
+        "total_ms": 1272.62,
+        "detection_ms": 555.004,
+        "classifier_ms": 416.311,
+        "hands_detected": 2,
+        "predicted_sign": "X"
+      },
+      {
+        "frame_index": 770,
+        "path": "signer_04_session_20261015_01_A_0018.jpg",
+        "total_ms": 1176.29,
+        "detection_ms": 982.743,
+        "classifier_ms": 100.214,
+        "hands_detected": 2,
+        "predicted_sign": "A"
+      },
+      {
+        "frame_index": 769,
+        "path": "signer_04_session_20261015_01_A_0015.jpg",
+        "total_ms": 668.9,
+        "detection_ms": 184.659,
+        "classifier_ms": 464.298,
+        "hands_detected": 2,
+        "predicted_sign": "A"
+      },
+      {
+        "frame_index": 687,
+        "path": "signer_04_session_20261015_01_X_0048.jpg",
+        "total_ms": 645.36,
+        "detection_ms": 45.107,
+        "classifier_ms": 545.697,
+        "hands_detected": 2,
+        "predicted_sign": "X"
+      },
+      {
+        "frame_index": 688,
+        "path": "signer_04_session_20261015_01_X_0051.jpg",
+        "total_ms": 638.67,
+        "detection_ms": 330.117,
+        "classifier_ms": 109.086,
+        "hands_detected": 2,
+        "predicted_sign": "X"
+      }
+    ]
+  },
+  "memory_rss_stability": {
+    "checkpoints_mb": {
+      "start_rss_mb": 525.75,
+      "frame_100_rss_mb": 978.02,
+      "frame_250_rss_mb": 978.02,
+      "frame_500_rss_mb": 978.02,
+      "frame_750_rss_mb": 978.02,
+      "frame_1000_rss_mb": 978.02,
+      "end_rss_mb": 978.02
+    },
+    "growth_warmup_to_end_mb": 452.27,
+    "growth_500_to_1000_mb": 0.0,
+    "memory_leak_detected": false,
+    "lifecycle_clean_shutdown_verified": true
+  },
+  "post_occlusion_recovery": {
+    "trials": 10,
+    "success_rate": 1.0,
+    "latency_distribution_ms": {
+      "count": 10,
+      "mean": 79.618,
+      "median": 66.257,
+      "p90": 122.687,
+      "p95": 139.549,
+      "p99": 153.039,
+      "min": 43.507,
+      "max": 156.412,
+      "std": 33.072
+    }
+  },
+  "resolution_downsampling_audit": {
+    "native": {
+      "median_ms": 54.314,
+      "p95_ms": 128.85,
+      "prediction_agreement_pct": 100.0,
+      "hand_count_agreement_pct": 100.0
+    },
+    "960x540": {
+      "median_ms": 37.193,
+      "p95_ms": 112.082,
+      "prediction_agreement_pct": 100.0,
+      "hand_count_agreement_pct": 99.0
+    },
+    "640x360": {
+      "median_ms": 44.479,
+      "p95_ms": 74.579,
+      "prediction_agreement_pct": 100.0,
+      "hand_count_agreement_pct": 99.0
+    }
+  },
+  "operational_integrity": {
+    "exceptions_count": 0,
+    "invalid_features_count": 0,
+    "hand_detection_rate": 1.0,
+    "final_decision": "LATENCY IMPROVED BUT TARGET NOT MET"
+  }
+}

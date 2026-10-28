@@ -1,0 +1,155 @@
+{
+  "campaign": "Phase 34A Multi-Signer Development Campaign Data Collection Workflow",
+  "audit_version": "1.0.0",
+  "audit_date": "2026-10-27T02:37:00Z",
+  "status": "VERIFIED_READY",
+  "zero_training_verified": true,
+  "holdout_leakage_free": true,
+  "dataset_roles": {
+    "development_train": {
+      "signers": ["signer_06", "signer_07", "signer_08", "signer_09"],
+      "allow_training": true,
+      "eligible_for_evaluation": false,
+      "manifest_path": "data/manifests/dev_train_manifest.json",
+      "target_role": "Model fine-tuning, domain adaptation, and feature alignment"
+    },
+    "development_validation": {
+      "signers": ["signer_10", "signer_11"],
+      "allow_training": false,
+      "eligible_for_evaluation": true,
+      "manifest_path": "data/manifests/dev_val_manifest.json",
+      "target_role": "Model checkpoint selection and hyperparameter validation"
+    },
+    "external_holdout": {
+      "signers": ["signer_05"],
+      "allow_training": false,
+      "eligible_for_evaluation": true,
+      "manifest_path": "data/manifests/signer_05_manifest.json",
+      "target_role": "Sealed external generalisation benchmark (Untouched & Quarantined)"
+    },
+    "frozen_benchmark": {
+      "signers": ["signer_02", "signer_03"],
+      "allow_training": false,
+      "eligible_for_evaluation": true,
+      "manifest_path": "data/manifests/test_multisigner_manifest.json",
+      "target_role": "Frozen historical baseline multi-signer evaluation"
+    }
+  },
+  "collection_matrix": {
+    "development_signers": ["signer_06", "signer_07", "signer_08", "signer_09", "signer_10", "signer_11"],
+    "alphabet_size": 26,
+    "alphabet": ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
+    "conditions": {
+      "condition_1": {
+        "name": "Standard Frontal",
+        "distance_cm": 70,
+        "camera_pitch_deg": 0.0,
+        "camera_yaw_deg": 0.0,
+        "lighting": "indoor_overhead",
+        "background": "plain_wall",
+        "lap_hand_resting": false,
+        "geometry_disclaimer": "Camera angles and distance are nominal / operator-reported; not hardware-instrumented."
+      },
+      "condition_2": {
+        "name": "Angled Laptop & Lap-Rest",
+        "distance_cm": 75,
+        "camera_pitch_deg": 30.0,
+        "camera_yaw_deg": 15.0,
+        "lighting": "ambient_natural",
+        "background": "textured_office",
+        "lap_hand_resting": true,
+        "axis_disambiguation": "Nominal 15° is horizontal azimuth (camera_yaw_deg) and 30° is vertical downward tilt (camera_pitch_deg); they represent orthogonal geometric axes.",
+        "geometry_disclaimer": "Camera angles and distance are nominal / operator-reported; not hardware-instrumented."
+      },
+      "condition_3": {
+        "name": "Distance & Ambient Challenge",
+        "distance_cm": 110,
+        "camera_pitch_deg": 10.0,
+        "camera_yaw_deg": 0.0,
+        "lighting": "low_light",
+        "background": "cluttered_home",
+        "lap_hand_resting": false,
+        "geometry_disclaimer": "Camera angles and distance are nominal / operator-reported; not hardware-instrumented."
+      }
+    },
+    "takes_per_cell": 3,
+    "planned_takes_per_participant": 234,
+    "total_planned_development_takes": 1404
+  },
+  "quality_auditing_specification": {
+    "minimum_resolution": {
+      "width": 1280,
+      "height": 720
+    },
+    "target_frame_rate_fps": 30.0,
+    "blur_laplacian_threshold": 50.0,
+    "brightness_bounds": {
+      "min": 40.0,
+      "max": 220.0
+    },
+    "min_hand_confidence": 0.50,
+    "min_hand_bbox_ratio": 0.02,
+    "perceptual_hash_deduplication": {
+      "algorithm": "difference_perceptual_hash (dHash)",
+      "hash_size": 8,
+      "hamming_distance_threshold": 1,
+      "pixel_movement_threshold": 0.2
+    },
+    "camera_freeze_threshold": 0.1,
+    "rejected_recordings_retention": {
+      "directory": "data/rejected_recordings/",
+      "audit_record": "rejection_audit.json",
+      "preserves_raw_video": true
+    }
+  },
+  "split_isolation_audit": {
+    "is_leakage_free": true,
+    "train_samples_count": 0,
+    "val_samples_count": 0,
+    "holdout_samples_count": 0,
+    "train_signers": [],
+    "val_signers": [],
+    "holdout_signers": [],
+    "pairwise_disjointness_verified": true,
+    "holdout_quarantine_sealed": true
+  },
+  "authoritative_artifacts_integrity": {
+    "Model_C_Occlusion_Aware_RF_multisigner.joblib": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib",
+      "sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "status": "MATCH"
+    },
+    "Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib",
+      "sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "status": "MATCH"
+    },
+    "phase19_frozen_manifest.json": {
+      "path": "phase19_frozen_manifest.json",
+      "sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "status": "MATCH"
+    },
+    "phase23_predictions.csv": {
+      "path": "phase23_predictions.csv",
+      "sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "status": "MATCH"
+    }
+  },
+  "metadata_schema_governance": {
+    "schema_file": "phase14b_analysis/metadata_schema.json",
+    "permitted_signer_enum": [
+      "signer_01",
+      "signer_02",
+      "signer_03",
+      "signer_04",
+      "signer_05",
+      "signer_06",
+      "signer_07",
+      "signer_08",
+      "signer_09",
+      "signer_10",
+      "signer_11"
+    ],
+    "backward_compatible": true
+  }
+}

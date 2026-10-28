@@ -1,0 +1,113 @@
+{
+  "audit_timestamp": "2026-10-15T21:45:00Z",
+  "phase": "Phase 16",
+  "splits_integrity": {
+    "manifest_sizes": {
+      "train_manifest.json": 3077,
+      "val_manifest.json": 1134,
+      "test_al_manifest.json": 381,
+      "test_mz_manifest.json": 720
+    },
+    "hash_overlaps": {
+      "test_al_with_train": 0,
+      "test_al_with_val": 0,
+      "test_mz_with_train": 0,
+      "test_mz_with_val": 0
+    },
+    "sessions_per_split": {
+      "train_manifest.json": {
+        "session_20200515_04h": 1270,
+        "session_20200515_00h": 153,
+        "session_20200515_03h": 345,
+        "session_20200515_05h": 20,
+        "session_20200516_12h": 1289
+      },
+      "val_manifest.json": {
+        "session_20200515_03h": 405,
+        "session_20200515_00h": 26,
+        "session_20200515_04h": 56,
+        "session_20200516_12h": 647
+      },
+      "test_al_manifest.json": {
+        "session_20200514_16h": 381
+      },
+      "test_mz_manifest.json": {
+        "session_20200516_12h": 720
+      }
+    },
+    "session_leakage": {
+      "test_al_with_train": [],
+      "test_mz_with_train": [
+        "session_20200516_12h"
+      ]
+    }
+  },
+  "video_quality_audit": {
+    "recording_C_20261014_164912.mp4": {
+      "ground_truth": "C",
+      "condition": "webcam_frontal",
+      "signer_id": "webcam_signer_01",
+      "total_frames": 146,
+      "accepted_frames": 146,
+      "rejected_frames": 0,
+      "rejection_rate": 0.0,
+      "mean_blur_var": 91.31,
+      "mean_brightness": 104.69,
+      "quality_decision": "ACCEPTED"
+    },
+    "recording_C_20261014_165234.mp4": {
+      "ground_truth": "C",
+      "condition": "webcam_second",
+      "signer_id": "webcam_signer_01",
+      "total_frames": 143,
+      "accepted_frames": 143,
+      "rejected_frames": 0,
+      "rejection_rate": 0.0,
+      "mean_blur_var": 105.47,
+      "mean_brightness": 109.59,
+      "quality_decision": "ACCEPTED"
+    },
+    "recording_L_20261014_165754.mp4": {
+      "ground_truth": "L",
+      "condition": "webcam_standard",
+      "signer_id": "webcam_signer_01",
+      "total_frames": 146,
+      "accepted_frames": 146,
+      "rejected_frames": 0,
+      "rejection_rate": 0.0,
+      "mean_blur_var": 72.21,
+      "mean_brightness": 107.76,
+      "quality_decision": "ACCEPTED"
+    },
+    "recording_A_20261014_165529.mp4": {
+      "ground_truth": "A",
+      "condition": "webcam_standard",
+      "signer_id": "webcam_signer_01",
+      "total_frames": 143,
+      "accepted_frames": 143,
+      "rejected_frames": 0,
+      "rejection_rate": 0.0,
+      "mean_blur_var": 259.09,
+      "mean_brightness": 143.66,
+      "quality_decision": "ACCEPTED"
+    },
+    "recording_C_lateral_profile_calibrated.mp4": {
+      "ground_truth": "C",
+      "condition": "webcam_lateral_dark",
+      "signer_id": "webcam_signer_01",
+      "total_frames": 84,
+      "accepted_frames": 0,
+      "rejected_frames": 84,
+      "rejection_rate": 100.0,
+      "mean_blur_var": 4.87,
+      "mean_brightness": 9.51,
+      "quality_decision": "REJECTED_ENTIRELY"
+    }
+  },
+  "summary": {
+    "test_al_independent": true,
+    "test_mz_provisional_leakage": true,
+    "webcam_videos_accepted": 4,
+    "webcam_videos_rejected": 1
+  }
+}

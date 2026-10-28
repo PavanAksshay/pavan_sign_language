@@ -1,0 +1,504 @@
+{
+  "audit_phase": "Phase 21B",
+  "target_signer": "signer_04",
+  "timestamp": "2026-10-23T00:58:00Z",
+  "counts": {
+    "raw_videos_on_disk": 54,
+    "extracted_frames_on_disk": 1625,
+    "manifest_samples_count": 1682,
+    "ledger_accepted_records": 54,
+    "ledger_rejected_records": 0
+  },
+  "coverage_matrix": {
+    "condition_1": {
+      "A": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "B": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "C": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "D": {
+        "disk_frame_count": 31,
+        "manifest_sample_count": 31,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "E": {
+        "disk_frame_count": 31,
+        "manifest_sample_count": 61,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "F": {
+        "disk_frame_count": 31,
+        "manifest_sample_count": 31,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "G": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "H": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 57,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "I": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "J": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "K": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "L": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "M": {
+        "disk_frame_count": 31,
+        "manifest_sample_count": 31,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "N": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "O": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "P": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Q": {
+        "disk_frame_count": 31,
+        "manifest_sample_count": 31,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "R": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "S": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "T": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "U": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "V": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "W": {
+        "disk_frame_count": 29,
+        "manifest_sample_count": 29,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "X": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Y": {
+        "disk_frame_count": 30,
+        "manifest_sample_count": 30,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Z": {
+        "disk_frame_count": 31,
+        "manifest_sample_count": 31,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      }
+    },
+    "condition_2": {
+      "A": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "B": {
+        "disk_frame_count": 33,
+        "manifest_sample_count": 33,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "C": {
+        "disk_frame_count": 33,
+        "manifest_sample_count": 33,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "D": {
+        "disk_frame_count": 31,
+        "manifest_sample_count": 31,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "E": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "F": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "G": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "H": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "I": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "J": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "K": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "L": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "M": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "N": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "O": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "P": {
+        "disk_frame_count": 31,
+        "manifest_sample_count": 31,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Q": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "R": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "S": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "T": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "U": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "V": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "W": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "X": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Y": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      },
+      "Z": {
+        "disk_frame_count": 32,
+        "manifest_sample_count": 32,
+        "is_present": true,
+        "meets_target_16": true,
+        "status": "sufficient"
+      }
+    }
+  },
+  "image_quality": {
+    "dimensions": [
+      [
+        1280,
+        720
+      ]
+    ],
+    "channels": [
+      3
+    ],
+    "blur_variance": {
+      "min": 49.77,
+      "mean": 126.47,
+      "max": 188.29
+    },
+    "brightness": {
+      "min": 127.06,
+      "mean": 132.68,
+      "max": 136.08
+    },
+    "low_blur_count": 2,
+    "low_brightness_count": 0,
+    "high_brightness_count": 0,
+    "corrupt_files_count": 0
+  },
+  "duplicates_and_leakage": {
+    "unique_exact_hashes": 1625,
+    "intra_dataset_duplicates_count": 0,
+    "cross_partition_leakage_count": 0,
+    "is_leakage_free": true
+  },
+  "hand_landmarks": {
+    "hands_distribution": {
+      "1": 518,
+      "2": 1105,
+      "0": 2
+    },
+    "zero_hand_failures": 2,
+    "detection_rate_pct": 99.88,
+    "mean_confidence": 0.9757,
+    "two_hand_key_classes_stats": {
+      "D": {
+        "total_frames": 62,
+        "one_hand_count": 0,
+        "two_hands_count": 62,
+        "two_hands_pct": 100.0
+      },
+      "E": {
+        "total_frames": 63,
+        "one_hand_count": 1,
+        "two_hands_count": 62,
+        "two_hands_pct": 98.4
+      },
+      "F": {
+        "total_frames": 63,
+        "one_hand_count": 0,
+        "two_hands_count": 63,
+        "two_hands_pct": 100.0
+      },
+      "I": {
+        "total_frames": 62,
+        "one_hand_count": 0,
+        "two_hands_count": 62,
+        "two_hands_pct": 100.0
+      },
+      "N": {
+        "total_frames": 62,
+        "one_hand_count": 40,
+        "two_hands_count": 22,
+        "two_hands_pct": 35.5
+      },
+      "Q": {
+        "total_frames": 63,
+        "one_hand_count": 2,
+        "two_hands_count": 61,
+        "two_hands_pct": 96.8
+      },
+      "R": {
+        "total_frames": 62,
+        "one_hand_count": 10,
+        "two_hands_count": 52,
+        "two_hands_pct": 83.9
+      },
+      "X": {
+        "total_frames": 64,
+        "one_hand_count": 0,
+        "two_hands_count": 64,
+        "two_hands_pct": 100.0
+      },
+      "M": {
+        "total_frames": 63,
+        "one_hand_count": 55,
+        "two_hands_count": 8,
+        "two_hands_pct": 12.7
+      },
+      "W": {
+        "total_frames": 61,
+        "one_hand_count": 18,
+        "two_hands_count": 41,
+        "two_hands_pct": 67.2
+      },
+      "Z": {
+        "total_frames": 63,
+        "one_hand_count": 0,
+        "two_hands_count": 63,
+        "two_hands_pct": 100.0
+      }
+    }
+  },
+  "schema_compliance": {
+    "samples_checked": 1682,
+    "failures_count": 0,
+    "is_fully_compliant": true
+  },
+  "readiness_assessment": {
+    "status": "NEEDS_ADDITIONAL_RECORDING",
+    "primary_issue": "Condition 1 (Desk Neutral Frontal) has 0 recordings and 0 frames. Only Condition 2 (Lateral Warm) was captured.",
+    "condition_1_status": "MISSING (0/26 letters covered, 0/416 frames)",
+    "condition_2_status": "COMPLETE (26/26 letters covered, 832 frames, all cells >= 31 frames)",
+    "data_quality_verdict": "EXCELLENT on captured condition (0 blur failures, 0 brightness failures, 0 corrupt files, 0 leakage, 100.0% hand landmark detection)",
+    "action_required": "Capture Condition 1 for signer_04 across all 26 letters (A-Z) to achieve complete 52-cell coverage and dual-condition multi-signer readiness."
+  }
+}

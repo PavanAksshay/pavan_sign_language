@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-10-25T21:26:10Z",
+  "phase": "Phase 30 \u2014 Signer_05 Independent Evaluation Integrity Audit",
+  "final_verdict": "RECOGNITION GENERALIZATION GATE FAILED",
+  "evaluation_manifest_sha256": "81e2efee5b3c74d1a5b39146888b34e63915802b02f64cc2c55f2b84ec1bf4de",
+  "metrics_sha256": "b420dc17b1b0d772133c3c6335e9b5f4d9a8242b97c375dcd8fcda19878a6460",
+  "production_defaults_verified": {
+    "ISL_BACKEND_DETECTOR": "yolo",
+    "ISL_RECOGNITION_ARCH": "standard",
+    "ISL_TEMPORAL_SMOOTHING": false,
+    "ISL_SHADOW_MODE": false,
+    "ISL_MEDIAPIPE_DELEGATE": "cpu",
+    "ISL_MODEL_C_RESOLUTION": "native"
+  },
+  "production_defaults_pass": true,
+  "artifacts_audited": {
+    "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib": {
+      "exists": true,
+      "current_sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "expected_sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "matches": true
+    },
+    "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib": {
+      "exists": true,
+      "current_sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "expected_sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "matches": true
+    },
+    "phase19_frozen_manifest.json": {
+      "exists": true,
+      "current_sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "expected_sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "matches": true
+    },
+    "phase23_predictions.csv": {
+      "exists": true,
+      "current_sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "expected_sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "matches": true
+    },
+    "App/include50_model/hand_landmarker.task": {
+      "exists": true,
+      "current_sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+      "expected_sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+      "matches": true
+    }
+  },
+  "data_independence_audit": {
+    "signer_05_in_training": false,
+    "signer_05_in_validation": false,
+    "signer_05_in_calibration": false,
+    "total_signer_05_samples": 1638,
+    "unique_sample_hashes": 1638,
+    "overlap_with_train_manifest": 0,
+    "overlap_with_val_manifest": 0,
+    "overlap_with_phase19_manifest": 0
+  }
+}

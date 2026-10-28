@@ -1,0 +1,70 @@
+{
+  "manifest_metadata": {
+    "title": "Phase 35B Experimental Baseline Model Manifest",
+    "phase": "Phase 35B",
+    "timestamp": "2026-10-28T10:47:32Z",
+    "model_architecture": "Model C (280-dim Occlusion-Aware Geometry Random Forest)",
+    "governance_note": "Experimental model only. Production models and defaults remain untouched."
+  },
+  "models": {
+    "Model_C_Baseline_Fold1_Primary": {
+      "role": "primary_experimental_baseline",
+      "model_path": "/Users/pavanaksshay/pavan_sign_language/phase35b_analysis/models/Model_C_Baseline_Fold1_Primary.joblib",
+      "model_sha256": "fcaf6361046a17d94c506727b7e41db7f96e21a639105c18f5e35978f7307cef",
+      "scaler_path": "/Users/pavanaksshay/pavan_sign_language/phase35b_analysis/models/Model_C_Baseline_Fold1_Primary_scaler.joblib",
+      "scaler_sha256": "084b036e38816851d5fe1f7fcee6de853c37f60ba33e682be595c56654418c34",
+      "training_pool": {
+        "signer_01_frames": 3077,
+        "signer_04_train_frames": 810,
+        "total_training_frames": 3887
+      },
+      "validation_pool": {
+        "signer_04_val_frames": 811,
+        "overlap_with_training": 0
+      },
+      "metrics": {
+        "top1_accuracy": 0.9519,
+        "top3_accuracy": 0.979,
+        "macro_f1": 0.9482,
+        "balanced_accuracy": 0.9508,
+        "recording_level_macro_accuracy": 0.9508,
+        "predeclared_gate_passed": true
+      }
+    },
+    "Model_C_Baseline_Fold2_Inverted": {
+      "role": "inverted_dual_baseline",
+      "model_path": "/Users/pavanaksshay/pavan_sign_language/phase35b_analysis/models/Model_C_Baseline_Fold2_Inverted.joblib",
+      "model_sha256": "ed4661be8bb9551f19ddbf8e064c2e7a776e632f527ea3731e915764de6d1a69",
+      "scaler_path": "/Users/pavanaksshay/pavan_sign_language/phase35b_analysis/models/Model_C_Baseline_Fold2_Inverted_scaler.joblib",
+      "scaler_sha256": "bfd145c280abf9326df81ddb81cad316f3ef7833b9122a33c10997e792ef790a",
+      "metrics": {
+        "top1_accuracy": 0.8938,
+        "top3_accuracy": 0.9395,
+        "macro_f1": 0.874,
+        "balanced_accuracy": 0.8928,
+        "recording_level_macro_accuracy": 0.8928,
+        "predeclared_gate_passed": true
+      }
+    },
+    "Model_C_Baseline_Pure_CrossCondition": {
+      "role": "pure_cross_condition_baseline",
+      "model_path": "/Users/pavanaksshay/pavan_sign_language/phase35b_analysis/models/Model_C_Baseline_Pure_CrossCondition.joblib",
+      "model_sha256": "4c1573f26829be61c4fa6affff0f3f31c0ea8c4ee3b81cb3ef340e9c1d3decbf",
+      "scaler_path": "/Users/pavanaksshay/pavan_sign_language/phase35b_analysis/models/Model_C_Baseline_Pure_CrossCondition_scaler.joblib",
+      "scaler_sha256": "5a451822a2baddd9599322e1522ed5d42782c9d036a8be1875a3cb3240191fef",
+      "metrics": {
+        "top1_accuracy": 0.9351,
+        "top3_accuracy": 0.9675,
+        "macro_f1": 0.9269,
+        "balanced_accuracy": 0.9351,
+        "recording_level_macro_accuracy": 0.9351,
+        "predeclared_gate_passed": true
+      }
+    }
+  },
+  "production_comparison_note": {
+    "production_checkpoint": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib",
+    "production_sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+    "status": "UNCHANGED"
+  }
+}

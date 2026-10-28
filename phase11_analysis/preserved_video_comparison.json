@@ -1,0 +1,414 @@
+{
+  "yolo": {
+    "Frontal C": {
+      "video_file": "recording_C_20261014_164912.mp4",
+      "ground_truth": "C",
+      "total_frames": 146,
+      "detected_frames": 146,
+      "no_detection_count": 0,
+      "detection_rate_pct": 100.0,
+      "top1_all_frames_acc_pct": 39.73,
+      "top1_conditional_acc_pct": 39.73,
+      "top3_inclusion_pct": 80.82,
+      "flip_rate_pct": 46.9,
+      "prediction_distribution": {
+        "C": 58,
+        "G": 38,
+        "R": 30,
+        "L": 20
+      },
+      "latencies_ms": {
+        "detector": {
+          "mean": 355.07,
+          "median": 164.15,
+          "p95": 1346.05,
+          "p99": 1516.81
+        },
+        "classifier": {
+          "mean": 45.79,
+          "median": 28.2,
+          "p95": 110.5,
+          "p99": 285.56
+        },
+        "total": {
+          "mean": 430.32,
+          "median": 212.7,
+          "p95": 1456.2,
+          "p99": 1863.55
+        }
+      }
+    },
+    "Second C": {
+      "video_file": "recording_C_20261014_165234.mp4",
+      "ground_truth": "C",
+      "total_frames": 143,
+      "detected_frames": 143,
+      "no_detection_count": 0,
+      "detection_rate_pct": 100.0,
+      "top1_all_frames_acc_pct": 0.0,
+      "top1_conditional_acc_pct": 0.0,
+      "top3_inclusion_pct": 0.0,
+      "flip_rate_pct": 16.9,
+      "prediction_distribution": {
+        "G": 80,
+        "F": 60,
+        "R": 2,
+        "N": 1
+      },
+      "latencies_ms": {
+        "detector": {
+          "mean": 215.81,
+          "median": 157.0,
+          "p95": 632.45,
+          "p99": 1042.05
+        },
+        "classifier": {
+          "mean": 32.72,
+          "median": 28.3,
+          "p95": 60.43,
+          "p99": 121.46
+        },
+        "total": {
+          "mean": 268.79,
+          "median": 203.3,
+          "p95": 683.63,
+          "p99": 1122.23
+        }
+      }
+    },
+    "Standard L": {
+      "video_file": "recording_L_20261014_165754.mp4",
+      "ground_truth": "L",
+      "total_frames": 146,
+      "detected_frames": 146,
+      "no_detection_count": 0,
+      "detection_rate_pct": 100.0,
+      "top1_all_frames_acc_pct": 87.67,
+      "top1_conditional_acc_pct": 87.67,
+      "top3_inclusion_pct": 97.26,
+      "flip_rate_pct": 16.55,
+      "prediction_distribution": {
+        "L": 128,
+        "Y": 14,
+        "U": 3,
+        "V": 1
+      },
+      "latencies_ms": {
+        "detector": {
+          "mean": 475.83,
+          "median": 220.95,
+          "p95": 1206.33,
+          "p99": 1619.76
+        },
+        "classifier": {
+          "mean": 47.92,
+          "median": 34.25,
+          "p95": 85.22,
+          "p99": 146.67
+        },
+        "total": {
+          "mean": 543.74,
+          "median": 308.15,
+          "p95": 1367.1,
+          "p99": 1752.98
+        }
+      }
+    },
+    "Webcam A (ASL single-hand fist)": {
+      "video_file": "recording_A_20261014_165529.mp4",
+      "ground_truth": "A",
+      "total_frames": 143,
+      "detected_frames": 117,
+      "no_detection_count": 26,
+      "detection_rate_pct": 81.82,
+      "top1_all_frames_acc_pct": 9.09,
+      "top1_conditional_acc_pct": 11.11,
+      "top3_inclusion_pct": 23.08,
+      "flip_rate_pct": 44.83,
+      "prediction_distribution": {
+        "G": 56,
+        "C": 25,
+        "A": 13,
+        "O": 8,
+        "T": 6,
+        "B": 5,
+        "R": 3,
+        "N": 1
+      },
+      "latencies_ms": {
+        "detector": {
+          "mean": 355.77,
+          "median": 189.3,
+          "p95": 1092.73,
+          "p99": 1282.91
+        },
+        "classifier": {
+          "mean": 37.77,
+          "median": 32.4,
+          "p95": 83.97,
+          "p99": 154.85
+        },
+        "total": {
+          "mean": 413.87,
+          "median": 246.7,
+          "p95": 1181.63,
+          "p99": 1393.35
+        }
+      }
+    },
+    "Profile C (Failed-Input Diagnostic - Nearly Black)": {
+      "video_file": "recording_C_lateral_profile_calibrated.mp4",
+      "ground_truth": "C",
+      "total_frames": 84,
+      "detected_frames": 0,
+      "no_detection_count": 84,
+      "detection_rate_pct": 0.0,
+      "top1_all_frames_acc_pct": 0.0,
+      "top1_conditional_acc_pct": 0.0,
+      "top3_inclusion_pct": 0.0,
+      "flip_rate_pct": 0.0,
+      "prediction_distribution": {},
+      "latencies_ms": {
+        "detector": {
+          "mean": 205.22,
+          "median": 169.85,
+          "p95": 250.7,
+          "p99": 904.78
+        },
+        "classifier": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "total": {
+          "mean": 205.49,
+          "median": 170.0,
+          "p95": 250.97,
+          "p99": 906.91
+        }
+      }
+    },
+    "Canonical ISL A": {
+      "dataset_sequence": "held-out May 14 ISL Canonical Two-Handed A",
+      "ground_truth": "A",
+      "total_frames": 23,
+      "detected_frames": 19,
+      "detection_rate_pct": 82.61,
+      "top1_conditional_acc_pct": 52.63,
+      "prediction_distribution": {
+        "U": 4,
+        "A": 10,
+        "-": 4,
+        "X": 1,
+        "K": 1,
+        "T": 1,
+        "O": 1,
+        "N": 1
+      }
+    }
+  },
+  "mediapipe": {
+    "Frontal C": {
+      "video_file": "recording_C_20261014_164912.mp4",
+      "ground_truth": "C",
+      "total_frames": 146,
+      "detected_frames": 146,
+      "no_detection_count": 0,
+      "detection_rate_pct": 100.0,
+      "top1_all_frames_acc_pct": 68.49,
+      "top1_conditional_acc_pct": 68.49,
+      "top3_inclusion_pct": 100.0,
+      "flip_rate_pct": 26.21,
+      "prediction_distribution": {
+        "C": 100,
+        "W": 46
+      },
+      "latencies_ms": {
+        "detector": {
+          "mean": 35.99,
+          "median": 38.1,
+          "p95": 41.48,
+          "p99": 43.15
+        },
+        "classifier": {
+          "mean": 25.48,
+          "median": 25.1,
+          "p95": 27.8,
+          "p99": 30.12
+        },
+        "total": {
+          "mean": 62.2,
+          "median": 63.85,
+          "p95": 69.05,
+          "p99": 72.51
+        }
+      }
+    },
+    "Second C": {
+      "video_file": "recording_C_20261014_165234.mp4",
+      "ground_truth": "C",
+      "total_frames": 143,
+      "detected_frames": 143,
+      "no_detection_count": 0,
+      "detection_rate_pct": 100.0,
+      "top1_all_frames_acc_pct": 30.77,
+      "top1_conditional_acc_pct": 30.77,
+      "top3_inclusion_pct": 95.8,
+      "flip_rate_pct": 4.93,
+      "prediction_distribution": {
+        "W": 99,
+        "C": 44
+      },
+      "latencies_ms": {
+        "detector": {
+          "mean": 29.0,
+          "median": 27.3,
+          "p95": 38.58,
+          "p99": 42.47
+        },
+        "classifier": {
+          "mean": 27.89,
+          "median": 25.7,
+          "p95": 30.05,
+          "p99": 42.73
+        },
+        "total": {
+          "mean": 57.64,
+          "median": 53.8,
+          "p95": 66.9,
+          "p99": 79.19
+        }
+      }
+    },
+    "Standard L": {
+      "video_file": "recording_L_20261014_165754.mp4",
+      "ground_truth": "L",
+      "total_frames": 146,
+      "detected_frames": 146,
+      "no_detection_count": 0,
+      "detection_rate_pct": 100.0,
+      "top1_all_frames_acc_pct": 12.33,
+      "top1_conditional_acc_pct": 12.33,
+      "top3_inclusion_pct": 45.21,
+      "flip_rate_pct": 29.66,
+      "prediction_distribution": {
+        "Y": 63,
+        "U": 40,
+        "Z": 22,
+        "L": 18,
+        "V": 2,
+        "C": 1
+      },
+      "latencies_ms": {
+        "detector": {
+          "mean": 26.91,
+          "median": 26.6,
+          "p95": 28.55,
+          "p99": 33.47
+        },
+        "classifier": {
+          "mean": 26.01,
+          "median": 25.65,
+          "p95": 28.27,
+          "p99": 33.34
+        },
+        "total": {
+          "mean": 53.61,
+          "median": 52.85,
+          "p95": 56.67,
+          "p99": 68.47
+        }
+      }
+    },
+    "Webcam A (ASL single-hand fist)": {
+      "video_file": "recording_A_20261014_165529.mp4",
+      "ground_truth": "A",
+      "total_frames": 143,
+      "detected_frames": 138,
+      "no_detection_count": 5,
+      "detection_rate_pct": 96.5,
+      "top1_all_frames_acc_pct": 7.69,
+      "top1_conditional_acc_pct": 7.97,
+      "top3_inclusion_pct": 26.09,
+      "flip_rate_pct": 24.09,
+      "prediction_distribution": {
+        "I": 86,
+        "J": 31,
+        "A": 11,
+        "X": 7,
+        "Q": 3
+      },
+      "latencies_ms": {
+        "detector": {
+          "mean": 30.78,
+          "median": 26.8,
+          "p95": 39.69,
+          "p99": 46.95
+        },
+        "classifier": {
+          "mean": 24.95,
+          "median": 25.3,
+          "p95": 28.4,
+          "p99": 32.64
+        },
+        "total": {
+          "mean": 56.46,
+          "median": 53.7,
+          "p95": 65.89,
+          "p99": 75.77
+        }
+      }
+    },
+    "Profile C (Failed-Input Diagnostic - Nearly Black)": {
+      "video_file": "recording_C_lateral_profile_calibrated.mp4",
+      "ground_truth": "C",
+      "total_frames": 84,
+      "detected_frames": 0,
+      "no_detection_count": 84,
+      "detection_rate_pct": 0.0,
+      "top1_all_frames_acc_pct": 0.0,
+      "top1_conditional_acc_pct": 0.0,
+      "top3_inclusion_pct": 0.0,
+      "flip_rate_pct": 0.0,
+      "prediction_distribution": {},
+      "latencies_ms": {
+        "detector": {
+          "mean": 28.08,
+          "median": 26.65,
+          "p95": 47.32,
+          "p99": 77.88
+        },
+        "classifier": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "total": {
+          "mean": 28.75,
+          "median": 27.1,
+          "p95": 48.1,
+          "p99": 84.61
+        }
+      }
+    },
+    "Canonical ISL A": {
+      "dataset_sequence": "held-out May 14 ISL Canonical Two-Handed A",
+      "ground_truth": "A",
+      "total_frames": 23,
+      "detected_frames": 23,
+      "detection_rate_pct": 100.0,
+      "top1_conditional_acc_pct": 69.57,
+      "prediction_distribution": {
+        "A": 16,
+        "J": 1,
+        "W": 2,
+        "T": 1,
+        "M": 1,
+        "V": 1,
+        "G": 1
+      }
+    }
+  }
+}

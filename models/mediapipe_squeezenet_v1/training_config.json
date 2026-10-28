@@ -1,0 +1,38 @@
+{
+    "model_architecture": "SqueezeNet (adapted 26-class head)",
+    "base_model": "App/final_model_26",
+    "random_seed": 42,
+    "epochs_requested": 25,
+    "batch_size": 32,
+    "initial_learning_rate": 0.0003,
+    "optimizer": "tf_keras.optimizers.legacy.Adam",
+    "loss": "categorical_crossentropy",
+    "fine_tune_layers": [
+        "mp_last_conv",
+        "mp_activation_relu",
+        "mp_global_avg_pool",
+        "mp_softmax_output",
+        "conv2d_21",
+        "conv2d_22",
+        "conv2d_23",
+        "conv2d_24"
+    ],
+    "augmentation": {
+        "random_brightness": "max_delta=0.08",
+        "random_contrast": "lower=0.92, upper=1.08",
+        "random_translation": "[-8, 8] px (~3.5%)",
+        "horizontal_flip": false
+    },
+    "early_stopping": {
+        "monitor": "val_accuracy",
+        "patience": 6
+    },
+    "reduce_lr_on_plateau": {
+        "monitor": "val_loss",
+        "factor": 0.5,
+        "patience": 2,
+        "min_lr": 1e-05
+    },
+    "train_samples": 3077,
+    "val_samples": 1134
+}

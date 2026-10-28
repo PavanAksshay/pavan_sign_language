@@ -1,0 +1,212 @@
+{
+  "detector_metadata": {
+    "architecture": "Darknet-53 YOLOv3",
+    "cfg_path": "/Users/pavanaksshay/pavan_sign_language/App/yolo_models/cross-hands.cfg",
+    "weights_path": "/Users/pavanaksshay/pavan_sign_language/App/yolo_models/cross-hands.weights",
+    "weights_size_bytes": 246305388,
+    "weights_size_mb": 234.9,
+    "input_resolution": [
+      416,
+      416
+    ],
+    "confidence_threshold": 0.2,
+    "nms_threshold": 0.2,
+    "preprocessing": {
+      "scale": "1/255.0",
+      "swapRB": true,
+      "crop": false,
+      "target_size": [
+        416,
+        416
+      ]
+    },
+    "coordinate_scaling": "Normalized relative to frame width and height (iw, ih)"
+  },
+  "video_audits": {
+    "recording_A_20261014_165529.mp4": {
+      "video_filename": "recording_A_20261014_165529.mp4",
+      "target_letter": "A",
+      "label": "Frontal A",
+      "total_frames": 143,
+      "detected_frames": 117,
+      "missed_detection_frames": 26,
+      "detection_rate_pct": 81.8,
+      "frame_mean_brightness": 139.2,
+      "detections_per_frame": {
+        "mean": 1.13,
+        "max": 2,
+        "zero_det_frames": 26,
+        "one_det_frames": 72,
+        "multi_det_frames": 45
+      },
+      "confidence_selected": {
+        "mean": 0.439,
+        "std": 0.158,
+        "min": 0.2,
+        "max": 0.851,
+        "median": 0.422
+      },
+      "box_geometry": {
+        "mean_width": 333.3,
+        "mean_height": 286.6,
+        "mean_aspect_ratio_w_over_h": 1.19,
+        "min_aspect_ratio": 0.821,
+        "max_aspect_ratio": 1.631
+      },
+      "qualitative_issues": {
+        "lap_hand_interference_frames": 51,
+        "forearm_intrusion_frames": 51,
+        "multiple_hands_frames": 45
+      },
+      "avg_latency_ms": 244.4
+    },
+    "recording_C_20261014_164912.mp4": {
+      "video_filename": "recording_C_20261014_164912.mp4",
+      "target_letter": "C",
+      "label": "Frontal C (Original)",
+      "total_frames": 146,
+      "detected_frames": 146,
+      "missed_detection_frames": 0,
+      "detection_rate_pct": 100.0,
+      "frame_mean_brightness": 100.9,
+      "detections_per_frame": {
+        "mean": 2.0,
+        "max": 2,
+        "zero_det_frames": 0,
+        "one_det_frames": 0,
+        "multi_det_frames": 146
+      },
+      "confidence_selected": {
+        "mean": 0.879,
+        "std": 0.06,
+        "min": 0.643,
+        "max": 0.981,
+        "median": 0.881
+      },
+      "box_geometry": {
+        "mean_width": 446.9,
+        "mean_height": 369.7,
+        "mean_aspect_ratio_w_over_h": 1.21,
+        "min_aspect_ratio": 1.005,
+        "max_aspect_ratio": 1.406
+      },
+      "qualitative_issues": {
+        "lap_hand_interference_frames": 146,
+        "forearm_intrusion_frames": 37,
+        "multiple_hands_frames": 146
+      },
+      "avg_latency_ms": 149.1
+    },
+    "recording_C_20261014_165234.mp4": {
+      "video_filename": "recording_C_20261014_165234.mp4",
+      "target_letter": "C",
+      "label": "Frontal C (Second)",
+      "total_frames": 143,
+      "detected_frames": 143,
+      "missed_detection_frames": 0,
+      "detection_rate_pct": 100.0,
+      "frame_mean_brightness": 106.1,
+      "detections_per_frame": {
+        "mean": 1.0,
+        "max": 1,
+        "zero_det_frames": 0,
+        "one_det_frames": 143,
+        "multi_det_frames": 0
+      },
+      "confidence_selected": {
+        "mean": 0.862,
+        "std": 0.061,
+        "min": 0.641,
+        "max": 0.954,
+        "median": 0.872
+      },
+      "box_geometry": {
+        "mean_width": 460.7,
+        "mean_height": 413.2,
+        "mean_aspect_ratio_w_over_h": 1.116,
+        "min_aspect_ratio": 0.978,
+        "max_aspect_ratio": 1.453
+      },
+      "qualitative_issues": {
+        "lap_hand_interference_frames": 143,
+        "forearm_intrusion_frames": 6,
+        "multiple_hands_frames": 0
+      },
+      "avg_latency_ms": 168.0
+    },
+    "recording_C_lateral_profile_calibrated.mp4": {
+      "video_filename": "recording_C_lateral_profile_calibrated.mp4",
+      "target_letter": "C",
+      "label": "Profile-matched C",
+      "total_frames": 84,
+      "detected_frames": 0,
+      "missed_detection_frames": 84,
+      "detection_rate_pct": 0.0,
+      "frame_mean_brightness": 8.0,
+      "detections_per_frame": {
+        "mean": 0.0,
+        "max": 0,
+        "zero_det_frames": 84,
+        "one_det_frames": 0,
+        "multi_det_frames": 0
+      },
+      "confidence_selected": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "median": 0.0
+      },
+      "box_geometry": {
+        "mean_width": 0.0,
+        "mean_height": 0.0,
+        "mean_aspect_ratio_w_over_h": 0.0,
+        "min_aspect_ratio": 0.0,
+        "max_aspect_ratio": 0.0
+      },
+      "qualitative_issues": {
+        "lap_hand_interference_frames": 0,
+        "forearm_intrusion_frames": 0,
+        "multiple_hands_frames": 0
+      },
+      "avg_latency_ms": 162.6
+    },
+    "recording_L_20261014_165754.mp4": {
+      "video_filename": "recording_L_20261014_165754.mp4",
+      "target_letter": "L",
+      "label": "Frontal L",
+      "total_frames": 146,
+      "detected_frames": 146,
+      "missed_detection_frames": 0,
+      "detection_rate_pct": 100.0,
+      "frame_mean_brightness": 104.7,
+      "detections_per_frame": {
+        "mean": 1.0,
+        "max": 1,
+        "zero_det_frames": 0,
+        "one_det_frames": 146,
+        "multi_det_frames": 0
+      },
+      "confidence_selected": {
+        "mean": 0.856,
+        "std": 0.128,
+        "min": 0.376,
+        "max": 0.983,
+        "median": 0.918
+      },
+      "box_geometry": {
+        "mean_width": 324.9,
+        "mean_height": 364.5,
+        "mean_aspect_ratio_w_over_h": 0.896,
+        "min_aspect_ratio": 0.747,
+        "max_aspect_ratio": 1.277
+      },
+      "qualitative_issues": {
+        "lap_hand_interference_frames": 141,
+        "forearm_intrusion_frames": 2,
+        "multiple_hands_frames": 0
+      },
+      "avg_latency_ms": 172.4
+    }
+  }
+}

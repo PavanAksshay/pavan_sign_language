@@ -1,0 +1,1216 @@
+{
+  "L": [
+    {
+      "frame_id": 20,
+      "true_label": "L",
+      "hand_span": {
+        "bw": 293.8,
+        "bh": 335.0
+      },
+      "wrist_y": 529.2,
+      "index_tip_y": 196.9,
+      "thumb_tip_x": 637.9,
+      "variants": {
+        "15pct": {
+          "box": [
+            273,
+            147,
+            708,
+            582
+          ],
+          "side": 435,
+          "top1": "Y",
+          "top1_prob": 57.42,
+          "top3": [
+            [
+              "Y",
+              57.42
+            ],
+            [
+              "U",
+              20.14
+            ],
+            [
+              "C",
+              9.68
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "20pct": {
+          "box": [
+            256,
+            130,
+            725,
+            599
+          ],
+          "side": 469,
+          "top1": "Y",
+          "top1_prob": 50.76,
+          "top3": [
+            [
+              "Y",
+              50.76
+            ],
+            [
+              "U",
+              18.93
+            ],
+            [
+              "C",
+              11.36
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "25pct": {
+          "box": [
+            240,
+            113,
+            742,
+            615
+          ],
+          "side": 502,
+          "top1": "Y",
+          "top1_prob": 62.84,
+          "top3": [
+            [
+              "Y",
+              62.84
+            ],
+            [
+              "U",
+              15.12
+            ],
+            [
+              "C",
+              5.91
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "forearm_ctx": {
+          "box": [
+            199,
+            130,
+            783,
+            714
+          ],
+          "side": 584,
+          "top1": "Y",
+          "top1_prob": 72.35,
+          "top3": [
+            [
+              "Y",
+              72.35
+            ],
+            [
+              "U",
+              11.84
+            ],
+            [
+              "Z",
+              3.98
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        }
+      }
+    },
+    {
+      "frame_id": 45,
+      "true_label": "L",
+      "hand_span": {
+        "bw": 297.1,
+        "bh": 339.1
+      },
+      "wrist_y": 544.0,
+      "index_tip_y": 210.4,
+      "thumb_tip_x": 634.6,
+      "variants": {
+        "15pct": {
+          "box": [
+            266,
+            159,
+            707,
+            600
+          ],
+          "side": 441,
+          "top1": "U",
+          "top1_prob": 41.94,
+          "top3": [
+            [
+              "U",
+              41.94
+            ],
+            [
+              "Y",
+              31.45
+            ],
+            [
+              "C",
+              12.69
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "20pct": {
+          "box": [
+            249,
+            142,
+            724,
+            617
+          ],
+          "side": 475,
+          "top1": "Y",
+          "top1_prob": 46.33,
+          "top3": [
+            [
+              "Y",
+              46.33
+            ],
+            [
+              "U",
+              29.2
+            ],
+            [
+              "C",
+              10.79
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "25pct": {
+          "box": [
+            232,
+            125,
+            741,
+            634
+          ],
+          "side": 509,
+          "top1": "Y",
+          "top1_prob": 59.77,
+          "top3": [
+            [
+              "Y",
+              59.77
+            ],
+            [
+              "U",
+              22.95
+            ],
+            [
+              "C",
+              4.58
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "forearm_ctx": {
+          "box": [
+            192,
+            132,
+            780,
+            720
+          ],
+          "side": 588,
+          "top1": "Y",
+          "top1_prob": 73.48,
+          "top3": [
+            [
+              "Y",
+              73.48
+            ],
+            [
+              "C",
+              7.85
+            ],
+            [
+              "U",
+              6.82
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        }
+      }
+    },
+    {
+      "frame_id": 70,
+      "true_label": "L",
+      "hand_span": {
+        "bw": 291.1,
+        "bh": 344.1
+      },
+      "wrist_y": 542.6,
+      "index_tip_y": 198.5,
+      "thumb_tip_x": 620.6,
+      "variants": {
+        "15pct": {
+          "box": [
+            252,
+            147,
+            699,
+            594
+          ],
+          "side": 447,
+          "top1": "Y",
+          "top1_prob": 24.5,
+          "top3": [
+            [
+              "Y",
+              24.5
+            ],
+            [
+              "L",
+              22.1
+            ],
+            [
+              "U",
+              20.11
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": true
+        },
+        "20pct": {
+          "box": [
+            234,
+            130,
+            716,
+            612
+          ],
+          "side": 482,
+          "top1": "U",
+          "top1_prob": 30.03,
+          "top3": [
+            [
+              "U",
+              30.03
+            ],
+            [
+              "L",
+              24.91
+            ],
+            [
+              "Y",
+              16.45
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": true
+        },
+        "25pct": {
+          "box": [
+            217,
+            113,
+            733,
+            629
+          ],
+          "side": 516,
+          "top1": "U",
+          "top1_prob": 27.64,
+          "top3": [
+            [
+              "U",
+              27.64
+            ],
+            [
+              "Y",
+              20.47
+            ],
+            [
+              "Z",
+              18.23
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "forearm_ctx": {
+          "box": [
+            173,
+            116,
+            777,
+            720
+          ],
+          "side": 604,
+          "top1": "Y",
+          "top1_prob": 35.64,
+          "top3": [
+            [
+              "Y",
+              35.64
+            ],
+            [
+              "U",
+              33.35
+            ],
+            [
+              "Z",
+              9.54
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        }
+      }
+    },
+    {
+      "frame_id": 95,
+      "true_label": "L",
+      "hand_span": {
+        "bw": 293.6,
+        "bh": 341.7
+      },
+      "wrist_y": 531.7,
+      "index_tip_y": 190.0,
+      "thumb_tip_x": 620.0,
+      "variants": {
+        "15pct": {
+          "box": [
+            251,
+            139,
+            695,
+            583
+          ],
+          "side": 444,
+          "top1": "Z",
+          "top1_prob": 31.94,
+          "top3": [
+            [
+              "Z",
+              31.94
+            ],
+            [
+              "Y",
+              30.0
+            ],
+            [
+              "V",
+              13.89
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "20pct": {
+          "box": [
+            234,
+            122,
+            712,
+            600
+          ],
+          "side": 478,
+          "top1": "Z",
+          "top1_prob": 33.58,
+          "top3": [
+            [
+              "Z",
+              33.58
+            ],
+            [
+              "Y",
+              33.33
+            ],
+            [
+              "V",
+              8.69
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "25pct": {
+          "box": [
+            217,
+            104,
+            730,
+            617
+          ],
+          "side": 513,
+          "top1": "Z",
+          "top1_prob": 32.17,
+          "top3": [
+            [
+              "Z",
+              32.17
+            ],
+            [
+              "Y",
+              28.45
+            ],
+            [
+              "V",
+              13.32
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "forearm_ctx": {
+          "box": [
+            173,
+            120,
+            773,
+            720
+          ],
+          "side": 600,
+          "top1": "Y",
+          "top1_prob": 67.82,
+          "top3": [
+            [
+              "Y",
+              67.82
+            ],
+            [
+              "V",
+              8.35
+            ],
+            [
+              "U",
+              6.18
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        }
+      }
+    },
+    {
+      "frame_id": 120,
+      "true_label": "L",
+      "hand_span": {
+        "bw": 301.4,
+        "bh": 349.5
+      },
+      "wrist_y": 538.6,
+      "index_tip_y": 189.1,
+      "thumb_tip_x": 616.7,
+      "variants": {
+        "15pct": {
+          "box": [
+            239,
+            137,
+            693,
+            591
+          ],
+          "side": 454,
+          "top1": "U",
+          "top1_prob": 23.05,
+          "top3": [
+            [
+              "U",
+              23.05
+            ],
+            [
+              "Z",
+              18.62
+            ],
+            [
+              "L",
+              17.65
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": true
+        },
+        "20pct": {
+          "box": [
+            222,
+            119,
+            711,
+            608
+          ],
+          "side": 489,
+          "top1": "U",
+          "top1_prob": 36.33,
+          "top3": [
+            [
+              "U",
+              36.33
+            ],
+            [
+              "Y",
+              18.09
+            ],
+            [
+              "L",
+              14.57
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": true
+        },
+        "25pct": {
+          "box": [
+            204,
+            102,
+            728,
+            626
+          ],
+          "side": 524,
+          "top1": "Y",
+          "top1_prob": 31.55,
+          "top3": [
+            [
+              "Y",
+              31.55
+            ],
+            [
+              "U",
+              21.51
+            ],
+            [
+              "Z",
+              21.12
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "forearm_ctx": {
+          "box": [
+            160,
+            107,
+            773,
+            720
+          ],
+          "side": 613,
+          "top1": "Y",
+          "top1_prob": 54.43,
+          "top3": [
+            [
+              "Y",
+              54.43
+            ],
+            [
+              "Z",
+              13.01
+            ],
+            [
+              "U",
+              12.11
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        }
+      }
+    }
+  ],
+  "C": [
+    {
+      "frame_id": 20,
+      "true_label": "C",
+      "hand_span": {
+        "bw": 369.3,
+        "bh": 544.6
+      },
+      "wrist_y": 450.5,
+      "index_tip_y": 163.6,
+      "thumb_tip_x": 598.7,
+      "variants": {
+        "15pct": {
+          "box": [
+            75,
+            12,
+            783,
+            720
+          ],
+          "side": 708,
+          "top1": "W",
+          "top1_prob": 44.12,
+          "top3": [
+            [
+              "W",
+              44.12
+            ],
+            [
+              "C",
+              28.9
+            ],
+            [
+              "R",
+              4.46
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": true
+        },
+        "20pct": {
+          "box": [
+            48,
+            -42,
+            810,
+            720
+          ],
+          "side": 762,
+          "top1": "C",
+          "top1_prob": 33.86,
+          "top3": [
+            [
+              "C",
+              33.86
+            ],
+            [
+              "W",
+              27.74
+            ],
+            [
+              "Y",
+              8.92
+            ]
+          ],
+          "is_correct_top1": true,
+          "is_correct_top3": true
+        },
+        "25pct": {
+          "box": [
+            20,
+            -97,
+            837,
+            720
+          ],
+          "side": 817,
+          "top1": "W",
+          "top1_prob": 25.2,
+          "top3": [
+            [
+              "W",
+              25.2
+            ],
+            [
+              "C",
+              18.85
+            ],
+            [
+              "J",
+              14.88
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": true
+        },
+        "forearm_ctx": {
+          "box": [
+            0,
+            -182,
+            902,
+            720
+          ],
+          "side": 902,
+          "top1": "Y",
+          "top1_prob": 24.61,
+          "top3": [
+            [
+              "Y",
+              24.61
+            ],
+            [
+              "T",
+              17.0
+            ],
+            [
+              "W",
+              15.78
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        }
+      }
+    },
+    {
+      "frame_id": 45,
+      "true_label": "C",
+      "hand_span": {
+        "bw": 364.1,
+        "bh": 529.4
+      },
+      "wrist_y": 468.6,
+      "index_tip_y": 169.2,
+      "thumb_tip_x": 597.9,
+      "variants": {
+        "15pct": {
+          "box": [
+            80,
+            32,
+            768,
+            720
+          ],
+          "side": 688,
+          "top1": "W",
+          "top1_prob": 54.35,
+          "top3": [
+            [
+              "W",
+              54.35
+            ],
+            [
+              "C",
+              17.32
+            ],
+            [
+              "R",
+              14.82
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": true
+        },
+        "20pct": {
+          "box": [
+            54,
+            -21,
+            795,
+            720
+          ],
+          "side": 741,
+          "top1": "C",
+          "top1_prob": 43.25,
+          "top3": [
+            [
+              "C",
+              43.25
+            ],
+            [
+              "W",
+              18.1
+            ],
+            [
+              "R",
+              17.06
+            ]
+          ],
+          "is_correct_top1": true,
+          "is_correct_top3": true
+        },
+        "25pct": {
+          "box": [
+            27,
+            -74,
+            821,
+            720
+          ],
+          "side": 794,
+          "top1": "W",
+          "top1_prob": 51.62,
+          "top3": [
+            [
+              "W",
+              51.62
+            ],
+            [
+              "Y",
+              14.98
+            ],
+            [
+              "J",
+              14.77
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        },
+        "forearm_ctx": {
+          "box": [
+            0,
+            -159,
+            879,
+            720
+          ],
+          "side": 879,
+          "top1": "Y",
+          "top1_prob": 31.98,
+          "top3": [
+            [
+              "Y",
+              31.98
+            ],
+            [
+              "W",
+              27.38
+            ],
+            [
+              "J",
+              6.64
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        }
+      }
+    },
+    {
+      "frame_id": 70,
+      "true_label": "C",
+      "hand_span": {
+        "bw": 345.6,
+        "bh": 307.5
+      },
+      "wrist_y": 460.9,
+      "index_tip_y": 160.7,
+      "thumb_tip_x": 600.4,
+      "variants": {
+        "15pct": {
+          "box": [
+            203,
+            83,
+            652,
+            532
+          ],
+          "side": 449,
+          "top1": "C",
+          "top1_prob": 99.58,
+          "top3": [
+            [
+              "C",
+              99.58
+            ],
+            [
+              "L",
+              0.2
+            ],
+            [
+              "R",
+              0.09
+            ]
+          ],
+          "is_correct_top1": true,
+          "is_correct_top3": true
+        },
+        "20pct": {
+          "box": [
+            186,
+            65,
+            670,
+            549
+          ],
+          "side": 484,
+          "top1": "C",
+          "top1_prob": 99.55,
+          "top3": [
+            [
+              "C",
+              99.55
+            ],
+            [
+              "R",
+              0.22
+            ],
+            [
+              "W",
+              0.11
+            ]
+          ],
+          "is_correct_top1": true,
+          "is_correct_top3": true
+        },
+        "25pct": {
+          "box": [
+            169,
+            48,
+            687,
+            566
+          ],
+          "side": 518,
+          "top1": "C",
+          "top1_prob": 99.44,
+          "top3": [
+            [
+              "C",
+              99.44
+            ],
+            [
+              "R",
+              0.24
+            ],
+            [
+              "W",
+              0.18
+            ]
+          ],
+          "is_correct_top1": true,
+          "is_correct_top3": true
+        },
+        "forearm_ctx": {
+          "box": [
+            158,
+            91,
+            698,
+            631
+          ],
+          "side": 540,
+          "top1": "C",
+          "top1_prob": 96.41,
+          "top3": [
+            [
+              "C",
+              96.41
+            ],
+            [
+              "W",
+              1.46
+            ],
+            [
+              "R",
+              1.45
+            ]
+          ],
+          "is_correct_top1": true,
+          "is_correct_top3": true
+        }
+      }
+    },
+    {
+      "frame_id": 95,
+      "true_label": "C",
+      "hand_span": {
+        "bw": 347.5,
+        "bh": 524.9
+      },
+      "wrist_y": 455.7,
+      "index_tip_y": 164.6,
+      "thumb_tip_x": 625.2,
+      "variants": {
+        "15pct": {
+          "box": [
+            110,
+            38,
+            792,
+            720
+          ],
+          "side": 682,
+          "top1": "C",
+          "top1_prob": 46.07,
+          "top3": [
+            [
+              "C",
+              46.07
+            ],
+            [
+              "W",
+              34.2
+            ],
+            [
+              "R",
+              7.91
+            ]
+          ],
+          "is_correct_top1": true,
+          "is_correct_top3": true
+        },
+        "20pct": {
+          "box": [
+            84,
+            -15,
+            819,
+            720
+          ],
+          "side": 735,
+          "top1": "W",
+          "top1_prob": 32.24,
+          "top3": [
+            [
+              "W",
+              32.24
+            ],
+            [
+              "C",
+              26.91
+            ],
+            [
+              "R",
+              13.38
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": true
+        },
+        "25pct": {
+          "box": [
+            58,
+            -67,
+            845,
+            720
+          ],
+          "side": 787,
+          "top1": "W",
+          "top1_prob": 30.56,
+          "top3": [
+            [
+              "W",
+              30.56
+            ],
+            [
+              "C",
+              16.57
+            ],
+            [
+              "Y",
+              11.2
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": true
+        },
+        "forearm_ctx": {
+          "box": [
+            12,
+            -159,
+            891,
+            720
+          ],
+          "side": 879,
+          "top1": "Y",
+          "top1_prob": 14.93,
+          "top3": [
+            [
+              "Y",
+              14.93
+            ],
+            [
+              "R",
+              14.14
+            ],
+            [
+              "W",
+              14.02
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        }
+      }
+    },
+    {
+      "frame_id": 120,
+      "true_label": "C",
+      "hand_span": {
+        "bw": 326.2,
+        "bh": 459.3
+      },
+      "wrist_y": 483.2,
+      "index_tip_y": 246.2,
+      "thumb_tip_x": 644.2,
+      "variants": {
+        "15pct": {
+          "box": [
+            183,
+            123,
+            780,
+            720
+          ],
+          "side": 597,
+          "top1": "C",
+          "top1_prob": 91.19,
+          "top3": [
+            [
+              "C",
+              91.19
+            ],
+            [
+              "W",
+              4.55
+            ],
+            [
+              "R",
+              1.54
+            ]
+          ],
+          "is_correct_top1": true,
+          "is_correct_top3": true
+        },
+        "20pct": {
+          "box": [
+            160,
+            77,
+            803,
+            720
+          ],
+          "side": 643,
+          "top1": "C",
+          "top1_prob": 70.82,
+          "top3": [
+            [
+              "C",
+              70.82
+            ],
+            [
+              "W",
+              10.41
+            ],
+            [
+              "S",
+              6.11
+            ]
+          ],
+          "is_correct_top1": true,
+          "is_correct_top3": true
+        },
+        "25pct": {
+          "box": [
+            137,
+            31,
+            826,
+            720
+          ],
+          "side": 689,
+          "top1": "C",
+          "top1_prob": 32.58,
+          "top3": [
+            [
+              "C",
+              32.58
+            ],
+            [
+              "B",
+              18.24
+            ],
+            [
+              "W",
+              11.5
+            ]
+          ],
+          "is_correct_top1": true,
+          "is_correct_top3": true
+        },
+        "forearm_ctx": {
+          "box": [
+            106,
+            -31,
+            857,
+            720
+          ],
+          "side": 751,
+          "top1": "S",
+          "top1_prob": 23.7,
+          "top3": [
+            [
+              "S",
+              23.7
+            ],
+            [
+              "R",
+              15.14
+            ],
+            [
+              "W",
+              11.44
+            ]
+          ],
+          "is_correct_top1": false,
+          "is_correct_top3": false
+        }
+      }
+    }
+  ]
+}

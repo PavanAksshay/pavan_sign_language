@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISL Multi-Signer Data Collection Studio // Phase 18</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0c10;
+            --bg-secondary: #12161f;
+            --bg-card: #181d28;
+            --bg-card-hover: #1f2533;
+            --border-color: #273042;
+            --border-focus: #3b82f6;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --accent-primary: #2563eb;
+            --accent-hover: #1d4ed8;
+            --accent-emerald: #10b981;
+            --accent-emerald-dim: rgba(16, 185, 129, 0.15);
+            --accent-amber: #f59e0b;
+            --accent-amber-dim: rgba(245, 158, 11, 0.15);
+            --accent-rose: #f43f5e;
+            --accent-rose-dim: rgba(244, 63, 94, 0.15);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 28px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-badge {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #ffffff;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .brand-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .brand-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-focus);
+        }
+
+        .privacy-badge {
+            background: var(--accent-emerald-dim);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        main {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 24px 28px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Volunteer Consent Banner */
+        .consent-card {
+            background: linear-gradient(180deg, rgba(37, 99, 235, 0.08), rgba(24, 29, 40, 0.8));
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* Signer 05 Independent Evaluation Isolation Banner */
+        .isolation-card {
+            background: linear-gradient(180deg, rgba(37, 99, 235, 0.15), rgba(15, 23, 42, 0.95));
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
+        }
+
+        .isolation-icon {
+            font-size: 1.8rem;
+        }
+
+        .isolation-content {
+            flex: 1;
+        }
+
+        .isolation-title {
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #60a5fa;
+            letter-spacing: 0.03em;
+            margin-bottom: 4px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .isolation-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        .isolation-badge {
+            background: rgba(37, 99, 235, 0.25);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.6);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
+        }
+
+        .role-dev-train {
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.12), rgba(15, 23, 42, 0.95));
+            border-color: rgba(16, 185, 129, 0.5);
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+        }
+        .role-dev-train .isolation-title { color: #34d399; }
+        .role-dev-train .isolation-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+            border-color: rgba(16, 185, 129, 0.6);
+        }
+
+        .role-dev-val {
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.12), rgba(15, 23, 42, 0.95));
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
+        }
+        .role-dev-val .isolation-title { color: #60a5fa; }
+        .role-dev-val .isolation-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+
+        .role-external-holdout {
+            background: linear-gradient(180deg, rgba(244, 63, 94, 0.15), rgba(15, 23, 42, 0.95));
+            border-color: rgba(244, 63, 94, 0.5);
+            box-shadow: 0 4px 16px rgba(244, 63, 94, 0.15);
+        }
+        .role-external-holdout .isolation-title { color: #fb7185; }
+        .role-external-holdout .isolation-badge {
+            background: rgba(244, 63, 94, 0.2);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.6);
+        }
+
+        .role-frozen-benchmark {
+            background: linear-gradient(180deg, rgba(168, 85, 247, 0.15), rgba(15, 23, 42, 0.95));
+            border-color: rgba(168, 85, 247, 0.5);
+            box-shadow: 0 4px 16px rgba(168, 85, 247, 0.15);
+        }
+        .role-frozen-benchmark .isolation-title { color: #c084fc; }
+        .role-frozen-benchmark .isolation-badge {
+            background: rgba(168, 85, 247, 0.2);
+            color: #d8b4fe;
+            border-color: rgba(168, 85, 247, 0.6);
+        }
+
+        .consent-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .consent-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #60a5fa;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .consent-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .consent-toggle-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-card);
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .consent-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--accent-emerald);
+        }
+
+        .consent-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* Operator Control Strip */
+        .control-strip {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            align-items: end;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .control-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .control-select, .control-input {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .control-select:focus, .control-input:focus {
+            border-color: var(--border-focus);
+        }
+
+        /* Main Studio Layout: 2 Columns */
+        .studio-stage {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .studio-stage {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Camera Box */
+        .camera-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .card-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .camera-viewport-wrap {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 ratio */
+            background: #000000;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+        }
+
+        #webcam-feed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scaleX(-1); /* Mirror camera for natural signing */
+        }
+
+        /* Visual Framing Reticle Overlay */
+        .framing-reticle {
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            width: 60%;
+            height: 70%;
+            border: 2px dashed rgba(255, 255, 255, 0.25);
+            border-radius: var(--radius-md);
+            pointer-events: none;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10px;
+        }
+
+        .reticle-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.6);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Recording Status Overlay */
+        .recording-overlay {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffffff;
+            z-index: 10;
+        }
+
+        .rec-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--accent-rose);
+            border-radius: 50%;
+            animation: pulse-rec 1s infinite alternate;
+        }
+
+        @keyframes pulse-rec {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* Countdown Overlay */
+        .countdown-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 12, 16, 0.75);
+            backdrop-filter: blur(4px);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            z-index: 20;
+        }
+
+        .countdown-number {
+            font-size: 5rem;
+            font-weight: 900;
+            font-family: 'JetBrains Mono', monospace;
+            color: #60a5fa;
+            text-shadow: 0 0 30px rgba(96, 165, 250, 0.6);
+        }
+
+        .countdown-prompt {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Action Buttons */
+        .camera-actions-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-record {
+            flex: 1;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(225, 29, 72, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-record:hover:not(:disabled) {
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            transform: translateY(-1px);
+        }
+
+        .btn-record:disabled {
+            background: #334155;
+            color: #64748b;
+            cursor: not-allowed;
+            box-shadow: none;
+            opacity: 0.6;
+        }
+
+        .btn-stop {
+            padding: 14px 22px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: none;
+            transition: all 0.2s;
+        }
+
+        .btn-stop:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-rose);
+            color: var(--accent-rose);
+        }
+
+        .camera-telemetry {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-card);
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Sign Guide Card (Right Column) */
+        .guide-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .letter-hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-card);
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .letter-display {
+            font-size: 3.2rem;
+            font-weight: 900;
+            font-family: 'JetBrains Mono', monospace;
+            color: #60a5fa;
+            line-height: 1;
+        }
+
+        .letter-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .letter-badge {
+            background: var(--accent-emerald-dim);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .letter-target-status {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .reference-image-container {
+            width: 100%;
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            border: 1px solid var(--border-color);
+        }
+
+        #letter-reference-img {
+            max-width: 100%;
+            max-height: 220px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .sign-instructions {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .instructions-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-amber);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .instructions-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Progress Matrix Section */
+        .matrix-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .matrix-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .matrix-progress-bar-wrap {
+            width: 100%;
+            height: 10px;
+            background: var(--bg-card);
+            border-radius: 999px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .matrix-progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2563eb, #10b981);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+            gap: 10px;
+        }
+
+        .letter-tile {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 10px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .letter-tile:hover {
+            border-color: var(--border-focus);
+            transform: translateY(-2px);
+        }
+
+        .letter-tile.active-letter {
+            border-color: #60a5fa;
+            background: rgba(96, 165, 250, 0.12);
+            box-shadow: 0 0 12px rgba(96, 165, 250, 0.3);
+        }
+
+        .letter-tile.status-completed {
+            border-color: var(--accent-emerald);
+            background: var(--accent-emerald-dim);
+        }
+
+        .letter-tile.status-partial {
+            border-color: var(--accent-amber);
+            background: var(--accent-amber-dim);
+        }
+
+        .tile-letter {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .tile-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        .tile-rejected-badge {
+            font-size: 0.65rem;
+            background: var(--accent-rose-dim);
+            color: var(--accent-rose);
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        /* Review Modal */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 7, 10, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .review-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 980px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .modal-header {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .review-video-stage {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .review-video-stage {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .review-video-wrap {
+            position: relative;
+            padding-top: 56.25%;
+            background: #000;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        #review-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .review-summary-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+        }
+
+        .summary-metric-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.88rem;
+        }
+
+        .summary-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+        }
+
+        .frames-gallery-title {
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+        }
+
+        .frames-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            max-height: 260px;
+            overflow-y: auto;
+            padding: 4px;
+        }
+
+        .frame-thumb-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .frame-thumb-card.usable {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        .frame-thumb-card.rejected {
+            border-color: rgba(244, 63, 94, 0.4);
+            opacity: 0.65;
+        }
+
+        .frame-thumb-img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .frame-thumb-caption {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .modal-footer {
+            padding: 18px 24px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: var(--bg-card);
+        }
+
+        .btn-modal-action {
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-modal-accept {
+            background: #10b981;
+            color: #ffffff;
+        }
+
+        .btn-modal-accept:hover {
+            background: #059669;
+        }
+
+        .btn-modal-reject {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--accent-rose);
+        }
+
+        .btn-modal-reject:hover {
+            background: var(--accent-rose-dim);
+            border-color: var(--accent-rose);
+        }
+
+        /* Toast notifications */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            animation: slide-toast 0.3s ease;
+        }
+
+        @keyframes slide-toast {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="brand-group">
+                <div class="brand-badge">P30</div>
+                <div>
+                    <h1 class="brand-title">ISL Data Collection Studio</h1>
+                    <div class="brand-subtitle">Multi-Signer Benchmark & Evaluation Holdout Pipeline // Signer 05 Studio</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="privacy-badge">
+                    <span>🔒</span> 100% LOCAL PRIVACY PRESERVED
+                </div>
+                <button id="btn-session-summary" class="nav-btn" onclick="openSessionSummaryModal()" style="cursor: pointer; background: var(--bg-card);">
+                    <span style="color: #60a5fa;">📊</span> Session Summary
+                </button>
+                <a href="/" class="nav-btn">
+                    <span>⚡</span> Live Translator
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Volunteer Participant Informed Consent Banner -->
+        <div class="consent-card">
+            <div class="consent-info">
+                <div class="consent-title">
+                    <span>📋</span> Volunteer Participant Informed Consent & Privacy Protocol
+                </div>
+                <div class="consent-desc">
+                    All video recordings and extracted landmark coordinates are stored exclusively on this local machine. No data is transmitted to external cloud services. Volunteers retain complete right-to-deletion at any time upon request.
+                </div>
+            </div>
+            <label class="consent-toggle-wrapper">
+                <input type="checkbox" id="consent-checkbox" class="consent-checkbox" onchange="toggleConsent()">
+                <span class="consent-label">Volunteer Consent Confirmed</span>
+            </label>
+        </div>
+
+        <!-- Dynamic Dataset Role & Partition Isolation Banner -->
+        <div id="role-isolation-banner" class="isolation-card role-dev-train">
+            <div id="role-isolation-icon" class="isolation-icon">🛠️</div>
+            <div class="isolation-content">
+                <div id="role-isolation-title" class="isolation-title">DEVELOPMENT TRAINING DATASET</div>
+                <div id="role-isolation-desc" class="isolation-desc">
+                    Signer data allocated to development training partition (dev_train_manifest.json). Permitted for training, calibration, and hyperparameter tuning in Phase 34+.
+                </div>
+            </div>
+            <div id="role-isolation-badge" class="isolation-badge">DEV TRAIN</div>
+        </div>
+
+        <!-- Operator Control Strip -->
+        <div class="control-strip">
+            <div class="control-group">
+                <label class="control-label" for="signer-select">Volunteer Signer ID & Role</label>
+                <select id="signer-select" class="control-select" onchange="onSignerOrConditionChange()">
+                    {% if signers %}
+                        {% for s in signers %}
+                        <option value="{{ s }}" {% if s == 'signer_06' %}selected{% endif %}>
+                            {{ s }}
+                            {% if s in ['signer_06', 'signer_07', 'signer_08', 'signer_09'] %} (Dev Train)
+                            {% elif s in ['signer_10', 'signer_11'] %} (Dev Val [Zero-Leakage])
+                            {% elif s == 'signer_05' %} (External Holdout [Sealed])
+                            {% elif s == 'signer_04' %} (Dev Multi-Role)
+                            {% elif s in ['signer_02', 'signer_03'] %} (Frozen Benchmark)
+                            {% endif %}
+                        </option>
+                        {% endfor %}
+                    {% else %}
+                        <option value="signer_06" selected>signer_06 (Dev Train)</option>
+                        <option value="signer_07">signer_07 (Dev Train)</option>
+                        <option value="signer_08">signer_08 (Dev Train)</option>
+                        <option value="signer_09">signer_09 (Dev Train)</option>
+                        <option value="signer_10">signer_10 (Dev Val [Zero-Leakage])</option>
+                        <option value="signer_11">signer_11 (Dev Val [Zero-Leakage])</option>
+                        <option value="signer_05">signer_05 (External Holdout [Sealed])</option>
+                        <option value="signer_04">signer_04 (Dev Multi-Role)</option>
+                        <option value="signer_02">signer_02 (Frozen Benchmark)</option>
+                        <option value="signer_03">signer_03 (Frozen Benchmark)</option>
+                    {% endif %}
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="condition-select">Recording Condition</label>
+                <select id="condition-select" class="control-select" onchange="onSignerOrConditionChange()">
+                    <option value="condition_1" selected>Condition 1: Desk Neutral (Frontal 70cm)</option>
+                    <option value="condition_2">Condition 2: Angled Laptop & Lap-Rest (25°-35° Pitch)</option>
+                    <option value="condition_3">Condition 3: Distance Challenge (1.0m-1.2m Ambient)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="take-select">Take Slot</label>
+                <select id="take-select" class="control-select" onchange="onTakeChange()">
+                    <option value="1" selected>Take 1 (Initial Recording)</option>
+                    <option value="2">Take 2 (Variation Take)</option>
+                    <option value="3">Take 3 (Confirmation Take)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="sampling-select">Sampling Interval</label>
+                <select id="sampling-select" class="control-select">
+                    <option value="3" selected>Every 3 frames (~10 fps) [Recommended]</option>
+                    <option value="2">Every 2 frames (~15 fps)</option>
+                    <option value="4">Every 4 frames (~7.5 fps)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="session-input">Session Identifier</label>
+                <input type="text" id="session-input" class="control-input" value="session_20261026_01">
+            </div>
+
+            <div class="control-group" style="display: flex; flex-direction: column; justify-content: flex-end;">
+                <button type="button" id="btn-resume-session" class="nav-btn" onclick="resumeNextMissingTake()" style="background: rgba(37, 99, 235, 0.18); border-color: rgba(59, 130, 246, 0.5); color: #93c5fd; cursor: pointer; height: 38px;">
+                    <span>⚡</span> Resume Next Take
+                </button>
+            </div>
+        </div>
+
+        <!-- Dynamic Condition Protocol Guidance Banner -->
+        <div id="condition-protocol-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 1.3rem;">📐</span>
+                <div>
+                    <div id="protocol-title" style="font-weight: 700; font-size: 0.88rem; color: #60a5fa; font-family: 'JetBrains Mono', monospace;">Condition 1: Standard Frontal (Eye Level, 0.7m)</div>
+                    <div id="protocol-instructions" style="font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;">Position camera at eye level, ~0.7m distance. Neutral diffuse lighting. Keep inactive non-signing hand off camera.</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-dim); white-space: nowrap;">
+                <span id="protocol-pitch">Pitch: 0° (Eye level)</span> |
+                <span id="protocol-dist">Dist: ~70cm</span> |
+                <span id="protocol-lap">Lap Rest: Off-camera</span>
+            </div>
+        </div>
+
+        <!-- Operator Preflight Protocol Checklist Card -->
+        <div id="preflight-checklist-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px 18px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 1.1rem;">📋</span>
+                    <span style="font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace; color: #94a3b8;">
+                        Operator Preflight Protocol Checklist
+                    </span>
+                    <span id="preflight-status-badge" style="background: rgba(244, 63, 94, 0.2); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.4); font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">BLOCKED: CONSENT PENDING</span>
+                </div>
+                <div style="font-size: 0.75rem; color: #64748b; font-family: 'JetBrains Mono', monospace;">
+                    Nominal & Operator-Reported Telemetry
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; font-size: 0.78rem;">
+                <div style="background: var(--bg-secondary); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border-color);">
+                    <div style="color: var(--text-muted); font-size: 0.7rem; font-weight: 700;">PARTITION ROLE</div>
+                    <div id="preflight-role-text" style="color: #60a5fa; font-weight: 700; font-family: 'JetBrains Mono', monospace;">Dev Train (Phase 34+)</div>
+                </div>
+                <div style="background: var(--bg-secondary); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border-color);">
+                    <div style="color: var(--text-muted); font-size: 0.7rem; font-weight: 700;">GEOMETRY PROTOCOL</div>
+                    <div id="preflight-geometry-text" style="color: #cbd5e1; font-family: 'JetBrains Mono', monospace;">0° Yaw, 0° Pitch (~70cm frontal)</div>
+                </div>
+                <div style="background: var(--bg-secondary); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border-color);">
+                    <div style="color: var(--text-muted); font-size: 0.7rem; font-weight: 700;">VOLUNTEER CONSENT</div>
+                    <div id="preflight-consent-text" style="color: #f87171; font-weight: 700; font-family: 'JetBrains Mono', monospace;">Mandatory (Not Confirmed)</div>
+                </div>
+                <div style="background: var(--bg-secondary); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border-color);">
+                    <div style="color: var(--text-muted); font-size: 0.7rem; font-weight: 700;">ACTIVE TARGET & TAKE</div>
+                    <div id="preflight-target-text" style="color: #a78bfa; font-weight: 700; font-family: 'JetBrains Mono', monospace;">Letter A — Take 1 of 3</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Studio Workbench -->
+        <div class="studio-stage">
+            <!-- Left Column: Live Camera Stage -->
+            <div class="camera-card">
+                <div class="card-header-row">
+                    <div class="card-title">
+                        <span>📹</span> Live Capture Preview
+                    </div>
+                    <div id="camera-status-badge" class="letter-badge" style="background: rgba(37,99,235,0.15); color: #60a5fa; border-color: rgba(37,99,235,0.3);">
+                        Camera Ready
+                    </div>
+                </div>
+
+                <div class="camera-viewport-wrap">
+                    <video id="webcam-feed" autoplay playsinline muted></video>
+
+                    <!-- Framing Reticle Overlay -->
+                    <div class="framing-reticle">
+                        <div class="reticle-label">Frame Hand Here (Chest / Face Level)</div>
+                    </div>
+
+                    <!-- Recording State Overlay -->
+                    <div id="recording-overlay" class="recording-overlay">
+                        <div class="rec-dot"></div>
+                        <span id="rec-timer-text">RECORDING: 0.0s / 3.0s</span>
+                    </div>
+
+                    <!-- Countdown Overlay -->
+                    <div id="countdown-overlay" class="countdown-overlay">
+                        <div id="countdown-num" class="countdown-number">3</div>
+                        <div class="countdown-prompt">Get Ready to Sign Letter <span id="countdown-letter" style="color: #60a5fa;">A</span></div>
+                    </div>
+                </div>
+
+                <!-- Camera Action Buttons -->
+                <div class="camera-actions-row">
+                    <button id="btn-start-record" class="btn-record" onclick="onStartRecordClicked()" disabled data-is-retake="false">
+                        <span>⏺</span> <span id="btn-record-main-text">Start Recording Letter</span> <span id="btn-letter-label">A</span> (3.0s Auto-Stop)
+                    </button>
+                    <button id="btn-stop-record" class="btn-stop" onclick="stopRecordingEarly()">
+                        <span>⏹</span> Stop Early
+                    </button>
+                </div>
+
+                <div class="camera-telemetry">
+                    <span id="telemetry-resolution">Resolution: Detecting...</span>
+                    <span id="telemetry-fps">Target: 720p @ 30 FPS</span>
+                    <span id="telemetry-consent">Consent: Pending</span>
+                </div>
+            </div>
+
+            <!-- Right Column: Active Letter Reference & Guide -->
+            <div class="guide-card">
+                <div class="letter-hero">
+                    <div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase;">Active Target Letter</div>
+                        <div id="active-letter-char" class="letter-display">A</div>
+                    </div>
+                    <div class="letter-meta">
+                        <div id="sign-hand-type-badge" class="letter-badge">Single-Hand Sign</div>
+                        <div id="active-letter-count" class="letter-target-status">0 / 30 Usable Frames</div>
+                    </div>
+                </div>
+
+                <div class="reference-image-container">
+                    <img id="letter-reference-img" src="/static/manual/A.jpg" alt="ISL Reference Sign" onerror="this.style.display='none'">
+                </div>
+
+                <div class="sign-instructions">
+                    <div class="instructions-title">Signing Reference Instructions</div>
+                    <div id="letter-instruction-text" class="instructions-text">
+                        Hold dominant hand steady in view of camera. Form fist with thumb pointing upward along the side of the index finger.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full A–Z Progress Matrix -->
+        <div class="matrix-section">
+            <div class="matrix-header">
+                <div>
+                    <h2 style="font-size: 1.15rem; font-weight: 800;">Alphabet Collection Progress Matrix</h2>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;" id="matrix-subtitle">
+                        Signer: signer_02 | Condition 1: Desk Neutral | Target: 780 frames (26 letters × 30)
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 1.25rem; font-weight: 800; color: #60a5fa; font-family: 'JetBrains Mono', monospace;" id="total-progress-stat">
+                        0 / 3,120 frames (0.0%)
+                    </div>
+                </div>
+            </div>
+
+            <div class="matrix-progress-bar-wrap">
+                <div id="matrix-progress-bar" class="matrix-progress-bar-fill"></div>
+            </div>
+
+            <div class="alphabet-grid" id="alphabet-grid">
+                <!-- A-Z Letter Tiles populated dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Review & Ingestion Modal -->
+    <div id="review-modal" class="modal-backdrop">
+        <div class="review-card">
+            <div class="modal-header">
+                <div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800;">Review Staged Recording</h3>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;" id="modal-staging-id">
+                        Staging ID: stage_pending
+                    </div>
+                </div>
+                <div id="recommendation-badge" class="summary-badge" style="background: var(--accent-emerald-dim); color: var(--accent-emerald);">
+                    Recommended
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="review-video-stage">
+                    <div class="review-video-wrap">
+                        <video id="review-video" controls autoplay playsinline loop></video>
+                    </div>
+
+                    <div class="review-summary-box">
+                        <div class="summary-metric-row">
+                            <span style="color: var(--text-muted);">Letter & Signer:</span>
+                            <span id="review-letter-signer" style="font-weight: 700;">A (signer_02)</span>
+                        </div>
+                        <div class="summary-metric-row">
+                            <span style="color: var(--text-muted);">Recording Duration:</span>
+                            <span id="review-duration" style="font-family: 'JetBrains Mono', monospace;">3.0s (90 frames)</span>
+                        </div>
+                        <div class="summary-metric-row">
+                            <span style="color: var(--text-muted);">Usable Frames Extracted:</span>
+                            <span id="review-usable-badge" class="summary-badge" style="background: var(--accent-emerald-dim); color: var(--accent-emerald);">0 frames</span>
+                        </div>
+                        <div class="summary-metric-row">
+                            <span style="color: var(--text-muted);">Rejected Frames:</span>
+                            <span id="review-rejected-badge" class="summary-badge" style="background: var(--accent-rose-dim); color: var(--accent-rose);">0 frames</span>
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">
+                            Notes: Usable frames passed Laplacian blur (>= 50.0), illumination bounds (40-220), hand presence, and duplicate checks.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="frames-gallery-title">Extracted Candidate Frames (Quality Audited)</div>
+                <div class="frames-gallery-grid" id="frames-gallery">
+                    <!-- Populated dynamically with thumbnail cards -->
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div style="display: flex; gap: 10px;">
+                    <button id="btn-discard-only" class="btn-modal-action btn-modal-reject" onclick="commitStaged('reject', false)" style="background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-muted);">
+                        <span>✗</span> Discard Only
+                    </button>
+                    <button id="btn-discard-rerecord" class="btn-modal-action btn-modal-reject" onclick="commitStaged('reject', true)" style="background: rgba(244, 63, 94, 0.15); border: 1px solid var(--accent-rose); color: var(--accent-rose);">
+                        <span>🔄</span> Discard & Re-Record
+                    </button>
+                </div>
+                <button id="btn-accept-commit" class="btn-modal-action btn-modal-accept" onclick="commitStaged('accept')">
+                    <span>✓</span> Accept Recording & Ingest Frames
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Retake Confirmation Modal -->
+    <div id="retake-modal" class="modal-backdrop" style="display: none;">
+        <div class="review-card" style="max-width: 520px;">
+            <div class="modal-header">
+                <div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent-amber); display: flex; align-items: center; gap: 8px;">
+                        <span>⚠️</span> Retake Confirmation
+                    </h3>
+                    <div style="font-size: 0.82rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;" id="retake-modal-letter-cond">
+                        Letter <span id="retake-modal-letter" style="color: #60a5fa; font-weight: 700;">A</span> | <span id="retake-modal-cond">Condition 1</span>
+                    </div>
+                </div>
+                <div class="summary-badge" style="background: var(--accent-amber-dim); color: var(--accent-amber);">
+                    Retake Action
+                </div>
+            </div>
+
+            <div class="modal-body" style="padding: 16px 0;">
+                <p style="font-size: 0.9rem; color: var(--text-main); line-height: 1.5; margin-bottom: 12px;">
+                    This letter already has an accepted recording for the selected condition.
+                </p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
+                    Recording a retake will <strong>supersede</strong> the prior recording. The previous take will remain safely preserved in the audit ledger, but will be marked as superseded and ineligible for evaluation. Prior frame files will not be overwritten.
+                </p>
+                <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 6px; padding: 12px; font-size: 0.82rem; color: var(--accent-amber); line-height: 1.4;">
+                    <span>🛡️</span> <strong>Audit Integrity Notice</strong>: Retakes are tracked with timestamped supersession history in the dataset ledger to preserve data lineage.
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-modal-action btn-modal-reject" onclick="closeRetakeModal()">
+                    Cancel
+                </button>
+                <button class="btn-modal-action btn-modal-accept" style="background: var(--accent-amber); border-color: var(--accent-amber);" onclick="confirmRetakeAndStart()">
+                    Proceed with Retake
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Session Completion Summary Modal -->
+    <div id="session-summary-modal" class="modal-backdrop" style="display: none;">
+        <div class="review-card" style="max-width: 820px;">
+            <div class="modal-header">
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px;">
+                        <span>📊</span> Session Completion Summary
+                    </h3>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;" id="summary-modal-signer">
+                        Signer: signer_05
+                    </div>
+                </div>
+                <div id="summary-readiness-badge" class="summary-badge" style="background: var(--accent-amber-dim); color: var(--accent-amber);">
+                    Evaluating...
+                </div>
+            </div>
+
+            <div class="modal-body" style="padding: 18px 0; display: flex; flex-direction: column; gap: 16px;">
+                <div id="summary-isolation-alert" style="display: none; background: rgba(37, 99, 235, 0.12); border: 1px solid rgba(37, 99, 235, 0.4); border-radius: 8px; padding: 12px 16px; font-size: 0.85rem; color: #93c5fd; line-height: 1.45;">
+                    🔒 <strong>Independent Evaluation Participant</strong>: Signer 05 data is strictly quarantined as an independent evaluation holdout. These recordings are excluded from training, feature normalization, and model tuning.
+                </div>
+
+                <!-- High-level Metric Cards -->
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">COMPLETED CELLS</div>
+                        <div id="sum-stat-cells" style="font-size: 1.35rem; font-weight: 800; color: #60a5fa; margin-top: 4px;">0 / 52</div>
+                    </div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">USABLE FRAMES</div>
+                        <div id="sum-stat-frames" style="font-size: 1.35rem; font-weight: 800; color: var(--accent-emerald); margin-top: 4px;">0 / 1560</div>
+                    </div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">SUPERSEDED TAKES</div>
+                        <div id="sum-stat-retakes" style="font-size: 1.35rem; font-weight: 800; color: var(--accent-amber); margin-top: 4px;">0</div>
+                    </div>
+                    <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 0.72rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">REJECTED TAKES</div>
+                        <div id="sum-stat-rejected" style="font-size: 1.35rem; font-weight: 800; color: var(--accent-rose); margin-top: 4px;">0</div>
+                    </div>
+                </div>
+
+                <!-- Per-condition Matrix Breakdown -->
+                <div id="conditions-summary-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px;">
+                    <div id="sum-c1-card" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="font-weight: 700; font-size: 0.88rem; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                            <span id="sum-c1-title">Condition 1: Desk Neutral</span>
+                            <span id="sum-c1-count" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent-emerald);">0 / 26</span>
+                        </div>
+                        <div id="sum-c1-pill-grid" style="display: grid; grid-template-columns: repeat(13, 1fr); gap: 4px;">
+                            <!-- Letter pills -->
+                        </div>
+                    </div>
+                    <div id="sum-c2-card" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="font-weight: 700; font-size: 0.88rem; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                            <span id="sum-c2-title">Condition 2: Lateral Warm</span>
+                            <span id="sum-c2-count" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent-emerald);">0 / 26</span>
+                        </div>
+                        <div id="sum-c2-pill-grid" style="display: grid; grid-template-columns: repeat(13, 1fr); gap: 4px;">
+                            <!-- Letter pills -->
+                        </div>
+                    </div>
+                    <div id="sum-c3-card" style="display: none; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px;">
+                        <div style="font-weight: 700; font-size: 0.88rem; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                            <span id="sum-c3-title">Condition 3: Distance Challenge</span>
+                            <span id="sum-c3-count" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent-emerald);">0 / 26</span>
+                        </div>
+                        <div id="sum-c3-pill-grid" style="display: grid; grid-template-columns: repeat(13, 1fr); gap: 4px;">
+                            <!-- Letter pills -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="summary-readiness-notes" style="font-size: 0.82rem; color: var(--text-muted); background: var(--bg-primary); padding: 12px 14px; border-radius: 6px; border: 1px solid var(--border-color); line-height: 1.45;">
+                    Readiness calculation in progress...
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-modal-action btn-modal-reject" onclick="closeSessionSummaryModal()">
+                    Close Summary
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script>
+        // State variables
+        let activeLetter = 'A';
+        let mediaStream = null;
+        let mediaRecorder = null;
+        let recordedChunks = [];
+        let currentStagingData = null;
+        let isRecording = false;
+        let recInterval = null;
+        let recStartTime = 0;
+
+        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+        const letterGuides = {
+            'A': "Fist with thumb vertical along side of index finger.",
+            'B': "Four fingers extended upright together, thumb folded across palm.",
+            'C': "Curved open palm forming a 'C' arc. Thumb separated from fingers.",
+            'D': "Index finger extended upright, thumb and other three fingers touching in a loop.",
+            'E': "Fingers curled inward towards palm, thumb folded across.",
+            'F': "Index and thumb touching to form a circle, remaining three fingers extended.",
+            'G': "Index finger and thumb pointing forward parallel, other fingers closed.",
+            'H': "Index and middle fingers extended forward horizontally together.",
+            'I': "Little pinky finger extended upright, all other fingers folded into fist.",
+            'J': "Little pinky finger extended, tracing a small J arc in air.",
+            'K': "Index pointing up, middle pointing forward, thumb tucked between them.",
+            'L': "Right angle formed by extended index finger and thumb.",
+            'M': "Three fingers (index, middle, ring) folded over thumb into a fist.",
+            'N': "Two fingers (index, middle) folded over thumb. CRITICAL: Distinguish from M.",
+            'O': "All fingers curved to meet thumb forming an 'O' circle.",
+            'P': "Two-hand sign: Left index touches right palm / inverted K posture.",
+            'Q': "Two-hand sign: Hand forms hooked clasp or downwards loop.",
+            'R': "Index and middle fingers crossed over each other.",
+            'S': "Fist with thumb crossed over front of curled fingers.",
+            'T': "Thumb tucked between index and middle fingers.",
+            'U': "Index and middle fingers extended upright together.",
+            'V': "Index and middle fingers extended in a 'V' shape.",
+            'W': "Three fingers (index, middle, ring) extended upward spread apart.",
+            'X': "Hooked bent index finger alone. CRITICAL: Distinguish from V.",
+            'Y': "Thumb and little pinky finger extended outward (shaka sign).",
+            'Z': "Index finger extended tracing 'Z' path in front of body."
+        };
+
+        const twoHandedSigns = ['P', 'Q', 'W', 'Z'];
+
+        // Initialize UI
+        window.addEventListener('DOMContentLoaded', async () => {
+            renderAlphabetGrid();
+            await setupWebcam();
+            await onSignerOrConditionChange();
+            selectLetter('A');
+        });
+
+        function showToast(msg, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            const icon = type === 'success' ? '✓' : (type === 'error' ? '✗' : 'ℹ');
+            toast.innerHTML = `<span style="font-weight: 800;">${icon}</span> <span>${msg}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function toggleConsent() {
+            const checkbox = document.getElementById('consent-checkbox');
+            const btnRecord = document.getElementById('btn-start-record');
+            const telemetryConsent = document.getElementById('telemetry-consent');
+
+            if (checkbox.checked) {
+                btnRecord.disabled = false;
+                telemetryConsent.innerText = "Consent: Acknowledged ✓";
+                telemetryConsent.style.color = "var(--accent-emerald)";
+                showToast("Volunteer consent confirmed for this recording session.", "success");
+            } else {
+                btnRecord.disabled = true;
+                telemetryConsent.innerText = "Consent: Pending";
+                telemetryConsent.style.color = "var(--text-muted)";
+            }
+            updatePreflightChecklist();
+        }
+
+        async function setupWebcam(deviceId = null) {
+            try {
+                if (mediaStream) {
+                    mediaStream.getTracks().forEach(track => track.stop());
+                }
+
+                const constraints = {
+                    video: {
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 },
+                        frameRate: { ideal: 30 }
+                    },
+                    audio: false
+                };
+
+                if (deviceId) {
+                    constraints.video.deviceId = { exact: deviceId };
+                }
+
+                mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
+                const videoEl = document.getElementById('webcam-feed');
+                videoEl.srcObject = mediaStream;
+
+                videoEl.onloadedmetadata = () => {
+                    const w = videoEl.videoWidth;
+                    const h = videoEl.videoHeight;
+                    document.getElementById('telemetry-resolution').innerText = `Resolution: ${w}x${h}`;
+                };
+
+                // Enumerate devices for selector
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                const videoDevices = devices.filter(d => d.kind === 'videoinput');
+                const select = document.getElementById('camera-select');
+                select.innerHTML = '';
+                videoDevices.forEach((d, idx) => {
+                    const opt = document.createElement('option');
+                    opt.value = d.deviceId;
+                    opt.innerText = d.label || `Camera ${idx + 1}`;
+                    select.appendChild(opt);
+                });
+
+            } catch (err) {
+                console.error("Camera access error:", err);
+                document.getElementById('camera-status-badge').innerText = "Camera Error";
+                document.getElementById('camera-status-badge').style.color = "var(--accent-rose)";
+                showToast("Could not access webcam: " + err.message, "error");
+            }
+        }
+
+        function changeCamera() {
+            const select = document.getElementById('camera-select');
+            setupWebcam(select.value);
+        }
+
+        function selectLetter(letter) {
+            activeLetter = letter;
+            document.getElementById('active-letter-char').innerText = letter;
+            document.getElementById('countdown-letter').innerText = letter;
+            document.getElementById('btn-letter-label').innerText = letter;
+
+            // Update reference image
+            const imgEl = document.getElementById('letter-reference-img');
+            imgEl.style.display = 'block';
+            imgEl.src = `/static/manual/${letter}.jpg`;
+
+            // Update hand badge
+            const isTwo = twoHandedSigns.includes(letter);
+            const badge = document.getElementById('sign-hand-type-badge');
+            badge.innerText = isTwo ? "Two-Hand Sign" : "Single-Hand Sign";
+            badge.style.background = isTwo ? "rgba(245, 158, 11, 0.15)" : "rgba(16, 185, 129, 0.15)";
+            badge.style.color = isTwo ? "var(--accent-amber)" : "var(--accent-emerald)";
+
+            // Update instructions
+            document.getElementById('letter-instruction-text').innerText = letterGuides[letter] || "Standard ISL alphabet sign.";
+
+            // Update active grid tile
+            document.querySelectorAll('.letter-tile').forEach(tile => {
+                tile.classList.toggle('active-letter', tile.dataset.letter === letter);
+            });
+
+            // Update current count
+            updateActiveLetterCount();
+            updatePreflightChecklist();
+        }
+
+        function renderAlphabetGrid() {
+            const grid = document.getElementById('alphabet-grid');
+            grid.innerHTML = '';
+
+            alphabet.forEach(l => {
+                const tile = document.createElement('div');
+                tile.className = 'letter-tile';
+                tile.dataset.letter = l;
+                tile.onclick = () => selectLetter(l);
+
+                tile.innerHTML = `
+                    <div class="tile-letter">${l}</div>
+                    <div class="tile-count" id="count-${l}">0/30</div>
+                `;
+                grid.appendChild(tile);
+            });
+        }
+
+        const SIGNER_ROLES = {
+            'signer_01': { role: 'development_train', label: 'DEV TRAIN', class: 'role-dev-train', icon: '🛠️', title: 'DEVELOPMENT TRAINING DATASET', desc: 'Permitted for training, feature extraction, and model fitting.' },
+            'signer_02': { role: 'frozen_benchmark', label: 'FROZEN BENCHMARK', class: 'role-frozen-benchmark', icon: '❄️', title: 'FROZEN BENCHMARK DATASET — EXCLUDED', desc: 'Fixed legacy benchmark signer. Excluded from training to avoid benchmark drift.' },
+            'signer_03': { role: 'frozen_benchmark', label: 'FROZEN BENCHMARK', class: 'role-frozen-benchmark', icon: '❄️', title: 'FROZEN BENCHMARK DATASET — EXCLUDED', desc: 'Fixed legacy benchmark signer. Excluded from training to avoid benchmark drift.' },
+            'signer_04': { role: 'development_train', label: 'DEV MULTI-ROLE', class: 'role-dev-train', icon: '🛠️', title: 'DEVELOPMENT MULTI-ROLE DATASET', desc: 'Permitted development data for multi-signer validation and tuning.' },
+            'signer_05': { role: 'external_holdout', label: 'EVALUATION ONLY', class: 'role-external-holdout', icon: '🔒', title: 'INDEPENDENT EVALUATION DATASET — QUARANTINED', desc: 'Signer 05 data is strictly quarantined as an external holdout. NEVER used for training.' },
+            'signer_06': { role: 'development_train', label: 'DEV TRAIN', class: 'role-dev-train', icon: '🛠️', title: 'DEVELOPMENT TRAINING DATASET', desc: 'Signer 06 data routes to dev_train_manifest.json for multi-signer model training.' },
+            'signer_07': { role: 'development_train', label: 'DEV TRAIN', class: 'role-dev-train', icon: '🛠️', title: 'DEVELOPMENT TRAINING DATASET', desc: 'Signer 07 data routes to dev_train_manifest.json for multi-signer model training.' },
+            'signer_08': { role: 'development_train', label: 'DEV TRAIN', class: 'role-dev-train', icon: '🛠️', title: 'DEVELOPMENT TRAINING DATASET', desc: 'Signer 08 data routes to dev_train_manifest.json for multi-signer model training.' },
+            'signer_09': { role: 'development_train', label: 'DEV TRAIN', class: 'role-dev-train', icon: '🛠️', title: 'DEVELOPMENT TRAINING DATASET', desc: 'Signer 09 data routes to dev_train_manifest.json for multi-signer model training.' },
+            'signer_10': { role: 'development_validation', label: 'DEV VALIDATION', class: 'role-dev-val', icon: '🛡️', title: 'DEVELOPMENT VALIDATION DATASET — STRICT ZERO-LEAKAGE', desc: 'Signer 10 is held out for unbiased development validation (dev_val_manifest.json). Excluded from training.' },
+            'signer_11': { role: 'development_validation', label: 'DEV VALIDATION', class: 'role-dev-val', icon: '🛡️', title: 'DEVELOPMENT VALIDATION DATASET — STRICT ZERO-LEAKAGE', desc: 'Signer 11 is held out for unbiased development validation (dev_val_manifest.json). Excluded from training.' }
+        };
+
+        const CONDITION_PROTOCOLS = {
+            'condition_1': {
+                title: 'Condition 1: Standard Frontal (Eye Level, 0.7m)',
+                instructions: 'Position camera at eye level, ~0.7m distance. Neutral diffuse overhead lighting. Keep inactive non-signing hand off camera.',
+                pitch: 'Pitch: 0° (Eye level)',
+                distance: 'Dist: ~70cm',
+                lapRest: 'Lap Rest: Off-camera'
+            },
+            'condition_2': {
+                title: 'Condition 2: Angled Laptop & Lap-Rest (25°-35° Pitch, 75cm)',
+                instructions: 'Tilt laptop screen downward 25°–35°. Non-signing hand MUST rest visibly in lap to test lap-hand suppression. Ambient lighting.',
+                pitch: 'Pitch: 25°-35° downward',
+                distance: 'Dist: ~75cm',
+                lapRest: 'Lap Rest: Visibly in lap'
+            },
+            'condition_3': {
+                title: 'Condition 3: Distance & Ambient Challenge (1.0m-1.2m, Low/Ambient)',
+                instructions: 'Position camera at 1.0m–1.2m distance. Low or ambient non-uniform lighting. Natural posture shifts and relaxed arm movements.',
+                pitch: 'Pitch: 10° slight tilt',
+                distance: 'Dist: 100-120cm',
+                lapRest: 'Lap Rest: Relaxed posture'
+            }
+        };
+
+        function updateRoleBanner() {
+            const signer = document.getElementById('signer-select').value;
+            const rInfo = SIGNER_ROLES[signer] || {
+                role: 'development_train',
+                label: 'DEV TRAIN',
+                class: 'role-dev-train',
+                icon: '🛠️',
+                title: 'DATASET COLLECTION ACTIVE',
+                desc: 'Collection active for current signer.'
+            };
+
+            const banner = document.getElementById('role-isolation-banner');
+            const icon = document.getElementById('role-isolation-icon');
+            const title = document.getElementById('role-isolation-title');
+            const desc = document.getElementById('role-isolation-desc');
+            const badge = document.getElementById('role-isolation-badge');
+
+            if (banner) {
+                banner.className = `isolation-card ${rInfo.class}`;
+                if (icon) icon.innerText = rInfo.icon;
+                if (title) title.innerText = rInfo.title;
+                if (desc) desc.innerText = rInfo.desc;
+                if (badge) badge.innerText = rInfo.label;
+            }
+        }
+
+        function updateConditionProtocol() {
+            const cond = document.getElementById('condition-select').value;
+            const pInfo = CONDITION_PROTOCOLS[cond] || CONDITION_PROTOCOLS['condition_1'];
+
+            const titleEl = document.getElementById('protocol-title');
+            const instEl = document.getElementById('protocol-instructions');
+            const pitchEl = document.getElementById('protocol-pitch');
+            const distEl = document.getElementById('protocol-dist');
+            const lapEl = document.getElementById('protocol-lap');
+
+            if (titleEl) titleEl.innerText = pInfo.title;
+            if (instEl) instEl.innerText = pInfo.instructions;
+            if (pitchEl) pitchEl.innerText = pInfo.pitch;
+            if (distEl) distEl.innerText = pInfo.distance;
+            if (lapEl) lapEl.innerText = pInfo.lapRest;
+        }
+
+        async function onSignerOrConditionChange() {
+            updateRoleBanner();
+            updateConditionProtocol();
+            await refreshProgressMatrix();
+            updateActiveLetterCount();
+            updatePreflightChecklist();
+        }
+
+        function onTakeChange() {
+            updateActiveLetterCount();
+            updatePreflightChecklist();
+        }
+
+        async function updatePreflightChecklist() {
+            try {
+                const signer = document.getElementById('signer-select')?.value || 'signer_06';
+                const condition = document.getElementById('condition-select')?.value || 'condition_1';
+                const takeSelect = document.getElementById('take-select');
+                const takeNumber = takeSelect ? takeSelect.value : '1';
+                const consent = document.getElementById('consent-checkbox')?.checked || false;
+
+                const res = await fetch(`/api/collect/preflight?signer_id=${signer}&condition_id=${condition}&letter=${activeLetter}&take_number=${takeNumber}&consent_confirmed=${consent}`);
+                if (!res.ok) return;
+                const chk = await res.json();
+
+                const badge = document.getElementById('preflight-status-badge');
+                if (badge) {
+                    if (chk.preflight_status === 'READY') {
+                        badge.innerText = 'READY FOR CAPTURE';
+                        badge.style.background = 'rgba(16, 185, 129, 0.2)';
+                        badge.style.color = '#34d399';
+                        badge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+                    } else {
+                        const reason = chk.blocking_reasons?.[0] || 'BLOCKED';
+                        badge.innerText = reason.includes('consent') ? 'BLOCKED: CONSENT PENDING' : 'BLOCKED';
+                        badge.style.background = 'rgba(244, 63, 94, 0.2)';
+                        badge.style.color = '#fda4af';
+                        badge.style.borderColor = 'rgba(244, 63, 94, 0.4)';
+                    }
+                }
+
+                const roleText = document.getElementById('preflight-role-text');
+                if (roleText && chk.signer) {
+                    roleText.innerText = `${chk.signer.dataset_role} (${chk.signer.allow_training ? 'Train Permitted' : 'Validation/Holdout'})`;
+                }
+
+                const geomText = document.getElementById('preflight-geometry-text');
+                if (geomText && chk.protocol_geometry) {
+                    const g = chk.protocol_geometry;
+                    geomText.innerText = `${g.camera_yaw_deg}° Yaw, ${g.camera_pitch_deg}° Pitch (~${g.distance_cm}cm)`;
+                }
+
+                const consentText = document.getElementById('preflight-consent-text');
+                if (consentText) {
+                    consentText.innerText = consent ? 'Confirmed ✓' : 'Mandatory (Not Confirmed)';
+                    consentText.style.color = consent ? '#34d399' : '#f87171';
+                }
+
+                const targetText = document.getElementById('preflight-target-text');
+                if (targetText && chk.cell) {
+                    targetText.innerText = `Letter ${chk.cell.letter} — ${chk.cell.take_slot_label}`;
+                }
+            } catch (e) {
+                console.error("Error updating preflight checklist:", e);
+            }
+        }
+
+        async function resumeNextMissingTake() {
+            const signer = document.getElementById('signer-select').value;
+            try {
+                showToast(`Checking session recovery for ${signer}...`, 'info');
+                const res = await fetch(`/api/collect/session/${signer}`);
+                if (!res.ok) throw new Error("Could not retrieve signer session state");
+                const data = await res.json();
+
+                if (data.next_recommended_target) {
+                    const target = data.next_recommended_target;
+                    const condSelect = document.getElementById('condition-select');
+                    const takeSelect = document.getElementById('take-select');
+
+                    if (condSelect && target.condition_id) condSelect.value = target.condition_id;
+                    if (takeSelect && target.take_number) takeSelect.value = target.take_number.toString();
+                    if (target.letter) selectLetter(target.letter);
+
+                    updateConditionProtocol();
+                    showToast(`Resumed to Letter ${target.letter} (${target.condition_id}, Take ${target.take_number})`, 'success');
+                } else if (data.is_dataset_ready) {
+                    showToast(`All planned takes for ${signer} are already complete!`, 'success');
+                } else {
+                    showToast(`Session loaded for ${signer}.`, 'info');
+                }
+            } catch (err) {
+                console.error("Resume session error:", err);
+                showToast("Failed to resume session: " + err.message, 'error');
+            }
+        }
+
+        async function refreshProgressMatrix() {
+            try {
+                const res = await fetch('/api/collect/progress');
+                const data = await res.json();
+
+                const signer = document.getElementById('signer-select').value;
+                const condition = document.getElementById('condition-select').value;
+                const isDev = ['signer_06', 'signer_07', 'signer_08', 'signer_09', 'signer_10', 'signer_11'].includes(signer);
+
+                // Subtitle
+                const cName = data.matrix?.[signer]?.[condition]?.condition_name || condition;
+                const plannedTakesText = isDev ? " | 3 Takes/Letter (234 Total)" : "";
+                document.getElementById('matrix-subtitle').innerText = `Signer: ${signer} | ${cName}${plannedTakesText}`;
+
+                // Total progress
+                const acc = data.total_accepted_frames || 0;
+                const tot = data.nominal_target_frames || (isDev ? 7020 : 3120);
+                const pct = data.overall_completion_pct || 0.0;
+                document.getElementById('total-progress-stat').innerText = `${acc} / ${tot} frames (${pct}%)`;
+                document.getElementById('matrix-progress-bar').style.width = `${pct}%`;
+
+                // Update tiles
+                const lettersData = data.matrix?.[signer]?.[condition]?.letters || {};
+                alphabet.forEach(l => {
+                    const lData = lettersData[l] || { accepted_frames: 0, status: 'missing', rejected_attempts: 0, takes: {} };
+                    const tile = document.querySelector(`.letter-tile[data-letter="${l}"]`);
+                    const countEl = document.getElementById(`count-${l}`);
+
+                    if (countEl) {
+                        countEl.innerText = `${lData.accepted_frames}/30`;
+                        if (lData.takes) {
+                            countEl.dataset.take_1 = lData.takes[1]?.status || 'missing';
+                            countEl.dataset.take_2 = lData.takes[2]?.status || 'missing';
+                            countEl.dataset.take_3 = lData.takes[3]?.status || 'missing';
+                        }
+                    }
+
+                    if (tile) {
+                        tile.classList.remove('status-completed', 'status-partial');
+                        if (lData.status === 'completed') {
+                            tile.classList.add('status-completed');
+                        } else if (lData.status === 'partial') {
+                            tile.classList.add('status-partial');
+                        }
+                    }
+                });
+
+                updateActiveLetterCount();
+
+            } catch (err) {
+                console.error("Error refreshing progress:", err);
+            }
+        }
+
+        function updateActiveLetterCount() {
+            const countEl = document.getElementById(`count-${activeLetter}`);
+            const text = countEl ? countEl.innerText : '0/30';
+            document.getElementById('active-letter-count').innerText = `${text} Usable Frames`;
+
+            const takeSelect = document.getElementById('take-select');
+            const activeTake = takeSelect ? parseInt(takeSelect.value, 10) : 1;
+
+            const btnRecord = document.getElementById('btn-start-record');
+            const btnMainText = document.getElementById('btn-record-main-text');
+
+            const isTakeCompleted = countEl && countEl.dataset && countEl.dataset[`take_${activeTake}`] === 'completed';
+
+            if (btnRecord && btnMainText) {
+                if (isTakeCompleted) {
+                    btnRecord.setAttribute('data-is-retake', 'true');
+                    btnMainText.innerText = `Retake Letter`;
+                } else {
+                    btnRecord.setAttribute('data-is-retake', 'false');
+                    btnMainText.innerText = `Start Recording Letter`;
+                }
+            }
+        }
+
+        // Recording Flow & Retake Intercept
+        function onStartRecordClicked() {
+            const consent = document.getElementById('consent-checkbox').checked;
+            if (!consent) {
+                showToast("Please confirm volunteer participant consent first.", "error");
+                return;
+            }
+            if (!mediaStream || !mediaStream.active) {
+                showToast("Webcam stream is not active. Re-initializing camera...", "info");
+                setupWebcam();
+            }
+            const btn = document.getElementById('btn-start-record');
+            const isRetake = btn.getAttribute('data-is-retake') === 'true';
+            if (isRetake) {
+                const letterCondEl = document.getElementById('retake-modal-letter-cond');
+                const condSelect = document.getElementById('condition-select');
+                const condText = condSelect ? condSelect.options[condSelect.selectedIndex].text : '';
+                if (letterCondEl) {
+                    letterCondEl.innerHTML = `Letter <span id="retake-modal-letter" style="color: #60a5fa; font-weight: 700;">${activeLetter}</span> | <span id="retake-modal-cond">${condText}</span>`;
+                }
+                const letterEl = document.getElementById('retake-modal-letter');
+                if (letterEl) {
+                    letterEl.innerText = activeLetter;
+                }
+                document.getElementById('retake-modal').style.display = 'flex';
+            } else {
+                startCountdownAndRecord();
+            }
+        }
+
+        function confirmRetakeAndStart() {
+            document.getElementById('retake-modal').style.display = 'none';
+            startCountdownAndRecord();
+        }
+
+        function closeRetakeModal() {
+            document.getElementById('retake-modal').style.display = 'none';
+        }
+
+        function startCountdownAndRecord() {
+            const consent = document.getElementById('consent-checkbox').checked;
+            if (!consent) {
+                showToast("Please confirm volunteer participant consent first.", "error");
+                return;
+            }
+
+            const countdownOverlay = document.getElementById('countdown-overlay');
+            const countdownNum = document.getElementById('countdown-num');
+            countdownOverlay.style.display = 'flex';
+            let count = 3;
+            countdownNum.innerText = count;
+
+            const timer = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownNum.innerText = count;
+                } else if (count === 0) {
+                    countdownNum.innerText = "SIGN!";
+                } else {
+                    clearInterval(timer);
+                    countdownOverlay.style.display = 'none';
+                    beginActualRecording();
+                }
+            }, 800);
+        }
+
+        function beginActualRecording() {
+            recordedChunks = [];
+            let options = {};
+            const types = [
+                'video/webm;codecs=vp8',
+                'video/webm;codecs=vp9',
+                'video/webm',
+                'video/mp4;codecs=avc1',
+                'video/mp4'
+            ];
+            for (const t of types) {
+                if (MediaRecorder.isTypeSupported(t)) {
+                    options = { mimeType: t };
+                    break;
+                }
+            }
+
+            try {
+                mediaRecorder = new MediaRecorder(mediaStream, options);
+            } catch (e) {
+                mediaRecorder = new MediaRecorder(mediaStream);
+            }
+
+            mediaRecorder.ondataavailable = (e) => {
+                if (e.data && e.data.size > 0) {
+                    recordedChunks.push(e.data);
+                }
+            };
+
+            mediaRecorder.onstop = handleRecordingComplete;
+
+            mediaRecorder.start(100); // 100ms chunks
+            isRecording = true;
+
+            // UI updates
+            document.getElementById('recording-overlay').style.display = 'flex';
+            document.getElementById('btn-start-record').style.display = 'none';
+            document.getElementById('btn-stop-record').style.display = 'block';
+
+            recStartTime = Date.now();
+            const maxDuration = 3200; // 3.2 seconds
+
+            recInterval = setInterval(() => {
+                const elapsed = (Date.now() - recStartTime) / 1000;
+                document.getElementById('rec-timer-text').innerText = `RECORDING: ${elapsed.toFixed(1)}s / 3.0s`;
+
+                if (Date.now() - recStartTime >= maxDuration) {
+                    stopRecordingEarly();
+                }
+            }, 100);
+        }
+
+        function stopRecordingEarly() {
+            if (mediaRecorder && isRecording) {
+                clearInterval(recInterval);
+                isRecording = false;
+                mediaRecorder.stop();
+            }
+        }
+
+        async function handleRecordingComplete() {
+            // UI cleanup
+            document.getElementById('recording-overlay').style.display = 'none';
+            document.getElementById('btn-start-record').style.display = 'block';
+            document.getElementById('btn-stop-record').style.display = 'none';
+
+            if (!recordedChunks || recordedChunks.length === 0) {
+                showToast("No video frames recorded from camera. Please verify webcam stream.", "error");
+                return;
+            }
+
+            const mimeType = (mediaRecorder && mediaRecorder.mimeType) ? mediaRecorder.mimeType : 'video/webm';
+            const blob = new Blob(recordedChunks, { type: mimeType });
+
+            if (blob.size < 500) {
+                showToast(`Recorded video file is too small (${blob.size} bytes). Please re-record.`, "error");
+                return;
+            }
+
+            const ext = mimeType.includes('mp4') ? '.mp4' : '.webm';
+            const filename = `record_${activeLetter}_${Date.now()}${ext}`;
+
+            showToast(`Recording captured (${(blob.size / 1024).toFixed(0)} KB). Auditing quality...`, "info");
+
+            const signer = document.getElementById('signer-select').value;
+            const condition = document.getElementById('condition-select').value;
+            const session = document.getElementById('session-input').value;
+            const interval = document.getElementById('sampling-select').value;
+            const takeSelect = document.getElementById('take-select');
+            const takeNumber = takeSelect ? takeSelect.value : '1';
+
+            const formData = new FormData();
+            formData.append('file', blob, filename);
+            formData.append('signer_id', signer);
+            formData.append('letter', activeLetter);
+            formData.append('condition_id', condition);
+            formData.append('session_id', session);
+            formData.append('consent_confirmed', 'true');
+            formData.append('sampling_interval', interval);
+            formData.append('take_number', takeNumber);
+
+            try {
+                const res = await fetch('/api/collect/stage', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!res.ok) {
+                    const errData = await res.json();
+                    throw new Error(errData.error || "Failed to process recording");
+                }
+
+                currentStagingData = await res.json();
+                openReviewModal(currentStagingData, blob);
+
+            } catch (err) {
+                console.error("Staging error:", err);
+                showToast("Capture failed: " + err.message, "error");
+            }
+        }
+
+        // Review Modal
+        function openReviewModal(data, blob) {
+            document.getElementById('modal-staging-id').innerText = `Staging ID: ${data.staging_id}`;
+            document.getElementById('review-letter-signer').innerText = `${data.letter} (${data.signer_id})`;
+            document.getElementById('review-duration').innerText = `${data.duration_sec}s (${data.total_video_frames} frames)`;
+
+            document.getElementById('review-usable-badge').innerText = `${data.usable_count} usable frames`;
+            document.getElementById('review-rejected-badge').innerText = `${data.rejected_count} rejected frames`;
+
+            const recBadge = document.getElementById('recommendation-badge');
+            recBadge.innerText = data.is_recommended ? "Recommended (Quality Passed)" : "Caution (Low Frame Count)";
+            recBadge.style.background = data.is_recommended ? "var(--accent-emerald-dim)" : "var(--accent-amber-dim)";
+            recBadge.style.color = data.is_recommended ? "var(--accent-emerald)" : "var(--accent-amber)";
+
+            const videoEl = document.getElementById('review-video');
+            videoEl.src = URL.createObjectURL(blob);
+            videoEl.play();
+
+            // Populate thumbnails
+            const gallery = document.getElementById('frames-gallery');
+            gallery.innerHTML = '';
+
+            data.frames.forEach((f, idx) => {
+                const card = document.createElement('div');
+                card.className = `frame-thumb-card ${f.is_usable ? 'usable' : 'rejected'}`;
+
+                const badgeText = f.is_usable ? "✓ Usable" : `✗ ${f.rejection_reason || 'Rejected'}`;
+                const badgeColor = f.is_usable ? "var(--accent-emerald)" : "var(--accent-rose)";
+
+                card.innerHTML = `
+                    <img src="${f.thumbnail_b64}" class="frame-thumb-img" alt="Frame ${f.frame_index}">
+                    <div class="frame-thumb-caption">
+                        <span>#${f.frame_index} (${f.timestamp_sec}s)</span>
+                        <span style="color: ${badgeColor}; font-weight: 700;">${badgeText}</span>
+                    </div>
+                `;
+                gallery.appendChild(card);
+            });
+
+            document.getElementById('review-modal').style.display = 'flex';
+        }
+
+        async function commitStaged(action, shouldRerecord = false) {
+            if (!currentStagingData) return;
+
+            // Pause and clear review video
+            const reviewVideo = document.getElementById('review-video');
+            if (reviewVideo) {
+                reviewVideo.pause();
+                reviewVideo.src = "";
+            }
+
+            try {
+                const res = await fetch('/api/collect/commit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        staging_id: currentStagingData.staging_id,
+                        action: action,
+                        rejection_note: action === 'reject' ? "Operator rejected during preview" : null
+                    })
+                });
+
+                const result = await res.json();
+                if (!res.ok) {
+                    throw new Error(result.error || "Commit failed");
+                }
+
+                // Close modal
+                document.getElementById('review-modal').style.display = 'none';
+                currentStagingData = null;
+
+                if (action === 'accept') {
+                    showToast(`Successfully saved ${result.usable_frames_saved} usable frames!`, "success");
+                    const signer = document.getElementById('signer-select').value;
+                    const isDev = ['signer_06', 'signer_07', 'signer_08', 'signer_09', 'signer_10', 'signer_11'].includes(signer);
+                    const takeSelect = document.getElementById('take-select');
+                    const curTake = takeSelect ? parseInt(takeSelect.value, 10) : 1;
+
+                    if (isDev && curTake < 3) {
+                        takeSelect.value = (curTake + 1).toString();
+                        showToast(`Advanced to Take ${curTake + 1} for Letter ${activeLetter}`, "info");
+                    } else {
+                        if (takeSelect) takeSelect.value = "1";
+                        const nextIdx = (alphabet.indexOf(activeLetter) + 1) % 26;
+                        selectLetter(alphabet[nextIdx]);
+                        showToast(`Letter ${activeLetter} completed! Advanced to Letter ${alphabet[nextIdx]}`, "info");
+                    }
+                } else {
+                    if (shouldRerecord) {
+                        showToast(`Recording discarded. Preparing to re-record Letter ${activeLetter}...`, "info");
+                        setTimeout(() => {
+                            startCountdownAndRecord();
+                        }, 500);
+                    } else {
+                        showToast("Recording discarded.", "info");
+                    }
+                }
+
+                await refreshProgressMatrix();
+
+            } catch (err) {
+                console.error("Commit error:", err);
+                showToast("Action failed: " + err.message, "error");
+            }
+        }
+
+        // Session Completion & Progress Summary
+        async function openSessionSummaryModal() {
+            const signer = document.getElementById('signer-select').value;
+            document.getElementById('session-summary-modal').style.display = 'flex';
+            const sBadge = document.getElementById('summary-signer-badge') || document.getElementById('summary-modal-signer');
+            if (sBadge) sBadge.innerText = `Signer: ${signer}`;
+            document.getElementById('summary-readiness-notes').innerText = "Fetching summary metrics...";
+
+            try {
+                const res = await fetch(`/api/collect/summary/${signer}`);
+                if (!res.ok) {
+                    throw new Error("Failed to load signer summary");
+                }
+                const summary = await res.json();
+
+                const isDev = ['signer_06', 'signer_07', 'signer_08', 'signer_09', 'signer_10', 'signer_11'].includes(signer);
+
+                if (isDev) {
+                    document.getElementById('sum-stat-cells').innerText = `${summary.completed_takes_count || 0} / 234 takes`;
+                    document.getElementById('sum-stat-frames').innerText = `${summary.total_accepted_usable_frames || 0} / 7020`;
+                } else {
+                    document.getElementById('sum-stat-cells').innerText = `${summary.completed_cells || 0} / 52`;
+                    document.getElementById('sum-stat-frames').innerText = `${summary.total_accepted_usable_frames || summary.total_usable_frames || 0} / 1560`;
+                }
+
+                document.getElementById('sum-stat-retakes').innerText = `${summary.superseded_recordings_count ?? summary.total_superseded_recordings ?? 0}`;
+                document.getElementById('sum-stat-rejected').innerText = `${summary.rejected_recordings_count ?? summary.total_rejected_recordings ?? 0}`;
+
+                // Breakdown
+                const bdown = summary.condition_breakdown || {};
+                if (bdown.condition_1) {
+                    document.getElementById('sum-c1-count').innerText = `${bdown.condition_1.completed_count} / 26`;
+                    renderSummaryPills('sum-c1-pill-grid', bdown.condition_1.letters || {});
+                }
+                if (bdown.condition_2) {
+                    document.getElementById('sum-c2-count').innerText = `${bdown.condition_2.completed_count} / 26`;
+                    renderSummaryPills('sum-c2-pill-grid', bdown.condition_2.letters || {});
+                }
+                const c3Card = document.getElementById('sum-c3-card');
+                if (bdown.condition_3 && c3Card) {
+                    c3Card.style.display = 'block';
+                    document.getElementById('sum-c3-count').innerText = `${bdown.condition_3.completed_count} / 26`;
+                    renderSummaryPills('sum-c3-pill-grid', bdown.condition_3.letters || {});
+                } else if (c3Card) {
+                    c3Card.style.display = 'none';
+                }
+
+                // Readiness badge
+                const rBadge = document.getElementById('summary-readiness-badge');
+                if (summary.is_dataset_ready) {
+                    rBadge.innerText = isDev ? "CAMPAIGN COMPLETE (234 TAKES)" : "READY FOR EVALUATION";
+                    rBadge.style.background = "var(--accent-emerald-dim)";
+                    rBadge.style.color = "var(--accent-emerald)";
+                    rBadge.style.borderColor = "var(--accent-emerald)";
+                } else {
+                    rBadge.innerText = isDev 
+                        ? `CAPTURE IN PROGRESS (${summary.completed_takes_count || 0}/234 TAKES)`
+                        : `INCOMPLETE (${summary.completed_cells || 0}/52 CELLS)`;
+                    rBadge.style.background = "var(--accent-amber-dim)";
+                    rBadge.style.color = "var(--accent-amber)";
+                    rBadge.style.borderColor = "var(--accent-amber)";
+                }
+
+                // Isolation notes
+                const isoText = summary.isolation_guaranteed 
+                    ? "✓ Data Isolation Verified: Signer partition boundaries strictly enforced with zero cross-split leakage."
+                    : "⚠ Notice: Signer data isolation could not be automatically confirmed.";
+                
+                const readinessMsg = summary.is_dataset_ready
+                    ? (isDev ? "All 234 planned takes across 3 conditions are accepted and properly partitioned." : "All 52 collection targets met. Manifest is complete and ready for cryptographic freezing before Phase 30 evaluation.")
+                    : (isDev ? `Campaign in progress: ${summary.missing_takes_count || (234 - (summary.completed_takes_count || 0))} takes remaining. Interruption recovery available.` : `Dataset is NOT ready for evaluation yet (${52 - summary.completed_cells} cells incomplete). Incomplete/retaken data is tracked safely without overwriting.`);
+
+                document.getElementById('summary-readiness-notes').innerHTML = `
+                    <div style="margin-bottom: 4px; font-weight: 700; color: ${summary.isolation_guaranteed ? 'var(--accent-emerald)' : 'var(--accent-amber)'};">${isoText}</div>
+                    <div>${readinessMsg}</div>
+                `;
+
+            } catch (err) {
+                console.error("Summary error:", err);
+                document.getElementById('summary-readiness-notes').innerText = "Error loading session summary: " + err.message;
+            }
+        }
+
+        function renderSummaryPills(containerId, lettersData) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            alphabet.forEach(l => {
+                const cell = lettersData[l] || { status: 'missing', usable_frames: 0 };
+                const pill = document.createElement('div');
+                pill.style.padding = '4px 2px';
+                pill.style.borderRadius = '4px';
+                pill.style.textAlign = 'center';
+                pill.style.fontSize = '0.72rem';
+                pill.style.fontWeight = '700';
+                pill.style.fontFamily = "'JetBrains Mono', monospace";
+                pill.innerText = l;
+
+                if (cell.status === 'completed') {
+                    pill.style.background = 'var(--accent-emerald-dim)';
+                    pill.style.color = 'var(--accent-emerald)';
+                    pill.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+                } else if (cell.status === 'partial') {
+                    pill.style.background = 'var(--accent-amber-dim)';
+                    pill.style.color = 'var(--accent-amber)';
+                    pill.style.border = '1px solid rgba(245, 158, 11, 0.4)';
+                } else {
+                    pill.style.background = 'var(--bg-primary)';
+                    pill.style.color = 'var(--text-dim)';
+                    pill.style.border = '1px solid var(--border-color)';
+                }
+                container.appendChild(pill);
+            });
+        }
+
+        function closeSessionSummaryModal() {
+            document.getElementById('session-summary-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

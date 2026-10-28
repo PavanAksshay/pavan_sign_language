@@ -1,0 +1,460 @@
+{
+  "timestamp": 1792004374.8235772,
+  "video_comparisons": {
+    "recording_A_20261014_165529.mp4": {
+      "video_filename": "recording_A_20261014_165529.mp4",
+      "target_letter": "A",
+      "label": "Frontal A",
+      "baseline_disabled": {
+        "total_frames": 143,
+        "detected_frames": 117,
+        "detection_rate_pct": 81.8,
+        "all_frame_top1_pct": 9.1,
+        "cond_top1_pct": 11.1,
+        "top3_inclusion_pct": 23.1,
+        "prediction_flips": 52,
+        "prediction_flip_rate": 0.448,
+        "two_hand_merges": 19,
+        "lap_hands_suppressed": 0,
+        "latency_ms": {
+          "mean": 217.4,
+          "median": 200.7,
+          "p95": 247.6,
+          "p99": 586.2
+        },
+        "top5_avg_probability": {
+          "G": 38.8,
+          "C": 16.5,
+          "O": 9.9,
+          "A": 9.4,
+          "T": 4.9
+        }
+      },
+      "phase8_enabled": {
+        "total_frames": 143,
+        "detected_frames": 117,
+        "detection_rate_pct": 81.8,
+        "all_frame_top1_pct": 9.1,
+        "cond_top1_pct": 11.1,
+        "top3_inclusion_pct": 23.1,
+        "prediction_flips": 52,
+        "prediction_flip_rate": 0.448,
+        "two_hand_merges": 19,
+        "lap_hands_suppressed": 0,
+        "latency_ms": {
+          "mean": 441.5,
+          "median": 217.8,
+          "p95": 1436.0,
+          "p99": 4481.4
+        },
+        "top5_avg_probability": {
+          "G": 38.8,
+          "C": 16.5,
+          "O": 9.9,
+          "A": 9.4,
+          "T": 4.9
+        }
+      },
+      "delta_top1_pct": 0.0,
+      "delta_all_frame_top1_pct": 0.0,
+      "merges_reduced": 0,
+      "lap_hands_suppressed": 0
+    },
+    "recording_C_20261014_164912.mp4": {
+      "video_filename": "recording_C_20261014_164912.mp4",
+      "target_letter": "C",
+      "label": "Frontal C (Original)",
+      "baseline_disabled": {
+        "total_frames": 146,
+        "detected_frames": 146,
+        "detection_rate_pct": 100.0,
+        "all_frame_top1_pct": 8.9,
+        "cond_top1_pct": 8.9,
+        "top3_inclusion_pct": 34.2,
+        "prediction_flips": 43,
+        "prediction_flip_rate": 0.297,
+        "two_hand_merges": 146,
+        "lap_hands_suppressed": 0,
+        "latency_ms": {
+          "mean": 387.6,
+          "median": 247.7,
+          "p95": 936.7,
+          "p99": 2417.9
+        },
+        "top5_avg_probability": {
+          "R": 46.8,
+          "G": 14.7,
+          "S": 12.2,
+          "C": 11.9,
+          "W": 6.1
+        }
+      },
+      "phase8_enabled": {
+        "total_frames": 146,
+        "detected_frames": 146,
+        "detection_rate_pct": 100.0,
+        "all_frame_top1_pct": 39.7,
+        "cond_top1_pct": 39.7,
+        "top3_inclusion_pct": 80.8,
+        "prediction_flips": 68,
+        "prediction_flip_rate": 0.469,
+        "two_hand_merges": 0,
+        "lap_hands_suppressed": 146,
+        "latency_ms": {
+          "mean": 469.2,
+          "median": 257.0,
+          "p95": 1321.9,
+          "p99": 2494.6
+        },
+        "top5_avg_probability": {
+          "C": 33.3,
+          "R": 23.4,
+          "G": 22.9,
+          "L": 16.4,
+          "I": 0.8
+        }
+      },
+      "delta_top1_pct": 30.8,
+      "delta_all_frame_top1_pct": 30.8,
+      "merges_reduced": 146,
+      "lap_hands_suppressed": 146
+    },
+    "recording_C_20261014_165234.mp4": {
+      "video_filename": "recording_C_20261014_165234.mp4",
+      "target_letter": "C",
+      "label": "Frontal C (Second)",
+      "baseline_disabled": {
+        "total_frames": 143,
+        "detected_frames": 143,
+        "detection_rate_pct": 100.0,
+        "all_frame_top1_pct": 0.0,
+        "cond_top1_pct": 0.0,
+        "top3_inclusion_pct": 0.0,
+        "prediction_flips": 24,
+        "prediction_flip_rate": 0.169,
+        "two_hand_merges": 0,
+        "lap_hands_suppressed": 0,
+        "latency_ms": {
+          "mean": 386.4,
+          "median": 252.8,
+          "p95": 1203.9,
+          "p99": 1590.9
+        },
+        "top5_avg_probability": {
+          "G": 45.6,
+          "F": 31.2,
+          "R": 7.3,
+          "O": 3.1,
+          "W": 2.5
+        }
+      },
+      "phase8_enabled": {
+        "total_frames": 143,
+        "detected_frames": 143,
+        "detection_rate_pct": 100.0,
+        "all_frame_top1_pct": 0.0,
+        "cond_top1_pct": 0.0,
+        "top3_inclusion_pct": 0.0,
+        "prediction_flips": 24,
+        "prediction_flip_rate": 0.169,
+        "two_hand_merges": 0,
+        "lap_hands_suppressed": 0,
+        "latency_ms": {
+          "mean": 400.3,
+          "median": 251.0,
+          "p95": 1158.7,
+          "p99": 2249.7
+        },
+        "top5_avg_probability": {
+          "G": 45.6,
+          "F": 31.2,
+          "R": 7.3,
+          "O": 3.1,
+          "W": 2.5
+        }
+      },
+      "delta_top1_pct": 0.0,
+      "delta_all_frame_top1_pct": 0.0,
+      "merges_reduced": 0,
+      "lap_hands_suppressed": 0
+    },
+    "recording_C_lateral_profile_calibrated.mp4": {
+      "video_filename": "recording_C_lateral_profile_calibrated.mp4",
+      "target_letter": "C",
+      "label": "Profile-matched C",
+      "baseline_disabled": {
+        "total_frames": 84,
+        "detected_frames": 0,
+        "detection_rate_pct": 0.0,
+        "all_frame_top1_pct": 0.0,
+        "cond_top1_pct": 0.0,
+        "top3_inclusion_pct": 0.0,
+        "prediction_flips": 0,
+        "prediction_flip_rate": 0.0,
+        "two_hand_merges": 0,
+        "lap_hands_suppressed": 0,
+        "latency_ms": {
+          "mean": 405.8,
+          "median": 194.6,
+          "p95": 1451.5,
+          "p99": 2809.7
+        },
+        "top5_avg_probability": {}
+      },
+      "phase8_enabled": {
+        "total_frames": 84,
+        "detected_frames": 0,
+        "detection_rate_pct": 0.0,
+        "all_frame_top1_pct": 0.0,
+        "cond_top1_pct": 0.0,
+        "top3_inclusion_pct": 0.0,
+        "prediction_flips": 0,
+        "prediction_flip_rate": 0.0,
+        "two_hand_merges": 0,
+        "lap_hands_suppressed": 0,
+        "latency_ms": {
+          "mean": 351.9,
+          "median": 198.6,
+          "p95": 1145.2,
+          "p99": 1673.9
+        },
+        "top5_avg_probability": {}
+      },
+      "delta_top1_pct": 0.0,
+      "delta_all_frame_top1_pct": 0.0,
+      "merges_reduced": 0,
+      "lap_hands_suppressed": 0
+    },
+    "recording_L_20261014_165754.mp4": {
+      "video_filename": "recording_L_20261014_165754.mp4",
+      "target_letter": "L",
+      "label": "Frontal L",
+      "baseline_disabled": {
+        "total_frames": 146,
+        "detected_frames": 146,
+        "detection_rate_pct": 100.0,
+        "all_frame_top1_pct": 87.7,
+        "cond_top1_pct": 87.7,
+        "top3_inclusion_pct": 97.3,
+        "prediction_flips": 24,
+        "prediction_flip_rate": 0.166,
+        "two_hand_merges": 0,
+        "lap_hands_suppressed": 0,
+        "latency_ms": {
+          "mean": 354.1,
+          "median": 243.6,
+          "p95": 1001.2,
+          "p99": 1666.8
+        },
+        "top5_avg_probability": {
+          "L": 54.5,
+          "U": 14.0,
+          "V": 13.6,
+          "Y": 13.0,
+          "Z": 2.2
+        }
+      },
+      "phase8_enabled": {
+        "total_frames": 146,
+        "detected_frames": 146,
+        "detection_rate_pct": 100.0,
+        "all_frame_top1_pct": 87.7,
+        "cond_top1_pct": 87.7,
+        "top3_inclusion_pct": 97.3,
+        "prediction_flips": 24,
+        "prediction_flip_rate": 0.166,
+        "two_hand_merges": 0,
+        "lap_hands_suppressed": 0,
+        "latency_ms": {
+          "mean": 427.0,
+          "median": 247.7,
+          "p95": 1392.8,
+          "p99": 2331.2
+        },
+        "top5_avg_probability": {
+          "L": 54.5,
+          "U": 14.0,
+          "V": 13.6,
+          "Y": 13.0,
+          "Z": 2.2
+        }
+      },
+      "delta_top1_pct": 0.0,
+      "delta_all_frame_top1_pct": 0.0,
+      "merges_reduced": 0,
+      "lap_hands_suppressed": 0
+    }
+  },
+  "genuine_two_handed_tests": [
+    {
+      "test_case": "Both hands elevated at chest level (Genuine 2H: B, W, G)",
+      "suppressed_count": 0,
+      "expected_suppressed": 0,
+      "valid_detections_remaining": 2,
+      "expected_valid_count": 2,
+      "passed": true
+    },
+    {
+      "test_case": "One elevated hand + One resting lap hand (Frontal C scenario)",
+      "suppressed_count": 1,
+      "expected_suppressed": 1,
+      "valid_detections_remaining": 1,
+      "expected_valid_count": 1,
+      "passed": true
+    },
+    {
+      "test_case": "Both hands resting in lap (User idle/resting)",
+      "suppressed_count": 0,
+      "expected_suppressed": 0,
+      "valid_detections_remaining": 2,
+      "expected_valid_count": 2,
+      "passed": true
+    }
+  ],
+  "class_a_investigation": {
+    "total_frames": 143,
+    "detected_frames": 117,
+    "prediction_distribution": {
+      "G": "56 frames (47.9%)",
+      "C": "25 frames (21.4%)",
+      "A": "13 frames (11.1%)",
+      "O": "8 frames (6.8%)",
+      "T": "6 frames (5.1%)",
+      "B": "5 frames (4.3%)",
+      "R": "3 frames (2.6%)",
+      "N": "1 frames (0.9%)"
+    },
+    "representative_frames": [
+      {
+        "frame_idx": 10,
+        "hand_detected": true,
+        "predicted_sign": "B",
+        "confidence": 64.19,
+        "top_5": [
+          [
+            "B",
+            64.19
+          ],
+          [
+            "A",
+            26.95
+          ],
+          [
+            "L",
+            2.78
+          ],
+          [
+            "X",
+            2.1
+          ],
+          [
+            "N",
+            1.2
+          ]
+        ],
+        "box": {
+          "x": 199,
+          "y": 219,
+          "w": 700,
+          "h": 272,
+          "conf": 0.481
+        },
+        "crop": {
+          "x": 129,
+          "y": 192,
+          "w": 840,
+          "h": 326
+        },
+        "box_aspect_ratio": 2.57,
+        "forearm_intrusion_likely": true
+      },
+      {
+        "frame_idx": 50,
+        "hand_detected": true,
+        "predicted_sign": "G",
+        "confidence": 95.67,
+        "top_5": [
+          [
+            "G",
+            95.67
+          ],
+          [
+            "I",
+            1.44
+          ],
+          [
+            "L",
+            1.18
+          ],
+          [
+            "W",
+            0.66
+          ],
+          [
+            "T",
+            0.28
+          ]
+        ],
+        "box": {
+          "x": 582,
+          "y": 218,
+          "w": 328,
+          "h": 310,
+          "conf": 0.285
+        },
+        "crop": {
+          "x": 550,
+          "y": 187,
+          "w": 392,
+          "h": 372
+        },
+        "box_aspect_ratio": 1.06,
+        "forearm_intrusion_likely": true
+      },
+      {
+        "frame_idx": 100,
+        "hand_detected": true,
+        "predicted_sign": "A",
+        "confidence": 58.87,
+        "top_5": [
+          [
+            "A",
+            58.87
+          ],
+          [
+            "B",
+            35.73
+          ],
+          [
+            "I",
+            3.54
+          ],
+          [
+            "O",
+            0.65
+          ],
+          [
+            "X",
+            0.43
+          ]
+        ],
+        "box": {
+          "x": 177,
+          "y": 240,
+          "w": 754,
+          "h": 432,
+          "conf": 0.452
+        },
+        "crop": {
+          "x": 102,
+          "y": 197,
+          "w": 904,
+          "h": 518
+        },
+        "box_aspect_ratio": 1.75,
+        "forearm_intrusion_likely": true
+      }
+    ],
+    "dataset_a_samples": []
+  }
+}

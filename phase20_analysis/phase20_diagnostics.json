@@ -1,0 +1,1291 @@
+{
+  "phase": 20,
+  "title": "Error Forensics and Multi-Signer Training Strategy",
+  "timestamp": "2026-10-22T22:35:00Z",
+  "reconciled_models": {
+    "1_Production_YOLO_Baseline": {
+      "recomputed_conditional_top1": 26.22,
+      "json_conditional_top1": 26.23,
+      "top1_difference_pct": -0.0059,
+      "recomputed_macro_f1": 20.39,
+      "json_macro_f1": 20.39,
+      "macro_f1_difference_pct": 0.0006,
+      "recomputed_balanced_acc": 26.25,
+      "json_balanced_acc": 26.25,
+      "balanced_acc_difference_pct": 0.0005,
+      "valid_samples": 3329,
+      "raw_csv_failed_detections": 0,
+      "json_failed_detections": 1,
+      "tolerance_check_passed": true
+    },
+    "2_MediaPipe_v1_CNN": {
+      "recomputed_conditional_top1": 17.87,
+      "json_conditional_top1": 17.88,
+      "top1_difference_pct": -0.0068,
+      "recomputed_macro_f1": 14.29,
+      "json_macro_f1": 14.29,
+      "macro_f1_difference_pct": 0.0017,
+      "recomputed_balanced_acc": 17.9,
+      "json_balanced_acc": 17.9,
+      "balanced_acc_difference_pct": -0.0003,
+      "valid_samples": 3329,
+      "raw_csv_failed_detections": 0,
+      "json_failed_detections": 1,
+      "tolerance_check_passed": true
+    },
+    "3_Landmark_Only_Geometry_v1": {
+      "recomputed_conditional_top1": 38.99,
+      "json_conditional_top1": 39.0,
+      "top1_difference_pct": -0.0093,
+      "recomputed_macro_f1": 36.72,
+      "json_macro_f1": 36.72,
+      "macro_f1_difference_pct": 0.0002,
+      "recomputed_balanced_acc": 39.03,
+      "json_balanced_acc": 39.03,
+      "balanced_acc_difference_pct": -0.0048,
+      "valid_samples": 3329,
+      "raw_csv_failed_detections": 0,
+      "json_failed_detections": 1,
+      "tolerance_check_passed": true
+    },
+    "4_Landmark_Only_Geometry_v2": {
+      "recomputed_conditional_top1": 38.87,
+      "json_conditional_top1": 38.88,
+      "top1_difference_pct": -0.0095,
+      "recomputed_macro_f1": 34.52,
+      "json_macro_f1": 34.52,
+      "macro_f1_difference_pct": 0.0023,
+      "recomputed_balanced_acc": 38.91,
+      "json_balanced_acc": 38.91,
+      "balanced_acc_difference_pct": -0.0034,
+      "valid_samples": 3329,
+      "raw_csv_failed_detections": 0,
+      "json_failed_detections": 1,
+      "tolerance_check_passed": true
+    },
+    "5_Late_Fusion_Baseline_alpha_0.25": {
+      "recomputed_conditional_top1": 19.89,
+      "json_conditional_top1": 19.89,
+      "top1_difference_pct": -0.0041,
+      "recomputed_macro_f1": 16.19,
+      "json_macro_f1": 16.19,
+      "macro_f1_difference_pct": 0.0017,
+      "recomputed_balanced_acc": 19.91,
+      "json_balanced_acc": 19.91,
+      "balanced_acc_difference_pct": 0.0027,
+      "valid_samples": 3329,
+      "raw_csv_failed_detections": 0,
+      "json_failed_detections": 1,
+      "tolerance_check_passed": true
+    },
+    "6_Late_Fusion_Calibrated_alpha_0.75": {
+      "recomputed_conditional_top1": 31.57,
+      "json_conditional_top1": 31.58,
+      "top1_difference_pct": -0.009,
+      "recomputed_macro_f1": 28.66,
+      "json_macro_f1": 28.66,
+      "macro_f1_difference_pct": -0.0016,
+      "recomputed_balanced_acc": 31.61,
+      "json_balanced_acc": 31.61,
+      "balanced_acc_difference_pct": 0.0048,
+      "valid_samples": 3329,
+      "raw_csv_failed_detections": 0,
+      "json_failed_detections": 1,
+      "tolerance_check_passed": true
+    },
+    "7_Hybrid_Concatenation_RF": {
+      "recomputed_conditional_top1": 30.46,
+      "json_conditional_top1": 30.47,
+      "top1_difference_pct": -0.0104,
+      "recomputed_macro_f1": 29.28,
+      "json_macro_f1": 29.28,
+      "macro_f1_difference_pct": 0.0029,
+      "recomputed_balanced_acc": 30.49,
+      "json_balanced_acc": 30.49,
+      "balanced_acc_difference_pct": 0.0038,
+      "valid_samples": 3329,
+      "raw_csv_failed_detections": 0,
+      "json_failed_detections": 1,
+      "tolerance_check_passed": true
+    }
+  },
+  "gate_audits": {
+    "N": {
+      "letter": "N",
+      "total_ground_truth_samples": 128,
+      "by_signer": {
+        "signer_02": 64,
+        "signer_03": 64
+      },
+      "by_condition": {
+        "condition_1": 64,
+        "condition_2": 64
+      },
+      "model_recalls": {
+        "1_Production_YOLO_Baseline": {
+          "correct_samples": 27,
+          "total_samples": 128,
+          "recall_pct": 21.09
+        },
+        "2_MediaPipe_v1_CNN": {
+          "correct_samples": 32,
+          "total_samples": 128,
+          "recall_pct": 25.0
+        },
+        "3_Landmark_Only_Geometry_v1": {
+          "correct_samples": 0,
+          "total_samples": 128,
+          "recall_pct": 0.0
+        },
+        "4_Landmark_Only_Geometry_v2": {
+          "correct_samples": 0,
+          "total_samples": 128,
+          "recall_pct": 0.0
+        },
+        "5_Late_Fusion_Baseline_alpha_0.25": {
+          "correct_samples": 32,
+          "total_samples": 128,
+          "recall_pct": 25.0
+        },
+        "6_Late_Fusion_Calibrated_alpha_0.75": {
+          "correct_samples": 25,
+          "total_samples": 128,
+          "recall_pct": 19.53
+        },
+        "7_Hybrid_Concatenation_RF": {
+          "correct_samples": 2,
+          "total_samples": 128,
+          "recall_pct": 1.56
+        }
+      }
+    },
+    "X": {
+      "letter": "X",
+      "total_ground_truth_samples": 129,
+      "by_signer": {
+        "signer_02": 64,
+        "signer_03": 65
+      },
+      "by_condition": {
+        "condition_1": 65,
+        "condition_2": 64
+      },
+      "model_recalls": {
+        "1_Production_YOLO_Baseline": {
+          "correct_samples": 10,
+          "total_samples": 129,
+          "recall_pct": 7.75
+        },
+        "2_MediaPipe_v1_CNN": {
+          "correct_samples": 33,
+          "total_samples": 129,
+          "recall_pct": 25.58
+        },
+        "3_Landmark_Only_Geometry_v1": {
+          "correct_samples": 0,
+          "total_samples": 129,
+          "recall_pct": 0.0
+        },
+        "4_Landmark_Only_Geometry_v2": {
+          "correct_samples": 0,
+          "total_samples": 129,
+          "recall_pct": 0.0
+        },
+        "5_Late_Fusion_Baseline_alpha_0.25": {
+          "correct_samples": 34,
+          "total_samples": 129,
+          "recall_pct": 26.36
+        },
+        "6_Late_Fusion_Calibrated_alpha_0.75": {
+          "correct_samples": 25,
+          "total_samples": 129,
+          "recall_pct": 19.38
+        },
+        "7_Hybrid_Concatenation_RF": {
+          "correct_samples": 0,
+          "total_samples": 129,
+          "recall_pct": 0.0
+        }
+      }
+    },
+    "L": {
+      "letter": "L",
+      "total_ground_truth_samples": 128,
+      "by_signer": {
+        "signer_02": 64,
+        "signer_03": 64
+      },
+      "by_condition": {
+        "condition_1": 64,
+        "condition_2": 64
+      },
+      "model_recalls": {
+        "1_Production_YOLO_Baseline": {
+          "correct_samples": 107,
+          "total_samples": 128,
+          "recall_pct": 83.59
+        },
+        "2_MediaPipe_v1_CNN": {
+          "correct_samples": 0,
+          "total_samples": 128,
+          "recall_pct": 0.0
+        },
+        "3_Landmark_Only_Geometry_v1": {
+          "correct_samples": 91,
+          "total_samples": 128,
+          "recall_pct": 71.09
+        },
+        "4_Landmark_Only_Geometry_v2": {
+          "correct_samples": 87,
+          "total_samples": 128,
+          "recall_pct": 67.97
+        },
+        "5_Late_Fusion_Baseline_alpha_0.25": {
+          "correct_samples": 0,
+          "total_samples": 128,
+          "recall_pct": 0.0
+        },
+        "6_Late_Fusion_Calibrated_alpha_0.75": {
+          "correct_samples": 15,
+          "total_samples": 128,
+          "recall_pct": 11.72
+        },
+        "7_Hybrid_Concatenation_RF": {
+          "correct_samples": 32,
+          "total_samples": 128,
+          "recall_pct": 25.0
+        }
+      }
+    }
+  },
+  "n_reconciliation": {
+    "finding": "Static N recall in benchmark report (0.0%) was based on Model 4 (Geometry v2), which predicted T, M, A, R across all 128 frames. The reported continuous video accuracy (75.8%) was based on Model 6 on a single video (signer_03_condition_2_N).",
+    "root_causes": [
+      "Model confusion: Gate 2 evaluated Model 4 (Geometry v2), whereas Table 6 reported Model 6 (Calibrated Late Fusion).",
+      "Signer & condition variance: In Model 6, signer 03 under condition 2 had 75.8% accuracy (25/32 static, 72/95 video), but signer 02 under condition 1 had 0.0% accuracy (0/32 static, 0/95 video).",
+      "Aggregate static N recall for Model 6 across all 128 frames was only 19.53% (25/128), not 75.8%."
+    ],
+    "video_level_details": [
+      {
+        "recording_id": "rec_signer_02_condition_1_N_1792650740",
+        "signer": "signer_02",
+        "condition": "condition_1",
+        "static_frames_extracted": 32,
+        "m4_geom_v2_correct": 0,
+        "m4_geom_v2_predictions": {
+          "T": 26,
+          "I": 6
+        },
+        "m6_calib_correct": 0,
+        "m6_calib_predictions": {
+          "T": 28,
+          "I": 2,
+          "Y": 2
+        },
+        "m2_cnn_correct": 0,
+        "m2_cnn_predictions": {
+          "Y": 31,
+          "V": 1
+        }
+      },
+      {
+        "recording_id": "rec_signer_02_condition_2_N_1792651406",
+        "signer": "signer_02",
+        "condition": "condition_2",
+        "static_frames_extracted": 32,
+        "m4_geom_v2_correct": 0,
+        "m4_geom_v2_predictions": {
+          "T": 30,
+          "A": 2
+        },
+        "m6_calib_correct": 0,
+        "m6_calib_predictions": {
+          "T": 22,
+          "J": 10
+        },
+        "m2_cnn_correct": 0,
+        "m2_cnn_predictions": {
+          "J": 25,
+          "Y": 7
+        }
+      },
+      {
+        "recording_id": "rec_signer_03_condition_1_N_1792651882",
+        "signer": "signer_03",
+        "condition": "condition_1",
+        "static_frames_extracted": 32,
+        "m4_geom_v2_correct": 0,
+        "m4_geom_v2_predictions": {
+          "T": 10,
+          "A": 19,
+          "H": 3
+        },
+        "m6_calib_correct": 0,
+        "m6_calib_predictions": {
+          "T": 10,
+          "A": 3,
+          "J": 1,
+          "Z": 5,
+          "Y": 13
+        },
+        "m2_cnn_correct": 0,
+        "m2_cnn_predictions": {
+          "Y": 17,
+          "J": 1,
+          "W": 7,
+          "T": 1,
+          "Z": 6
+        }
+      },
+      {
+        "recording_id": "rec_signer_03_condition_2_N_1792652281",
+        "signer": "signer_03",
+        "condition": "condition_2",
+        "static_frames_extracted": 32,
+        "m4_geom_v2_correct": 0,
+        "m4_geom_v2_predictions": {
+          "M": 22,
+          "R": 10
+        },
+        "m6_calib_correct": 25,
+        "m6_calib_predictions": {
+          "N": 25,
+          "M": 7
+        },
+        "m2_cnn_correct": 32,
+        "m2_cnn_predictions": {
+          "N": 32
+        }
+      }
+    ]
+  },
+  "yolo_latency_audit": {
+    "report_value_ms": 1877.1,
+    "report_value_source": "Hardcoded array in benchmark evaluation script: [1850.0 + avg_cnn_lat] * 3329",
+    "measured_empirical_latencies": {
+      "yolo_blob_preprocess_mean_ms": 4.33,
+      "yolo_blob_preprocess_p95_ms": 11.77,
+      "yolo_forward_pass_mean_ms": 1241.3,
+      "yolo_forward_pass_p95_ms": 3558.38,
+      "yolo_postprocess_nms_mean_ms": 9.37,
+      "yolo_postprocess_nms_p95_ms": 17.44,
+      "squeezenet_forward_mean_ms": 254.98,
+      "squeezenet_forward_p95_ms": 1041.62,
+      "total_e2e_mean_ms": 1511.37,
+      "total_e2e_median_ms": 912.28,
+      "total_e2e_p95_ms": 4086.26
+    },
+    "conclusion": "The 1877.1 ms figure in the report was a constant placeholder. Actual measured end-to-end CPU pipeline latency has a median of 912.3 ms, mean of 1511.4 ms, and p95 of 4086.3 ms. Both confirm YOLO fails Gate 5 (<= 100 ms) by an order of magnitude."
+  },
+  "video_rep_audit": {
+    "videos_evaluated": 12,
+    "total_recordings_in_dataset": 208,
+    "video_coverage_pct": 5.77,
+    "letters_covered": [
+      "A",
+      "L",
+      "N",
+      "M",
+      "X",
+      "V"
+    ],
+    "letters_omitted": [
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "W",
+      "Y",
+      "Z"
+    ],
+    "subgroups_evaluated": [
+      "signer_02_condition_1",
+      "signer_03_condition_2"
+    ],
+    "subgroups_omitted": [
+      "signer_02_condition_2",
+      "signer_03_condition_1"
+    ],
+    "is_representative": false,
+    "justification": "Evaluating only 6 letters (23% of alphabet) and only 2 of the 4 signer-condition permutations does not provide statistical coverage to generalize video-level performance to the entire 26-letter alphabet."
+  },
+  "data_sufficiency": [
+    {
+      "letter": "A",
+      "train_total_samples": 164,
+      "train_1h_count": 77,
+      "train_2h_count": 87,
+      "train_2h_pct": 53.0,
+      "test_total_samples": 128,
+      "test_1h_count": 0,
+      "test_2h_count": 128,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 47.0
+    },
+    {
+      "letter": "B",
+      "train_total_samples": 155,
+      "train_1h_count": 73,
+      "train_2h_count": 82,
+      "train_2h_pct": 52.9,
+      "test_total_samples": 128,
+      "test_1h_count": 0,
+      "test_2h_count": 128,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 47.1
+    },
+    {
+      "letter": "C",
+      "train_total_samples": 159,
+      "train_1h_count": 121,
+      "train_2h_count": 38,
+      "train_2h_pct": 23.9,
+      "test_total_samples": 127,
+      "test_1h_count": 125,
+      "test_2h_count": 2,
+      "test_2h_pct": 1.6,
+      "hand_count_mismatch_pct": -22.3
+    },
+    {
+      "letter": "D",
+      "train_total_samples": 149,
+      "train_1h_count": 68,
+      "train_2h_count": 81,
+      "train_2h_pct": 54.4,
+      "test_total_samples": 128,
+      "test_1h_count": 0,
+      "test_2h_count": 128,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 45.6
+    },
+    {
+      "letter": "E",
+      "train_total_samples": 176,
+      "train_1h_count": 115,
+      "train_2h_count": 61,
+      "train_2h_pct": 34.7,
+      "test_total_samples": 128,
+      "test_1h_count": 2,
+      "test_2h_count": 126,
+      "test_2h_pct": 98.4,
+      "hand_count_mismatch_pct": 63.7
+    },
+    {
+      "letter": "F",
+      "train_total_samples": 144,
+      "train_1h_count": 85,
+      "train_2h_count": 59,
+      "train_2h_pct": 41.0,
+      "test_total_samples": 128,
+      "test_1h_count": 0,
+      "test_2h_count": 128,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 59.0
+    },
+    {
+      "letter": "G",
+      "train_total_samples": 153,
+      "train_1h_count": 87,
+      "train_2h_count": 66,
+      "train_2h_pct": 43.1,
+      "test_total_samples": 128,
+      "test_1h_count": 0,
+      "test_2h_count": 128,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 56.9
+    },
+    {
+      "letter": "H",
+      "train_total_samples": 140,
+      "train_1h_count": 108,
+      "train_2h_count": 32,
+      "train_2h_pct": 22.9,
+      "test_total_samples": 127,
+      "test_1h_count": 82,
+      "test_2h_count": 45,
+      "test_2h_pct": 35.4,
+      "hand_count_mismatch_pct": 12.5
+    },
+    {
+      "letter": "I",
+      "train_total_samples": 141,
+      "train_1h_count": 81,
+      "train_2h_count": 60,
+      "train_2h_pct": 42.6,
+      "test_total_samples": 128,
+      "test_1h_count": 0,
+      "test_2h_count": 128,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 57.4
+    },
+    {
+      "letter": "J",
+      "train_total_samples": 158,
+      "train_1h_count": 82,
+      "train_2h_count": 76,
+      "train_2h_pct": 48.1,
+      "test_total_samples": 128,
+      "test_1h_count": 2,
+      "test_2h_count": 126,
+      "test_2h_pct": 98.4,
+      "hand_count_mismatch_pct": 50.3
+    },
+    {
+      "letter": "K",
+      "train_total_samples": 139,
+      "train_1h_count": 44,
+      "train_2h_count": 95,
+      "train_2h_pct": 68.3,
+      "test_total_samples": 128,
+      "test_1h_count": 11,
+      "test_2h_count": 117,
+      "test_2h_pct": 91.4,
+      "hand_count_mismatch_pct": 23.1
+    },
+    {
+      "letter": "L",
+      "train_total_samples": 110,
+      "train_1h_count": 100,
+      "train_2h_count": 10,
+      "train_2h_pct": 9.1,
+      "test_total_samples": 128,
+      "test_1h_count": 128,
+      "test_2h_count": 0,
+      "test_2h_pct": 0.0,
+      "hand_count_mismatch_pct": -9.1
+    },
+    {
+      "letter": "M",
+      "train_total_samples": 100,
+      "train_1h_count": 53,
+      "train_2h_count": 47,
+      "train_2h_pct": 47.0,
+      "test_total_samples": 128,
+      "test_1h_count": 56,
+      "test_2h_count": 72,
+      "test_2h_pct": 56.2,
+      "hand_count_mismatch_pct": 9.2
+    },
+    {
+      "letter": "N",
+      "train_total_samples": 52,
+      "train_1h_count": 34,
+      "train_2h_count": 18,
+      "train_2h_pct": 34.6,
+      "test_total_samples": 128,
+      "test_1h_count": 62,
+      "test_2h_count": 66,
+      "test_2h_pct": 51.6,
+      "hand_count_mismatch_pct": 17.0
+    },
+    {
+      "letter": "O",
+      "train_total_samples": 79,
+      "train_1h_count": 78,
+      "train_2h_count": 1,
+      "train_2h_pct": 1.3,
+      "test_total_samples": 129,
+      "test_1h_count": 129,
+      "test_2h_count": 0,
+      "test_2h_pct": 0.0,
+      "hand_count_mismatch_pct": -1.3
+    },
+    {
+      "letter": "P",
+      "train_total_samples": 99,
+      "train_1h_count": 31,
+      "train_2h_count": 68,
+      "train_2h_pct": 68.7,
+      "test_total_samples": 128,
+      "test_1h_count": 0,
+      "test_2h_count": 128,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 31.3
+    },
+    {
+      "letter": "Q",
+      "train_total_samples": 79,
+      "train_1h_count": 56,
+      "train_2h_count": 23,
+      "train_2h_pct": 29.1,
+      "test_total_samples": 129,
+      "test_1h_count": 0,
+      "test_2h_count": 129,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 70.9
+    },
+    {
+      "letter": "R",
+      "train_total_samples": 126,
+      "train_1h_count": 86,
+      "train_2h_count": 40,
+      "train_2h_pct": 31.7,
+      "test_total_samples": 129,
+      "test_1h_count": 45,
+      "test_2h_count": 84,
+      "test_2h_pct": 65.1,
+      "hand_count_mismatch_pct": 33.4
+    },
+    {
+      "letter": "S",
+      "train_total_samples": 70,
+      "train_1h_count": 39,
+      "train_2h_count": 31,
+      "train_2h_pct": 44.3,
+      "test_total_samples": 128,
+      "test_1h_count": 0,
+      "test_2h_count": 128,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 55.7
+    },
+    {
+      "letter": "T",
+      "train_total_samples": 139,
+      "train_1h_count": 77,
+      "train_2h_count": 62,
+      "train_2h_pct": 44.6,
+      "test_total_samples": 128,
+      "test_1h_count": 0,
+      "test_2h_count": 128,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 55.4
+    },
+    {
+      "letter": "U",
+      "train_total_samples": 131,
+      "train_1h_count": 113,
+      "train_2h_count": 18,
+      "train_2h_pct": 13.7,
+      "test_total_samples": 128,
+      "test_1h_count": 128,
+      "test_2h_count": 0,
+      "test_2h_pct": 0.0,
+      "hand_count_mismatch_pct": -13.7
+    },
+    {
+      "letter": "V",
+      "train_total_samples": 85,
+      "train_1h_count": 67,
+      "train_2h_count": 18,
+      "train_2h_pct": 21.2,
+      "test_total_samples": 128,
+      "test_1h_count": 128,
+      "test_2h_count": 0,
+      "test_2h_pct": 0.0,
+      "hand_count_mismatch_pct": -21.2
+    },
+    {
+      "letter": "W",
+      "train_total_samples": 61,
+      "train_1h_count": 53,
+      "train_2h_count": 8,
+      "train_2h_pct": 13.1,
+      "test_total_samples": 127,
+      "test_1h_count": 2,
+      "test_2h_count": 125,
+      "test_2h_pct": 98.4,
+      "hand_count_mismatch_pct": 85.3
+    },
+    {
+      "letter": "X",
+      "train_total_samples": 67,
+      "train_1h_count": 55,
+      "train_2h_count": 12,
+      "train_2h_pct": 17.9,
+      "test_total_samples": 129,
+      "test_1h_count": 0,
+      "test_2h_count": 129,
+      "test_2h_pct": 100.0,
+      "hand_count_mismatch_pct": 82.1
+    },
+    {
+      "letter": "Y",
+      "train_total_samples": 114,
+      "train_1h_count": 73,
+      "train_2h_count": 41,
+      "train_2h_pct": 36.0,
+      "test_total_samples": 128,
+      "test_1h_count": 58,
+      "test_2h_count": 70,
+      "test_2h_pct": 54.7,
+      "hand_count_mismatch_pct": 18.7
+    },
+    {
+      "letter": "Z",
+      "train_total_samples": 87,
+      "train_1h_count": 52,
+      "train_2h_count": 35,
+      "train_2h_pct": 40.2,
+      "test_total_samples": 128,
+      "test_1h_count": 1,
+      "test_2h_count": 127,
+      "test_2h_pct": 99.2,
+      "hand_count_mismatch_pct": 59.0
+    }
+  ],
+  "zero_recall_analysis": {
+    "D": {
+      "letter": "D",
+      "samples_in_test": 128,
+      "m4_geom_v2_top_confusions": [
+        [
+          "C",
+          116
+        ],
+        [
+          "Q",
+          10
+        ],
+        [
+          "Z",
+          2
+        ]
+      ],
+      "m3_landmark_v1_top_confusions": [
+        [
+          "C",
+          70
+        ],
+        [
+          "Q",
+          46
+        ],
+        [
+          "B",
+          7
+        ]
+      ],
+      "m1_yolo_top_confusions": [
+        [
+          "Q",
+          39
+        ],
+        [
+          "C",
+          28
+        ],
+        [
+          "Z",
+          26
+        ]
+      ],
+      "m2_cnn_top_confusions": [
+        [
+          "T",
+          48
+        ],
+        [
+          "Q",
+          25
+        ],
+        [
+          "Z",
+          19
+        ]
+      ],
+      "train_2h_pct": 54.4,
+      "test_2h_pct": 100.0,
+      "mismatch_diff": 45.6
+    },
+    "E": {
+      "letter": "E",
+      "samples_in_test": 128,
+      "m4_geom_v2_top_confusions": [
+        [
+          "I",
+          55
+        ],
+        [
+          "P",
+          45
+        ],
+        [
+          "D",
+          19
+        ]
+      ],
+      "m3_landmark_v1_top_confusions": [
+        [
+          "I",
+          56
+        ],
+        [
+          "D",
+          46
+        ],
+        [
+          "S",
+          21
+        ]
+      ],
+      "m1_yolo_top_confusions": [
+        [
+          "T",
+          19
+        ],
+        [
+          "K",
+          18
+        ],
+        [
+          "G",
+          17
+        ]
+      ],
+      "m2_cnn_top_confusions": [
+        [
+          "I",
+          51
+        ],
+        [
+          "S",
+          48
+        ],
+        [
+          "M",
+          15
+        ]
+      ],
+      "train_2h_pct": 34.7,
+      "test_2h_pct": 98.4,
+      "mismatch_diff": 63.7
+    },
+    "F": {
+      "letter": "F",
+      "samples_in_test": 128,
+      "m4_geom_v2_top_confusions": [
+        [
+          "D",
+          70
+        ],
+        [
+          "P",
+          51
+        ],
+        [
+          "I",
+          7
+        ]
+      ],
+      "m3_landmark_v1_top_confusions": [
+        [
+          "P",
+          84
+        ],
+        [
+          "D",
+          44
+        ]
+      ],
+      "m1_yolo_top_confusions": [
+        [
+          "Y",
+          55
+        ],
+        [
+          "A",
+          27
+        ],
+        [
+          "V",
+          10
+        ]
+      ],
+      "m2_cnn_top_confusions": [
+        [
+          "Y",
+          88
+        ],
+        [
+          "I",
+          17
+        ],
+        [
+          "Z",
+          15
+        ]
+      ],
+      "train_2h_pct": 41.0,
+      "test_2h_pct": 100.0,
+      "mismatch_diff": 59.0
+    },
+    "I": {
+      "letter": "I",
+      "samples_in_test": 128,
+      "m4_geom_v2_top_confusions": [
+        [
+          "P",
+          72
+        ],
+        [
+          "D",
+          35
+        ],
+        [
+          "Y",
+          20
+        ]
+      ],
+      "m3_landmark_v1_top_confusions": [
+        [
+          "D",
+          113
+        ],
+        [
+          "P",
+          9
+        ],
+        [
+          "Y",
+          5
+        ]
+      ],
+      "m1_yolo_top_confusions": [
+        [
+          "K",
+          32
+        ],
+        [
+          "T",
+          29
+        ],
+        [
+          "Q",
+          21
+        ]
+      ],
+      "m2_cnn_top_confusions": [
+        [
+          "T",
+          66
+        ],
+        [
+          "P",
+          22
+        ],
+        [
+          "I",
+          19
+        ]
+      ],
+      "train_2h_pct": 42.6,
+      "test_2h_pct": 100.0,
+      "mismatch_diff": 57.4
+    },
+    "N": {
+      "letter": "N",
+      "samples_in_test": 128,
+      "m4_geom_v2_top_confusions": [
+        [
+          "T",
+          66
+        ],
+        [
+          "M",
+          22
+        ],
+        [
+          "A",
+          21
+        ]
+      ],
+      "m3_landmark_v1_top_confusions": [
+        [
+          "T",
+          83
+        ],
+        [
+          "R",
+          32
+        ],
+        [
+          "I",
+          8
+        ]
+      ],
+      "m1_yolo_top_confusions": [
+        [
+          "Y",
+          34
+        ],
+        [
+          "N",
+          27
+        ],
+        [
+          "A",
+          26
+        ]
+      ],
+      "m2_cnn_top_confusions": [
+        [
+          "Y",
+          55
+        ],
+        [
+          "N",
+          32
+        ],
+        [
+          "J",
+          26
+        ]
+      ],
+      "train_2h_pct": 34.6,
+      "test_2h_pct": 51.6,
+      "mismatch_diff": 17.0
+    },
+    "Q": {
+      "letter": "Q",
+      "samples_in_test": 129,
+      "m4_geom_v2_top_confusions": [
+        [
+          "T",
+          95
+        ],
+        [
+          "E",
+          32
+        ],
+        [
+          "G",
+          2
+        ]
+      ],
+      "m3_landmark_v1_top_confusions": [
+        [
+          "T",
+          96
+        ],
+        [
+          "E",
+          33
+        ]
+      ],
+      "m1_yolo_top_confusions": [
+        [
+          "O",
+          75
+        ],
+        [
+          "Y",
+          28
+        ],
+        [
+          "A",
+          9
+        ]
+      ],
+      "m2_cnn_top_confusions": [
+        [
+          "Q",
+          30
+        ],
+        [
+          "I",
+          23
+        ],
+        [
+          "F",
+          18
+        ]
+      ],
+      "train_2h_pct": 29.1,
+      "test_2h_pct": 100.0,
+      "mismatch_diff": 70.9
+    },
+    "R": {
+      "letter": "R",
+      "samples_in_test": 129,
+      "m4_geom_v2_top_confusions": [
+        [
+          "J",
+          40
+        ],
+        [
+          "G",
+          28
+        ],
+        [
+          "I",
+          24
+        ]
+      ],
+      "m3_landmark_v1_top_confusions": [
+        [
+          "I",
+          48
+        ],
+        [
+          "E",
+          46
+        ],
+        [
+          "G",
+          14
+        ]
+      ],
+      "m1_yolo_top_confusions": [
+        [
+          "Z",
+          38
+        ],
+        [
+          "H",
+          20
+        ],
+        [
+          "G",
+          17
+        ]
+      ],
+      "m2_cnn_top_confusions": [
+        [
+          "I",
+          64
+        ],
+        [
+          "H",
+          39
+        ],
+        [
+          "Z",
+          8
+        ]
+      ],
+      "train_2h_pct": 31.7,
+      "test_2h_pct": 65.1,
+      "mismatch_diff": 33.4
+    },
+    "X": {
+      "letter": "X",
+      "samples_in_test": 129,
+      "m4_geom_v2_top_confusions": [
+        [
+          "K",
+          67
+        ],
+        [
+          "T",
+          41
+        ],
+        [
+          "D",
+          18
+        ]
+      ],
+      "m3_landmark_v1_top_confusions": [
+        [
+          "K",
+          44
+        ],
+        [
+          "T",
+          35
+        ],
+        [
+          "D",
+          31
+        ]
+      ],
+      "m1_yolo_top_confusions": [
+        [
+          "Y",
+          98
+        ],
+        [
+          "X",
+          10
+        ],
+        [
+          "O",
+          6
+        ]
+      ],
+      "m2_cnn_top_confusions": [
+        [
+          "Y",
+          56
+        ],
+        [
+          "X",
+          33
+        ],
+        [
+          "Z",
+          20
+        ]
+      ],
+      "train_2h_pct": 17.9,
+      "test_2h_pct": 100.0,
+      "mismatch_diff": 82.1
+    }
+  },
+  "model_comparison": {
+    "m3_overall_top1": 39.0,
+    "m4_overall_top1": 38.88,
+    "m3_macro_f1": 36.72,
+    "m4_macro_f1": 34.52,
+    "m3_zero_recall_count": 9,
+    "m4_zero_recall_count": 8,
+    "why_v1_outperformed_v2": [
+      "Overfitting of 64 extra fine-grained angles to single training signer kinematics.",
+      "Higher anatomical variance of DIP flexion angles and signed palm depths across unseen signers.",
+      "Extreme collapse on letter V: v1 achieved 91.41% while v2 dropped to 54.69% (-36.72%).",
+      "Letter G dropped from 100.0% in v1 to 81.25% in v2 (-18.75%).",
+      "Conversely, v2 was significantly better on letter P (+32.81%) and letter B (+22.66%)."
+    ]
+  },
+  "partition_strategy": {
+    "guideline": "Strictly signer-disjoint. Never split adjacent frames from the same video across partitions.",
+    "status_of_signer_02_and_03": "Preserved permanently as untouched external benchmark holdout (Option A, recommended) OR formally retired with collection of new external test signers (Option B).",
+    "proposed_collection_protocol": {
+      "target_signers_count": 4,
+      "letters_per_signer": 26,
+      "conditions_per_letter": 2,
+      "samples_per_condition": 16,
+      "frames_per_signer": 832,
+      "total_new_frames": 3328,
+      "partition_assignment": {
+        "train_signers": [
+          "signer_01_legacy",
+          "signer_04",
+          "signer_05"
+        ],
+        "val_signers": [
+          "signer_06"
+        ],
+        "test_signers": [
+          "signer_02",
+          "signer_03",
+          "signer_07"
+        ]
+      }
+    }
+  },
+  "experiment_design": {
+    "direction_1_baseline": "Landmark RF v1 (200-dim) with StandardScaler fit strictly on training signers.",
+    "direction_2_enhanced_geometry": "Geometry RF v2 (264-dim) with verified scaler pipeline and regularization (max_depth=12 to reduce kinematic overfitting).",
+    "direction_3_two_hand_occlusion_aware": "224-dim architecture introducing explicit inter-hand contact proxies, symmetric distance matrices, and invariant relative orientation angles.",
+    "direction_4_adaptive_fusion": "Confidence-gated fusion where high-confidence landmark predictions override visual features during dark/harsh lighting conditions.",
+    "evaluation_protocol": "Leave-One-Signer-Out Cross-Validation (LOSO-CV) on training/validation signers; single frozen evaluation on test signers.",
+    "measurable_success_criteria": {
+      "macro_f1_target": ">= 80.0%",
+      "zero_recall_classes_allowed": 0,
+      "latency_target_ms": "<= 100.0 ms"
+    }
+  }
+}

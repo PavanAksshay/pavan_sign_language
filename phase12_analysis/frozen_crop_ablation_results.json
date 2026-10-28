@@ -1,0 +1,665 @@
+{
+  "frozen_model": "models/mediapipe_squeezenet_v1/saved_model",
+  "crop_variants": [
+    "15pct",
+    "20pct",
+    "25pct",
+    "forearm_ctx"
+  ],
+  "test_al_summary": {
+    "15pct": {
+      "total_evaluated": 381,
+      "detection_failures": 0,
+      "top1_accuracy": 75.85,
+      "top3_accuracy": 89.24,
+      "per_class": {
+        "A": {
+          "total": 23,
+          "top1_acc": 69.57,
+          "top3_acc": 91.3
+        },
+        "B": {
+          "total": 27,
+          "top1_acc": 77.78,
+          "top3_acc": 88.89
+        },
+        "C": {
+          "total": 25,
+          "top1_acc": 92.0,
+          "top3_acc": 96.0
+        },
+        "D": {
+          "total": 22,
+          "top1_acc": 90.91,
+          "top3_acc": 95.45
+        },
+        "E": {
+          "total": 27,
+          "top1_acc": 48.15,
+          "top3_acc": 85.19
+        },
+        "F": {
+          "total": 17,
+          "top1_acc": 82.35,
+          "top3_acc": 94.12
+        },
+        "G": {
+          "total": 23,
+          "top1_acc": 65.22,
+          "top3_acc": 95.65
+        },
+        "H": {
+          "total": 23,
+          "top1_acc": 60.87,
+          "top3_acc": 86.96
+        },
+        "I": {
+          "total": 18,
+          "top1_acc": 72.22,
+          "top3_acc": 88.89
+        },
+        "J": {
+          "total": 22,
+          "top1_acc": 86.36,
+          "top3_acc": 95.45
+        },
+        "K": {
+          "total": 80,
+          "top1_acc": 78.75,
+          "top3_acc": 86.25
+        },
+        "L": {
+          "total": 74,
+          "top1_acc": 78.38,
+          "top3_acc": 85.14
+        }
+      }
+    },
+    "20pct": {
+      "total_evaluated": 381,
+      "detection_failures": 0,
+      "top1_accuracy": 75.85,
+      "top3_accuracy": 88.98,
+      "per_class": {
+        "A": {
+          "total": 23,
+          "top1_acc": 73.91,
+          "top3_acc": 91.3
+        },
+        "B": {
+          "total": 27,
+          "top1_acc": 81.48,
+          "top3_acc": 88.89
+        },
+        "C": {
+          "total": 25,
+          "top1_acc": 92.0,
+          "top3_acc": 96.0
+        },
+        "D": {
+          "total": 22,
+          "top1_acc": 90.91,
+          "top3_acc": 95.45
+        },
+        "E": {
+          "total": 27,
+          "top1_acc": 51.85,
+          "top3_acc": 85.19
+        },
+        "F": {
+          "total": 17,
+          "top1_acc": 82.35,
+          "top3_acc": 94.12
+        },
+        "G": {
+          "total": 23,
+          "top1_acc": 69.57,
+          "top3_acc": 91.3
+        },
+        "H": {
+          "total": 23,
+          "top1_acc": 52.17,
+          "top3_acc": 86.96
+        },
+        "I": {
+          "total": 18,
+          "top1_acc": 83.33,
+          "top3_acc": 88.89
+        },
+        "J": {
+          "total": 22,
+          "top1_acc": 77.27,
+          "top3_acc": 95.45
+        },
+        "K": {
+          "total": 80,
+          "top1_acc": 77.5,
+          "top3_acc": 86.25
+        },
+        "L": {
+          "total": 74,
+          "top1_acc": 77.03,
+          "top3_acc": 85.14
+        }
+      }
+    },
+    "25pct": {
+      "total_evaluated": 381,
+      "detection_failures": 0,
+      "top1_accuracy": 70.34,
+      "top3_accuracy": 87.93,
+      "per_class": {
+        "A": {
+          "total": 23,
+          "top1_acc": 65.22,
+          "top3_acc": 86.96
+        },
+        "B": {
+          "total": 27,
+          "top1_acc": 85.19,
+          "top3_acc": 88.89
+        },
+        "C": {
+          "total": 25,
+          "top1_acc": 88.0,
+          "top3_acc": 96.0
+        },
+        "D": {
+          "total": 22,
+          "top1_acc": 86.36,
+          "top3_acc": 90.91
+        },
+        "E": {
+          "total": 27,
+          "top1_acc": 37.04,
+          "top3_acc": 85.19
+        },
+        "F": {
+          "total": 17,
+          "top1_acc": 70.59,
+          "top3_acc": 88.24
+        },
+        "G": {
+          "total": 23,
+          "top1_acc": 60.87,
+          "top3_acc": 86.96
+        },
+        "H": {
+          "total": 23,
+          "top1_acc": 52.17,
+          "top3_acc": 82.61
+        },
+        "I": {
+          "total": 18,
+          "top1_acc": 72.22,
+          "top3_acc": 94.44
+        },
+        "J": {
+          "total": 22,
+          "top1_acc": 77.27,
+          "top3_acc": 95.45
+        },
+        "K": {
+          "total": 80,
+          "top1_acc": 72.5,
+          "top3_acc": 88.75
+        },
+        "L": {
+          "total": 74,
+          "top1_acc": 71.62,
+          "top3_acc": 82.43
+        }
+      }
+    },
+    "forearm_ctx": {
+      "total_evaluated": 381,
+      "detection_failures": 0,
+      "top1_accuracy": 64.3,
+      "top3_accuracy": 84.51,
+      "per_class": {
+        "A": {
+          "total": 23,
+          "top1_acc": 73.91,
+          "top3_acc": 91.3
+        },
+        "B": {
+          "total": 27,
+          "top1_acc": 70.37,
+          "top3_acc": 88.89
+        },
+        "C": {
+          "total": 25,
+          "top1_acc": 88.0,
+          "top3_acc": 100.0
+        },
+        "D": {
+          "total": 22,
+          "top1_acc": 86.36,
+          "top3_acc": 95.45
+        },
+        "E": {
+          "total": 27,
+          "top1_acc": 44.44,
+          "top3_acc": 85.19
+        },
+        "F": {
+          "total": 17,
+          "top1_acc": 70.59,
+          "top3_acc": 82.35
+        },
+        "G": {
+          "total": 23,
+          "top1_acc": 69.57,
+          "top3_acc": 91.3
+        },
+        "H": {
+          "total": 23,
+          "top1_acc": 34.78,
+          "top3_acc": 69.57
+        },
+        "I": {
+          "total": 18,
+          "top1_acc": 61.11,
+          "top3_acc": 83.33
+        },
+        "J": {
+          "total": 22,
+          "top1_acc": 72.73,
+          "top3_acc": 95.45
+        },
+        "K": {
+          "total": 80,
+          "top1_acc": 66.25,
+          "top3_acc": 83.75
+        },
+        "L": {
+          "total": 74,
+          "top1_acc": 54.05,
+          "top3_acc": 72.97
+        }
+      }
+    }
+  },
+  "test_mz_summary": {
+    "15pct": {
+      "total_evaluated": 720,
+      "detection_failures": 0,
+      "top1_accuracy": 59.17,
+      "top3_accuracy": 73.33,
+      "per_class": {
+        "M": {
+          "total": 38,
+          "top1_acc": 55.26,
+          "top3_acc": 57.89
+        },
+        "N": {
+          "total": 52,
+          "top1_acc": 13.46,
+          "top3_acc": 63.46
+        },
+        "O": {
+          "total": 43,
+          "top1_acc": 41.86,
+          "top3_acc": 53.49
+        },
+        "P": {
+          "total": 67,
+          "top1_acc": 71.64,
+          "top3_acc": 79.1
+        },
+        "Q": {
+          "total": 80,
+          "top1_acc": 52.5,
+          "top3_acc": 65.0
+        },
+        "R": {
+          "total": 51,
+          "top1_acc": 66.67,
+          "top3_acc": 66.67
+        },
+        "S": {
+          "total": 68,
+          "top1_acc": 64.71,
+          "top3_acc": 73.53
+        },
+        "T": {
+          "total": 61,
+          "top1_acc": 72.13,
+          "top3_acc": 81.97
+        },
+        "U": {
+          "total": 46,
+          "top1_acc": 76.09,
+          "top3_acc": 89.13
+        },
+        "V": {
+          "total": 38,
+          "top1_acc": 65.79,
+          "top3_acc": 84.21
+        },
+        "W": {
+          "total": 36,
+          "top1_acc": 69.44,
+          "top3_acc": 83.33
+        },
+        "X": {
+          "total": 39,
+          "top1_acc": 33.33,
+          "top3_acc": 53.85
+        },
+        "Y": {
+          "total": 47,
+          "top1_acc": 57.45,
+          "top3_acc": 85.11
+        },
+        "Z": {
+          "total": 54,
+          "top1_acc": 79.63,
+          "top3_acc": 87.04
+        }
+      }
+    },
+    "20pct": {
+      "total_evaluated": 720,
+      "detection_failures": 0,
+      "top1_accuracy": 58.61,
+      "top3_accuracy": 74.17,
+      "per_class": {
+        "M": {
+          "total": 38,
+          "top1_acc": 57.89,
+          "top3_acc": 57.89
+        },
+        "N": {
+          "total": 52,
+          "top1_acc": 9.62,
+          "top3_acc": 67.31
+        },
+        "O": {
+          "total": 43,
+          "top1_acc": 37.21,
+          "top3_acc": 48.84
+        },
+        "P": {
+          "total": 67,
+          "top1_acc": 79.1,
+          "top3_acc": 80.6
+        },
+        "Q": {
+          "total": 80,
+          "top1_acc": 57.5,
+          "top3_acc": 65.0
+        },
+        "R": {
+          "total": 51,
+          "top1_acc": 60.78,
+          "top3_acc": 66.67
+        },
+        "S": {
+          "total": 68,
+          "top1_acc": 64.71,
+          "top3_acc": 79.41
+        },
+        "T": {
+          "total": 61,
+          "top1_acc": 73.77,
+          "top3_acc": 81.97
+        },
+        "U": {
+          "total": 46,
+          "top1_acc": 71.74,
+          "top3_acc": 89.13
+        },
+        "V": {
+          "total": 38,
+          "top1_acc": 57.89,
+          "top3_acc": 89.47
+        },
+        "W": {
+          "total": 36,
+          "top1_acc": 63.89,
+          "top3_acc": 83.33
+        },
+        "X": {
+          "total": 39,
+          "top1_acc": 35.9,
+          "top3_acc": 53.85
+        },
+        "Y": {
+          "total": 47,
+          "top1_acc": 57.45,
+          "top3_acc": 80.85
+        },
+        "Z": {
+          "total": 54,
+          "top1_acc": 75.93,
+          "top3_acc": 88.89
+        }
+      }
+    },
+    "25pct": {
+      "total_evaluated": 720,
+      "detection_failures": 0,
+      "top1_accuracy": 56.39,
+      "top3_accuracy": 73.89,
+      "per_class": {
+        "M": {
+          "total": 38,
+          "top1_acc": 50.0,
+          "top3_acc": 60.53
+        },
+        "N": {
+          "total": 52,
+          "top1_acc": 7.69,
+          "top3_acc": 65.38
+        },
+        "O": {
+          "total": 43,
+          "top1_acc": 34.88,
+          "top3_acc": 51.16
+        },
+        "P": {
+          "total": 67,
+          "top1_acc": 79.1,
+          "top3_acc": 82.09
+        },
+        "Q": {
+          "total": 80,
+          "top1_acc": 57.5,
+          "top3_acc": 65.0
+        },
+        "R": {
+          "total": 51,
+          "top1_acc": 62.75,
+          "top3_acc": 68.63
+        },
+        "S": {
+          "total": 68,
+          "top1_acc": 50.0,
+          "top3_acc": 76.47
+        },
+        "T": {
+          "total": 61,
+          "top1_acc": 73.77,
+          "top3_acc": 78.69
+        },
+        "U": {
+          "total": 46,
+          "top1_acc": 78.26,
+          "top3_acc": 89.13
+        },
+        "V": {
+          "total": 38,
+          "top1_acc": 60.53,
+          "top3_acc": 89.47
+        },
+        "W": {
+          "total": 36,
+          "top1_acc": 69.44,
+          "top3_acc": 83.33
+        },
+        "X": {
+          "total": 39,
+          "top1_acc": 25.64,
+          "top3_acc": 51.28
+        },
+        "Y": {
+          "total": 47,
+          "top1_acc": 48.94,
+          "top3_acc": 78.72
+        },
+        "Z": {
+          "total": 54,
+          "top1_acc": 75.93,
+          "top3_acc": 90.74
+        }
+      }
+    },
+    "forearm_ctx": {
+      "total_evaluated": 720,
+      "detection_failures": 0,
+      "top1_accuracy": 52.64,
+      "top3_accuracy": 70.42,
+      "per_class": {
+        "M": {
+          "total": 38,
+          "top1_acc": 44.74,
+          "top3_acc": 60.53
+        },
+        "N": {
+          "total": 52,
+          "top1_acc": 7.69,
+          "top3_acc": 59.62
+        },
+        "O": {
+          "total": 43,
+          "top1_acc": 27.91,
+          "top3_acc": 44.19
+        },
+        "P": {
+          "total": 67,
+          "top1_acc": 53.73,
+          "top3_acc": 70.15
+        },
+        "Q": {
+          "total": 80,
+          "top1_acc": 53.75,
+          "top3_acc": 61.25
+        },
+        "R": {
+          "total": 51,
+          "top1_acc": 54.9,
+          "top3_acc": 60.78
+        },
+        "S": {
+          "total": 68,
+          "top1_acc": 54.41,
+          "top3_acc": 76.47
+        },
+        "T": {
+          "total": 61,
+          "top1_acc": 67.21,
+          "top3_acc": 78.69
+        },
+        "U": {
+          "total": 46,
+          "top1_acc": 69.57,
+          "top3_acc": 84.78
+        },
+        "V": {
+          "total": 38,
+          "top1_acc": 57.89,
+          "top3_acc": 81.58
+        },
+        "W": {
+          "total": 36,
+          "top1_acc": 69.44,
+          "top3_acc": 77.78
+        },
+        "X": {
+          "total": 39,
+          "top1_acc": 33.33,
+          "top3_acc": 56.41
+        },
+        "Y": {
+          "total": 47,
+          "top1_acc": 48.94,
+          "top3_acc": 82.98
+        },
+        "Z": {
+          "total": 54,
+          "top1_acc": 85.19,
+          "top3_acc": 88.89
+        }
+      }
+    }
+  },
+  "video_c_summary": {
+    "15pct": {
+      "total_frames": 146,
+      "detected_frames": 146,
+      "detection_rate": 100.0,
+      "top1_accuracy": 94.52,
+      "top3_accuracy": 100.0,
+      "mean_class_confidence": 90.7300033569336
+    },
+    "20pct": {
+      "total_frames": 146,
+      "detected_frames": 146,
+      "detection_rate": 100.0,
+      "top1_accuracy": 89.73,
+      "top3_accuracy": 99.32,
+      "mean_class_confidence": 86.94000244140625
+    },
+    "25pct": {
+      "total_frames": 146,
+      "detected_frames": 146,
+      "detection_rate": 100.0,
+      "top1_accuracy": 90.41,
+      "top3_accuracy": 97.95,
+      "mean_class_confidence": 84.83999633789062
+    },
+    "forearm_ctx": {
+      "total_frames": 146,
+      "detected_frames": 146,
+      "detection_rate": 100.0,
+      "top1_accuracy": 78.08,
+      "top3_accuracy": 78.77,
+      "mean_class_confidence": 76.33000183105469
+    }
+  },
+  "video_l_summary": {
+    "15pct": {
+      "total_frames": 146,
+      "detected_frames": 146,
+      "detection_rate": 100.0,
+      "top1_accuracy": 13.01,
+      "top3_accuracy": 43.84,
+      "mean_class_confidence": 13.130000114440918
+    },
+    "20pct": {
+      "total_frames": 146,
+      "detected_frames": 146,
+      "detection_rate": 100.0,
+      "top1_accuracy": 2.74,
+      "top3_accuracy": 23.97,
+      "mean_class_confidence": 9.829999923706055
+    },
+    "25pct": {
+      "total_frames": 146,
+      "detected_frames": 146,
+      "detection_rate": 100.0,
+      "top1_accuracy": 0.0,
+      "top3_accuracy": 4.11,
+      "mean_class_confidence": 6.460000038146973
+    },
+    "forearm_ctx": {
+      "total_frames": 146,
+      "detected_frames": 146,
+      "detection_rate": 100.0,
+      "top1_accuracy": 0.0,
+      "top3_accuracy": 0.0,
+      "mean_class_confidence": 1.4199999570846558
+    }
+  }
+}

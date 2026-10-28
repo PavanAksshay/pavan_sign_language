@@ -1,0 +1,94 @@
+{
+  "phase": "Phase 19 \u2014 Frozen External Multi-Signer Benchmark Evaluation",
+  "timestamp": "2026-10-22T10:40:00Z",
+  "benchmark_command": "python3 phase19_benchmark_evaluation.py",
+  "environment": {
+    "python": "3.12.4",
+    "opencv": "4.10.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "joblib": "1.6.0",
+    "mediapipe": "1.1.0",
+    "tf_keras": "2.21.0"
+  },
+  "dataset": {
+    "manifest_path": "data/collection_manifests/test_multisigner_manifest.json",
+    "manifest_sha256": "1c6b86c72b71cc3c9267a67a1fc70b4c466d97a971642e4be56c1866366ec1d3",
+    "ledger_path": "data/collection_manifests/collection_ledger.json",
+    "ledger_sha256": "3122cfbbed9ec0ef5be8d447fced129debe2172ff97c4f2f463cdcaeffe60a6c",
+    "total_frames": 3329,
+    "signers": [
+      "signer_02",
+      "signer_03"
+    ],
+    "conditions": [
+      "condition_1",
+      "condition_2"
+    ],
+    "session_id": "session_20261022_01",
+    "total_recordings": 104,
+    "nominal_target_frames": 3120,
+    "actual_usable_frames": 3329
+  },
+  "frozen_models": {
+    "1_Production_YOLO_Baseline": {
+      "detector": {
+        "cfg": "App/yolo_models/cross-hands.cfg",
+        "cfg_sha256": "2e44d9fe2a0b1f1b8956e7aab668813acea20664207582c65fa7efbeabeaa3b3",
+        "weights": "App/yolo_models/cross-hands.weights",
+        "weights_sha256": "f5a96b1cf9522ff74fdd48377d57e31b89e4ffd5fb3b7a3179a31bf985adf950"
+      },
+      "classifier": {
+        "path": "App/final_model_26",
+        "sha256": "2595cf992b943e0c458ac9791d1f9a07fd2ae55093860e19390981c69dfeae24"
+      }
+    },
+    "2_MediaPipe_v1_CNN": {
+      "detector": {
+        "task": "App/include50_model/hand_landmarker.task",
+        "task_sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1"
+      },
+      "classifier": {
+        "path": "models/mediapipe_squeezenet_v1/saved_model",
+        "sha256": "31414a31bd1cef01f50143bb45845267e460233c54e64fccb9765393c1828e09"
+      }
+    },
+    "3_Landmark_Only_Geometry_v1": {
+      "model": "models/landmark_hybrid_v1/landmark_rf_model.joblib",
+      "model_sha256": "cce1d50c5114c3c057997d504e9ddb871bab72b637894d2782bb19d7b436ef14",
+      "scaler": "models/landmark_hybrid_v1/landmark_scaler.joblib",
+      "scaler_sha256": "a8b47537e4e203cee5d4354bb2d58dbe0658b875d7870053d9aa00d2b8d77359",
+      "feature_dim": 200
+    },
+    "4_Landmark_Only_Geometry_v2": {
+      "model": "models/landmark_geometry_v2/landmark_rf_model_v2.joblib",
+      "model_sha256": "fada78c4ff025421b71c23992714443a04093dbe30cd7eb8a28728108698282d",
+      "scaler": "models/landmark_geometry_v2/landmark_scaler_v2.joblib",
+      "scaler_sha256": "bafca9c5c5fe270a55be46ed4f3dfbb24ebba2d5174c71f9728741d6f3d53f1a",
+      "config": "models/landmark_geometry_v2/geometry_v2_config.json",
+      "config_sha256": "07877f028b6e927848e667cd002ebc93692d0b66e5a462f479d12fb4520fbe83",
+      "feature_dim": 264
+    },
+    "5_Late_Fusion_Baseline_alpha_0.25": {
+      "formula": "P_fused = 0.25 * P_landmark_v1 + 0.75 * P_cnn_v1",
+      "alpha": 0.25,
+      "cnn_component": "models/mediapipe_squeezenet_v1/saved_model",
+      "landmark_component": "models/landmark_hybrid_v1/landmark_rf_model.joblib"
+    },
+    "6_Late_Fusion_Calibrated_alpha_0.75": {
+      "formula": "P_fused = 0.75 * P_landmark_v2 + 0.25 * P_cnn_v1",
+      "alpha": 0.75,
+      "cnn_component": "models/mediapipe_squeezenet_v1/saved_model",
+      "landmark_component": "models/landmark_geometry_v2/landmark_rf_model_v2.joblib"
+    },
+    "7_Hybrid_Concatenation_RF": {
+      "model": "models/landmark_hybrid_v1/hybrid_concatenation_model.joblib",
+      "model_sha256": "0033435ba118a4b2eed83e7dc6cdf3ada53b0a989158b549ea9602c5236ae8a8",
+      "cnn512_scaler": "models/landmark_hybrid_v1/cnn512_scaler.joblib",
+      "cnn512_scaler_sha256": "71b68606c505fbcfb260b8a0818002f927e129f7d533f3efcd97b351445afaaf",
+      "landmark_scaler": "models/landmark_hybrid_v1/landmark_scaler.joblib",
+      "landmark_scaler_sha256": "a8b47537e4e203cee5d4354bb2d58dbe0658b875d7870053d9aa00d2b8d77359",
+      "feature_dim": 712
+    }
+  }
+}

@@ -1,0 +1,511 @@
+{
+  "phase": 29,
+  "title": "Downsampled Runtime Validation and Production Readiness Gate",
+  "timestamp": "2026-10-25T06:16:15Z",
+  "hardware": {
+    "machine": "arm64",
+    "processor": "arm",
+    "system": "Darwin",
+    "release": "25.6.0",
+    "python_version": "3.12.4"
+  },
+  "validation_scope": {
+    "dataset": "signer_04_development_recordings",
+    "warmup_frames": 30,
+    "evaluated_unique_frames": 1000,
+    "all_frames_unique": true,
+    "zero_frame_cycling": true
+  },
+  "resolution_configuration_audit": {
+    "configured_setting": "640x360",
+    "input_resolution": [
+      1280,
+      720
+    ],
+    "processed_resolution": [
+      360,
+      640
+    ],
+    "aspect_ratio_preserved": true,
+    "coordinate_mapping": "Normalized [0,1] coordinates mapped to native [1280, 720] bounds",
+    "active_delegate": "gpu (Apple Metal)",
+    "hidden_fallback_detected": false
+  },
+  "native_1280x720_benchmark": {
+    "throughput_fps": 16.45,
+    "latency_distribution_ms": {
+      "count": 1000,
+      "mean": 51.114,
+      "median": 38.182,
+      "p90": 85.056,
+      "p95": 105.9,
+      "p99": 220.558,
+      "min": 27.714,
+      "max": 402.273,
+      "std": 35.652
+    },
+    "p95_gate_passed": false,
+    "memory_checkpoints_mb": {
+      "start_rss_mb": 633.06,
+      "frame_100_rss_mb": 898.69,
+      "frame_250_rss_mb": 1037.45,
+      "frame_500_rss_mb": 1037.45,
+      "frame_750_rss_mb": 1037.45,
+      "frame_1000_rss_mb": 1037.45,
+      "end_rss_mb": 1037.45
+    },
+    "slow_frames_gt_100ms_count": 60,
+    "stage_breakdowns_ms": {
+      "1_receipt": {
+        "count": 1000,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "min": 0.0,
+        "max": 0.005,
+        "std": 0.0
+      },
+      "2_validation": {
+        "count": 1000,
+        "mean": 0.005,
+        "median": 0.002,
+        "p90": 0.005,
+        "p95": 0.007,
+        "p99": 0.03,
+        "min": 0.002,
+        "max": 0.926,
+        "std": 0.031
+      },
+      "3_copy": {
+        "count": 1000,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "std": 0.0
+      },
+      "4_resize": {
+        "count": 1000,
+        "mean": 0.001,
+        "median": 0.001,
+        "p90": 0.002,
+        "p95": 0.002,
+        "p99": 0.004,
+        "min": 0.001,
+        "max": 0.035,
+        "std": 0.002
+      },
+      "5_color_conversion": {
+        "count": 1000,
+        "mean": 2.503,
+        "median": 1.03,
+        "p90": 5.824,
+        "p95": 10.454,
+        "p99": 23.142,
+        "min": 0.123,
+        "max": 123.322,
+        "std": 5.771
+      },
+      "6_mp_image_construction": {
+        "count": 1000,
+        "mean": 0.936,
+        "median": 0.232,
+        "p90": 1.181,
+        "p95": 2.235,
+        "p99": 14.889,
+        "min": 0.158,
+        "max": 82.857,
+        "std": 4.023
+      },
+      "7_detection": {
+        "count": 1000,
+        "mean": 21.122,
+        "median": 19.07,
+        "p90": 29.047,
+        "p95": 34.908,
+        "p99": 52.45,
+        "min": 11.151,
+        "max": 128.152,
+        "std": 8.427
+      },
+      "8_postprocessing": {
+        "count": 1000,
+        "mean": 0.026,
+        "median": 0.021,
+        "p90": 0.045,
+        "p95": 0.058,
+        "p99": 0.126,
+        "min": 0.01,
+        "max": 0.202,
+        "std": 0.02
+      },
+      "9_feature_extraction": {
+        "count": 1000,
+        "mean": 1.579,
+        "median": 1.168,
+        "p90": 2.727,
+        "p95": 3.91,
+        "p99": 8.752,
+        "min": 0.477,
+        "max": 30.029,
+        "std": 1.793
+      },
+      "10_scaler_transform": {
+        "count": 1000,
+        "mean": 0.394,
+        "median": 0.227,
+        "p90": 0.547,
+        "p95": 0.907,
+        "p99": 2.425,
+        "min": 0.182,
+        "max": 16.669,
+        "std": 0.929
+      },
+      "11_classifier_prediction": {
+        "count": 1000,
+        "mean": 24.352,
+        "median": 15.747,
+        "p90": 41.78,
+        "p95": 63.474,
+        "p99": 133.475,
+        "min": 13.277,
+        "max": 278.085,
+        "std": 24.053
+      },
+      "12_formatting": {
+        "count": 1000,
+        "mean": 0.025,
+        "median": 0.013,
+        "p90": 0.027,
+        "p95": 0.038,
+        "p99": 0.097,
+        "min": 0.01,
+        "max": 3.797,
+        "std": 0.158
+      }
+    }
+  },
+  "optin_640x360_benchmark": {
+    "throughput_fps": 20.31,
+    "latency_distribution_ms": {
+      "count": 1000,
+      "mean": 42.396,
+      "median": 33.682,
+      "p90": 52.006,
+      "p95": 84.161,
+      "p99": 266.836,
+      "min": 25.142,
+      "max": 796.811,
+      "std": 43.334
+    },
+    "p95_gate_passed": true,
+    "memory_checkpoints_mb": {
+      "start_rss_mb": 1037.45,
+      "frame_100_rss_mb": 1037.45,
+      "frame_250_rss_mb": 1037.45,
+      "frame_500_rss_mb": 1037.45,
+      "frame_750_rss_mb": 1037.45,
+      "frame_1000_rss_mb": 1037.45,
+      "end_rss_mb": 1037.45
+    },
+    "slow_frames_gt_100ms_count": 36,
+    "stage_breakdowns_ms": {
+      "1_receipt": {
+        "count": 1000,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "min": 0.0,
+        "max": 0.014,
+        "std": 0.0
+      },
+      "2_validation": {
+        "count": 1000,
+        "mean": 0.004,
+        "median": 0.002,
+        "p90": 0.004,
+        "p95": 0.005,
+        "p99": 0.017,
+        "min": 0.001,
+        "max": 0.642,
+        "std": 0.027
+      },
+      "3_copy": {
+        "count": 1000,
+        "mean": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "std": 0.0
+      },
+      "4_resize": {
+        "count": 1000,
+        "mean": 1.42,
+        "median": 0.746,
+        "p90": 2.965,
+        "p95": 5.401,
+        "p99": 13.768,
+        "min": 0.184,
+        "max": 29.551,
+        "std": 2.432
+      },
+      "5_color_conversion": {
+        "count": 1000,
+        "mean": 0.074,
+        "median": 0.043,
+        "p90": 0.097,
+        "p95": 0.154,
+        "p99": 0.507,
+        "min": 0.031,
+        "max": 5.117,
+        "std": 0.201
+      },
+      "6_mp_image_construction": {
+        "count": 1000,
+        "mean": 0.309,
+        "median": 0.093,
+        "p90": 0.344,
+        "p95": 0.596,
+        "p99": 3.696,
+        "min": 0.073,
+        "max": 33.066,
+        "std": 1.613
+      },
+      "7_detection": {
+        "count": 1000,
+        "mean": 17.968,
+        "median": 16.457,
+        "p90": 20.894,
+        "p95": 25.304,
+        "p99": 50.885,
+        "min": 8.818,
+        "max": 328.64,
+        "std": 13.04
+      },
+      "8_postprocessing": {
+        "count": 1000,
+        "mean": 0.072,
+        "median": 0.019,
+        "p90": 0.028,
+        "p95": 0.041,
+        "p99": 0.114,
+        "min": 0.01,
+        "max": 50.048,
+        "std": 1.581
+      },
+      "9_feature_extraction": {
+        "count": 1000,
+        "mean": 1.693,
+        "median": 1.124,
+        "p90": 1.769,
+        "p95": 2.551,
+        "p99": 9.683,
+        "min": 0.462,
+        "max": 180.678,
+        "std": 7.403
+      },
+      "10_scaler_transform": {
+        "count": 1000,
+        "mean": 0.31,
+        "median": 0.207,
+        "p90": 0.395,
+        "p95": 0.678,
+        "p99": 1.829,
+        "min": 0.171,
+        "max": 15.689,
+        "std": 0.616
+      },
+      "11_classifier_prediction": {
+        "count": 1000,
+        "mean": 20.341,
+        "median": 14.587,
+        "p90": 26.347,
+        "p95": 43.918,
+        "p99": 124.236,
+        "min": 13.272,
+        "max": 478.239,
+        "std": 26.137
+      },
+      "12_formatting": {
+        "count": 1000,
+        "mean": 0.018,
+        "median": 0.013,
+        "p90": 0.02,
+        "p95": 0.031,
+        "p99": 0.137,
+        "min": 0.01,
+        "max": 0.434,
+        "std": 0.027
+      }
+    }
+  },
+  "recognition_fidelity_comparison": {
+    "prediction_agreement_pct": 99.3,
+    "hand_count_agreement_pct": 97.7,
+    "total_disagreements": 7,
+    "native_accuracy": 0.995,
+    "native_macro_f1": 0.9941,
+    "native_balanced_acc": 0.9935,
+    "640x360_accuracy": 0.993,
+    "640x360_macro_f1": 0.9924,
+    "640x360_balanced_acc": 0.9909,
+    "difficult_letters_forensics": {
+      "H": {
+        "total_frames": 42,
+        "native_recall": 1.0,
+        "640x360_recall": 1.0,
+        "native_confusions": {},
+        "640x360_confusions": {}
+      },
+      "W": {
+        "total_frames": 29,
+        "native_recall": 0.8966,
+        "640x360_recall": 0.8966,
+        "native_confusions": {
+          "M": 2,
+          "Y": 1
+        },
+        "640x360_confusions": {
+          "J": 1,
+          "M": 1,
+          "D": 1
+        }
+      },
+      "Y": {
+        "total_frames": 30,
+        "native_recall": 1.0,
+        "640x360_recall": 1.0,
+        "native_confusions": {},
+        "640x360_confusions": {}
+      },
+      "N": {
+        "total_frames": 30,
+        "native_recall": 1.0,
+        "640x360_recall": 1.0,
+        "native_confusions": {},
+        "640x360_confusions": {}
+      },
+      "M": {
+        "total_frames": 31,
+        "native_recall": 1.0,
+        "640x360_recall": 1.0,
+        "native_confusions": {},
+        "640x360_confusions": {}
+      },
+      "I": {
+        "total_frames": 30,
+        "native_recall": 1.0,
+        "640x360_recall": 1.0,
+        "native_confusions": {},
+        "640x360_confusions": {}
+      },
+      "J": {
+        "total_frames": 30,
+        "native_recall": 1.0,
+        "640x360_recall": 1.0,
+        "native_confusions": {},
+        "640x360_confusions": {}
+      }
+    },
+    "disagreements_sample": [
+      {
+        "index": 323,
+        "ground_truth": "L",
+        "native_prediction": "L",
+        "640x360_prediction": "D",
+        "condition": "condition_1",
+        "recording": "signer_04_session_20261015"
+      },
+      {
+        "index": 330,
+        "ground_truth": "L",
+        "native_prediction": "L",
+        "640x360_prediction": "D",
+        "condition": "condition_1",
+        "recording": "signer_04_session_20261015"
+      },
+      {
+        "index": 645,
+        "ground_truth": "W",
+        "native_prediction": "M",
+        "640x360_prediction": "W",
+        "condition": "condition_1",
+        "recording": "signer_04_session_20261015"
+      },
+      {
+        "index": 646,
+        "ground_truth": "W",
+        "native_prediction": "W",
+        "640x360_prediction": "J",
+        "condition": "condition_1",
+        "recording": "signer_04_session_20261015"
+      },
+      {
+        "index": 647,
+        "ground_truth": "W",
+        "native_prediction": "W",
+        "640x360_prediction": "M",
+        "condition": "condition_1",
+        "recording": "signer_04_session_20261015"
+      },
+      {
+        "index": 648,
+        "ground_truth": "W",
+        "native_prediction": "M",
+        "640x360_prediction": "W",
+        "condition": "condition_1",
+        "recording": "signer_04_session_20261015"
+      },
+      {
+        "index": 649,
+        "ground_truth": "W",
+        "native_prediction": "Y",
+        "640x360_prediction": "D",
+        "condition": "condition_1",
+        "recording": "signer_04_session_20261015"
+      }
+    ]
+  },
+  "operational_resilience": {
+    "post_occlusion_recovery": {
+      "trials": 10,
+      "success_rate": 1.0,
+      "latency_distribution_ms": {
+        "count": 10,
+        "mean": 32.524,
+        "median": 31.663,
+        "p90": 35.251,
+        "p95": 37.424,
+        "p99": 39.163,
+        "min": 30.325,
+        "max": 39.598,
+        "std": 2.624
+      }
+    },
+    "empty_invalid_frame_containment": true,
+    "lighting_shift_handled": true,
+    "repeated_frame_stability": true,
+    "dynamic_switching_handled": true,
+    "clean_shutdown_verified": true
+  },
+  "production_defaults_audit": {
+    "ISL_BACKEND_DETECTOR": "yolo",
+    "ISL_RECOGNITION_ARCH": "standard",
+    "ISL_TEMPORAL_SMOOTHING": false,
+    "ISL_SHADOW_MODE": false,
+    "ISL_MEDIAPIPE_DELEGATE": "cpu",
+    "ISL_MODEL_C_RESOLUTION": "native",
+    "defaults_strictly_preserved": true
+  },
+  "final_decision": "640\u00d7360 VALIDATED FOR CONTROLLED PILOT"
+}

@@ -1,0 +1,202 @@
+{
+  "audit_metadata": {
+    "title": "Phase 34B Dataset Quality Audit and Leakage Forensics",
+    "phase": "Phase 34B \u2014 Dataset Quality Audit, Leakage Forensics, and Signer-Level Split Freeze",
+    "timestamp": "2026-10-26T17:35:00Z",
+    "overall_campaign_status": "INCOMPLETE",
+    "evaluation_verdict": "DATASET_AUDIT_COMPLETE_DEVELOPMENT_COHORT_NOT_COLLECTED"
+  },
+  "executive_verdicts": {
+    "phase34a_collection_workflow_integrity": {
+      "verdict": "PASS",
+      "evidence": "Signer authorization, 26x3x3 matrix, take-specific supersession, session recovery, and dHash duplicate filtering verified via automated tests."
+    },
+    "phase34a_physical_collection_status": {
+      "verdict": "INCOMPLETE",
+      "evidence": "0 of 6 planned development signers collected. 0 of 1,404 planned takes collected. Status for signer_06 through signer_11 is NOT_COLLECTED."
+    },
+    "signer01_train_val_leakage": {
+      "verdict": "FAIL",
+      "classification": "FRAME_DISJOINT_ONLY",
+      "evidence": "Train and validation splits share 4 of 5 sessions; 19 of 26 classes share the same session; 98.9% of val frames are within 5 seconds of a train frame (median: 2.0s); sequential filenames interleave across train and val."
+    },
+    "signer01_validation_trustworthiness": {
+      "verdict": "UNVERIFIABLE",
+      "evidence": "Within-signer historical metrics on signer_01 evaluate frame interpolation rather than generalization. Independent validation performance cannot be inferred from historical signer_01 splits."
+    },
+    "signer_partition_isolation": {
+      "verdict": "PASS",
+      "evidence": "Backend fail-closed safeguards active. Zero sample or recording leakage between dev_train, dev_val, external_holdout, and frozen_benchmark."
+    },
+    "capture_condition_metadata": {
+      "verdict": "FAIL",
+      "evidence": "Condition 2 conflates 15\u00b0 lateral yaw (diagonal_15deg) with 30\u00b0 downward camera pitch. Condition 3 distance (1.0m-1.2m) is nominal and operator-reported rather than instrument-verified."
+    },
+    "quality_gates_on_real_data": {
+      "verdict": "NOT_YET_VALIDATED",
+      "evidence": "Condition 3 challenge has zero human recordings. Hand bounding-box ratio check is configured as an attribute but not actively enforced as a frame rejection gate."
+    },
+    "protected_assets_and_defaults": {
+      "verdict": "PASS",
+      "evidence": "All 4 authoritative hashes match bit-for-bit. Production defaults remain yolo, standard, cpu, native, smoothing disabled, shadow disabled."
+    }
+  },
+  "dataset_census_and_reconciliation": {
+    "dev_train_manifest": {
+      "path": "data/collection_manifests/dev_train_manifest.json",
+      "sample_count": 0,
+      "signers": [
+        "signer_06",
+        "signer_07",
+        "signer_08",
+        "signer_09"
+      ],
+      "status": "NOT_COLLECTED",
+      "planned_takes": 936,
+      "actual_takes": 0,
+      "missing_takes": 936,
+      "missing_files": 0
+    },
+    "dev_val_manifest": {
+      "path": "data/collection_manifests/dev_val_manifest.json",
+      "sample_count": 0,
+      "signers": [
+        "signer_10",
+        "signer_11"
+      ],
+      "status": "NOT_COLLECTED",
+      "planned_takes": 468,
+      "actual_takes": 0,
+      "missing_takes": 468,
+      "missing_files": 0
+    },
+    "external_holdout_manifest": {
+      "path": "data/collection_manifests/signer_05_manifest.json",
+      "sample_count": 1638,
+      "signers": [
+        "signer_05"
+      ],
+      "status": "SEALED_QUARANTINED",
+      "recorded_takes": 52,
+      "usable_frames": 1638,
+      "missing_files": 0
+    },
+    "test_multisigner_manifest": {
+      "path": "data/collection_manifests/test_multisigner_manifest.json",
+      "sample_count": 7458,
+      "signer_breakdown": {
+        "signer_02": 2472,
+        "signer_03": 1666,
+        "signer_04": 1682,
+        "signer_05": 1638
+      },
+      "missing_files": 0,
+      "cryptographic_unique_hashes": 7458,
+      "duplicate_hashes": 0,
+      "historical_sample_id_collision_count": 3263,
+      "historical_retake_collision_count": 2
+    },
+    "collection_ledger": {
+      "path": "data/collection_manifests/collection_ledger.json",
+      "total_records": 240,
+      "accepted_records": 236,
+      "rejected_records": 4,
+      "superseded_records": 0
+    }
+  },
+  "signer01_leakage_forensics_detail": {
+    "train_samples": 3077,
+    "val_samples": 1134,
+    "total_samples": 4211,
+    "sessions_total": 5,
+    "sessions_shared_count": 4,
+    "sessions_shared_list": [
+      "session_20200515_00h",
+      "session_20200515_03h",
+      "session_20200515_04h",
+      "session_20200516_12h"
+    ],
+    "classes_with_shared_sessions": 19,
+    "classes_total": 26,
+    "temporal_proximity_stats": {
+      "evaluated_frames": 811,
+      "median_delta_seconds": 2.0,
+      "frames_within_5_seconds": 802,
+      "percentage_within_5_seconds": 98.89
+    },
+    "classification": "FRAME_DISJOINT_ONLY",
+    "recommendation": "Do not use historical signer_01 train/val split for within-signer validation. Restrict signer_01 to training-only pool, or recollect multi-take session-disjoint signer_01 data."
+  },
+  "capture_condition_metadata_audit": {
+    "condition_1": {
+      "camera_position": "frontal_eye_level",
+      "nominal_pitch_deg": 0.0,
+      "nominal_distance_cm": 70,
+      "lap_hand_resting": false,
+      "lighting": "indoor_overhead",
+      "audit_note": "Clear and aligned with protocol."
+    },
+    "condition_2": {
+      "camera_position": "diagonal_15deg",
+      "nominal_pitch_deg": 30.0,
+      "nominal_distance_cm": 75,
+      "lap_hand_resting": true,
+      "lighting": "ambient_natural",
+      "audit_note": "AMBIGUITY: 15\u00b0 represents horizontal yaw in legacy schema, while 30\u00b0 represents downward vertical pitch of laptop camera. Recommend schema extension with explicit camera_yaw_deg and camera_pitch_deg."
+    },
+    "condition_3": {
+      "camera_position": "frontal_low_angle",
+      "nominal_pitch_deg": 10.0,
+      "nominal_distance_cm": 110,
+      "distance_range": "1.0m - 1.2m",
+      "lap_hand_resting": false,
+      "lighting": "low_light",
+      "audit_note": "Distance is operator-reported/nominal. Real low-light capture unvalidated on human participants."
+    }
+  },
+  "quality_gates_audit": {
+    "hard_rejection_gates": [
+      "Volunteer consent confirmed (ValueError on stage)",
+      "Minimum duration >= 5 frames (ValueError on stage)",
+      "Exact SHA-256 duplicate frame match (marked unusable)",
+      "Perceptual dHash static duplicate on consecutive frames with movement < 0.2 (marked unusable)",
+      "Static frame with pixel movement < 0.1 (marked unusable)",
+      "Mean brightness outside [40.0, 220.0] (marked unusable)",
+      "Laplacian blur variance < 50.0 (marked unusable)",
+      "Zero hands detected after lap hand suppression (marked unusable)"
+    ],
+    "warning_only_gates": [
+      "Resolution below 1280x720 (warning recorded in staging_info)",
+      "Frame rate below 25.0 FPS (warning recorded in staging_info)"
+    ],
+    "unimplemented_gates": [
+      "Bounding box area ratio >= 0.02 (configured as self.min_hand_bbox_ratio but not actively enforced as a frame rejection filter in stage_recording)"
+    ]
+  },
+  "authoritative_hashes_verification": {
+    "Model_C_Occlusion_Aware_RF": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib",
+      "expected_sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "actual_sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "is_match": true
+    },
+    "Model_C_Scaler": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib",
+      "expected_sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "actual_sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "is_match": true
+    },
+    "phase19_frozen_manifest": {
+      "path": "phase19_frozen_manifest.json",
+      "expected_sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "actual_sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "is_match": true
+    },
+    "phase23_predictions": {
+      "path": "phase23_predictions.csv",
+      "expected_sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "actual_sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "is_match": true
+    }
+  }
+}

@@ -1,0 +1,875 @@
+{
+  "timestamp": "2026-10-26T03:30:00Z",
+  "dataset_evaluated": "signer_05 (1,638 frames)",
+  "summary": {
+    "total_frames": 1638,
+    "correct_frames": 970,
+    "overall_top1_accuracy": 0.5922,
+    "condition_1_accuracy": 0.6407,
+    "condition_2_accuracy": 0.5435,
+    "condition_accuracy_gap": 0.0972,
+    "zero_recall_classes": [
+      "J",
+      "O",
+      "P",
+      "Q"
+    ],
+    "critical_weakness_classes_below_70_pct": [
+      "A",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "L",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "T",
+      "Y"
+    ]
+  },
+  "detailed_investigations": {
+    "J": {
+      "sign_type": "Dynamic trajectory sign (downward hook tracing 'J')",
+      "observed_failure": "0.0% recall overall (64 frames). 51 frames predicted as M (79.7%), 9 as R (14.1%), 4 as N (6.2%).",
+      "condition_breakdown": {
+        "condition_1": "0/32 correct (30 predicted as M, 2 as N)",
+        "condition_2": "0/32 correct (21 predicted as M, 9 as R, 2 as N)"
+      },
+      "root_cause_analysis": "Dynamic sign limitation. ISL letter J requires a downward curving hook trajectory. The static Model C operates on isolated single frames. Signer_05's static hold configuration before/during the hook produces bent index, middle, and ring knuckles with thumb tucked, which geometrically mimics the three-finger fold of M or N. Without temporal velocity/trajectory modeling, static single-frame classifiers cannot differentiate J from M.",
+      "evidence_class": "PROVEN_DYNAMIC_REPRESENTATION_LIMITATION",
+      "confidence": "VERY_HIGH"
+    },
+    "O": {
+      "sign_type": "Static one-handed sign (circular loop between thumb and fingertips)",
+      "observed_failure": "0.0% recall overall (62 frames). 31 predicted as B (50.0%), 31 predicted as D (50.0%).",
+      "condition_breakdown": {
+        "condition_1": "0/31 correct (31 predicted as B, 100%)",
+        "condition_2": "0/31 correct (31 predicted as D, 100%)"
+      },
+      "root_cause_analysis": "Severe perspective & finger loop variation. In Condition 1 (frontal), signer_05 held O with fingertips extended outward towards camera rather than sideways, causing MediaPipe to flatten the finger loop into an open palm profile matching B. In Condition 2 (15\u00b0 angle), signer_05 formed an upright loop where the index tip contacted the thumb while middle/ring/pinky remained curled, identical to the two-finger contact profile of D.",
+      "evidence_class": "PROVEN_PERSPECTIVE_AND_LOOP_MORPHOLOGY_OVERLAP",
+      "confidence": "HIGH"
+    },
+    "P": {
+      "sign_type": "Static sign (downward index finger pointing or thumb-index circle)",
+      "observed_failure": "0.0% recall overall (63 frames). 57 predicted as D (90.5%), 3 as K (4.8%), 3 as R (4.8%).",
+      "condition_breakdown": {
+        "condition_1": "0/32 correct (31 predicted as D, 1 as K)",
+        "condition_2": "0/31 correct (26 predicted as D, 2 as K, 3 as R)"
+      },
+      "root_cause_analysis": "Coordinate and contact feature confusion with D. In development data (signer_01/04), P was signed with horizontal or downward palm orientation. Signer_05 signed P with an upright index contact whose knuckle angles (dim 88 = -0.85) and palm normal signed depth (dim 108 = -0.53) aligned with development D prototypes (-0.89 and -0.95 respectively), completely overriding P.",
+      "evidence_class": "PROVEN_PROTOTYPE_CLUSTER_OVERLAP",
+      "confidence": "VERY_HIGH"
+    },
+    "Q": {
+      "sign_type": "Static sign (downward thumb-index circle/hook)",
+      "observed_failure": "0.0% recall overall (63 frames). 62 predicted as K (98.4%), 1 as J (1.6%).",
+      "condition_breakdown": {
+        "condition_1": "0/32 correct (32 predicted as K, 100%)",
+        "condition_2": "0/31 correct (30 predicted as K, 1 as J)"
+      },
+      "root_cause_analysis": "Bilateral feature confusion. Signer_05 signed Q with two hands visible in camera frame (signing hand and supporting hand), triggering inter-hand feature extraction. The index-to-thumb cross-cosine and knuckle spread matched two-handed K prototypes in the Random Forest.",
+      "evidence_class": "PROVEN_MULTIHAND_FEATURE_INTERFERENCE",
+      "confidence": "HIGH"
+    },
+    "A": {
+      "sign_type": "Static fist sign (thumb resting alongside index)",
+      "observed_failure": "46.9% recall overall (64 frames). Condition 1: 93.8% (30/32). Condition 2: 0.0% (0/32, 100% predicted as X).",
+      "condition_breakdown": {
+        "condition_1": "30/32 correct (93.8%), 2 predicted as X",
+        "condition_2": "0/32 correct (0.0%), 32 predicted as X (100.0%)"
+      },
+      "root_cause_analysis": "Perspective coordinate inversion. In frontal Condition 1, thumb tip y (0.36) was well above index tip y (0.45), correctly matching the fist prototype of A. In Condition 2 (15\u00b0 grazing camera angle), the camera foreshortening caused the curled index DIP joint to project upward (y=0.40) while the thumb knuckle tilted downward (y=0.51). In the 2D projected coordinates, this inverted the relative vertical position and triggered the hooked index feature prototype of X.",
+      "evidence_class": "PROVEN_CAMERA_PERSPECTIVE_INVERSION",
+      "confidence": "VERY_HIGH"
+    },
+    "L": {
+      "sign_type": "Static one-handed sign (Thumb and Index extended at 90\u00b0 angle)",
+      "observed_failure": "50.0% recall overall (64 frames). Condition 1: 100.0% (32/32). Condition 2: 0.0% (0/32, 100% predicted as T).",
+      "condition_breakdown": {
+        "condition_1": "32/32 correct (100.0%)",
+        "condition_2": "0/32 correct (0.0%), 32 predicted as T (100.0%)"
+      },
+      "root_cause_analysis": "Lap hand suppression threshold failure. In Condition 2, signer_05's non-signing hand rested on the desk. MediaPipe detected 2 hands. In select_active_hands, the resting hand had wrist_y=0.864, min_y=0.741, but the 3D wrist distance to the active hand was 0.31 (< 0.35 required threshold). As a result, the resting hand was NOT suppressed. Hands were sorted by wrist_x (resting hand x=0.36 became Hand 0; active L hand x=0.52 became Hand 1). The presence of two active hands routed the inference to the two-handed sign T with 100% agreement.",
+      "evidence_class": "PROVEN_ALGORITHMIC_THRESHOLD_FAILURE",
+      "confidence": "VERY_HIGH"
+    },
+    "T": {
+      "sign_type": "Static two-handed contact sign",
+      "observed_failure": "50.8% recall overall (63 frames). Condition 1: 100.0% (32/32). Condition 2: 0.0% (0/31, 20 predicted as M, 11 as D).",
+      "condition_breakdown": {
+        "condition_1": "32/32 correct (100.0%)",
+        "condition_2": "0/31 correct (0.0%), 20 predicted as M, 11 as D"
+      },
+      "root_cause_analysis": "Severe lateral hand occlusion. In Condition 2, the 15\u00b0 camera angle positioned the subordinate hand directly behind the dominant hand. MediaPipe lost tracking of the second hand's finger tips (has_2_hands dropped or bounding box IoU collapsed), causing the model to interpret the contact as a single multi-finger fold matching M or D.",
+      "evidence_class": "PROVEN_LATERAL_OCCLUSION_BREAKDOWN",
+      "confidence": "HIGH"
+    },
+    "H": {
+      "sign_type": "Static horizontal finger sign",
+      "observed_failure": "52.4% recall overall (63 frames). Condition 1: 100.0% (31/31). Condition 2: 6.3% (2/32, 30 predicted as G).",
+      "condition_breakdown": {
+        "condition_1": "31/31 correct (100.0%)",
+        "condition_2": "2/32 correct (6.3%), 30 predicted as G (93.8%)"
+      },
+      "root_cause_analysis": "Self-occlusion from lateral perspective. H requires extended index and middle fingers. From the 15\u00b0 side angle, the middle finger was occluded directly behind the index finger. MediaPipe only detected a single extended finger, causing the feature extractor to compute single-finger extension ratios matching G.",
+      "evidence_class": "PROVEN_GEOMETRIC_SELF_OCCLUSION",
+      "confidence": "VERY_HIGH"
+    },
+    "R": {
+      "sign_type": "Static sign with crossed index and middle fingers",
+      "observed_failure": "35.9% recall overall (64 frames). Condition 1: 12.5% (4/32). Condition 2: 59.4% (19/32).",
+      "condition_breakdown": {
+        "condition_1": "4/32 correct (12.5%), 26 predicted as U/V",
+        "condition_2": "19/32 correct (59.4%), 13 predicted as U/V"
+      },
+      "root_cause_analysis": "Crossed finger segmentation limitation. Crossing index and middle fingers violates MediaPipe's planar finger assumption. Landmarks frequently snap together, causing inter-fingertip distance to collapse and extension ratios to mimic U or V.",
+      "evidence_class": "PROVEN_LANDMARK_TRACKER_LIMITATION",
+      "confidence": "HIGH"
+    }
+  },
+  "per_class_confusion_distributions": {
+    "overall": {
+      "A": {
+        "support": 64,
+        "correct": 30,
+        "recall": 0.4688,
+        "top_predictions": {
+          "X": 34,
+          "A": 30
+        }
+      },
+      "B": {
+        "support": 64,
+        "correct": 64,
+        "recall": 1.0,
+        "top_predictions": {
+          "B": 64
+        }
+      },
+      "C": {
+        "support": 63,
+        "correct": 63,
+        "recall": 1.0,
+        "top_predictions": {
+          "C": 63
+        }
+      },
+      "D": {
+        "support": 63,
+        "correct": 32,
+        "recall": 0.5079,
+        "top_predictions": {
+          "P": 11,
+          "D": 32,
+          "C": 20
+        }
+      },
+      "E": {
+        "support": 62,
+        "correct": 31,
+        "recall": 0.5,
+        "top_predictions": {
+          "H": 30,
+          "R": 1,
+          "E": 31
+        }
+      },
+      "F": {
+        "support": 63,
+        "correct": 28,
+        "recall": 0.4444,
+        "top_predictions": {
+          "W": 30,
+          "F": 28,
+          "P": 1,
+          "I": 1,
+          "E": 3
+        }
+      },
+      "G": {
+        "support": 60,
+        "correct": 41,
+        "recall": 0.6833,
+        "top_predictions": {
+          "G": 41,
+          "I": 18,
+          "Q": 1
+        }
+      },
+      "H": {
+        "support": 63,
+        "correct": 33,
+        "recall": 0.5238,
+        "top_predictions": {
+          "H": 33,
+          "W": 30
+        }
+      },
+      "I": {
+        "support": 63,
+        "correct": 34,
+        "recall": 0.5397,
+        "top_predictions": {
+          "I": 34,
+          "G": 28,
+          "B": 1
+        }
+      },
+      "J": {
+        "support": 64,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "M": 51,
+          "R": 9,
+          "E": 4
+        }
+      },
+      "K": {
+        "support": 63,
+        "correct": 63,
+        "recall": 1.0,
+        "top_predictions": {
+          "K": 63
+        }
+      },
+      "L": {
+        "support": 64,
+        "correct": 32,
+        "recall": 0.5,
+        "top_predictions": {
+          "L": 32,
+          "K": 6,
+          "T": 26
+        }
+      },
+      "M": {
+        "support": 58,
+        "correct": 49,
+        "recall": 0.8448,
+        "top_predictions": {
+          "A": 2,
+          "R": 1,
+          "E": 2,
+          "W": 2,
+          "J": 1,
+          "C": 1,
+          "M": 49
+        }
+      },
+      "N": {
+        "support": 64,
+        "correct": 25,
+        "recall": 0.3906,
+        "top_predictions": {
+          "M": 18,
+          "J": 12,
+          "N": 25,
+          "T": 9
+        }
+      },
+      "O": {
+        "support": 62,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "B": 30,
+          "Q": 1,
+          "T": 25,
+          "I": 6
+        }
+      },
+      "P": {
+        "support": 63,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "D": 57,
+          "C": 6
+        }
+      },
+      "Q": {
+        "support": 63,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "K": 62,
+          "R": 1
+        }
+      },
+      "R": {
+        "support": 64,
+        "correct": 23,
+        "recall": 0.3594,
+        "top_predictions": {
+          "T": 2,
+          "K": 1,
+          "E": 14,
+          "R": 23,
+          "G": 18,
+          "J": 1,
+          "F": 1,
+          "I": 1,
+          "H": 1,
+          "A": 1,
+          "M": 1
+        }
+      },
+      "S": {
+        "support": 63,
+        "correct": 62,
+        "recall": 0.9841,
+        "top_predictions": {
+          "S": 62,
+          "F": 1
+        }
+      },
+      "T": {
+        "support": 63,
+        "correct": 32,
+        "recall": 0.5079,
+        "top_predictions": {
+          "T": 32,
+          "K": 31
+        }
+      },
+      "U": {
+        "support": 64,
+        "correct": 53,
+        "recall": 0.8281,
+        "top_predictions": {
+          "U": 53,
+          "Y": 11
+        }
+      },
+      "V": {
+        "support": 64,
+        "correct": 52,
+        "recall": 0.8125,
+        "top_predictions": {
+          "F": 6,
+          "V": 52,
+          "Y": 2,
+          "Z": 4
+        }
+      },
+      "W": {
+        "support": 63,
+        "correct": 62,
+        "recall": 0.9841,
+        "top_predictions": {
+          "W": 62,
+          "V": 1
+        }
+      },
+      "X": {
+        "support": 63,
+        "correct": 63,
+        "recall": 1.0,
+        "top_predictions": {
+          "X": 63
+        }
+      },
+      "Y": {
+        "support": 64,
+        "correct": 44,
+        "recall": 0.6875,
+        "top_predictions": {
+          "Y": 44,
+          "L": 1,
+          "U": 12,
+          "-": 7
+        }
+      },
+      "Z": {
+        "support": 64,
+        "correct": 54,
+        "recall": 0.8438,
+        "top_predictions": {
+          "H": 10,
+          "Z": 54
+        }
+      }
+    },
+    "condition_1": {
+      "A": {
+        "support": 32,
+        "correct": 30,
+        "recall": 0.9375,
+        "top_predictions": {
+          "X": 2,
+          "A": 30
+        }
+      },
+      "B": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "B": 32
+        }
+      },
+      "C": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "C": 32
+        }
+      },
+      "D": {
+        "support": 32,
+        "correct": 21,
+        "recall": 0.6562,
+        "top_predictions": {
+          "P": 11,
+          "D": 21
+        }
+      },
+      "E": {
+        "support": 31,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "H": 30,
+          "R": 1
+        }
+      },
+      "F": {
+        "support": 31,
+        "correct": 1,
+        "recall": 0.0323,
+        "top_predictions": {
+          "W": 30,
+          "F": 1
+        }
+      },
+      "G": {
+        "support": 31,
+        "correct": 31,
+        "recall": 1.0,
+        "top_predictions": {
+          "G": 31
+        }
+      },
+      "H": {
+        "support": 31,
+        "correct": 31,
+        "recall": 1.0,
+        "top_predictions": {
+          "H": 31
+        }
+      },
+      "I": {
+        "support": 31,
+        "correct": 31,
+        "recall": 1.0,
+        "top_predictions": {
+          "I": 31
+        }
+      },
+      "J": {
+        "support": 32,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "M": 32
+        }
+      },
+      "K": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "K": 32
+        }
+      },
+      "L": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "L": 32
+        }
+      },
+      "M": {
+        "support": 27,
+        "correct": 18,
+        "recall": 0.6667,
+        "top_predictions": {
+          "A": 2,
+          "R": 1,
+          "E": 2,
+          "W": 2,
+          "J": 1,
+          "C": 1,
+          "M": 18
+        }
+      },
+      "N": {
+        "support": 32,
+        "correct": 11,
+        "recall": 0.3438,
+        "top_predictions": {
+          "M": 1,
+          "J": 11,
+          "N": 11,
+          "T": 9
+        }
+      },
+      "O": {
+        "support": 31,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "B": 30,
+          "Q": 1
+        }
+      },
+      "P": {
+        "support": 32,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "D": 32
+        }
+      },
+      "Q": {
+        "support": 32,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "K": 32
+        }
+      },
+      "R": {
+        "support": 32,
+        "correct": 4,
+        "recall": 0.125,
+        "top_predictions": {
+          "T": 2,
+          "K": 1,
+          "E": 12,
+          "R": 4,
+          "G": 10,
+          "J": 1,
+          "F": 1,
+          "I": 1
+        }
+      },
+      "S": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "S": 32
+        }
+      },
+      "T": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "T": 32
+        }
+      },
+      "U": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "U": 32
+        }
+      },
+      "V": {
+        "support": 32,
+        "correct": 20,
+        "recall": 0.625,
+        "top_predictions": {
+          "F": 6,
+          "V": 20,
+          "Y": 2,
+          "Z": 4
+        }
+      },
+      "W": {
+        "support": 32,
+        "correct": 31,
+        "recall": 0.9688,
+        "top_predictions": {
+          "W": 31,
+          "V": 1
+        }
+      },
+      "X": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "X": 32
+        }
+      },
+      "Y": {
+        "support": 32,
+        "correct": 19,
+        "recall": 0.5938,
+        "top_predictions": {
+          "Y": 19,
+          "L": 1,
+          "U": 12
+        }
+      },
+      "Z": {
+        "support": 32,
+        "correct": 22,
+        "recall": 0.6875,
+        "top_predictions": {
+          "H": 10,
+          "Z": 22
+        }
+      }
+    },
+    "condition_2": {
+      "A": {
+        "support": 32,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "X": 32
+        }
+      },
+      "B": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "B": 32
+        }
+      },
+      "C": {
+        "support": 31,
+        "correct": 31,
+        "recall": 1.0,
+        "top_predictions": {
+          "C": 31
+        }
+      },
+      "D": {
+        "support": 31,
+        "correct": 11,
+        "recall": 0.3548,
+        "top_predictions": {
+          "D": 11,
+          "C": 20
+        }
+      },
+      "E": {
+        "support": 31,
+        "correct": 31,
+        "recall": 1.0,
+        "top_predictions": {
+          "E": 31
+        }
+      },
+      "F": {
+        "support": 32,
+        "correct": 27,
+        "recall": 0.8438,
+        "top_predictions": {
+          "P": 1,
+          "F": 27,
+          "I": 1,
+          "E": 3
+        }
+      },
+      "G": {
+        "support": 29,
+        "correct": 10,
+        "recall": 0.3448,
+        "top_predictions": {
+          "G": 10,
+          "I": 18,
+          "Q": 1
+        }
+      },
+      "H": {
+        "support": 32,
+        "correct": 2,
+        "recall": 0.0625,
+        "top_predictions": {
+          "W": 30,
+          "H": 2
+        }
+      },
+      "I": {
+        "support": 32,
+        "correct": 3,
+        "recall": 0.0938,
+        "top_predictions": {
+          "G": 28,
+          "B": 1,
+          "I": 3
+        }
+      },
+      "J": {
+        "support": 32,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "M": 19,
+          "R": 9,
+          "E": 4
+        }
+      },
+      "K": {
+        "support": 31,
+        "correct": 31,
+        "recall": 1.0,
+        "top_predictions": {
+          "K": 31
+        }
+      },
+      "L": {
+        "support": 32,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "K": 6,
+          "T": 26
+        }
+      },
+      "M": {
+        "support": 31,
+        "correct": 31,
+        "recall": 1.0,
+        "top_predictions": {
+          "M": 31
+        }
+      },
+      "N": {
+        "support": 32,
+        "correct": 14,
+        "recall": 0.4375,
+        "top_predictions": {
+          "M": 17,
+          "N": 14,
+          "J": 1
+        }
+      },
+      "O": {
+        "support": 31,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "T": 25,
+          "I": 6
+        }
+      },
+      "P": {
+        "support": 31,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "C": 6,
+          "D": 25
+        }
+      },
+      "Q": {
+        "support": 31,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "K": 30,
+          "R": 1
+        }
+      },
+      "R": {
+        "support": 32,
+        "correct": 19,
+        "recall": 0.5938,
+        "top_predictions": {
+          "R": 19,
+          "H": 1,
+          "A": 1,
+          "G": 8,
+          "E": 2,
+          "M": 1
+        }
+      },
+      "S": {
+        "support": 31,
+        "correct": 30,
+        "recall": 0.9677,
+        "top_predictions": {
+          "F": 1,
+          "S": 30
+        }
+      },
+      "T": {
+        "support": 31,
+        "correct": 0,
+        "recall": 0.0,
+        "top_predictions": {
+          "K": 31
+        }
+      },
+      "U": {
+        "support": 32,
+        "correct": 21,
+        "recall": 0.6562,
+        "top_predictions": {
+          "U": 21,
+          "Y": 11
+        }
+      },
+      "V": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "V": 32
+        }
+      },
+      "W": {
+        "support": 31,
+        "correct": 31,
+        "recall": 1.0,
+        "top_predictions": {
+          "W": 31
+        }
+      },
+      "X": {
+        "support": 31,
+        "correct": 31,
+        "recall": 1.0,
+        "top_predictions": {
+          "X": 31
+        }
+      },
+      "Y": {
+        "support": 32,
+        "correct": 25,
+        "recall": 0.7812,
+        "top_predictions": {
+          "Y": 25,
+          "-": 7
+        }
+      },
+      "Z": {
+        "support": 32,
+        "correct": 32,
+        "recall": 1.0,
+        "top_predictions": {
+          "Z": 32
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "phase": 28,
+  "timestamp": "2026-10-25T05:47:00Z",
+  "audit_title": "Historical Benchmark Denominator Reconciliation and Integrity Audit",
+  "executive_summary": "Reconciliation of the external evaluation frame count discrepancy between Phase 23 (which reported 3,329 frames) and the Phase 27 historical comparison matrix (which listed 3,120 frames). Rigorous inspection of the Phase 19 frozen manifest, Phase 19 predictions CSV, and Phase 23 predictions CSV demonstrates that 3,329 is the true, complete, and un-filtered evaluation count. The 3,120 count cited in Phase 27 was an inadvertent transcription of the 'nominal_target_frames' metadata (104 recordings * 30 nominal frames) defined during data collection, rather than a filtered subset.",
+  "denominator_reconciliation": {
+    "authoritative_evaluated_frames": 3329,
+    "nominal_planned_target_frames": 3120,
+    "delta_frames": 209,
+    "reason_for_difference": "During the Phase 16 multi-signer external protocol, the nominal target was specified as 30 frames per recording across 104 recordings (52 for signer_02, 52 for signer_03 across Conditions 1 & 2), yielding 104 * 30 = 3,120 nominal target frames. However, high-speed camera acquisition yielded 31 to 33 usable frames per recording, generating exactly 3,329 actual usable frames. Both Phase 19 and Phase 23 evaluated all 3,329 usable frames. Phase 27's comparison matrix mistakenly quoted the nominal ledger target (3,120) instead of the evaluated dataset count (3,329). No frames were dropped, filtered, or excluded.",
+    "is_filtered_subset": false,
+    "historical_reports_preservation": "Original Phase 19 and Phase 23 reports, CSV files, and metrics artifacts remain 100% byte-for-byte unmodified with matching SHA-256 hashes."
+  },
+  "artifact_audit": {
+    "phase19_frozen_manifest.json": {
+      "path": "phase19_frozen_manifest.json",
+      "sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "total_recordings": 104,
+      "nominal_target_frames": 3120,
+      "actual_usable_frames": 3329,
+      "matches_ledger": true
+    },
+    "phase19_predictions_raw.csv": {
+      "path": "phase19_analysis/phase19_predictions_raw.csv",
+      "sha256": "54bd1739ef73239e42c6bf2b15686d5fcffff8613668c2b55eafbacf14395649",
+      "header_row_count": 1,
+      "prediction_row_count": 3329,
+      "total_lines": 3330
+    },
+    "phase23_predictions.csv": {
+      "path": "phase23_predictions.csv",
+      "sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "header_row_count": 1,
+      "prediction_row_count": 3329,
+      "total_lines": 3330
+    },
+    "phase23_external_metrics.json": {
+      "path": "phase23_external_metrics.json",
+      "sha256": "48468fa3008f564e4fc66663205ee0811b9da1b9add9d6adc111f7a0431e5534",
+      "evaluated_samples": 3329
+    },
+    "phase20_diagnostics.json": {
+      "path": "phase20_analysis/phase20_diagnostics.json",
+      "valid_samples": 3329
+    }
+  },
+  "verdict": "DENOMINATOR DISCREPANCY RESOLVED: Authoritative count is 3,329 frames. Nominal planned count was 3,120 frames. Historical evaluations remain 100% intact."
+}

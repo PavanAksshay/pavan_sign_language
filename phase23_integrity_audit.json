@@ -1,0 +1,36 @@
+{
+  "phase": "Phase 23 Integrity Audit",
+  "timestamp": "2026-10-23T07:36:53Z",
+  "isolation_verified": true,
+  "signers_evaluated_untouched": [
+    "signer_02",
+    "signer_03"
+  ],
+  "signers_used_in_training": [
+    "signer_01",
+    "signer_04"
+  ],
+  "evaluation_sample_count": 3329,
+  "pre_evaluation_sha256": {
+    "/Users/pavanaksshay/pavan_sign_language/phase19_frozen_manifest.json": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+    "/Users/pavanaksshay/pavan_sign_language/phase19_analysis/phase19_benchmark_results.json": "c7ee501bf852c02f4703a0ed98b869370bbbe9c8c587c567302b03196ec47da7",
+    "/Users/pavanaksshay/pavan_sign_language/phase19_analysis/phase19_predictions_raw.csv": "54bd1739ef73239e42c6bf2b15686d5fcffff8613668c2b55eafbacf14395649",
+    "/Users/pavanaksshay/pavan_sign_language/phase19_frozen_external_benchmark_report.md": "b35a1b1ab0fae37da1b8b472551b78c95a4b1ac6cf92cf148ca87fe45e4d6010",
+    "/Users/pavanaksshay/pavan_sign_language/data/collection_manifests/test_multisigner_manifest.json": "c25c5c452d6661f84d271ed5ebdf58fc23ad0803dbd4da2c5d76fa8c5cbaaeeb",
+    "/Users/pavanaksshay/pavan_sign_language/data/collection_manifests/collection_ledger.json": "093b34156d827131ce1649776b38d0dc1cd2547efbae07675efbc86d4849f3f3",
+    "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+    "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d"
+  },
+  "post_evaluation_sha256": {
+    "/Users/pavanaksshay/pavan_sign_language/phase19_frozen_manifest.json": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+    "/Users/pavanaksshay/pavan_sign_language/phase19_analysis/phase19_benchmark_results.json": "c7ee501bf852c02f4703a0ed98b869370bbbe9c8c587c567302b03196ec47da7",
+    "/Users/pavanaksshay/pavan_sign_language/phase19_analysis/phase19_predictions_raw.csv": "54bd1739ef73239e42c6bf2b15686d5fcffff8613668c2b55eafbacf14395649",
+    "/Users/pavanaksshay/pavan_sign_language/phase19_frozen_external_benchmark_report.md": "b35a1b1ab0fae37da1b8b472551b78c95a4b1ac6cf92cf148ca87fe45e4d6010",
+    "/Users/pavanaksshay/pavan_sign_language/data/collection_manifests/test_multisigner_manifest.json": "c25c5c452d6661f84d271ed5ebdf58fc23ad0803dbd4da2c5d76fa8c5cbaaeeb",
+    "/Users/pavanaksshay/pavan_sign_language/data/collection_manifests/collection_ledger.json": "093b34156d827131ce1649776b38d0dc1cd2547efbae07675efbc86d4849f3f3",
+    "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+    "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d"
+  },
+  "all_hashes_identical": true,
+  "corruption_detected": false
+}

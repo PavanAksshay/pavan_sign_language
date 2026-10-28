@@ -1,0 +1,430 @@
+{
+  "failure_taxonomy_totals": {
+    "missing_fingertips": 106,
+    "truncated_wrist": 152,
+    "missing_second_hand_in_2hand_class": 2313,
+    "complete_detection_failure_0hand": 7325,
+    "severe_blur_low_resolution": 0,
+    "successful_crops": 5312
+  },
+  "per_class_failure_audit": {
+    "A": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 232,
+      "failed_0hand_count": 254,
+      "missing_second_hand_count": 100,
+      "wrist_boundary_truncated": 11,
+      "fingertip_boundary_clipped": 13
+    },
+    "B": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 226,
+      "failed_0hand_count": 260,
+      "missing_second_hand_count": 101,
+      "wrist_boundary_truncated": 11,
+      "fingertip_boundary_clipped": 4
+    },
+    "C": {
+      "total_images": 486,
+      "canonical_hands": 1,
+      "successful_crops": 232,
+      "failed_0hand_count": 254,
+      "missing_second_hand_count": 0,
+      "wrist_boundary_truncated": 1,
+      "fingertip_boundary_clipped": 1
+    },
+    "D": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 215,
+      "failed_0hand_count": 271,
+      "missing_second_hand_count": 93,
+      "wrist_boundary_truncated": 5,
+      "fingertip_boundary_clipped": 2
+    },
+    "E": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 236,
+      "failed_0hand_count": 250,
+      "missing_second_hand_count": 151,
+      "wrist_boundary_truncated": 5,
+      "fingertip_boundary_clipped": 6
+    },
+    "F": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 198,
+      "failed_0hand_count": 288,
+      "missing_second_hand_count": 121,
+      "wrist_boundary_truncated": 2,
+      "fingertip_boundary_clipped": 4
+    },
+    "G": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 221,
+      "failed_0hand_count": 265,
+      "missing_second_hand_count": 119,
+      "wrist_boundary_truncated": 1,
+      "fingertip_boundary_clipped": 1
+    },
+    "H": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 205,
+      "failed_0hand_count": 281,
+      "missing_second_hand_count": 158,
+      "wrist_boundary_truncated": 0,
+      "fingertip_boundary_clipped": 1
+    },
+    "I": {
+      "total_images": 486,
+      "canonical_hands": 1,
+      "successful_crops": 195,
+      "failed_0hand_count": 291,
+      "missing_second_hand_count": 0,
+      "wrist_boundary_truncated": 5,
+      "fingertip_boundary_clipped": 0
+    },
+    "J": {
+      "total_images": 487,
+      "canonical_hands": 2,
+      "successful_crops": 221,
+      "failed_0hand_count": 266,
+      "missing_second_hand_count": 107,
+      "wrist_boundary_truncated": 0,
+      "fingertip_boundary_clipped": 2
+    },
+    "K": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 244,
+      "failed_0hand_count": 242,
+      "missing_second_hand_count": 78,
+      "wrist_boundary_truncated": 14,
+      "fingertip_boundary_clipped": 0
+    },
+    "L": {
+      "total_images": 486,
+      "canonical_hands": 1,
+      "successful_crops": 231,
+      "failed_0hand_count": 255,
+      "missing_second_hand_count": 0,
+      "wrist_boundary_truncated": 0,
+      "fingertip_boundary_clipped": 1
+    },
+    "M": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 175,
+      "failed_0hand_count": 311,
+      "missing_second_hand_count": 100,
+      "wrist_boundary_truncated": 15,
+      "fingertip_boundary_clipped": 6
+    },
+    "N": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 158,
+      "failed_0hand_count": 328,
+      "missing_second_hand_count": 105,
+      "wrist_boundary_truncated": 8,
+      "fingertip_boundary_clipped": 5
+    },
+    "O": {
+      "total_images": 486,
+      "canonical_hands": 1,
+      "successful_crops": 182,
+      "failed_0hand_count": 304,
+      "missing_second_hand_count": 0,
+      "wrist_boundary_truncated": 1,
+      "fingertip_boundary_clipped": 2
+    },
+    "P": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 216,
+      "failed_0hand_count": 270,
+      "missing_second_hand_count": 71,
+      "wrist_boundary_truncated": 11,
+      "fingertip_boundary_clipped": 9
+    },
+    "Q": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 224,
+      "failed_0hand_count": 262,
+      "missing_second_hand_count": 159,
+      "wrist_boundary_truncated": 0,
+      "fingertip_boundary_clipped": 1
+    },
+    "R": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 216,
+      "failed_0hand_count": 270,
+      "missing_second_hand_count": 148,
+      "wrist_boundary_truncated": 1,
+      "fingertip_boundary_clipped": 13
+    },
+    "S": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 205,
+      "failed_0hand_count": 281,
+      "missing_second_hand_count": 110,
+      "wrist_boundary_truncated": 0,
+      "fingertip_boundary_clipped": 9
+    },
+    "T": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 249,
+      "failed_0hand_count": 237,
+      "missing_second_hand_count": 130,
+      "wrist_boundary_truncated": 36,
+      "fingertip_boundary_clipped": 6
+    },
+    "U": {
+      "total_images": 486,
+      "canonical_hands": 1,
+      "successful_crops": 215,
+      "failed_0hand_count": 271,
+      "missing_second_hand_count": 0,
+      "wrist_boundary_truncated": 1,
+      "fingertip_boundary_clipped": 1
+    },
+    "V": {
+      "total_images": 486,
+      "canonical_hands": 1,
+      "successful_crops": 159,
+      "failed_0hand_count": 327,
+      "missing_second_hand_count": 0,
+      "wrist_boundary_truncated": 12,
+      "fingertip_boundary_clipped": 9
+    },
+    "W": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 140,
+      "failed_0hand_count": 346,
+      "missing_second_hand_count": 119,
+      "wrist_boundary_truncated": 0,
+      "fingertip_boundary_clipped": 3
+    },
+    "X": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 129,
+      "failed_0hand_count": 357,
+      "missing_second_hand_count": 106,
+      "wrist_boundary_truncated": 7,
+      "fingertip_boundary_clipped": 0
+    },
+    "Y": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 198,
+      "failed_0hand_count": 288,
+      "missing_second_hand_count": 126,
+      "wrist_boundary_truncated": 4,
+      "fingertip_boundary_clipped": 6
+    },
+    "Z": {
+      "total_images": 486,
+      "canonical_hands": 2,
+      "successful_crops": 190,
+      "failed_0hand_count": 296,
+      "missing_second_hand_count": 111,
+      "wrist_boundary_truncated": 1,
+      "fingertip_boundary_clipped": 1
+    }
+  },
+  "contact_sheets_generated": [
+    {
+      "class_label": "A",
+      "file_name": "contact_sheet_A.jpg",
+      "sample_id": "a_A10",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "B",
+      "file_name": "contact_sheet_B.jpg",
+      "sample_id": "b_B103",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "C",
+      "file_name": "contact_sheet_C.jpg",
+      "sample_id": "c_C10",
+      "hands_detected": 1,
+      "status": "success"
+    },
+    {
+      "class_label": "D",
+      "file_name": "contact_sheet_D.jpg",
+      "sample_id": "d_D100",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "E",
+      "file_name": "contact_sheet_E.jpg",
+      "sample_id": "e_E101",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "F",
+      "file_name": "contact_sheet_F.jpg",
+      "sample_id": "f_F10",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "G",
+      "file_name": "contact_sheet_G.jpg",
+      "sample_id": "g_G10",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "H",
+      "file_name": "contact_sheet_H.jpg",
+      "sample_id": "h_H124",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "I",
+      "file_name": "contact_sheet_I.jpg",
+      "sample_id": "i_I101",
+      "hands_detected": 1,
+      "status": "success"
+    },
+    {
+      "class_label": "J",
+      "file_name": "contact_sheet_J.jpg",
+      "sample_id": "j_J14",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "K",
+      "file_name": "contact_sheet_K.jpg",
+      "sample_id": "k_K101",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "L",
+      "file_name": "contact_sheet_L.jpg",
+      "sample_id": "l_L101",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "M",
+      "file_name": "contact_sheet_M.jpg",
+      "sample_id": "m_M100",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "N",
+      "file_name": "contact_sheet_N.jpg",
+      "sample_id": "n_N103",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "O",
+      "file_name": "contact_sheet_O.jpg",
+      "sample_id": "o_O10",
+      "hands_detected": 1,
+      "status": "success"
+    },
+    {
+      "class_label": "P",
+      "file_name": "contact_sheet_P.jpg",
+      "sample_id": "p_P103",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "Q",
+      "file_name": "contact_sheet_Q.jpg",
+      "sample_id": "q_Q105",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "R",
+      "file_name": "contact_sheet_R.jpg",
+      "sample_id": "r_R113",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "S",
+      "file_name": "contact_sheet_S.jpg",
+      "sample_id": "s_S100",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "T",
+      "file_name": "contact_sheet_T.jpg",
+      "sample_id": "t_T100",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "U",
+      "file_name": "contact_sheet_U.jpg",
+      "sample_id": "u_U1",
+      "hands_detected": 1,
+      "status": "success"
+    },
+    {
+      "class_label": "V",
+      "file_name": "contact_sheet_V.jpg",
+      "sample_id": "v_V1",
+      "hands_detected": 1,
+      "status": "success"
+    },
+    {
+      "class_label": "W",
+      "file_name": "contact_sheet_W.jpg",
+      "sample_id": "w_W10",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "X",
+      "file_name": "contact_sheet_X.jpg",
+      "sample_id": "x_X101",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "Y",
+      "file_name": "contact_sheet_Y.jpg",
+      "sample_id": "y_Y10",
+      "hands_detected": 2,
+      "status": "success"
+    },
+    {
+      "class_label": "Z",
+      "file_name": "contact_sheet_Z.jpg",
+      "sample_id": "z_Z100",
+      "hands_detected": 2,
+      "status": "success"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "MediaPipe SqueezeNet Preprocessing Specification v2",
+  "version": "2.0.0",
+  "phase": "Phase 12",
+  "pipeline_flow": [
+    "1. Receive frame (BGR uint8).",
+    "2. Detect hand landmarks using MediaPipe HandLandmarker (App/include50_model/hand_landmarker.task) with num_hands=2.",
+    "3. Compute combined 2D bounding box across all detected hands.",
+    "4. Expand box isotropically to 1:1 square: side = round(max(bw, bh) * 1.30) (15% margin on all 4 sides).",
+    "5. Shift crop box deterministically if extending beyond frame boundaries without changing square size.",
+    "6. Pad with black pixels if extending beyond boundary after shifting (cv2.BORDER_CONSTANT, value=0).",
+    "7. Resize to 224x224 using bilinear interpolation (cv2.INTER_LINEAR).",
+    "8. Convert BGR to RGB (cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)).",
+    "9. Rescale pixel values to [0.0, 1.0] by dividing float32 values by 255.0.",
+    "10. Add batch dimension: [1, 224, 224, 3].",
+    "11. Feed into SqueezeNet classifier to obtain 26-class softmax probabilities."
+  ],
+  "input_tensor": {
+    "shape": [
+      1,
+      224,
+      224,
+      3
+    ],
+    "dtype": "float32",
+    "range": [
+      0.0,
+      1.0
+    ],
+    "color_format": "RGB",
+    "normalization": "1.0 / 255.0"
+  },
+  "output_tensor": {
+    "shape": [
+      1,
+      26
+    ],
+    "dtype": "float32",
+    "activation": "softmax",
+    "class_order": "A through Z (0 to 25)"
+  },
+  "crop_parameters": {
+    "target_resolution": [
+      224,
+      224
+    ],
+    "aspect_ratio": "1:1 isotropic",
+    "margin_ratio": 0.15,
+    "interpolation": "INTER_LINEAR",
+    "padding_border_mode": "BORDER_CONSTANT"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 33 — Multi-Signer Training Strategy and Generalization Audit",
+    "timestamp": "2026-10-26T07:25:00Z",
+    "overall_integrity_status": "PASS",
+    "phase_nature": "DATA_AND_EXPERIMENTAL_DESIGN_AUDIT",
+    "model_retraining_executed": false,
+    "evaluator": "Antigravity Engineering Pair"
+  },
+  "governance_isolation": {
+    "signer_05_holdout_quarantine": {
+      "status": "VERIFIED_SEALED_UNTOUCHED",
+      "inspected_for_tuning": false,
+      "inspected_beyond_phase30_31_reports": false,
+      "recordings_evaluated": 0,
+      "notes": "signer_05 recordings and manifest remain strictly quarantined. Zero frames were accessed or evaluated during Phase 33."
+    },
+    "signer_02_signer_03_benchmark": {
+      "status": "VERIFIED_UNTOUCHED",
+      "used_for_tuning": false,
+      "used_for_training": false,
+      "notes": "Frozen benchmark data from signer_02 (3,083 frames) and signer_03 (2,752 frames) remain strictly quarantined."
+    },
+    "permitted_development_data_audited": {
+      "signer_01": {
+        "train_frames": 3077,
+        "val_frames": 1134,
+        "total_frames": 4211,
+        "status": "AUDITED"
+      },
+      "signer_04": {
+        "usable_frames": 1621,
+        "recordings": 52,
+        "conditions": ["condition_1", "condition_2"],
+        "status": "AUDITED"
+      }
+    }
+  },
+  "immutable_artifact_hashes": {
+    "model_c_rf": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib",
+      "sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "status": "MATCH"
+    },
+    "model_c_scaler": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib",
+      "sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "status": "MATCH"
+    },
+    "hand_landmarker_task": {
+      "path": "App/include50_model/hand_landmarker.task",
+      "sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+      "status": "MATCH"
+    },
+    "phase19_frozen_manifest": {
+      "path": "phase19_frozen_manifest.json",
+      "sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "status": "MATCH"
+    },
+    "phase23_predictions": {
+      "path": "phase23_predictions.csv",
+      "sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "status": "MATCH"
+    },
+    "phase30_evaluation_manifest": {
+      "path": "phase30_evaluation_manifest.json",
+      "sha256": "81e2efee5b3c74d1a5b39146888b34e63915802b02f64cc2c55f2b84ec1bf4de",
+      "status": "MATCH"
+    },
+    "phase30_independent_signer_metrics": {
+      "path": "phase30_independent_signer_metrics.json",
+      "sha256": "b420dc17b1b0d772133c3c6335e9b5f4d9a8242b97c375dcd8fcda19878a6460",
+      "status": "MATCH"
+    }
+  },
+  "production_defaults_verified": {
+    "ISL_BACKEND_DETECTOR": "yolo",
+    "ISL_RECOGNITION_ARCH": "standard",
+    "ISL_TEMPORAL_SMOOTHING": 0,
+    "ISL_SHADOW_MODE": 0,
+    "ISL_MEDIAPIPE_DELEGATE": "cpu",
+    "ISL_MODEL_C_RESOLUTION": "native",
+    "status": "VERIFIED_INTACT"
+  },
+  "test_suite_status": {
+    "total_tests": 273,
+    "passed": 273,
+    "failed": 0,
+    "errors": 0,
+    "status": "PASS"
+  }
+}

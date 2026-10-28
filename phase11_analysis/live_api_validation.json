@@ -1,0 +1,684 @@
+{
+  "health": {
+    "status": "healthy",
+    "backend_detector": "yolo",
+    "recognition_arch": "standard",
+    "shadow_mode_enabled": false,
+    "temporal_smoothing_enabled": false,
+    "mediapipe_delegate": "cpu",
+    "model_c_input_resolution": "native",
+    "pipeline_ready": true,
+    "word_pipeline_ready": true,
+    "diagnostics_enabled": true,
+    "effective_config": {
+      "backend_detector": "yolo",
+      "recognition_arch": "standard",
+      "shadow_mode_enabled": false,
+      "shadow_async": false,
+      "mediapipe_delegate": "cpu",
+      "model_c_input_resolution": "native",
+      "temporal_smoothing_enabled": false,
+      "suppress_lap_hand": true,
+      "lap_hand_min_y_ratio": 0.75,
+      "lap_hand_max_active_y_ratio": 0.6,
+      "direct_resize": false,
+      "square_crop": false,
+      "filter_edge_detections": false,
+      "conservative_face_clamp": false,
+      "improved_two_hand_merge": false
+    },
+    "classes": {
+      "0": "A",
+      "1": "B",
+      "2": "C",
+      "3": "D",
+      "4": "E",
+      "5": "F",
+      "6": "G",
+      "7": "H",
+      "8": "I",
+      "9": "J",
+      "10": "K",
+      "11": "L",
+      "12": "M",
+      "13": "N",
+      "14": "O",
+      "15": "P",
+      "16": "Q",
+      "17": "R",
+      "18": "S",
+      "19": "T",
+      "20": "U",
+      "21": "V",
+      "22": "W",
+      "23": "X",
+      "24": "Y",
+      "25": "Z"
+    },
+    "word_classes": {
+      "bank": "Bank",
+      "biglarge": "Big / Large",
+      "bird": "Bird",
+      "black": "Black",
+      "boy": "Boy",
+      "brother": "Brother",
+      "car": "Car",
+      "cellphone": "Cell Phone",
+      "court": "Court",
+      "cow": "Cow",
+      "death": "Death",
+      "dog": "Dog",
+      "dry": "Dry",
+      "election": "Election",
+      "fall": "Fall",
+      "fan": "Fan",
+      "father": "Father",
+      "girl": "Girl",
+      "good": "Good",
+      "goodmorning": "Good Morning",
+      "happy": "Happy",
+      "hat": "Hat",
+      "hello": "Hello",
+      "hot": "Hot",
+      "house": "House",
+      "i": "I / Me",
+      "it": "It",
+      "long": "Long",
+      "loud": "Loud",
+      "monday": "Monday",
+      "new": "New",
+      "paint": "Paint",
+      "pen": "Pen",
+      "priest": "Priest",
+      "quiet": "Quiet",
+      "red": "Red",
+      "shoes": "Shoes",
+      "short": "Short",
+      "smalllittle": "Small / Little",
+      "storeorshop": "Store / Shop",
+      "summer": "Summer",
+      "teacher": "Teacher",
+      "thankyou": "Thank You",
+      "time": "Time",
+      "trainticket": "Train Ticket",
+      "tshirt": "T-Shirt",
+      "white": "White",
+      "window": "Window",
+      "year": "Year",
+      "youplural": "You (Plural)"
+    },
+    "models": {
+      "detector": "cross-hands YOLOv3 (Darknet)",
+      "yolo": "cross-hands YOLOv3 (Darknet)",
+      "sign_recognition": "SqueezeNet CNN (Transfer Learning)",
+      "segmentation": "HSV + YCbCr Skin Filter + Watershed",
+      "word_recognition": "AI4Bharat INCLUDE-50 BiLSTM + MediaPipe Landmarks"
+    }
+  },
+  "yolo_tests": {
+    "blank_frame": {
+      "res": {
+        "predicted_sign": "-",
+        "confidence": 0.0,
+        "hand_detected": false,
+        "is_two_handed": false,
+        "detections": [],
+        "probabilities": [],
+        "diagnostics": {
+          "frame_id": 9,
+          "timestamp": 1793175143.205,
+          "yolo_detections_count": 0,
+          "raw_yolo_count": 0,
+          "edge_detections_rejected": 0,
+          "rejected_detections": [],
+          "hand_detected": false,
+          "is_two_handed": false,
+          "selected_box": null,
+          "face_clamped": false,
+          "face_clamp_delta_y": 0,
+          "excessive_face_clamp_avoided": false,
+          "non_overlapping_clamps_ignored": 0,
+          "face_clamp_decisions": [],
+          "primary_hand_identified": false,
+          "hand_ambiguity_recorded": false,
+          "primary_hand_h": null,
+          "crop_coords": null,
+          "square_crop_info": null,
+          "letterboxed": false,
+          "letterbox_padding": null,
+          "predicted_letter": "-",
+          "confidence": 0.0,
+          "top_3": [],
+          "latency_ms": 4214.2
+        },
+        "timing_ms": {
+          "yolo": 4213.1,
+          "skin_segmentation": 0.0,
+          "squeezenet": 0.0,
+          "total": 4214.2
+        }
+      },
+      "client_rtt_ms": 4302.3
+    },
+    "hand_frame": {
+      "res": {
+        "predicted_sign": "C",
+        "confidence": 62.06,
+        "hand_detected": true,
+        "is_two_handed": false,
+        "detections": [
+          {
+            "name": "hand",
+            "confidence": 85.8,
+            "x": 163,
+            "y": 134,
+            "w": 427,
+            "h": 368
+          }
+        ],
+        "probabilities": [
+          {
+            "class_id": 2,
+            "sign": "C",
+            "probability": 62.06
+          },
+          {
+            "class_id": 17,
+            "sign": "R",
+            "probability": 34.72
+          },
+          {
+            "class_id": 6,
+            "sign": "G",
+            "probability": 1.67
+          },
+          {
+            "class_id": 11,
+            "sign": "L",
+            "probability": 1.27
+          },
+          {
+            "class_id": 18,
+            "sign": "S",
+            "probability": 0.11
+          },
+          {
+            "class_id": 14,
+            "sign": "O",
+            "probability": 0.08
+          },
+          {
+            "class_id": 8,
+            "sign": "I",
+            "probability": 0.03
+          },
+          {
+            "class_id": 13,
+            "sign": "N",
+            "probability": 0.01
+          },
+          {
+            "class_id": 22,
+            "sign": "W",
+            "probability": 0.01
+          },
+          {
+            "class_id": 25,
+            "sign": "Z",
+            "probability": 0.01
+          },
+          {
+            "class_id": 0,
+            "sign": "A",
+            "probability": 0.0
+          },
+          {
+            "class_id": 1,
+            "sign": "B",
+            "probability": 0.0
+          },
+          {
+            "class_id": 3,
+            "sign": "D",
+            "probability": 0.0
+          },
+          {
+            "class_id": 4,
+            "sign": "E",
+            "probability": 0.0
+          },
+          {
+            "class_id": 5,
+            "sign": "F",
+            "probability": 0.0
+          },
+          {
+            "class_id": 7,
+            "sign": "H",
+            "probability": 0.0
+          },
+          {
+            "class_id": 9,
+            "sign": "J",
+            "probability": 0.0
+          },
+          {
+            "class_id": 10,
+            "sign": "K",
+            "probability": 0.0
+          },
+          {
+            "class_id": 12,
+            "sign": "M",
+            "probability": 0.0
+          },
+          {
+            "class_id": 15,
+            "sign": "P",
+            "probability": 0.0
+          },
+          {
+            "class_id": 16,
+            "sign": "Q",
+            "probability": 0.0
+          },
+          {
+            "class_id": 19,
+            "sign": "T",
+            "probability": 0.0
+          },
+          {
+            "class_id": 20,
+            "sign": "U",
+            "probability": 0.0
+          },
+          {
+            "class_id": 21,
+            "sign": "V",
+            "probability": 0.0
+          },
+          {
+            "class_id": 23,
+            "sign": "X",
+            "probability": 0.0
+          },
+          {
+            "class_id": 24,
+            "sign": "Y",
+            "probability": 0.0
+          }
+        ],
+        "diagnostics": {
+          "frame_id": 10,
+          "timestamp": 1793175147.49,
+          "backend_detector": "yolo",
+          "recognition_arch": "standard",
+          "temporal_smoothing_enabled": false,
+          "yolo_detections_count": 1,
+          "raw_yolo_count": 2,
+          "edge_detections_rejected": 0,
+          "rejected_detections": [],
+          "hand_detected": true,
+          "lap_hands_suppressed": 1,
+          "is_two_handed": false,
+          "selected_box": {
+            "x": 163,
+            "y": 134,
+            "w": 427,
+            "h": 368,
+            "conf": 0.858
+          },
+          "face_clamped": false,
+          "face_clamp_delta_y": 0,
+          "excessive_face_clamp_avoided": false,
+          "non_overlapping_clamps_ignored": 0,
+          "face_clamp_decisions": [],
+          "primary_hand_identified": true,
+          "hand_ambiguity_recorded": false,
+          "primary_hand_h": 368,
+          "crop_coords": {
+            "x": 121,
+            "y": 98,
+            "w": 511,
+            "h": 440
+          },
+          "crop_dimensions": {
+            "w": 511,
+            "h": 440
+          },
+          "square_crop_info": null,
+          "resized_dimensions": {
+            "w": 224,
+            "h": 192
+          },
+          "preprocessing_mode": "letterbox",
+          "tensor_shape": [
+            1,
+            224,
+            224,
+            3
+          ],
+          "letterboxed": true,
+          "letterbox_padding": {
+            "dx": 0,
+            "dy": 16,
+            "scaled_w": 224,
+            "scaled_h": 192
+          },
+          "raw_predicted_letter": "C",
+          "raw_confidence": 62.06,
+          "predicted_letter": "C",
+          "confidence": 62.06,
+          "is_smoothed": false,
+          "window_votes": {
+            "C": 1
+          },
+          "top_3": [
+            [
+              "C",
+              62.06
+            ],
+            [
+              "R",
+              34.72
+            ],
+            [
+              "G",
+              1.67
+            ]
+          ],
+          "latency_ms": 2168.5
+        },
+        "timing_ms": {
+          "yolo": 1082.7,
+          "skin_segmentation": 7.5,
+          "squeezenet": 935.9,
+          "total": 2168.5
+        }
+      },
+      "client_rtt_ms": 2206.6
+    }
+  },
+  "mediapipe_tests": {
+    "blank_frame": {
+      "res": {
+        "predicted_sign": "-",
+        "confidence": 0.0,
+        "hand_detected": false,
+        "is_two_handed": false,
+        "detections": [],
+        "probabilities": [],
+        "diagnostics": {
+          "frame_id": 11,
+          "timestamp": 1793175152.918,
+          "backend_detector": "mediapipe",
+          "recognition_arch": "standard",
+          "temporal_smoothing_enabled": false,
+          "hands_detected_count": 0,
+          "hand_detected": false,
+          "is_two_handed": false,
+          "lap_hand_suppressed": false,
+          "suppression_reasons": [
+            "no_detection_result"
+          ],
+          "selected_box": null,
+          "crop_coords": null,
+          "square_crop_info": null,
+          "predicted_letter": "-",
+          "confidence": 0.0,
+          "top_3": [],
+          "latency_ms": 31.6
+        },
+        "timing_ms": {
+          "detector": 29.9,
+          "yolo": 29.9,
+          "skin_segmentation": 0.0,
+          "squeezenet": 0.0,
+          "total": 31.6
+        }
+      },
+      "client_rtt_ms": 33.7
+    },
+    "hand_frame": {
+      "res": {
+        "predicted_sign": "C",
+        "confidence": 99.98,
+        "hand_detected": true,
+        "is_two_handed": false,
+        "detections": [
+          {
+            "name": "hand_right",
+            "confidence": 99.7,
+            "x": 236,
+            "y": 160,
+            "w": 352,
+            "h": 304,
+            "score": 0.997
+          }
+        ],
+        "probabilities": [
+          {
+            "class_id": 2,
+            "sign": "C",
+            "probability": 99.98
+          },
+          {
+            "class_id": 17,
+            "sign": "R",
+            "probability": 0.01
+          },
+          {
+            "class_id": 0,
+            "sign": "A",
+            "probability": 0.0
+          },
+          {
+            "class_id": 1,
+            "sign": "B",
+            "probability": 0.0
+          },
+          {
+            "class_id": 3,
+            "sign": "D",
+            "probability": 0.0
+          },
+          {
+            "class_id": 4,
+            "sign": "E",
+            "probability": 0.0
+          },
+          {
+            "class_id": 5,
+            "sign": "F",
+            "probability": 0.0
+          },
+          {
+            "class_id": 6,
+            "sign": "G",
+            "probability": 0.0
+          },
+          {
+            "class_id": 7,
+            "sign": "H",
+            "probability": 0.0
+          },
+          {
+            "class_id": 8,
+            "sign": "I",
+            "probability": 0.0
+          },
+          {
+            "class_id": 9,
+            "sign": "J",
+            "probability": 0.0
+          },
+          {
+            "class_id": 10,
+            "sign": "K",
+            "probability": 0.0
+          },
+          {
+            "class_id": 11,
+            "sign": "L",
+            "probability": 0.0
+          },
+          {
+            "class_id": 12,
+            "sign": "M",
+            "probability": 0.0
+          },
+          {
+            "class_id": 13,
+            "sign": "N",
+            "probability": 0.0
+          },
+          {
+            "class_id": 14,
+            "sign": "O",
+            "probability": 0.0
+          },
+          {
+            "class_id": 15,
+            "sign": "P",
+            "probability": 0.0
+          },
+          {
+            "class_id": 16,
+            "sign": "Q",
+            "probability": 0.0
+          },
+          {
+            "class_id": 18,
+            "sign": "S",
+            "probability": 0.0
+          },
+          {
+            "class_id": 19,
+            "sign": "T",
+            "probability": 0.0
+          },
+          {
+            "class_id": 20,
+            "sign": "U",
+            "probability": 0.0
+          },
+          {
+            "class_id": 21,
+            "sign": "V",
+            "probability": 0.0
+          },
+          {
+            "class_id": 22,
+            "sign": "W",
+            "probability": 0.0
+          },
+          {
+            "class_id": 23,
+            "sign": "X",
+            "probability": 0.0
+          },
+          {
+            "class_id": 24,
+            "sign": "Y",
+            "probability": 0.0
+          },
+          {
+            "class_id": 25,
+            "sign": "Z",
+            "probability": 0.0
+          }
+        ],
+        "diagnostics": {
+          "frame_id": 12,
+          "timestamp": 1793175152.955,
+          "backend_detector": "mediapipe",
+          "recognition_arch": "standard",
+          "temporal_smoothing_enabled": false,
+          "hands_detected_count": 1,
+          "raw_hands_count": 2,
+          "hand_detected": true,
+          "is_two_handed": false,
+          "lap_hand_suppressed": true,
+          "suppression_reasons": [
+            "lap_hand_suppressed (standard): wrist_y=0.90, min_y=0.82, active_y=0.48<=0.65, gap=0.17, wrist_dist=0.38>=0.30"
+          ],
+          "selected_box": {
+            "x": 236,
+            "y": 160,
+            "w": 352,
+            "h": 304,
+            "conf": 0.997
+          },
+          "crop_coords": {
+            "x": 183,
+            "y": 83,
+            "w": 459,
+            "h": 459
+          },
+          "square_crop_info": {
+            "enabled": true,
+            "square_crop_coords": {
+              "x": 183,
+              "y": 83,
+              "w": 459,
+              "h": 459
+            },
+            "padding": {
+              "top": 0,
+              "bottom": 0,
+              "left": 0,
+              "right": 0
+            }
+          },
+          "preprocessing_mode": "mediapipe_square_crop",
+          "tensor_shape": [
+            1,
+            224,
+            224,
+            3
+          ],
+          "cnn_top1": "C",
+          "cnn_confidence": 99.98,
+          "landmark_top1": null,
+          "landmark_confidence": 0.0,
+          "raw_predicted_letter": "C",
+          "raw_confidence": 99.98,
+          "predicted_letter": "C",
+          "confidence": 99.98,
+          "is_smoothed": false,
+          "window_votes": {
+            "C": 1
+          },
+          "top_3": [
+            [
+              "C",
+              99.98
+            ],
+            [
+              "R",
+              0.01
+            ],
+            [
+              "A",
+              0.0
+            ]
+          ],
+          "latency_ms": 129.4
+        },
+        "timing_ms": {
+          "detector": 61.6,
+          "yolo": 61.6,
+          "skin_segmentation": 0.0,
+          "squeezenet": 63.8,
+          "total": 129.4
+        }
+      },
+      "client_rtt_ms": 135.4
+    }
+  },
+  "switching_tests": {
+    "switch_to_mediapipe_rtt_ms": 3252.0,
+    "switch_to_yolo_rtt_ms": 4842.3,
+    "rollback_verified": true
+  }
+}

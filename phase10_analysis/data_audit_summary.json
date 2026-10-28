@@ -1,0 +1,153 @@
+{
+  "audit_statistics": {
+    "total_crops": 5312,
+    "corrupt_files": 0,
+    "dimension_mismatches": 0,
+    "label_mismatches": 0,
+    "duplicate_crop_md5s": 1,
+    "detected_stats": {
+      "mean_brightness": 108.82,
+      "median_brightness": 108.02,
+      "mean_blur_var": 2843.42,
+      "median_blur_var": 2595.73
+    },
+    "undetected_stats": {
+      "mean_brightness": 84.37,
+      "median_brightness": 82.35,
+      "mean_blur_var": 767.83,
+      "median_blur_var": 310.31
+    },
+    "per_class_counts": {
+      "A": 232,
+      "B": 226,
+      "C": 232,
+      "D": 215,
+      "E": 236,
+      "F": 198,
+      "G": 221,
+      "H": 205,
+      "I": 195,
+      "J": 221,
+      "K": 244,
+      "L": 231,
+      "M": 175,
+      "N": 158,
+      "O": 182,
+      "P": 216,
+      "Q": 224,
+      "R": 216,
+      "S": 205,
+      "T": 249,
+      "U": 215,
+      "V": 159,
+      "W": 140,
+      "X": 129,
+      "Y": 198,
+      "Z": 190
+    }
+  },
+  "split_statistics": {
+    "train": {
+      "total_samples": 3077,
+      "manifest_file": "models/mediapipe_squeezenet_v1/splits/train_manifest.json",
+      "class_counts": {
+        "A": 164,
+        "B": 155,
+        "C": 159,
+        "D": 149,
+        "E": 176,
+        "F": 144,
+        "G": 153,
+        "H": 140,
+        "I": 141,
+        "J": 158,
+        "K": 139,
+        "L": 110,
+        "M": 100,
+        "N": 52,
+        "O": 79,
+        "P": 99,
+        "Q": 79,
+        "R": 126,
+        "S": 70,
+        "T": 139,
+        "U": 131,
+        "V": 85,
+        "W": 61,
+        "X": 67,
+        "Y": 114,
+        "Z": 87
+      }
+    },
+    "val": {
+      "total_samples": 1134,
+      "manifest_file": "models/mediapipe_squeezenet_v1/splits/val_manifest.json",
+      "class_counts": {
+        "A": 45,
+        "B": 44,
+        "C": 48,
+        "D": 44,
+        "E": 33,
+        "F": 37,
+        "G": 45,
+        "H": 42,
+        "I": 36,
+        "J": 41,
+        "K": 25,
+        "L": 47,
+        "M": 37,
+        "N": 54,
+        "O": 60,
+        "P": 50,
+        "Q": 65,
+        "R": 39,
+        "S": 67,
+        "T": 49,
+        "U": 38,
+        "V": 36,
+        "W": 43,
+        "X": 23,
+        "Y": 37,
+        "Z": 49
+      }
+    },
+    "test_al_independent": {
+      "total_samples": 381,
+      "manifest_file": "models/mediapipe_squeezenet_v1/splits/test_al_manifest.json",
+      "class_counts": {
+        "A": 23,
+        "B": 27,
+        "C": 25,
+        "D": 22,
+        "E": 27,
+        "F": 17,
+        "G": 23,
+        "H": 23,
+        "I": 18,
+        "J": 22,
+        "K": 80,
+        "L": 74
+      }
+    },
+    "test_mz_provisional": {
+      "total_samples": 720,
+      "manifest_file": "models/mediapipe_squeezenet_v1/splits/test_mz_manifest.json",
+      "class_counts": {
+        "M": 38,
+        "N": 52,
+        "O": 43,
+        "P": 67,
+        "Q": 80,
+        "R": 51,
+        "S": 68,
+        "T": 61,
+        "U": 46,
+        "V": 38,
+        "W": 36,
+        "X": 39,
+        "Y": 47,
+        "Z": 54
+      }
+    }
+  }
+}

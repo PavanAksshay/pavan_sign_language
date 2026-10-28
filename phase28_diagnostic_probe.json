@@ -1,0 +1,290 @@
+{
+  "overall_stats": {
+    "count": 1000,
+    "mean": 65.516,
+    "median": 52.678,
+    "p90": 100.237,
+    "p95": 124.289,
+    "p99": 240.52,
+    "min": 32.374,
+    "max": 567.881,
+    "std": 41.766
+  },
+  "throughput_fps": 13.17,
+  "p95_gate_passed": false,
+  "stage_breakdowns": {
+    "1_receipt": {
+      "count": 1000,
+      "mean": 0.0,
+      "median": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.001,
+      "std": 0.0
+    },
+    "2_validation": {
+      "count": 1000,
+      "mean": 0.009,
+      "median": 0.007,
+      "p90": 0.011,
+      "p95": 0.012,
+      "p99": 0.058,
+      "min": 0.003,
+      "max": 0.56,
+      "std": 0.022
+    },
+    "3_copy": {
+      "count": 1000,
+      "mean": 0.0,
+      "median": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "min": 0.0,
+      "max": 0.004,
+      "std": 0.0
+    },
+    "4_resize": {
+      "count": 1000,
+      "mean": 0.007,
+      "median": 0.002,
+      "p90": 0.004,
+      "p95": 0.004,
+      "p99": 0.011,
+      "min": 0.001,
+      "max": 3.169,
+      "std": 0.101
+    },
+    "5_color_conversion": {
+      "count": 1000,
+      "mean": 0.573,
+      "median": 0.295,
+      "p90": 1.004,
+      "p95": 1.835,
+      "p99": 4.724,
+      "min": 0.114,
+      "max": 10.714,
+      "std": 0.971
+    },
+    "6_mp_image_construction": {
+      "count": 1000,
+      "mean": 0.921,
+      "median": 0.665,
+      "p90": 1.413,
+      "p95": 1.887,
+      "p99": 5.919,
+      "min": 0.188,
+      "max": 41.009,
+      "std": 1.62
+    },
+    "7_detection": {
+      "count": 1000,
+      "mean": 23.758,
+      "median": 20.602,
+      "p90": 33.668,
+      "p95": 43.166,
+      "p99": 65.307,
+      "min": 12.75,
+      "max": 123.492,
+      "std": 10.661
+    },
+    "8_postprocessing": {
+      "count": 1000,
+      "mean": 0.047,
+      "median": 0.031,
+      "p90": 0.06,
+      "p95": 0.089,
+      "p99": 0.325,
+      "min": 0.011,
+      "max": 3.183,
+      "std": 0.129
+    },
+    "9_feature_extraction": {
+      "count": 1000,
+      "mean": 2.748,
+      "median": 1.928,
+      "p90": 4.341,
+      "p95": 5.456,
+      "p99": 11.971,
+      "min": 0.542,
+      "max": 230.664,
+      "std": 7.815
+    },
+    "10_scaler_transform": {
+      "count": 1000,
+      "mean": 0.542,
+      "median": 0.377,
+      "p90": 0.779,
+      "p95": 1.029,
+      "p99": 3.567,
+      "min": 0.216,
+      "max": 21.277,
+      "std": 1.063
+    },
+    "11_classifier_prediction": {
+      "count": 1000,
+      "mean": 36.468,
+      "median": 27.687,
+      "p90": 57.298,
+      "p95": 70.825,
+      "p99": 142.414,
+      "min": 15.234,
+      "max": 445.816,
+      "std": 29.228
+    },
+    "12_formatting": {
+      "count": 1000,
+      "mean": 0.031,
+      "median": 0.023,
+      "p90": 0.034,
+      "p95": 0.045,
+      "p99": 0.145,
+      "min": 0.012,
+      "max": 2.341,
+      "std": 0.1
+    }
+  },
+  "hand_count_breakdowns": {
+    "hands_1": {
+      "count": 271,
+      "mean": 61.979,
+      "median": 46.244,
+      "p90": 100.222,
+      "p95": 121.233,
+      "p99": 202.531,
+      "min": 32.374,
+      "max": 404.432,
+      "std": 40.864
+    },
+    "hands_2": {
+      "count": 729,
+      "mean": 66.831,
+      "median": 56.337,
+      "p90": 100.071,
+      "p95": 125.88,
+      "p99": 257.618,
+      "min": 33.264,
+      "max": 567.881,
+      "std": 42.021
+    }
+  },
+  "rss_checkpoints": {
+    "start_rss_mb": 591.72,
+    "frame_100_rss_mb": 785.75,
+    "frame_250_rss_mb": 885.0,
+    "frame_500_rss_mb": 885.0,
+    "frame_750_rss_mb": 885.0,
+    "frame_1000_rss_mb": 885.0,
+    "end_rss_mb": 885.0
+  },
+  "total_slow_frames_gt_80ms": 205,
+  "slowest_5_frames": [
+    {
+      "frame_index": 881,
+      "path": "signer_04_session_20261015_01_D_0063.jpg",
+      "total_ms": 567.88,
+      "hands_detected": 2,
+      "stage_timings": {
+        "1_receipt": 0.0,
+        "2_validation": 0.011,
+        "3_copy": 0.0,
+        "4_resize": 0.029,
+        "5_color_conversion": 10.714,
+        "6_mp_image_construction": 1.502,
+        "7_detection": 95.093,
+        "8_postprocessing": 0.066,
+        "9_feature_extraction": 12.322,
+        "10_scaler_transform": 0.521,
+        "11_classifier_prediction": 445.816,
+        "sum_stages": 566.108,
+        "12_formatting": 0.034
+      }
+    },
+    {
+      "frame_index": 765,
+      "path": "signer_04_session_20261015_01_A_0006.jpg",
+      "total_ms": 406.25,
+      "hands_detected": 2,
+      "stage_timings": {
+        "1_receipt": 0.0,
+        "2_validation": 0.013,
+        "3_copy": 0.0,
+        "4_resize": 0.003,
+        "5_color_conversion": 4.254,
+        "6_mp_image_construction": 2.718,
+        "7_detection": 58.106,
+        "8_postprocessing": 0.083,
+        "9_feature_extraction": 5.212,
+        "10_scaler_transform": 0.545,
+        "11_classifier_prediction": 332.083,
+        "sum_stages": 403.043,
+        "12_formatting": 0.024
+      }
+    },
+    {
+      "frame_index": 374,
+      "path": "signer_04_session_20261015_01_N_0030.jpg",
+      "total_ms": 404.43,
+      "hands_detected": 1,
+      "stage_timings": {
+        "1_receipt": 0.0,
+        "2_validation": 0.026,
+        "3_copy": 0.0,
+        "4_resize": 0.004,
+        "5_color_conversion": 2.437,
+        "6_mp_image_construction": 5.704,
+        "7_detection": 123.492,
+        "8_postprocessing": 0.026,
+        "9_feature_extraction": 1.798,
+        "10_scaler_transform": 1.279,
+        "11_classifier_prediction": 267.655,
+        "sum_stages": 402.457,
+        "12_formatting": 0.035
+      }
+    },
+    {
+      "frame_index": 517,
+      "path": "signer_04_session_20261015_01_S_0000.jpg",
+      "total_ms": 401.59,
+      "hands_detected": 2,
+      "stage_timings": {
+        "1_receipt": 0.0,
+        "2_validation": 0.011,
+        "3_copy": 0.0,
+        "4_resize": 0.003,
+        "5_color_conversion": 0.979,
+        "6_mp_image_construction": 1.64,
+        "7_detection": 75.376,
+        "8_postprocessing": 0.245,
+        "9_feature_extraction": 17.313,
+        "10_scaler_transform": 21.277,
+        "11_classifier_prediction": 283.276,
+        "sum_stages": 400.151,
+        "12_formatting": 0.033
+      }
+    },
+    {
+      "frame_index": 375,
+      "path": "signer_04_session_20261015_01_N_0033.jpg",
+      "total_ms": 322.51,
+      "hands_detected": 1,
+      "stage_timings": {
+        "1_receipt": 0.0,
+        "2_validation": 0.013,
+        "3_copy": 0.0,
+        "4_resize": 0.095,
+        "5_color_conversion": 8.434,
+        "6_mp_image_construction": 11.097,
+        "7_detection": 88.129,
+        "8_postprocessing": 0.044,
+        "9_feature_extraction": 4.159,
+        "10_scaler_transform": 8.892,
+        "11_classifier_prediction": 200.48,
+        "sum_stages": 321.383,
+        "12_formatting": 0.039
+      }
+    }
+  ]
+}

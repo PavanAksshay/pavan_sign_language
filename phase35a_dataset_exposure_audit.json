@@ -1,0 +1,333 @@
+{
+  "audit_metadata": {
+    "title": "Phase 35A — Existing-Data Generalization Strategy and Dataset Exposure Audit",
+    "phase": "Phase 35A",
+    "timestamp": "2026-10-28T10:20:00Z",
+    "repository": "/Users/pavanaksshay/pavan_sign_language",
+    "audit_status": "AUDIT_COMPLETE",
+    "scope_boundary": "STRICT_AUDIT_AND_PLANNING_ONLY",
+    "governance_note": "No models trained, no scalers fitted, no hyperparameters tuned, no model checkpoints altered, no production defaults modified."
+  },
+  "dataset_census_and_provenance": {
+    "signer_01": {
+      "dataset_role": "legacy_training_only",
+      "original_recordings_count": "N/A (Legacy webcam frame sessions)",
+      "total_usable_frames": 4211,
+      "historical_training_frames": 3077,
+      "historical_validation_frames": 1134,
+      "letters_represented": [
+        "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+        "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+      ],
+      "capture_conditions": {
+        "lighting": "indoor_ambient",
+        "background": "static_desktop",
+        "camera_position": "frontal_webcam",
+        "distance": "near"
+      },
+      "session_provenance": [
+        "session_20200515_04h",
+        "session_20200515_05h",
+        "session_20200515_06h",
+        "session_20200515_07h",
+        "session_20200515_08h"
+      ],
+      "historical_use": [
+        "SqueezeNet v1 CNN training (models/mediapipe_squeezenet_v1)",
+        "Landmark RF v1 training (models/landmark_hybrid_v1)",
+        "Landmark RF v2 training (models/landmark_geometry_v2)",
+        "Model C training (phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib)"
+      ],
+      "exposure_and_leakage_audit": {
+        "shared_sessions_count": 4,
+        "shared_sessions_list": [
+          "session_20200515_04h",
+          "session_20200515_05h",
+          "session_20200515_06h",
+          "session_20200515_07h"
+        ],
+        "temporal_proximity_leakage": "98.9% (1,122 / 1,134) of historical validation frames occur within <= 5 seconds of a training frame in the same session.",
+        "leakage_classification": "FRAME_DISJOINT_ONLY",
+        "verdict": "Historical validation split is severely contaminated by temporal proximity and session overlap. Historical validation metrics (>90%) are uninformative regarding generalization."
+      },
+      "governance_restrictions": {
+        "allowed_future_role": "training_pool_only",
+        "validation_reuse": "STRICTLY_PROHIBITED",
+        "unseen_signer_status": "EXPOSED_CANONICAL_SIGNER"
+      },
+      "supports_recording_disjoint_split": false
+    },
+    "signer_02": {
+      "dataset_role": "quarantined_frozen_benchmark",
+      "original_recordings_count": 81,
+      "accepted_recordings_count": 78,
+      "rejected_recordings_count": 3,
+      "total_usable_frames": 2472,
+      "extracted_frames_jpg": 1665,
+      "letters_represented": [
+        "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+        "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+      ],
+      "capture_conditions": [
+        "condition_1 (indoor overhead, plain wall, frontal eye-level)",
+        "condition_2 (varied distance, slight lateral angle)",
+        "condition_3 (lighting variations, side-lit)"
+      ],
+      "session_provenance": [
+        "session_20261022_01"
+      ],
+      "historical_use": [
+        "Phase 19 frozen benchmark (phase19_frozen_manifest.json)",
+        "Phases 14-23 benchmark evaluations (YOLO baseline, MediaPipe CNN, Landmark RF v1/v2, Hybrid Concatenation RF)",
+        "Late fusion alpha parameter tuning (alpha=0.25 vs alpha=0.75)",
+        "Phase 23 evaluation of Model C (phase23_predictions.csv)"
+      ],
+      "exposure_and_leakage_audit": {
+        "prior_development_influence": "Heavily exposed during historical evaluation. Model selection choices (including Model C selection over Landmark v2) and fusion weight selection were directly informed by signer_02/03 benchmark performance.",
+        "pristine_holdout_status": "NOT_PRISTINE",
+        "verdict": "Cannot be characterized as a pristine unseen holdout. Useful only as a locked historical reference benchmark."
+      },
+      "governance_restrictions": {
+        "allowed_future_role": "read_only_historical_benchmark",
+        "training_use": "STRICTLY_PROHIBITED",
+        "tuning_use": "STRICTLY_PROHIBITED",
+        "feature_selection_use": "STRICTLY_PROHIBITED",
+        "augmentation_design_use": "STRICTLY_PROHIBITED"
+      },
+      "supports_recording_disjoint_split": false
+    },
+    "signer_03": {
+      "dataset_role": "quarantined_frozen_benchmark",
+      "original_recordings_count": 52,
+      "accepted_recordings_count": 52,
+      "rejected_recordings_count": 0,
+      "total_usable_frames": 1666,
+      "extracted_frames_jpg": 1666,
+      "letters_represented": [
+        "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+        "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+      ],
+      "capture_conditions": [
+        "condition_1 (indoor overhead, plain wall, frontal eye-level)",
+        "condition_2 (varied distance, slight lateral angle)"
+      ],
+      "session_provenance": [
+        "session_20261022_01"
+      ],
+      "historical_use": [
+        "Phase 19 frozen benchmark (phase19_frozen_manifest.json)",
+        "Phases 14-23 benchmarking and late fusion comparison",
+        "Phase 23 Model C evaluation"
+      ],
+      "exposure_and_leakage_audit": {
+        "prior_development_influence": "Co-benchmarked with signer_02 across all Phase 14-23 iterations. Prior metrics directly influenced architectural decisions.",
+        "pristine_holdout_status": "NOT_PRISTINE",
+        "verdict": "Exposed historical benchmark. Strictly quarantined from any future training or parameter optimization."
+      },
+      "governance_restrictions": {
+        "allowed_future_role": "read_only_historical_benchmark",
+        "training_use": "STRICTLY_PROHIBITED",
+        "tuning_use": "STRICTLY_PROHIBITED",
+        "feature_selection_use": "STRICTLY_PROHIBITED",
+        "augmentation_design_use": "STRICTLY_PROHIBITED"
+      },
+      "supports_recording_disjoint_split": false
+    },
+    "signer_04": {
+      "dataset_role": "previously_exposed_development_data",
+      "original_recordings_count": 54,
+      "accepted_recordings_count": 54,
+      "rejected_recordings_count": 0,
+      "total_usable_frames": 1621,
+      "extracted_frames_jpg": 1625,
+      "manifest_frames_count": 1682,
+      "letters_represented": [
+        "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+        "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+      ],
+      "capture_conditions": {
+        "condition_1": {
+          "recordings": 28,
+          "letters": 26,
+          "retakes": ["E", "H"],
+          "description": "indoor overhead, plain wall, frontal eye-level, ~75cm"
+        },
+        "condition_2": {
+          "recordings": 26,
+          "letters": 26,
+          "retakes": [],
+          "description": "lateral ~15 deg angle, varied distance ~60-90cm"
+        }
+      },
+      "session_provenance": [
+        "session_20261022_01"
+      ],
+      "historical_use": [
+        "Phase 22 Split 1 development: 809 frames in training subset, 812 frames in validation subset for hyperparameter tuning",
+        "Phase 22 production training: ALL 1,621 usable frames pooled into the training set of Model C (phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib)",
+        "Scaler fitting: phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib fit on combined signer_01 (3,077) + signer_04 (1,621) samples"
+      ],
+      "exposure_and_leakage_audit": {
+        "prior_development_influence": "Maximum exposure. All usable frames were incorporated into the authoritative production checkpoint.",
+        "pristine_holdout_status": "EXPOSED_DEVELOPMENT_DATA",
+        "unseen_signer_suitability": "UNSUITABLE for unseen-signer generalization claims.",
+        "verdict": "Signer_04 is development data. Any split derived from signer_04 evaluates recording robustness or cross-condition robustness within a known signer, NOT unseen-signer generalization."
+      },
+      "governance_restrictions": {
+        "allowed_future_role": "development_training_and_controlled_recording_split_validation",
+        "reporting_requirement": "All evaluation results on signer_04 MUST be explicitly labeled as 'Same-Signer Recording-Disjoint Validation' or 'Cross-Condition Robustness (Known Signer)'. NEVER claim unseen-signer generalization."
+      },
+      "supports_recording_disjoint_split": true,
+      "provisional_split_options": {
+        "split_1_alternating_balanced": {
+          "rule": "Group strictly by recording_id. Letters A-M in Condition 1 and N-Z in Condition 2 assigned to Train; Letters A-M in Condition 2 and N-Z in Condition 1 assigned to Val.",
+          "train_recordings_count": 27,
+          "val_recordings_count": 27,
+          "train_frames_nominal": 809,
+          "val_frames_nominal": 812,
+          "recording_overlap_count": 0,
+          "session_overlap_count": 1,
+          "evaluation_nature": "Same-signer recording-disjoint and cross-condition robustness with balanced letter and condition distributions."
+        },
+        "split_2_pure_cross_condition": {
+          "rule": "Condition 1 (frontal) assigned to Train; Condition 2 (lateral/distance) assigned to Val.",
+          "train_recordings_count": 28,
+          "val_recordings_count": 26,
+          "train_frames_nominal": 871,
+          "val_frames_nominal": 811,
+          "recording_overlap_count": 0,
+          "session_overlap_count": 1,
+          "evaluation_nature": "Same-signer pure cross-condition angle/lighting transfer robustness."
+        }
+      }
+    },
+    "signer_05": {
+      "dataset_role": "quarantined_diagnostic_holdout",
+      "original_recordings_count": 53,
+      "accepted_recordings_count": 52,
+      "rejected_recordings_count": 1,
+      "total_usable_frames": 1638,
+      "extracted_frames_jpg": 1638,
+      "letters_represented": [
+        "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+        "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+      ],
+      "capture_conditions": {
+        "condition_1": "indoor overhead, plain wall, frontal eye-level, ~75cm (26 recordings, 819 frames)",
+        "condition_2": "lateral ~15 deg angle, distance ~85cm (26 recordings, 819 frames)"
+      },
+      "session_provenance": [
+        "session_20261015_01"
+      ],
+      "historical_use": [
+        "Phase 30 independent holdout evaluation: top-1 accuracy 59.22%, macro-F1 55.12%, 4 zero-recall classes (J, O, P, Q)",
+        "Phase 31 error forensics: detailed root-cause attribution into 6 failure mechanisms (coordinate rotation invariance, lap-hand threshold, screen x ordering, perspective inversion, self-occlusion, dynamic sign frame limit)"
+      ],
+      "exposure_and_leakage_audit": {
+        "prior_development_influence": "Signer_05 was NOT used for training weights or fitting scalers. However, its exact failure modes, confusing classes, coordinate distributions, and error frames are fully known and documented in Phase 30/31.",
+        "pristine_holdout_status": "EXPOSED_DIAGNOSTIC_HOLDOUT",
+        "verdict": "Signer_05 CANNOT be treated as a pristine future holdout. Any algorithm or parameter tuned specifically to resolve the 6 Phase 31 root causes would be informed by prior test-set exposure. Must remain strictly sealed."
+      },
+      "governance_restrictions": {
+        "allowed_future_role": "sealed_quarantined_diagnostic_benchmark",
+        "training_use": "STRICTLY_PROHIBITED",
+        "tuning_use": "STRICTLY_PROHIBITED",
+        "feature_selection_use": "STRICTLY_PROHIBITED",
+        "augmentation_design_use": "STRICTLY_PROHIBITED",
+        "scaler_fitting_use": "STRICTLY_PROHIBITED"
+      },
+      "supports_recording_disjoint_split": false
+    },
+    "signer_06_to_11": {
+      "dataset_role": "uncollected_cohort",
+      "planned_participants": 6,
+      "planned_recordings": 1404,
+      "planned_frames": 42120,
+      "actual_recordings_collected": 0,
+      "actual_frames_collected": 0,
+      "status": "TERMINATED_NO_COLLECTION_POSSIBLE",
+      "verdict": "Per user directive, physical data collection is permanently concluded. No new signers exist in the repository."
+    }
+  },
+  "file_integrity_and_duplicate_analysis": {
+    "total_extracted_frames_audited": 6594,
+    "unique_image_sha256_hashes": 6594,
+    "cross_signer_exact_duplicate_hashes": 0,
+    "within_signer_exact_duplicate_hashes": 0,
+    "ledger_reconciliation": {
+      "ledger_file": "data/collection_manifests/collection_ledger.json",
+      "ledger_records_total": 240,
+      "accepted_records": 236,
+      "rejected_records": 4,
+      "accepted_breakdown": {
+        "signer_02": 78,
+        "signer_03": 52,
+        "signer_04": 54,
+        "signer_05": 52
+      },
+      "rejected_breakdown": {
+        "signer_02": 3,
+        "signer_03": 0,
+        "signer_04": 0,
+        "signer_05": 1
+      },
+      "reconciliation_status": "FULL_MATCH"
+    }
+  },
+  "authoritative_protected_hashes": {
+    "Model_C_Occlusion_Aware_RF": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib",
+      "sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "status": "PROTECTED_IMMUTABLE"
+    },
+    "Model_C_Scaler": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib",
+      "sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "status": "PROTECTED_IMMUTABLE"
+    },
+    "phase19_frozen_manifest": {
+      "path": "phase19_frozen_manifest.json",
+      "sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "status": "PROTECTED_IMMUTABLE"
+    },
+    "phase23_predictions": {
+      "path": "phase23_predictions.csv",
+      "sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "status": "PROTECTED_IMMUTABLE"
+    },
+    "signer_05_manifest": {
+      "path": "data/collection_manifests/signer_05_manifest.json",
+      "sha256": "5886b90d9b38e905848731ac8afeb82567a9ea343a460832bf49a74e3e4a5f3c",
+      "status": "PROTECTED_IMMUTABLE"
+    },
+    "test_multisigner_manifest": {
+      "path": "data/collection_manifests/test_multisigner_manifest.json",
+      "sha256": "139f48601fc3c1a2248e90c147e82cf4f0037977cadf0798a0371985102ef04b",
+      "status": "PROTECTED_IMMUTABLE"
+    },
+    "squeezenet_train_manifest": {
+      "path": "models/mediapipe_squeezenet_v1/splits/train_manifest.json",
+      "sha256": "fc71e5940dcc12b7bf9c42d6ce125099c560d35e4f38b36486ac285f9c203b73",
+      "status": "PROTECTED_IMMUTABLE"
+    },
+    "squeezenet_val_manifest": {
+      "path": "models/mediapipe_squeezenet_v1/splits/val_manifest.json",
+      "sha256": "3a5a9cea0163a04baa4546749306cea3383cfd06b4ae2fa758f6995620b5514c",
+      "status": "PROTECTED_IMMUTABLE"
+    },
+    "mediapipe_hand_landmarker_task": {
+      "path": "App/include50_model/hand_landmarker.task",
+      "sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+      "status": "PROTECTED_IMMUTABLE"
+    }
+  },
+  "production_defaults_audit": {
+    "ISL_BACKEND_DETECTOR": "yolo",
+    "ISL_RECOGNITION_ARCH": "standard",
+    "ISL_TEMPORAL_SMOOTHING": "0",
+    "ISL_SHADOW_MODE": "0",
+    "ISL_MEDIAPIPE_DELEGATE": "cpu",
+    "ISL_MODEL_C_RESOLUTION": "native",
+    "compliance_status": "ALL_PRODUCTION_DEFAULTS_VERIFIED"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "phase": "Phase 23 \u2014 Frozen External Evaluation of Model C",
+  "timestamp": "2026-10-23T07:36:52Z",
+  "evaluated_model": {
+    "name": "Model_C_Occlusion_Aware_RF",
+    "model_path": "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib",
+    "model_sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+    "scaler_path": "/Users/pavanaksshay/pavan_sign_language/phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib",
+    "scaler_sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+    "feature_dim": 280,
+    "training_samples": 4698,
+    "training_signers": [
+      "signer_01",
+      "signer_04"
+    ]
+  },
+  "frozen_benchmark": {
+    "total_samples": 3329,
+    "signers": [
+      "signer_02",
+      "signer_03"
+    ],
+    "conditions": [
+      "condition_1",
+      "condition_2"
+    ],
+    "predictions_csv_sha256": "54bd1739ef73239e42c6bf2b15686d5fcffff8613668c2b55eafbacf14395649",
+    "manifest_sha256": "c25c5c452d6661f84d271ed5ebdf58fc23ad0803dbd4da2c5d76fa8c5cbaaeeb"
+  },
+  "target_threshold": 0.8,
+  "achieved_macro_f1": 0.9183,
+  "threshold_met": true
+}

@@ -1,0 +1,132 @@
+{
+  "timestamp": "2026-10-25T05:58:53Z",
+  "phase": "Phase 28 \u2014 Sustained GPU Latency Stabilization and Benchmark Integrity Audit",
+  "all_baseline_artifacts_unmodified": true,
+  "production_defaults_verified": {
+    "ISL_BACKEND_DETECTOR": "yolo",
+    "ISL_RECOGNITION_ARCH": "standard",
+    "ISL_TEMPORAL_SMOOTHING": false,
+    "ISL_SHADOW_MODE": false,
+    "ISL_MEDIAPIPE_DELEGATE": "cpu",
+    "ISL_MODEL_C_RESOLUTION": "native"
+  },
+  "production_defaults_pass": true,
+  "artifacts_audited": {
+    "phase19_frozen_manifest.json": {
+      "exists": true,
+      "sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "matches_baseline": true
+    },
+    "phase19_frozen_external_benchmark_report.md": {
+      "exists": true,
+      "sha256": "b35a1b1ab0fae37da1b8b472551b78c95a4b1ac6cf92cf148ca87fe45e4d6010",
+      "matches_baseline": true
+    },
+    "phase19_analysis/phase19_predictions_raw.csv": {
+      "exists": true,
+      "sha256": "54bd1739ef73239e42c6bf2b15686d5fcffff8613668c2b55eafbacf14395649",
+      "matches_baseline": true
+    },
+    "phase22_training_report.md": {
+      "exists": true,
+      "sha256": "e90cabd514f2f7877ec18cd0d8541fe270d135c213b5e4f760e7acdb0345af7f",
+      "matches_baseline": true
+    },
+    "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib": {
+      "exists": true,
+      "sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "matches_baseline": true
+    },
+    "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib": {
+      "exists": true,
+      "sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "matches_baseline": true
+    },
+    "phase23_external_evaluation_report.md": {
+      "exists": true,
+      "sha256": "3f215e9a4a24870eaf67c76884b523b157e2414a7f38072944668537cc1cc128",
+      "matches_baseline": true
+    },
+    "phase23_predictions.csv": {
+      "exists": true,
+      "sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "matches_baseline": true
+    },
+    "phase23_external_metrics.json": {
+      "exists": true,
+      "sha256": "48468fa3008f564e4fc66663205ee0811b9da1b9add9d6adc111f7a0431e5534",
+      "matches_baseline": true
+    },
+    "phase23_integrity_audit.json": {
+      "exists": true,
+      "sha256": "ee8ba55bf0c863d004fd3859ae0b440748bc9a5fba139ce4c6bfa8a421c1cbd0",
+      "matches_baseline": true
+    },
+    "phase24_runtime_integration_report.md": {
+      "exists": true,
+      "sha256": "bc73ee59730a96c12c49ef56e2b19bfbacd45c733b0cea713982c2464ebf789c",
+      "matches_baseline": true
+    },
+    "phase24_runtime_metrics.json": {
+      "exists": true,
+      "sha256": "aad2781a9fd8b4c558e374dd1588eea7858fca59c93a1cab1bb2b2aec9988ae1",
+      "matches_baseline": true
+    },
+    "phase24_integrity_audit.json": {
+      "exists": true,
+      "sha256": "a8053f32d9a63ab0ca5e71016494fad03a51453caf000f3e210ad0b07916c82f",
+      "matches_baseline": true
+    },
+    "phase25_performance_report.md": {
+      "exists": true,
+      "sha256": "6b4cb9b05a569b72e43623e8656817db4e05f9a441a34381283d2d4b6931bdd8",
+      "matches_baseline": true
+    },
+    "phase25_runtime_metrics.json": {
+      "exists": true,
+      "sha256": "2eb05c491c6320d3df0e231db3c11007ca7b822efc1ec2420cac983f063e013d",
+      "matches_baseline": true
+    },
+    "phase25_integrity_audit.json": {
+      "exists": true,
+      "sha256": "f11949bc14d59fc6602637be4c25b44cfaa94ae5557a272fe351d7a3cbdf2e44",
+      "matches_baseline": true
+    },
+    "phase26_latency_forensics_report.md": {
+      "exists": true,
+      "sha256": "1c417730407a56367877b4adfa69bf747d514ca1db69a63020530e93f506df7d",
+      "matches_baseline": true
+    },
+    "phase26_runtime_metrics.json": {
+      "exists": true,
+      "sha256": "b992b601855c6ec4140e7a443b70dfa2365bdcc0d59b1e402604bd18f78bf9d0",
+      "matches_baseline": true
+    },
+    "phase26_integrity_audit.json": {
+      "exists": true,
+      "sha256": "729ff2fa76245d4fbb720cb65fb20a72d5266443ffd50e6175550b5d1cf516cd",
+      "matches_baseline": true
+    },
+    "phase27_live_pilot_report.md": {
+      "exists": true,
+      "sha256": "003e6be72f12ce3ba0c647687e8a372df26f5defb6ba014c15046eef51574236",
+      "matches_baseline": true
+    },
+    "phase27_pilot_metrics.json": {
+      "exists": true,
+      "sha256": "092dce67e32b2f57915f2f0deb75948cb79b79fa5e036928372923f8c36c5355",
+      "matches_baseline": true
+    },
+    "phase27_video_summaries.json": {
+      "exists": true,
+      "sha256": "fecb859359cff6565a065ca11adde3b540775ff93681b3e74a8f4f9033707b05",
+      "matches_baseline": true
+    },
+    "phase27_integrity_audit.json": {
+      "exists": true,
+      "sha256": "ee4701daaecbd09426ff2ceabe04f9a31f1621584ec817bc556a603e4956f4c1",
+      "matches_baseline": true
+    }
+  },
+  "overall_audit_passed": true
+}

@@ -1,0 +1,1277 @@
+{
+  "phase": "Phase 6B",
+  "four_way_ablation": {
+    "Run_A": {
+      "config": {
+        "direct_resize": false,
+        "suppress_lap": false,
+        "desc": "Baseline (Direct Resize OFF, Lap Supp OFF)"
+      },
+      "videos": {
+        "recording_C_20261014_164912.mp4": {
+          "video": "recording_C_20261014_164912.mp4",
+          "target": "C",
+          "total_frames": 146,
+          "detected_frames": 146,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 18.5,
+          "top1_all_pct": 18.5,
+          "top3_det_pct": 36.3,
+          "flip_rate_pct": 37.2,
+          "face_clamps": 0,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 233.5,
+          "predictions": {
+            "G": 98,
+            "C": 27,
+            "R": 11,
+            "L": 7,
+            "H": 2
+          },
+          "label": "Frontal C (Original)"
+        },
+        "recording_C_20261014_165234.mp4": {
+          "video": "recording_C_20261014_165234.mp4",
+          "target": "C",
+          "total_frames": 143,
+          "detected_frames": 143,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 0.0,
+          "top1_all_pct": 0.0,
+          "top3_det_pct": 0.0,
+          "flip_rate_pct": 31.0,
+          "face_clamps": 4,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 201.9,
+          "predictions": {
+            "G": 79,
+            "R": 31,
+            "S": 19,
+            "F": 13,
+            "W": 1
+          },
+          "label": "Frontal C (Second)"
+        },
+        "recording_C_lateral_profile_calibrated.mp4": {
+          "video": "recording_C_lateral_profile_calibrated.mp4",
+          "target": "C",
+          "total_frames": 84,
+          "detected_frames": 0,
+          "detection_rate_pct": 0.0,
+          "top1_det_pct": 0.0,
+          "top1_all_pct": 0.0,
+          "top3_det_pct": 0.0,
+          "flip_rate_pct": 0.0,
+          "face_clamps": 0,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 187.2,
+          "predictions": {},
+          "label": "Profile-matched C"
+        },
+        "recording_A_20261014_165529.mp4": {
+          "video": "recording_A_20261014_165529.mp4",
+          "target": "A",
+          "total_frames": 143,
+          "detected_frames": 117,
+          "detection_rate_pct": 81.8,
+          "top1_det_pct": 4.3,
+          "top1_all_pct": 3.5,
+          "top3_det_pct": 10.3,
+          "flip_rate_pct": 32.8,
+          "face_clamps": 1,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 223.3,
+          "predictions": {
+            "G": 68,
+            "C": 29,
+            "T": 6,
+            "O": 5,
+            "A": 5
+          },
+          "label": "Frontal A"
+        },
+        "recording_L_20261014_165754.mp4": {
+          "video": "recording_L_20261014_165754.mp4",
+          "target": "L",
+          "total_frames": 146,
+          "detected_frames": 146,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 87.7,
+          "top1_all_pct": 87.7,
+          "top3_det_pct": 97.3,
+          "flip_rate_pct": 16.6,
+          "face_clamps": 4,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 237.4,
+          "predictions": {
+            "L": 128,
+            "Y": 14,
+            "U": 3,
+            "V": 1
+          },
+          "label": "Frontal L"
+        }
+      }
+    },
+    "Run_B": {
+      "config": {
+        "direct_resize": false,
+        "suppress_lap": true,
+        "desc": "Lap Supp Only (Direct Resize OFF, Lap Supp ON)"
+      },
+      "videos": {
+        "recording_C_20261014_164912.mp4": {
+          "video": "recording_C_20261014_164912.mp4",
+          "target": "C",
+          "total_frames": 146,
+          "detected_frames": 146,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 57.5,
+          "top1_all_pct": 57.5,
+          "top3_det_pct": 87.0,
+          "flip_rate_pct": 37.9,
+          "face_clamps": 1,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 146,
+          "avg_latency_ms": 234.2,
+          "predictions": {
+            "C": 84,
+            "G": 25,
+            "R": 24,
+            "L": 13
+          },
+          "label": "Frontal C (Original)"
+        },
+        "recording_C_20261014_165234.mp4": {
+          "video": "recording_C_20261014_165234.mp4",
+          "target": "C",
+          "total_frames": 143,
+          "detected_frames": 143,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 0.0,
+          "top1_all_pct": 0.0,
+          "top3_det_pct": 0.0,
+          "flip_rate_pct": 31.0,
+          "face_clamps": 4,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 230.1,
+          "predictions": {
+            "G": 79,
+            "R": 31,
+            "S": 19,
+            "F": 13,
+            "W": 1
+          },
+          "label": "Frontal C (Second)"
+        },
+        "recording_C_lateral_profile_calibrated.mp4": {
+          "video": "recording_C_lateral_profile_calibrated.mp4",
+          "target": "C",
+          "total_frames": 84,
+          "detected_frames": 0,
+          "detection_rate_pct": 0.0,
+          "top1_det_pct": 0.0,
+          "top1_all_pct": 0.0,
+          "top3_det_pct": 0.0,
+          "flip_rate_pct": 0.0,
+          "face_clamps": 0,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 167.5,
+          "predictions": {},
+          "label": "Profile-matched C"
+        },
+        "recording_A_20261014_165529.mp4": {
+          "video": "recording_A_20261014_165529.mp4",
+          "target": "A",
+          "total_frames": 143,
+          "detected_frames": 117,
+          "detection_rate_pct": 81.8,
+          "top1_det_pct": 4.3,
+          "top1_all_pct": 3.5,
+          "top3_det_pct": 10.3,
+          "flip_rate_pct": 32.8,
+          "face_clamps": 1,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 242.6,
+          "predictions": {
+            "G": 68,
+            "C": 29,
+            "T": 6,
+            "O": 5,
+            "A": 5
+          },
+          "label": "Frontal A"
+        },
+        "recording_L_20261014_165754.mp4": {
+          "video": "recording_L_20261014_165754.mp4",
+          "target": "L",
+          "total_frames": 146,
+          "detected_frames": 146,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 87.7,
+          "top1_all_pct": 87.7,
+          "top3_det_pct": 97.3,
+          "flip_rate_pct": 16.6,
+          "face_clamps": 4,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 262.2,
+          "predictions": {
+            "L": 128,
+            "Y": 14,
+            "U": 3,
+            "V": 1
+          },
+          "label": "Frontal L"
+        }
+      }
+    },
+    "Run_C": {
+      "config": {
+        "direct_resize": true,
+        "suppress_lap": false,
+        "desc": "Direct Resize Only (Direct Resize ON, Lap Supp OFF)"
+      },
+      "videos": {
+        "recording_C_20261014_164912.mp4": {
+          "video": "recording_C_20261014_164912.mp4",
+          "target": "C",
+          "total_frames": 146,
+          "detected_frames": 146,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 23.3,
+          "top1_all_pct": 23.3,
+          "top3_det_pct": 35.6,
+          "flip_rate_pct": 40.7,
+          "face_clamps": 0,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 317.9,
+          "predictions": {
+            "O": 82,
+            "C": 34,
+            "G": 11,
+            "L": 9,
+            "R": 8
+          },
+          "label": "Frontal C (Original)"
+        },
+        "recording_C_20261014_165234.mp4": {
+          "video": "recording_C_20261014_165234.mp4",
+          "target": "C",
+          "total_frames": 143,
+          "detected_frames": 143,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 0.0,
+          "top1_all_pct": 0.0,
+          "top3_det_pct": 0.0,
+          "flip_rate_pct": 29.6,
+          "face_clamps": 4,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 231.2,
+          "predictions": {
+            "R": 72,
+            "G": 53,
+            "S": 14,
+            "H": 3,
+            "L": 1
+          },
+          "label": "Frontal C (Second)"
+        },
+        "recording_C_lateral_profile_calibrated.mp4": {
+          "video": "recording_C_lateral_profile_calibrated.mp4",
+          "target": "C",
+          "total_frames": 84,
+          "detected_frames": 0,
+          "detection_rate_pct": 0.0,
+          "top1_det_pct": 0.0,
+          "top1_all_pct": 0.0,
+          "top3_det_pct": 0.0,
+          "flip_rate_pct": 0.0,
+          "face_clamps": 0,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 206.7,
+          "predictions": {},
+          "label": "Profile-matched C"
+        },
+        "recording_A_20261014_165529.mp4": {
+          "video": "recording_A_20261014_165529.mp4",
+          "target": "A",
+          "total_frames": 143,
+          "detected_frames": 117,
+          "detection_rate_pct": 81.8,
+          "top1_det_pct": 0.0,
+          "top1_all_pct": 0.0,
+          "top3_det_pct": 3.4,
+          "flip_rate_pct": 33.6,
+          "face_clamps": 1,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 243.1,
+          "predictions": {
+            "Z": 47,
+            "C": 29,
+            "G": 18,
+            "O": 15,
+            "H": 7
+          },
+          "label": "Frontal A"
+        },
+        "recording_L_20261014_165754.mp4": {
+          "video": "recording_L_20261014_165754.mp4",
+          "target": "L",
+          "total_frames": 146,
+          "detected_frames": 146,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 89.0,
+          "top1_all_pct": 89.0,
+          "top3_det_pct": 100.0,
+          "flip_rate_pct": 11.7,
+          "face_clamps": 4,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 247.7,
+          "predictions": {
+            "L": 130,
+            "Y": 6,
+            "V": 6,
+            "N": 3,
+            "R": 1
+          },
+          "label": "Frontal L"
+        }
+      }
+    },
+    "Run_D": {
+      "config": {
+        "direct_resize": true,
+        "suppress_lap": true,
+        "desc": "Combined (Direct Resize ON, Lap Supp ON)"
+      },
+      "videos": {
+        "recording_C_20261014_164912.mp4": {
+          "video": "recording_C_20261014_164912.mp4",
+          "target": "C",
+          "total_frames": 146,
+          "detected_frames": 146,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 63.0,
+          "top1_all_pct": 63.0,
+          "top3_det_pct": 84.2,
+          "flip_rate_pct": 33.8,
+          "face_clamps": 1,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 146,
+          "avg_latency_ms": 265.7,
+          "predictions": {
+            "C": 92,
+            "R": 22,
+            "L": 17,
+            "G": 14,
+            "I": 1
+          },
+          "label": "Frontal C (Original)"
+        },
+        "recording_C_20261014_165234.mp4": {
+          "video": "recording_C_20261014_165234.mp4",
+          "target": "C",
+          "total_frames": 143,
+          "detected_frames": 143,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 0.0,
+          "top1_all_pct": 0.0,
+          "top3_det_pct": 0.0,
+          "flip_rate_pct": 29.6,
+          "face_clamps": 4,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 249.5,
+          "predictions": {
+            "R": 72,
+            "G": 53,
+            "S": 14,
+            "H": 3,
+            "L": 1
+          },
+          "label": "Frontal C (Second)"
+        },
+        "recording_C_lateral_profile_calibrated.mp4": {
+          "video": "recording_C_lateral_profile_calibrated.mp4",
+          "target": "C",
+          "total_frames": 84,
+          "detected_frames": 0,
+          "detection_rate_pct": 0.0,
+          "top1_det_pct": 0.0,
+          "top1_all_pct": 0.0,
+          "top3_det_pct": 0.0,
+          "flip_rate_pct": 0.0,
+          "face_clamps": 0,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 214.3,
+          "predictions": {},
+          "label": "Profile-matched C"
+        },
+        "recording_A_20261014_165529.mp4": {
+          "video": "recording_A_20261014_165529.mp4",
+          "target": "A",
+          "total_frames": 143,
+          "detected_frames": 117,
+          "detection_rate_pct": 81.8,
+          "top1_det_pct": 0.0,
+          "top1_all_pct": 0.0,
+          "top3_det_pct": 3.4,
+          "flip_rate_pct": 33.6,
+          "face_clamps": 1,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 225.9,
+          "predictions": {
+            "Z": 47,
+            "C": 29,
+            "G": 18,
+            "O": 15,
+            "H": 7
+          },
+          "label": "Frontal A"
+        },
+        "recording_L_20261014_165754.mp4": {
+          "video": "recording_L_20261014_165754.mp4",
+          "target": "L",
+          "total_frames": 146,
+          "detected_frames": 146,
+          "detection_rate_pct": 100.0,
+          "top1_det_pct": 89.0,
+          "top1_all_pct": 89.0,
+          "top3_det_pct": 100.0,
+          "flip_rate_pct": 11.7,
+          "face_clamps": 4,
+          "two_hand_merges": 0,
+          "lap_hands_suppressed": 0,
+          "avg_latency_ms": 241.0,
+          "predictions": {
+            "L": 130,
+            "Y": 6,
+            "V": 6,
+            "N": 3,
+            "R": 1
+          },
+          "label": "Frontal L"
+        }
+      }
+    }
+  },
+  "alphabet_evaluation": {
+    "per_class": {
+      "A": {
+        "samples": 25,
+        "acc_clean_1to1": 96.0,
+        "acc_letterbox": 60.0,
+        "acc_direct_resize": 28.0,
+        "collapsed_under_lb": false
+      },
+      "B": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 76.0,
+        "acc_direct_resize": 44.0,
+        "collapsed_under_lb": false
+      },
+      "C": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 68.0,
+        "acc_direct_resize": 40.0,
+        "collapsed_under_lb": false
+      },
+      "D": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 28.0,
+        "acc_direct_resize": 16.0,
+        "collapsed_under_lb": false
+      },
+      "E": {
+        "samples": 25,
+        "acc_clean_1to1": 72.0,
+        "acc_letterbox": 0.0,
+        "acc_direct_resize": 20.0,
+        "collapsed_under_lb": false
+      },
+      "F": {
+        "samples": 25,
+        "acc_clean_1to1": 96.0,
+        "acc_letterbox": 52.0,
+        "acc_direct_resize": 12.0,
+        "collapsed_under_lb": false
+      },
+      "G": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 92.0,
+        "acc_direct_resize": 16.0,
+        "collapsed_under_lb": false
+      },
+      "H": {
+        "samples": 25,
+        "acc_clean_1to1": 88.0,
+        "acc_letterbox": 16.0,
+        "acc_direct_resize": 28.0,
+        "collapsed_under_lb": true
+      },
+      "I": {
+        "samples": 25,
+        "acc_clean_1to1": 80.0,
+        "acc_letterbox": 20.0,
+        "acc_direct_resize": 0.0,
+        "collapsed_under_lb": false
+      },
+      "J": {
+        "samples": 25,
+        "acc_clean_1to1": 96.0,
+        "acc_letterbox": 40.0,
+        "acc_direct_resize": 32.0,
+        "collapsed_under_lb": false
+      },
+      "K": {
+        "samples": 25,
+        "acc_clean_1to1": 96.0,
+        "acc_letterbox": 84.0,
+        "acc_direct_resize": 16.0,
+        "collapsed_under_lb": false
+      },
+      "L": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 36.0,
+        "acc_direct_resize": 60.0,
+        "collapsed_under_lb": false
+      },
+      "M": {
+        "samples": 25,
+        "acc_clean_1to1": 60.0,
+        "acc_letterbox": 12.0,
+        "acc_direct_resize": 36.0,
+        "collapsed_under_lb": false
+      },
+      "N": {
+        "samples": 25,
+        "acc_clean_1to1": 88.0,
+        "acc_letterbox": 96.0,
+        "acc_direct_resize": 76.0,
+        "collapsed_under_lb": false
+      },
+      "O": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 64.0,
+        "acc_direct_resize": 56.0,
+        "collapsed_under_lb": false
+      },
+      "P": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 4.0,
+        "acc_direct_resize": 28.0,
+        "collapsed_under_lb": true
+      },
+      "Q": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 4.0,
+        "acc_direct_resize": 32.0,
+        "collapsed_under_lb": true
+      },
+      "R": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 12.0,
+        "acc_direct_resize": 40.0,
+        "collapsed_under_lb": true
+      },
+      "S": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 20.0,
+        "acc_direct_resize": 60.0,
+        "collapsed_under_lb": false
+      },
+      "T": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 96.0,
+        "acc_direct_resize": 44.0,
+        "collapsed_under_lb": false
+      },
+      "U": {
+        "samples": 25,
+        "acc_clean_1to1": 92.0,
+        "acc_letterbox": 20.0,
+        "acc_direct_resize": 44.0,
+        "collapsed_under_lb": false
+      },
+      "V": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 0.0,
+        "acc_direct_resize": 96.0,
+        "collapsed_under_lb": true
+      },
+      "W": {
+        "samples": 25,
+        "acc_clean_1to1": 96.0,
+        "acc_letterbox": 20.0,
+        "acc_direct_resize": 20.0,
+        "collapsed_under_lb": false
+      },
+      "X": {
+        "samples": 25,
+        "acc_clean_1to1": 88.0,
+        "acc_letterbox": 56.0,
+        "acc_direct_resize": 8.0,
+        "collapsed_under_lb": false
+      },
+      "Y": {
+        "samples": 25,
+        "acc_clean_1to1": 92.0,
+        "acc_letterbox": 12.0,
+        "acc_direct_resize": 36.0,
+        "collapsed_under_lb": true
+      },
+      "Z": {
+        "samples": 25,
+        "acc_clean_1to1": 100.0,
+        "acc_letterbox": 4.0,
+        "acc_direct_resize": 72.0,
+        "collapsed_under_lb": true
+      }
+    },
+    "overall_clean_acc": 93.8,
+    "overall_lb_acc": 38.2,
+    "overall_dr_acc": 36.9,
+    "collapsed_classes_count": 7,
+    "total_eval_samples": 650
+  },
+  "fair_comparison_samples": [
+    {
+      "frame_idx": 1,
+      "crop_dimensions": {
+        "w": 504,
+        "h": 449,
+        "aspect_ratio": 0.891
+      },
+      "letterbox": {
+        "top_prediction": "C",
+        "confidence": 63.8,
+        "top_5": [
+          [
+            "C",
+            63.8
+          ],
+          [
+            "R",
+            33.2
+          ],
+          [
+            "L",
+            2.2
+          ],
+          [
+            "G",
+            0.5
+          ],
+          [
+            "O",
+            0.1
+          ]
+        ]
+      },
+      "direct_resize": {
+        "top_prediction": "C",
+        "confidence": 77.6,
+        "top_5": [
+          [
+            "C",
+            77.6
+          ],
+          [
+            "R",
+            20.8
+          ],
+          [
+            "L",
+            1.0
+          ],
+          [
+            "G",
+            0.2
+          ],
+          [
+            "S",
+            0.2
+          ]
+        ]
+      },
+      "agrees": true
+    },
+    {
+      "frame_idx": 11,
+      "crop_dimensions": {
+        "w": 525,
+        "h": 433,
+        "aspect_ratio": 0.825
+      },
+      "letterbox": {
+        "top_prediction": "R",
+        "confidence": 71.5,
+        "top_5": [
+          [
+            "R",
+            71.5
+          ],
+          [
+            "C",
+            24.1
+          ],
+          [
+            "G",
+            3.3
+          ],
+          [
+            "L",
+            0.5
+          ],
+          [
+            "O",
+            0.1
+          ]
+        ]
+      },
+      "direct_resize": {
+        "top_prediction": "R",
+        "confidence": 82.0,
+        "top_5": [
+          [
+            "R",
+            82.0
+          ],
+          [
+            "C",
+            17.5
+          ],
+          [
+            "S",
+            0.3
+          ],
+          [
+            "L",
+            0.1
+          ],
+          [
+            "I",
+            0.1
+          ]
+        ]
+      },
+      "agrees": true
+    },
+    {
+      "frame_idx": 21,
+      "crop_dimensions": {
+        "w": 549,
+        "h": 481,
+        "aspect_ratio": 0.876
+      },
+      "letterbox": {
+        "top_prediction": "C",
+        "confidence": 57.5,
+        "top_5": [
+          [
+            "C",
+            57.5
+          ],
+          [
+            "R",
+            25.2
+          ],
+          [
+            "L",
+            13.8
+          ],
+          [
+            "G",
+            1.6
+          ],
+          [
+            "O",
+            1.0
+          ]
+        ]
+      },
+      "direct_resize": {
+        "top_prediction": "R",
+        "confidence": 46.1,
+        "top_5": [
+          [
+            "R",
+            46.1
+          ],
+          [
+            "C",
+            28.6
+          ],
+          [
+            "L",
+            22.0
+          ],
+          [
+            "S",
+            1.4
+          ],
+          [
+            "G",
+            0.7
+          ]
+        ]
+      },
+      "agrees": false
+    },
+    {
+      "frame_idx": 31,
+      "crop_dimensions": {
+        "w": 545,
+        "h": 452,
+        "aspect_ratio": 0.829
+      },
+      "letterbox": {
+        "top_prediction": "C",
+        "confidence": 51.9,
+        "top_5": [
+          [
+            "C",
+            51.9
+          ],
+          [
+            "R",
+            29.4
+          ],
+          [
+            "L",
+            13.0
+          ],
+          [
+            "G",
+            4.0
+          ],
+          [
+            "S",
+            0.8
+          ]
+        ]
+      },
+      "direct_resize": {
+        "top_prediction": "C",
+        "confidence": 78.3,
+        "top_5": [
+          [
+            "C",
+            78.3
+          ],
+          [
+            "R",
+            14.1
+          ],
+          [
+            "L",
+            4.3
+          ],
+          [
+            "S",
+            1.2
+          ],
+          [
+            "G",
+            1.2
+          ]
+        ]
+      },
+      "agrees": true
+    },
+    {
+      "frame_idx": 41,
+      "crop_dimensions": {
+        "w": 530,
+        "h": 450,
+        "aspect_ratio": 0.849
+      },
+      "letterbox": {
+        "top_prediction": "C",
+        "confidence": 74.7,
+        "top_5": [
+          [
+            "C",
+            74.7
+          ],
+          [
+            "R",
+            14.2
+          ],
+          [
+            "L",
+            10.2
+          ],
+          [
+            "G",
+            0.5
+          ],
+          [
+            "S",
+            0.1
+          ]
+        ]
+      },
+      "direct_resize": {
+        "top_prediction": "C",
+        "confidence": 54.2,
+        "top_5": [
+          [
+            "C",
+            54.2
+          ],
+          [
+            "R",
+            30.0
+          ],
+          [
+            "L",
+            11.4
+          ],
+          [
+            "S",
+            1.9
+          ],
+          [
+            "G",
+            1.5
+          ]
+        ]
+      },
+      "agrees": true
+    },
+    {
+      "frame_idx": 51,
+      "crop_dimensions": {
+        "w": 536,
+        "h": 440,
+        "aspect_ratio": 0.821
+      },
+      "letterbox": {
+        "top_prediction": "R",
+        "confidence": 47.3,
+        "top_5": [
+          [
+            "R",
+            47.3
+          ],
+          [
+            "C",
+            28.2
+          ],
+          [
+            "L",
+            21.0
+          ],
+          [
+            "G",
+            2.2
+          ],
+          [
+            "S",
+            0.3
+          ]
+        ]
+      },
+      "direct_resize": {
+        "top_prediction": "C",
+        "confidence": 68.2,
+        "top_5": [
+          [
+            "C",
+            68.2
+          ],
+          [
+            "R",
+            21.3
+          ],
+          [
+            "L",
+            7.1
+          ],
+          [
+            "S",
+            1.3
+          ],
+          [
+            "G",
+            1.1
+          ]
+        ]
+      },
+      "agrees": false
+    },
+    {
+      "frame_idx": 61,
+      "crop_dimensions": {
+        "w": 530,
+        "h": 464,
+        "aspect_ratio": 0.875
+      },
+      "letterbox": {
+        "top_prediction": "C",
+        "confidence": 70.1,
+        "top_5": [
+          [
+            "C",
+            70.1
+          ],
+          [
+            "R",
+            16.5
+          ],
+          [
+            "L",
+            12.7
+          ],
+          [
+            "G",
+            0.4
+          ],
+          [
+            "S",
+            0.1
+          ]
+        ]
+      },
+      "direct_resize": {
+        "top_prediction": "C",
+        "confidence": 78.9,
+        "top_5": [
+          [
+            "C",
+            78.9
+          ],
+          [
+            "L",
+            10.6
+          ],
+          [
+            "R",
+            9.1
+          ],
+          [
+            "S",
+            0.6
+          ],
+          [
+            "G",
+            0.5
+          ]
+        ]
+      },
+      "agrees": true
+    },
+    {
+      "frame_idx": 71,
+      "crop_dimensions": {
+        "w": 577,
+        "h": 481,
+        "aspect_ratio": 0.834
+      },
+      "letterbox": {
+        "top_prediction": "C",
+        "confidence": 56.6,
+        "top_5": [
+          [
+            "C",
+            56.6
+          ],
+          [
+            "R",
+            30.0
+          ],
+          [
+            "G",
+            6.7
+          ],
+          [
+            "L",
+            4.4
+          ],
+          [
+            "O",
+            0.7
+          ]
+        ]
+      },
+      "direct_resize": {
+        "top_prediction": "C",
+        "confidence": 64.1,
+        "top_5": [
+          [
+            "C",
+            64.1
+          ],
+          [
+            "R",
+            28.7
+          ],
+          [
+            "L",
+            4.8
+          ],
+          [
+            "S",
+            0.7
+          ],
+          [
+            "G",
+            0.5
+          ]
+        ]
+      },
+      "agrees": true
+    },
+    {
+      "frame_idx": 81,
+      "crop_dimensions": {
+        "w": 535,
+        "h": 436,
+        "aspect_ratio": 0.815
+      },
+      "letterbox": {
+        "top_prediction": "R",
+        "confidence": 43.6,
+        "top_5": [
+          [
+            "R",
+            43.6
+          ],
+          [
+            "L",
+            30.5
+          ],
+          [
+            "C",
+            18.0
+          ],
+          [
+            "G",
+            6.7
+          ],
+          [
+            "S",
+            0.4
+          ]
+        ]
+      },
+      "direct_resize": {
+        "top_prediction": "C",
+        "confidence": 52.2,
+        "top_5": [
+          [
+            "C",
+            52.2
+          ],
+          [
+            "R",
+            32.8
+          ],
+          [
+            "L",
+            8.4
+          ],
+          [
+            "G",
+            2.9
+          ],
+          [
+            "I",
+            1.5
+          ]
+        ]
+      },
+      "agrees": false
+    },
+    {
+      "frame_idx": 91,
+      "crop_dimensions": {
+        "w": 595,
+        "h": 449,
+        "aspect_ratio": 0.755
+      },
+      "letterbox": {
+        "top_prediction": "R",
+        "confidence": 59.9,
+        "top_5": [
+          [
+            "R",
+            59.9
+          ],
+          [
+            "C",
+            27.3
+          ],
+          [
+            "G",
+            8.0
+          ],
+          [
+            "L",
+            2.8
+          ],
+          [
+            "O",
+            0.5
+          ]
+        ]
+      },
+      "direct_resize": {
+        "top_prediction": "R",
+        "confidence": 71.3,
+        "top_5": [
+          [
+            "R",
+            71.3
+          ],
+          [
+            "C",
+            23.6
+          ],
+          [
+            "L",
+            2.1
+          ],
+          [
+            "S",
+            1.5
+          ],
+          [
+            "G",
+            0.6
+          ]
+        ]
+      },
+      "agrees": true
+    }
+  ]
+}

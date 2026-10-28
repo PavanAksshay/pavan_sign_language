@@ -1,0 +1,110 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 32A — Active-Hand Selection and Ordering Robustness",
+    "timestamp": "2026-10-26T03:38:00Z",
+    "overall_integrity_status": "PASS",
+    "evaluator": "Antigravity Engineering Pair"
+  },
+  "governance_and_quarantine": {
+    "signer_05_holdout_quarantine": {
+      "status": "VERIFIED_SEALED_UNTOUCHED",
+      "inspected_for_tuning": false,
+      "recordings_evaluated": 0,
+      "notes": "signer_05 was strictly preserved as a sealed external holdout. No thresholds or rules were tuned against it."
+    },
+    "signer_02_signer_03_benchmark": {
+      "status": "VERIFIED_UNTOUCHED",
+      "used_for_tuning": false,
+      "notes": "Frozen benchmark data from signer_02 and signer_03 were not used for tuning."
+    },
+    "permitted_development_data_used": {
+      "signer_01_train": {
+        "samples": 3077,
+        "source": "phase22_analysis/features_cache/signer_01_train_landmarks.json"
+      },
+      "signer_01_val": {
+        "samples": 1134,
+        "source": "phase22_analysis/features_cache/signer_01_val_landmarks.json"
+      },
+      "signer_04_usable": {
+        "samples": 1621,
+        "source": "phase22_analysis/features_cache/signer_04_usable_landmarks.json"
+      },
+      "total_development_samples": 5832
+    }
+  },
+  "immutable_artifact_hashes": {
+    "model_c_rf": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib",
+      "sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "status": "MATCH"
+    },
+    "model_c_scaler": {
+      "path": "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib",
+      "sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "status": "MATCH"
+    },
+    "hand_landmarker_task": {
+      "path": "App/include50_model/hand_landmarker.task",
+      "sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+      "status": "MATCH"
+    },
+    "phase19_frozen_manifest": {
+      "path": "phase19_frozen_manifest.json",
+      "sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "status": "MATCH"
+    },
+    "phase23_predictions": {
+      "path": "phase23_predictions.csv",
+      "sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "status": "MATCH"
+    },
+    "phase30_evaluation_manifest": {
+      "path": "phase30_evaluation_manifest.json",
+      "sha256": "81e2efee5b3c74d1a5b39146888b34e63915802b02f64cc2c55f2b84ec1bf4de",
+      "status": "MATCH"
+    },
+    "phase30_independent_signer_metrics": {
+      "path": "phase30_independent_signer_metrics.json",
+      "sha256": "b420dc17b1b0d772133c3c6335e9b5f4d9a8242b97c375dcd8fcda19878a6460",
+      "status": "MATCH"
+    }
+  },
+  "model_and_schema_invariants": {
+    "model_c_retrained": false,
+    "scaler_refit": false,
+    "feature_dimension": 280,
+    "class_index_mapping": "A-Z (0-25)",
+    "status": "VERIFIED_PRESERVED"
+  },
+  "production_defaults_verified": {
+    "ISL_BACKEND_DETECTOR": "yolo",
+    "ISL_RECOGNITION_ARCH": "standard",
+    "ISL_TEMPORAL_SMOOTHING": 0,
+    "ISL_SHADOW_MODE": 0,
+    "ISL_MEDIAPIPE_DELEGATE": "cpu",
+    "ISL_MODEL_C_RESOLUTION": "native",
+    "status": "VERIFIED_INTACT"
+  },
+  "code_changes_audited": {
+    "landmark_feature_extractor.py": {
+      "function": "select_active_hands",
+      "description": "Refined lap suppression logic with dual standard and deep lap decoupling rules; single hands never suppressed."
+    },
+    "landmark_geometry_v2.py": {
+      "functions": ["order_two_hands_robust", "extract_landmarks_from_manifest_item_v2", "extract_landmarks_from_mediapipe_result_v2"],
+      "description": "Added order_two_hands_robust with 0.02 crossing deadband and handedness fallback; added return_active_hands parameter."
+    },
+    "landmark_model_c.py": {
+      "functions": ["extract_occlusion_features", "extract_landmarks_model_c"],
+      "description": "Synchronized occlusion feature vector with active hand candidates, preventing 1H/2H desynchronization."
+    }
+  },
+  "test_suite_status": {
+    "total_tests": 257,
+    "passed": 257,
+    "failed": 0,
+    "errors": 0,
+    "status": "PASS"
+  }
+}

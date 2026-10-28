@@ -1,0 +1,728 @@
+{
+  "Model_A_Landmark_RF_v1": {
+    "model_description": "Landmark RF v1 baseline (200 dimensions, RF n_estimators=300)",
+    "feature_dim": 200,
+    "training_time_sec": 11.84,
+    "cpu_latency_ms": {
+      "median_p50": 40.96,
+      "p95": 188.17
+    },
+    "training_metrics": {
+      "top1_accuracy": 1.0,
+      "macro_f1": 1.0,
+      "balanced_accuracy": 1.0
+    },
+    "validation_metrics": {
+      "top1_accuracy": 0.9236,
+      "top3_accuracy": 0.9655,
+      "macro_f1": 0.9113,
+      "balanced_accuracy": 0.923,
+      "focus_classes": {
+        "N": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 30
+        },
+        "X": {
+          "precision": 0.6957,
+          "recall": 1.0,
+          "f1": 0.8205,
+          "support": 32
+        },
+        "D": {
+          "precision": 0.9394,
+          "recall": 1.0,
+          "f1": 0.9688,
+          "support": 31
+        },
+        "E": {
+          "precision": 0.9091,
+          "recall": 0.9375,
+          "f1": 0.9231,
+          "support": 32
+        },
+        "F": {
+          "precision": 0.8649,
+          "recall": 1.0,
+          "f1": 0.9275,
+          "support": 32
+        },
+        "I": {
+          "precision": 0.8667,
+          "recall": 0.8125,
+          "f1": 0.8387,
+          "support": 32
+        },
+        "Q": {
+          "precision": 1.0,
+          "recall": 0.7742,
+          "f1": 0.8727,
+          "support": 31
+        },
+        "R": {
+          "precision": 1.0,
+          "recall": 0.9667,
+          "f1": 0.9831,
+          "support": 30
+        }
+      }
+    },
+    "per_condition_validation": {
+      "condition_1_desk_neutral": {
+        "support": 394,
+        "top1_accuracy": 0.9467,
+        "macro_f1": 0.661,
+        "balanced_accuracy": 0.9444
+      },
+      "condition_2_lateral_warm": {
+        "support": 417,
+        "top1_accuracy": 0.9017,
+        "macro_f1": 0.6539,
+        "balanced_accuracy": 0.9016
+      }
+    },
+    "full_per_class_validation": {
+      "A": {
+        "precision": 0.8205,
+        "recall": 1.0,
+        "f1": 0.9014,
+        "support": 32
+      },
+      "B": {
+        "precision": 0.9706,
+        "recall": 1.0,
+        "f1": 0.9851,
+        "support": 33
+      },
+      "C": {
+        "precision": 1.0,
+        "recall": 0.9394,
+        "f1": 0.9688,
+        "support": 33
+      },
+      "D": {
+        "precision": 0.9394,
+        "recall": 1.0,
+        "f1": 0.9688,
+        "support": 31
+      },
+      "E": {
+        "precision": 0.9091,
+        "recall": 0.9375,
+        "f1": 0.9231,
+        "support": 32
+      },
+      "F": {
+        "precision": 0.8649,
+        "recall": 1.0,
+        "f1": 0.9275,
+        "support": 32
+      },
+      "G": {
+        "precision": 1.0,
+        "recall": 0.9688,
+        "f1": 0.9841,
+        "support": 32
+      },
+      "H": {
+        "precision": 0.2857,
+        "recall": 0.0625,
+        "f1": 0.1026,
+        "support": 32
+      },
+      "I": {
+        "precision": 0.8667,
+        "recall": 0.8125,
+        "f1": 0.8387,
+        "support": 32
+      },
+      "J": {
+        "precision": 0.9143,
+        "recall": 1.0,
+        "f1": 0.9552,
+        "support": 32
+      },
+      "K": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "L": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "M": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "N": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "O": {
+        "precision": 0.9375,
+        "recall": 1.0,
+        "f1": 0.9677,
+        "support": 30
+      },
+      "P": {
+        "precision": 0.9375,
+        "recall": 1.0,
+        "f1": 0.9677,
+        "support": 30
+      },
+      "Q": {
+        "precision": 1.0,
+        "recall": 0.7742,
+        "f1": 0.8727,
+        "support": 31
+      },
+      "R": {
+        "precision": 1.0,
+        "recall": 0.9667,
+        "f1": 0.9831,
+        "support": 30
+      },
+      "S": {
+        "precision": 0.9697,
+        "recall": 1.0,
+        "f1": 0.9846,
+        "support": 32
+      },
+      "T": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "U": {
+        "precision": 0.9583,
+        "recall": 0.7667,
+        "f1": 0.8519,
+        "support": 30
+      },
+      "V": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "W": {
+        "precision": 0.625,
+        "recall": 0.7692,
+        "f1": 0.6897,
+        "support": 26
+      },
+      "X": {
+        "precision": 0.6957,
+        "recall": 1.0,
+        "f1": 0.8205,
+        "support": 32
+      },
+      "Y": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "Z": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 31
+      }
+    }
+  },
+  "Model_B_Regularized_Geometry_RF_v2": {
+    "model_description": "Regularized Geometry RF v2 (264 dimensions, RF n_estimators=300, max_depth=12, min_samples_leaf=3)",
+    "feature_dim": 264,
+    "training_time_sec": 11.52,
+    "cpu_latency_ms": {
+      "median_p50": 27.28,
+      "p95": 51.79
+    },
+    "training_metrics": {
+      "top1_accuracy": 0.9594,
+      "macro_f1": 0.9582,
+      "balanced_accuracy": 0.9544
+    },
+    "validation_metrics": {
+      "top1_accuracy": 0.942,
+      "top3_accuracy": 0.979,
+      "macro_f1": 0.9385,
+      "balanced_accuracy": 0.9408,
+      "focus_classes": {
+        "N": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 30
+        },
+        "X": {
+          "precision": 0.8421,
+          "recall": 1.0,
+          "f1": 0.9143,
+          "support": 32
+        },
+        "D": {
+          "precision": 0.9688,
+          "recall": 1.0,
+          "f1": 0.9841,
+          "support": 31
+        },
+        "E": {
+          "precision": 0.7619,
+          "recall": 1.0,
+          "f1": 0.8649,
+          "support": 32
+        },
+        "F": {
+          "precision": 0.8889,
+          "recall": 1.0,
+          "f1": 0.9412,
+          "support": 32
+        },
+        "I": {
+          "precision": 0.913,
+          "recall": 0.6562,
+          "f1": 0.7636,
+          "support": 32
+        },
+        "Q": {
+          "precision": 1.0,
+          "recall": 0.9355,
+          "f1": 0.9667,
+          "support": 31
+        },
+        "R": {
+          "precision": 1.0,
+          "recall": 0.8333,
+          "f1": 0.9091,
+          "support": 30
+        }
+      }
+    },
+    "per_condition_validation": {
+      "condition_1_desk_neutral": {
+        "support": 394,
+        "top1_accuracy": 0.9492,
+        "macro_f1": 0.6943,
+        "balanced_accuracy": 0.9465
+      },
+      "condition_2_lateral_warm": {
+        "support": 417,
+        "top1_accuracy": 0.9353,
+        "macro_f1": 0.7644,
+        "balanced_accuracy": 0.9351
+      }
+    },
+    "full_per_class_validation": {
+      "A": {
+        "precision": 0.8889,
+        "recall": 1.0,
+        "f1": 0.9412,
+        "support": 32
+      },
+      "B": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 33
+      },
+      "C": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 33
+      },
+      "D": {
+        "precision": 0.9688,
+        "recall": 1.0,
+        "f1": 0.9841,
+        "support": 31
+      },
+      "E": {
+        "precision": 0.7619,
+        "recall": 1.0,
+        "f1": 0.8649,
+        "support": 32
+      },
+      "F": {
+        "precision": 0.8889,
+        "recall": 1.0,
+        "f1": 0.9412,
+        "support": 32
+      },
+      "G": {
+        "precision": 0.9394,
+        "recall": 0.9688,
+        "f1": 0.9538,
+        "support": 32
+      },
+      "H": {
+        "precision": 0.7391,
+        "recall": 0.5312,
+        "f1": 0.6182,
+        "support": 32
+      },
+      "I": {
+        "precision": 0.913,
+        "recall": 0.6562,
+        "f1": 0.7636,
+        "support": 32
+      },
+      "J": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "K": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "L": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "M": {
+        "precision": 0.9697,
+        "recall": 1.0,
+        "f1": 0.9846,
+        "support": 32
+      },
+      "N": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "O": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "P": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "Q": {
+        "precision": 1.0,
+        "recall": 0.9355,
+        "f1": 0.9667,
+        "support": 31
+      },
+      "R": {
+        "precision": 1.0,
+        "recall": 0.8333,
+        "f1": 0.9091,
+        "support": 30
+      },
+      "S": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "T": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "U": {
+        "precision": 0.92,
+        "recall": 0.7667,
+        "f1": 0.8364,
+        "support": 30
+      },
+      "V": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "W": {
+        "precision": 0.8,
+        "recall": 0.7692,
+        "f1": 0.7843,
+        "support": 26
+      },
+      "X": {
+        "precision": 0.8421,
+        "recall": 1.0,
+        "f1": 0.9143,
+        "support": 32
+      },
+      "Y": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "Z": {
+        "precision": 0.8857,
+        "recall": 1.0,
+        "f1": 0.9394,
+        "support": 31
+      }
+    }
+  },
+  "Model_C_Occlusion_Aware_RF": {
+    "model_description": "Occlusion-Aware RF (280 dimensions, explicit contact & occlusion proxies, max_depth=14, min_samples_leaf=2)",
+    "feature_dim": 280,
+    "training_time_sec": 5.38,
+    "cpu_latency_ms": {
+      "median_p50": 27.15,
+      "p95": 57.63
+    },
+    "training_metrics": {
+      "top1_accuracy": 0.9972,
+      "macro_f1": 0.9972,
+      "balanced_accuracy": 0.9971
+    },
+    "validation_metrics": {
+      "top1_accuracy": 0.9519,
+      "top3_accuracy": 0.979,
+      "macro_f1": 0.9482,
+      "balanced_accuracy": 0.9508,
+      "focus_classes": {
+        "N": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 30
+        },
+        "X": {
+          "precision": 0.8205,
+          "recall": 1.0,
+          "f1": 0.9014,
+          "support": 32
+        },
+        "D": {
+          "precision": 0.9394,
+          "recall": 1.0,
+          "f1": 0.9688,
+          "support": 31
+        },
+        "E": {
+          "precision": 0.9412,
+          "recall": 1.0,
+          "f1": 0.9697,
+          "support": 32
+        },
+        "F": {
+          "precision": 0.8889,
+          "recall": 1.0,
+          "f1": 0.9412,
+          "support": 32
+        },
+        "I": {
+          "precision": 0.9355,
+          "recall": 0.9062,
+          "f1": 0.9206,
+          "support": 32
+        },
+        "Q": {
+          "precision": 1.0,
+          "recall": 0.9677,
+          "f1": 0.9836,
+          "support": 31
+        },
+        "R": {
+          "precision": 1.0,
+          "recall": 0.8667,
+          "f1": 0.9286,
+          "support": 30
+        }
+      }
+    },
+    "per_condition_validation": {
+      "condition_1_desk_neutral": {
+        "support": 394,
+        "top1_accuracy": 0.9569,
+        "macro_f1": 0.7395,
+        "balanced_accuracy": 0.9545
+      },
+      "condition_2_lateral_warm": {
+        "support": 417,
+        "top1_accuracy": 0.9472,
+        "macro_f1": 0.7765,
+        "balanced_accuracy": 0.9471
+      }
+    },
+    "full_per_class_validation": {
+      "A": {
+        "precision": 0.9412,
+        "recall": 1.0,
+        "f1": 0.9697,
+        "support": 32
+      },
+      "B": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 33
+      },
+      "C": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 33
+      },
+      "D": {
+        "precision": 0.9394,
+        "recall": 1.0,
+        "f1": 0.9688,
+        "support": 31
+      },
+      "E": {
+        "precision": 0.9412,
+        "recall": 1.0,
+        "f1": 0.9697,
+        "support": 32
+      },
+      "F": {
+        "precision": 0.8889,
+        "recall": 1.0,
+        "f1": 0.9412,
+        "support": 32
+      },
+      "G": {
+        "precision": 1.0,
+        "recall": 0.9688,
+        "f1": 0.9841,
+        "support": 32
+      },
+      "H": {
+        "precision": 0.6667,
+        "recall": 0.4375,
+        "f1": 0.5283,
+        "support": 32
+      },
+      "I": {
+        "precision": 0.9355,
+        "recall": 0.9062,
+        "f1": 0.9206,
+        "support": 32
+      },
+      "J": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "K": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "L": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "M": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "N": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "O": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "P": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "Q": {
+        "precision": 1.0,
+        "recall": 0.9677,
+        "f1": 0.9836,
+        "support": 31
+      },
+      "R": {
+        "precision": 1.0,
+        "recall": 0.8667,
+        "f1": 0.9286,
+        "support": 30
+      },
+      "S": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "T": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 30
+      },
+      "U": {
+        "precision": 0.9583,
+        "recall": 0.7667,
+        "f1": 0.8519,
+        "support": 30
+      },
+      "V": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 32
+      },
+      "W": {
+        "precision": 0.6774,
+        "recall": 0.8077,
+        "f1": 0.7368,
+        "support": 26
+      },
+      "X": {
+        "precision": 0.8205,
+        "recall": 1.0,
+        "f1": 0.9014,
+        "support": 32
+      },
+      "Y": {
+        "precision": 0.9677,
+        "recall": 1.0,
+        "f1": 0.9836,
+        "support": 30
+      },
+      "Z": {
+        "precision": 0.9688,
+        "recall": 1.0,
+        "f1": 0.9841,
+        "support": 31
+      }
+    }
+  }
+}

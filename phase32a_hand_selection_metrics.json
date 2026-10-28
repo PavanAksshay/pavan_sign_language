@@ -1,0 +1,734 @@
+{
+  "signer_04_usable": {
+    "dataset_name": "signer_04_usable",
+    "signer": "signer_04",
+    "partition": "usable_pool",
+    "total_samples": 1621,
+    "two_handed_signs_count": 1184,
+    "one_handed_signs_count": 437,
+    "accuracy": {
+      "legacy": 1.0,
+      "proposed": 1.0,
+      "delta": 0.0
+    },
+    "active_hand_false_suppression": {
+      "legacy_count": 0,
+      "legacy_rate": 0.0,
+      "proposed_count": 0,
+      "proposed_rate": 0.0
+    },
+    "resting_hand_suppression": {
+      "extra_hands_detected_in_1h_signs": 126,
+      "legacy_suppressed_count": 2,
+      "legacy_suppression_rate": 0.015873015873015872,
+      "proposed_suppressed_count": 2,
+      "proposed_suppression_rate": 0.015873015873015872
+    },
+    "slot_consistency": {
+      "paired_frames_evaluated": 1035,
+      "slot_consistency_rate": 1.0
+    },
+    "feature_extraction_latency_ms": {
+      "legacy": 0.5124346335877576,
+      "proposed": 0.49458523562441153
+    },
+    "per_letter_metrics": {
+      "A": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "B": {
+        "total": 63,
+        "legacy_correct": 63,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 63,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "C": {
+        "total": 63,
+        "legacy_correct": 63,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 63,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "D": {
+        "total": 61,
+        "legacy_correct": 61,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 61,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "E": {
+        "total": 63,
+        "legacy_correct": 63,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 63,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "F": {
+        "total": 63,
+        "legacy_correct": 63,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 63,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "G": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "H": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "I": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "J": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "K": {
+        "total": 64,
+        "legacy_correct": 64,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 64,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "L": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "M": {
+        "total": 63,
+        "legacy_correct": 63,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 63,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "N": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "O": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "P": {
+        "total": 61,
+        "legacy_correct": 61,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 61,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "Q": {
+        "total": 63,
+        "legacy_correct": 63,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 63,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "R": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "S": {
+        "total": 64,
+        "legacy_correct": 64,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 64,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "T": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "U": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "V": {
+        "total": 64,
+        "legacy_correct": 64,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 64,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "W": {
+        "total": 58,
+        "legacy_correct": 58,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 58,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "X": {
+        "total": 64,
+        "legacy_correct": 64,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 64,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "Y": {
+        "total": 62,
+        "legacy_correct": 62,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 62,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "Z": {
+        "total": 63,
+        "legacy_correct": 63,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 63,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      }
+    }
+  },
+  "signer_01_val": {
+    "dataset_name": "signer_01_val",
+    "signer": "signer_01",
+    "partition": "validation",
+    "total_samples": 1134,
+    "two_handed_signs_count": 828,
+    "one_handed_signs_count": 306,
+    "accuracy": {
+      "legacy": 0.689594356261023,
+      "proposed": 0.6869488536155203,
+      "delta": -0.002645502645502673
+    },
+    "active_hand_false_suppression": {
+      "legacy_count": 12,
+      "legacy_rate": 0.014492753623188406,
+      "proposed_count": 12,
+      "proposed_rate": 0.014492753623188406
+    },
+    "resting_hand_suppression": {
+      "extra_hands_detected_in_1h_signs": 80,
+      "legacy_suppressed_count": 0,
+      "legacy_suppression_rate": 0.0,
+      "proposed_suppressed_count": 0,
+      "proposed_suppression_rate": 0.0
+    },
+    "slot_consistency": {
+      "paired_frames_evaluated": 0,
+      "slot_consistency_rate": 1.0
+    },
+    "feature_extraction_latency_ms": {
+      "legacy": 0.43127300177505357,
+      "proposed": 0.3577336860735239
+    },
+    "per_letter_metrics": {
+      "A": {
+        "total": 45,
+        "legacy_correct": 44,
+        "legacy_accuracy": 0.9777777777777777,
+        "proposed_correct": 44,
+        "proposed_accuracy": 0.9777777777777777,
+        "delta": 0.0
+      },
+      "B": {
+        "total": 44,
+        "legacy_correct": 37,
+        "legacy_accuracy": 0.8409090909090909,
+        "proposed_correct": 37,
+        "proposed_accuracy": 0.8409090909090909,
+        "delta": 0.0
+      },
+      "C": {
+        "total": 48,
+        "legacy_correct": 44,
+        "legacy_accuracy": 0.9166666666666666,
+        "proposed_correct": 44,
+        "proposed_accuracy": 0.9166666666666666,
+        "delta": 0.0
+      },
+      "D": {
+        "total": 44,
+        "legacy_correct": 37,
+        "legacy_accuracy": 0.8409090909090909,
+        "proposed_correct": 37,
+        "proposed_accuracy": 0.8409090909090909,
+        "delta": 0.0
+      },
+      "E": {
+        "total": 33,
+        "legacy_correct": 20,
+        "legacy_accuracy": 0.6060606060606061,
+        "proposed_correct": 20,
+        "proposed_accuracy": 0.6060606060606061,
+        "delta": 0.0
+      },
+      "F": {
+        "total": 37,
+        "legacy_correct": 22,
+        "legacy_accuracy": 0.5945945945945946,
+        "proposed_correct": 22,
+        "proposed_accuracy": 0.5945945945945946,
+        "delta": 0.0
+      },
+      "G": {
+        "total": 45,
+        "legacy_correct": 44,
+        "legacy_accuracy": 0.9777777777777777,
+        "proposed_correct": 44,
+        "proposed_accuracy": 0.9777777777777777,
+        "delta": 0.0
+      },
+      "H": {
+        "total": 42,
+        "legacy_correct": 38,
+        "legacy_accuracy": 0.9047619047619048,
+        "proposed_correct": 38,
+        "proposed_accuracy": 0.9047619047619048,
+        "delta": 0.0
+      },
+      "I": {
+        "total": 36,
+        "legacy_correct": 23,
+        "legacy_accuracy": 0.6388888888888888,
+        "proposed_correct": 23,
+        "proposed_accuracy": 0.6388888888888888,
+        "delta": 0.0
+      },
+      "J": {
+        "total": 41,
+        "legacy_correct": 31,
+        "legacy_accuracy": 0.7560975609756098,
+        "proposed_correct": 31,
+        "proposed_accuracy": 0.7560975609756098,
+        "delta": 0.0
+      },
+      "K": {
+        "total": 25,
+        "legacy_correct": 11,
+        "legacy_accuracy": 0.44,
+        "proposed_correct": 11,
+        "proposed_accuracy": 0.44,
+        "delta": 0.0
+      },
+      "L": {
+        "total": 47,
+        "legacy_correct": 35,
+        "legacy_accuracy": 0.7446808510638298,
+        "proposed_correct": 35,
+        "proposed_accuracy": 0.7446808510638298,
+        "delta": 0.0
+      },
+      "M": {
+        "total": 37,
+        "legacy_correct": 21,
+        "legacy_accuracy": 0.5675675675675675,
+        "proposed_correct": 21,
+        "proposed_accuracy": 0.5675675675675675,
+        "delta": 0.0
+      },
+      "N": {
+        "total": 54,
+        "legacy_correct": 17,
+        "legacy_accuracy": 0.3148148148148148,
+        "proposed_correct": 17,
+        "proposed_accuracy": 0.3148148148148148,
+        "delta": 0.0
+      },
+      "O": {
+        "total": 60,
+        "legacy_correct": 37,
+        "legacy_accuracy": 0.6166666666666667,
+        "proposed_correct": 37,
+        "proposed_accuracy": 0.6166666666666667,
+        "delta": 0.0
+      },
+      "P": {
+        "total": 50,
+        "legacy_correct": 37,
+        "legacy_accuracy": 0.74,
+        "proposed_correct": 37,
+        "proposed_accuracy": 0.74,
+        "delta": 0.0
+      },
+      "Q": {
+        "total": 65,
+        "legacy_correct": 33,
+        "legacy_accuracy": 0.5076923076923077,
+        "proposed_correct": 33,
+        "proposed_accuracy": 0.5076923076923077,
+        "delta": 0.0
+      },
+      "R": {
+        "total": 39,
+        "legacy_correct": 37,
+        "legacy_accuracy": 0.9487179487179487,
+        "proposed_correct": 37,
+        "proposed_accuracy": 0.9487179487179487,
+        "delta": 0.0
+      },
+      "S": {
+        "total": 67,
+        "legacy_correct": 47,
+        "legacy_accuracy": 0.7014925373134329,
+        "proposed_correct": 44,
+        "proposed_accuracy": 0.6567164179104478,
+        "delta": -0.04477611940298507
+      },
+      "T": {
+        "total": 49,
+        "legacy_correct": 39,
+        "legacy_accuracy": 0.7959183673469388,
+        "proposed_correct": 39,
+        "proposed_accuracy": 0.7959183673469388,
+        "delta": 0.0
+      },
+      "U": {
+        "total": 38,
+        "legacy_correct": 28,
+        "legacy_accuracy": 0.7368421052631579,
+        "proposed_correct": 28,
+        "proposed_accuracy": 0.7368421052631579,
+        "delta": 0.0
+      },
+      "V": {
+        "total": 36,
+        "legacy_correct": 21,
+        "legacy_accuracy": 0.5833333333333334,
+        "proposed_correct": 21,
+        "proposed_accuracy": 0.5833333333333334,
+        "delta": 0.0
+      },
+      "W": {
+        "total": 43,
+        "legacy_correct": 19,
+        "legacy_accuracy": 0.4418604651162791,
+        "proposed_correct": 19,
+        "proposed_accuracy": 0.4418604651162791,
+        "delta": 0.0
+      },
+      "X": {
+        "total": 23,
+        "legacy_correct": 5,
+        "legacy_accuracy": 0.21739130434782608,
+        "proposed_correct": 5,
+        "proposed_accuracy": 0.21739130434782608,
+        "delta": 0.0
+      },
+      "Y": {
+        "total": 37,
+        "legacy_correct": 22,
+        "legacy_accuracy": 0.5945945945945946,
+        "proposed_correct": 22,
+        "proposed_accuracy": 0.5945945945945946,
+        "delta": 0.0
+      },
+      "Z": {
+        "total": 49,
+        "legacy_correct": 33,
+        "legacy_accuracy": 0.673469387755102,
+        "proposed_correct": 33,
+        "proposed_accuracy": 0.673469387755102,
+        "delta": 0.0
+      }
+    }
+  },
+  "signer_01_train": {
+    "dataset_name": "signer_01_train",
+    "signer": "signer_01",
+    "partition": "train",
+    "total_samples": 3077,
+    "two_handed_signs_count": 2214,
+    "one_handed_signs_count": 863,
+    "accuracy": {
+      "legacy": 0.988950276243094,
+      "proposed": 0.9886252843678908,
+      "delta": -0.0003249918752031844
+    },
+    "active_hand_false_suppression": {
+      "legacy_count": 13,
+      "legacy_rate": 0.005871725383920506,
+      "proposed_count": 13,
+      "proposed_rate": 0.005871725383920506
+    },
+    "resting_hand_suppression": {
+      "extra_hands_detected_in_1h_signs": 221,
+      "legacy_suppressed_count": 2,
+      "legacy_suppression_rate": 0.00904977375565611,
+      "proposed_suppressed_count": 2,
+      "proposed_suppression_rate": 0.00904977375565611
+    },
+    "slot_consistency": {
+      "paired_frames_evaluated": 0,
+      "slot_consistency_rate": 1.0
+    },
+    "feature_extraction_latency_ms": {
+      "legacy": 0.3860170754271405,
+      "proposed": 0.3397198976433709
+    },
+    "per_letter_metrics": {
+      "A": {
+        "total": 164,
+        "legacy_correct": 164,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 164,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "B": {
+        "total": 155,
+        "legacy_correct": 154,
+        "legacy_accuracy": 0.9935483870967742,
+        "proposed_correct": 154,
+        "proposed_accuracy": 0.9935483870967742,
+        "delta": 0.0
+      },
+      "C": {
+        "total": 159,
+        "legacy_correct": 159,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 159,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "D": {
+        "total": 149,
+        "legacy_correct": 147,
+        "legacy_accuracy": 0.9865771812080537,
+        "proposed_correct": 147,
+        "proposed_accuracy": 0.9865771812080537,
+        "delta": 0.0
+      },
+      "E": {
+        "total": 176,
+        "legacy_correct": 174,
+        "legacy_accuracy": 0.9886363636363636,
+        "proposed_correct": 174,
+        "proposed_accuracy": 0.9886363636363636,
+        "delta": 0.0
+      },
+      "F": {
+        "total": 144,
+        "legacy_correct": 144,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 144,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "G": {
+        "total": 153,
+        "legacy_correct": 152,
+        "legacy_accuracy": 0.9934640522875817,
+        "proposed_correct": 152,
+        "proposed_accuracy": 0.9934640522875817,
+        "delta": 0.0
+      },
+      "H": {
+        "total": 140,
+        "legacy_correct": 140,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 140,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "I": {
+        "total": 141,
+        "legacy_correct": 141,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 140,
+        "proposed_accuracy": 0.9929078014184397,
+        "delta": -0.0070921985815602835
+      },
+      "J": {
+        "total": 158,
+        "legacy_correct": 155,
+        "legacy_accuracy": 0.9810126582278481,
+        "proposed_correct": 155,
+        "proposed_accuracy": 0.9810126582278481,
+        "delta": 0.0
+      },
+      "K": {
+        "total": 139,
+        "legacy_correct": 138,
+        "legacy_accuracy": 0.9928057553956835,
+        "proposed_correct": 138,
+        "proposed_accuracy": 0.9928057553956835,
+        "delta": 0.0
+      },
+      "L": {
+        "total": 110,
+        "legacy_correct": 109,
+        "legacy_accuracy": 0.990909090909091,
+        "proposed_correct": 109,
+        "proposed_accuracy": 0.990909090909091,
+        "delta": 0.0
+      },
+      "M": {
+        "total": 100,
+        "legacy_correct": 99,
+        "legacy_accuracy": 0.99,
+        "proposed_correct": 99,
+        "proposed_accuracy": 0.99,
+        "delta": 0.0
+      },
+      "N": {
+        "total": 52,
+        "legacy_correct": 50,
+        "legacy_accuracy": 0.9615384615384616,
+        "proposed_correct": 50,
+        "proposed_accuracy": 0.9615384615384616,
+        "delta": 0.0
+      },
+      "O": {
+        "total": 79,
+        "legacy_correct": 78,
+        "legacy_accuracy": 0.9873417721518988,
+        "proposed_correct": 78,
+        "proposed_accuracy": 0.9873417721518988,
+        "delta": 0.0
+      },
+      "P": {
+        "total": 99,
+        "legacy_correct": 97,
+        "legacy_accuracy": 0.9797979797979798,
+        "proposed_correct": 97,
+        "proposed_accuracy": 0.9797979797979798,
+        "delta": 0.0
+      },
+      "Q": {
+        "total": 79,
+        "legacy_correct": 76,
+        "legacy_accuracy": 0.9620253164556962,
+        "proposed_correct": 76,
+        "proposed_accuracy": 0.9620253164556962,
+        "delta": 0.0
+      },
+      "R": {
+        "total": 126,
+        "legacy_correct": 124,
+        "legacy_accuracy": 0.9841269841269841,
+        "proposed_correct": 124,
+        "proposed_accuracy": 0.9841269841269841,
+        "delta": 0.0
+      },
+      "S": {
+        "total": 70,
+        "legacy_correct": 68,
+        "legacy_accuracy": 0.9714285714285714,
+        "proposed_correct": 68,
+        "proposed_accuracy": 0.9714285714285714,
+        "delta": 0.0
+      },
+      "T": {
+        "total": 139,
+        "legacy_correct": 138,
+        "legacy_accuracy": 0.9928057553956835,
+        "proposed_correct": 138,
+        "proposed_accuracy": 0.9928057553956835,
+        "delta": 0.0
+      },
+      "U": {
+        "total": 131,
+        "legacy_correct": 129,
+        "legacy_accuracy": 0.9847328244274809,
+        "proposed_correct": 129,
+        "proposed_accuracy": 0.9847328244274809,
+        "delta": 0.0
+      },
+      "V": {
+        "total": 85,
+        "legacy_correct": 81,
+        "legacy_accuracy": 0.9529411764705882,
+        "proposed_correct": 81,
+        "proposed_accuracy": 0.9529411764705882,
+        "delta": 0.0
+      },
+      "W": {
+        "total": 61,
+        "legacy_correct": 61,
+        "legacy_accuracy": 1.0,
+        "proposed_correct": 61,
+        "proposed_accuracy": 1.0,
+        "delta": 0.0
+      },
+      "X": {
+        "total": 67,
+        "legacy_correct": 66,
+        "legacy_accuracy": 0.9850746268656716,
+        "proposed_correct": 66,
+        "proposed_accuracy": 0.9850746268656716,
+        "delta": 0.0
+      },
+      "Y": {
+        "total": 114,
+        "legacy_correct": 113,
+        "legacy_accuracy": 0.9912280701754386,
+        "proposed_correct": 113,
+        "proposed_accuracy": 0.9912280701754386,
+        "delta": 0.0
+      },
+      "Z": {
+        "total": 87,
+        "legacy_correct": 86,
+        "legacy_accuracy": 0.9885057471264368,
+        "proposed_correct": 86,
+        "proposed_accuracy": 0.9885057471264368,
+        "delta": 0.0
+      }
+    }
+  }
+}

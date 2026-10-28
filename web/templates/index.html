@@ -481,90 +481,6 @@
             transition: width 0.15s ease;
         }
 
-        /* Pipeline Visualizer (Stages - strictly inside Video-To-Text) */
-        .pipeline-section {
-            margin-top: 20px;
-        }
-
-        .section-heading {
-            font-size: 1.45rem;
-            font-weight: 800;
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-
-        .stages-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
-
-        @media (max-width: 900px) {
-            .stages-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .stage-box {
-            background: #ffffff;
-            border: 1.5px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 10px;
-            text-align: center;
-        }
-
-        .stage-num {
-            font-size: 0.9rem;
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 4px;
-            font-weight: 700;
-        }
-
-        .stage-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #000000;
-            margin-bottom: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .stage-img-wrapper {
-            width: 100%;
-            aspect-ratio: 1;
-            background: #000000;
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            border: 1.5px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .stage-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background: #000000;
-            display: block;
-        }
-
-        .stage-empty {
-            font-size: 0.78rem;
-            color: var(--text-dim);
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 600;
-        }
 
         /* Sidebar: Hero & Stats */
         .prediction-hero {
@@ -910,44 +826,6 @@
             text-transform: uppercase;
         }
 
-        /* Telemetry Metrics */
-        .metrics-card {
-            margin-top: 18px;
-            background: #ffffff;
-            border: 1.5px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 16px;
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .metric-chip {
-            background: #fcfcfc;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            padding: 10px;
-        }
-
-        .metric-chip .label {
-            font-size: 0.88rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-        }
-
-        .metric-chip .value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.15rem;
-            color: #000000;
-            font-weight: 800;
-            margin-top: 4px;
-        }
 
         /* Speech-To-Text View */
         .stt-container {
@@ -1114,6 +992,9 @@
                 </div>
             </div>
             <div class="header-badges">
+                <a href="/collect" style="text-decoration: none; padding: 6px 14px; background: #000; color: #fff; border-radius: 4px; font-size: 0.82rem; font-weight: 700; display: flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace;">
+                    <span>📹</span> DATA COLLECTION (PHASE 18)
+                </a>
                 <div class="badge-live">
                     <span class="badge-dot"></span>
                     <span>{{ total_classes }} CLASSES // ONLINE</span>
@@ -1217,56 +1098,9 @@
                             <button class="btn btn-primary" id="btn-toggle-cam" onclick="toggleCamera()" title="Turns camera on/off and automatically starts real-time sign recognition">
                                 <span>Start Camera</span>
                             </button>
-                            <button class="btn btn-secondary" id="btn-snap" onclick="handleCaptureAction()" disabled title="Take a single snapshot to analyze one static frame">
-                                <span id="btn-snap-text">Capture Single Frame</span>
-                            </button>
-                            <button class="btn btn-secondary" id="btn-live-stream" onclick="toggleContinuousStream()" disabled title="Pause or resume continuous real-time recognition">
-                                <span id="stream-btn-text">Continuous Stream: OFF</span>
-                            </button>
-                            <button class="btn btn-secondary" id="btn-full-flow" onclick="runFullPipelineSimulation()" disabled title="Educational demo: visualizes the 5 computer vision stages step-by-step">
-                                <span>Run 5-Stage Demo</span>
-                            </button>
                             <button class="btn btn-secondary" id="btn-reset-seq" onclick="resetWordSequence()" style="display: none;" title="Reset word gesture buffer">
                                 <span>Reset Buffer</span>
                             </button>
-                        </div>
-                    </div>
-
-                    <!-- Pipeline Visualizer (Only in Video-To-Text Tab) -->
-                    <div class="pipeline-section white-card">
-                        <div class="section-heading">
-                            <span id="pipeline-heading-text">Pipeline Stages (4 Stages)</span>
-                            <span id="pipeline-status-text" style="font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">Awaiting Input</span>
-                        </div>
-                        <div class="stages-grid">
-                            <div class="stage-box">
-                                <div class="stage-num" id="stage-num-1">Stage 1</div>
-                                <div class="stage-title" id="stage-title-1">Raw Frame</div>
-                                <div class="stage-img-wrapper" id="stage-img-raw">
-                                    <span class="stage-empty">No Frame</span>
-                                </div>
-                            </div>
-                            <div class="stage-box">
-                                <div class="stage-num" id="stage-num-2">Stage 2</div>
-                                <div class="stage-title" id="stage-title-2">YOLOv3 Box</div>
-                                <div class="stage-img-wrapper" id="stage-img-yolo">
-                                    <span class="stage-empty">No Box</span>
-                                </div>
-                            </div>
-                            <div class="stage-box">
-                                <div class="stage-num" id="stage-num-3">Stage 3</div>
-                                <div class="stage-title" id="stage-title-3">224x224 Crop</div>
-                                <div class="stage-img-wrapper" id="stage-img-crop">
-                                    <span class="stage-empty">No Crop</span>
-                                </div>
-                            </div>
-                            <div class="stage-box">
-                                <div class="stage-num" id="stage-num-4">Stage 4</div>
-                                <div class="stage-title" id="stage-title-4">Skin Mask</div>
-                                <div class="stage-img-wrapper" id="stage-img-skin">
-                                    <span class="stage-empty">No Mask</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -1424,30 +1258,6 @@
                         </div>
                     </div>
 
-                    <!-- Latency Telemetry -->
-                    <div class="metrics-card">
-                        <div style="font-size: 1.15rem; color: #000000; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; font-weight: 800;">
-                            Latency Breakdown
-                        </div>
-                        <div class="metrics-grid">
-                            <div class="metric-chip">
-                                <div class="label" id="latency-label-1">YOLO Hand</div>
-                                <div class="value" id="latency-yolo">- ms</div>
-                            </div>
-                            <div class="metric-chip">
-                                <div class="label" id="latency-label-2">Skin Filter</div>
-                                <div class="value" id="latency-skin">- ms</div>
-                            </div>
-                            <div class="metric-chip">
-                                <div class="label" id="latency-label-3">SqueezeNet</div>
-                                <div class="value" id="latency-nn">- ms</div>
-                            </div>
-                            <div class="metric-chip">
-                                <div class="label" id="latency-label-4">Total Roundtrip</div>
-                                <div class="value" id="latency-total">- ms</div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Quick Guide & Shortcut Card in Sidebar -->
                     <div style="margin-top: 20px; padding: 18px; background: #fafafa; border: 1.5px solid var(--border-color); border-radius: var(--radius-sm);">
@@ -1506,8 +1316,6 @@
             const manualHeading = document.getElementById('manual-heading-text');
             const manualCount = document.getElementById('manual-count-badge');
             const heroLabel = document.getElementById('hero-output-label');
-            const snapBtnText = document.getElementById('btn-snap-text');
-            const fullFlowBtn = document.getElementById('btn-full-flow');
             const resetSeqBtn = document.getElementById('btn-reset-seq');
             const gestureArea = document.getElementById('gesture-text-output');
             const tipsText = document.getElementById('gesture-tips-text');
@@ -1520,8 +1328,6 @@
                 manualHeading.innerText = 'Sign Reference Manual';
                 manualCount.innerText = '26 Classes (A - Z)';
                 heroLabel.innerText = 'Recognized Sign';
-                snapBtnText.innerText = 'Capture Frame';
-                fullFlowBtn.style.display = 'inline-flex';
                 resetSeqBtn.style.display = 'none';
                 gestureArea.placeholder = 'Predicted letters will accumulate here in real time as hand gestures are recognized...';
                 tipsText.innerText = 'Space: Show Both Hands 👐, pause hand for 2.5s, or press [SPACE ␣]';
@@ -1532,20 +1338,6 @@
                     filterManualSigns(searchBox.value);
                 }
 
-                document.getElementById('pipeline-heading-text').innerText = 'Pipeline Stages (4 Stages)';
-                document.getElementById('stage-num-1').innerText = 'Stage 1';
-                document.getElementById('stage-title-1').innerText = 'Raw Frame';
-                document.getElementById('stage-num-2').innerText = 'Stage 2';
-                document.getElementById('stage-title-2').innerText = 'YOLOv3 Box';
-                document.getElementById('stage-num-3').innerText = 'Stage 3';
-                document.getElementById('stage-title-3').innerText = '224x224 Crop';
-                document.getElementById('stage-num-4').innerText = 'Stage 4';
-                document.getElementById('stage-title-4').innerText = 'Skin Mask';
-
-                document.getElementById('latency-label-1').innerText = 'YOLO Hand';
-                document.getElementById('latency-label-2').innerText = 'Skin Filter';
-                document.getElementById('latency-label-3').innerText = 'SqueezeNet';
-                document.getElementById('latency-label-4').innerText = 'Total Roundtrip';
                 showToast("Mode switched to Letters (A - Z Fingerspelling)");
             } else {
                 btnWords.classList.add('active');
@@ -1556,8 +1348,6 @@
                 const totalWordsCount = document.querySelectorAll('.manual-word-row').length || 206;
                 manualCount.innerText = `${totalWordsCount} Signs Catalog`;
                 heroLabel.innerText = 'Recognized Word';
-                snapBtnText.innerText = 'Capture Word (2s Clip)';
-                fullFlowBtn.style.display = 'none';
                 resetSeqBtn.style.display = 'inline-flex';
                 gestureArea.placeholder = 'Predicted words will accumulate here in real time as hand gestures are recognized...';
                 tipsText.innerText = 'Hold sign steady for dynamic prediction, or click Capture Word (2s Clip)';
@@ -1568,20 +1358,6 @@
                     filterManualSigns(searchBox.value);
                 }
 
-                document.getElementById('pipeline-heading-text').innerText = 'INCLUDE-50 Temporal Stages';
-                document.getElementById('stage-num-1').innerText = 'Stage 1';
-                document.getElementById('stage-title-1').innerText = 'Raw Frame';
-                document.getElementById('stage-num-2').innerText = 'Stage 2';
-                document.getElementById('stage-title-2').innerText = 'MediaPipe Hands';
-                document.getElementById('stage-num-3').innerText = 'Stage 3';
-                document.getElementById('stage-title-3').innerText = 'MediaPipe Pose';
-                document.getElementById('stage-num-4').innerText = 'Stage 4';
-                document.getElementById('stage-title-4').innerText = 'BiLSTM Sequence';
-
-                document.getElementById('latency-label-1').innerText = 'MediaPipe Hand';
-                document.getElementById('latency-label-2').innerText = 'MediaPipe Pose';
-                document.getElementById('latency-label-3').innerText = 'LSTM Sequence';
-                document.getElementById('latency-label-4').innerText = 'Total Latency';
                 showToast(`Mode switched to Words (${totalWordsCount} ISL Signs Catalog)`);
             }
         }
@@ -1659,12 +1435,10 @@
                 btn.classList.remove('btn-danger');
                 btn.classList.add('btn-primary');
                 streamStatus.innerText = 'Camera Off';
-                document.getElementById('btn-snap').disabled = true;
-                document.getElementById('btn-live-stream').disabled = true;
-                document.getElementById('btn-full-flow').disabled = true;
-                document.getElementById('btn-reset-seq').disabled = true;
-                document.getElementById('gesture-stream-status').innerText = '';
-                document.getElementById('stream-btn-text').innerText = "Continuous Stream: OFF";
+                const resetSeq = document.getElementById('btn-reset-seq');
+                if (resetSeq) resetSeq.disabled = true;
+                const gestureStatus = document.getElementById('gesture-stream-status');
+                if (gestureStatus) gestureStatus.innerText = '';
             } else {
                 // Start camera
                 try {
@@ -1679,11 +1453,10 @@
                     btn.classList.remove('btn-primary');
                     btn.classList.add('btn-danger');
                     streamStatus.innerText = 'Camera Active';
-                    document.getElementById('btn-snap').disabled = false;
-                    document.getElementById('btn-live-stream').disabled = false;
-                    document.getElementById('btn-full-flow').disabled = false;
-                    document.getElementById('btn-reset-seq').disabled = false;
-                    document.getElementById('gesture-stream-status').innerText = 'Mode: Camera Active';
+                    const resetSeq = document.getElementById('btn-reset-seq');
+                    if (resetSeq) resetSeq.disabled = false;
+                    const gestureStatus = document.getElementById('gesture-stream-status');
+                    if (gestureStatus) gestureStatus.innerText = 'Mode: Camera Active';
 
                     // Automatically start real-time recognition streaming!
                     if (!isStreaming) {
@@ -1716,6 +1489,11 @@
             }
         }
 
+        function setPipelineStatus(text) {
+            const el = document.getElementById('pipeline-status-text');
+            if (el) el.innerText = text;
+        }
+
         // Single snapshot & letter translate
         async function captureAndTranslate() {
             if (!stream) {
@@ -1728,7 +1506,7 @@
                 return;
             }
 
-            document.getElementById('pipeline-status-text').innerText = "Processing frame...";
+            setPipelineStatus("Processing frame...");
             try {
                 const res = await fetch('/api/predict-image', {
                     method: 'POST',
@@ -1738,46 +1516,39 @@
                 if (!res.ok) {
                     const errData = await res.json().catch(() => ({}));
                     showToast("Server error: " + (errData.error || res.statusText));
-                    document.getElementById('pipeline-status-text').innerText = "Capture error";
+                    setPipelineStatus("Capture error");
                     return;
                 }
                 const data = await res.json();
                 renderPredictionResults(data);
                 if (data.hand_detected && data.predicted_sign && data.predicted_sign !== "-") {
                     appendGestureLetter(data.predicted_sign, true);
-                    document.getElementById('pipeline-status-text').innerText = `Recognized: Letter ${data.predicted_sign} (${data.confidence}%)`;
+                    setPipelineStatus(`Recognized: Letter ${data.predicted_sign} (${data.confidence}%)`);
                 } else {
                     showToast("No hand detected in frame. Hold hand clearly in camera view.");
-                    document.getElementById('pipeline-status-text').innerText = "No hand detected";
+                    setPipelineStatus("No hand detected");
                 }
             } catch (err) {
                 showToast("Prediction error: " + err.message);
-                document.getElementById('pipeline-status-text').innerText = "Prediction error";
+                setPipelineStatus("Prediction error");
             }
         }
 
         // Record a 1.8-second word clip and run AI4Bharat LSTM
         async function captureWordGestureClip() {
             if (!stream) return;
-            const btn = document.getElementById('btn-snap');
-            const snapText = document.getElementById('btn-snap-text');
-            const origText = snapText.innerText;
-            btn.disabled = true;
-
             const frames = [];
             const captureDuration = 1800; // 1.8 seconds
             const intervalTime = 80;
             const startTime = Date.now();
 
             showToast("Perform ISL word gesture now (1.8s)...");
-            document.getElementById('pipeline-status-text').innerText = "Recording gesture clip...";
+            setPipelineStatus("Recording gesture clip...");
 
             const collectInterval = setInterval(() => {
                 const b64 = captureCurrentFrameBase64();
                 if (b64) frames.push(b64);
                 const elapsed = Date.now() - startTime;
-                const remaining = Math.max(0, Math.ceil((captureDuration - elapsed) / 1000 * 10) / 10);
-                snapText.innerText = `Recording (${remaining}s)...`;
 
                 if (elapsed >= captureDuration) {
                     clearInterval(collectInterval);
@@ -1786,8 +1557,7 @@
             }, intervalTime);
 
             async function finishClipPrediction() {
-                snapText.innerText = `Analyzing ${frames.length} frames...`;
-                document.getElementById('pipeline-status-text').innerText = "Running AI4Bharat BiLSTM...";
+                setPipelineStatus("Running AI4Bharat BiLSTM...");
                 try {
                     const res = await fetch('/api/predict-word-clip', {
                         method: 'POST',
@@ -1805,42 +1575,30 @@
                 } catch (err) {
                     showToast("Clip prediction error: " + err.message);
                 } finally {
-                    snapText.innerText = origText;
-                    btn.disabled = false;
-                    document.getElementById('pipeline-status-text').innerText = "Awaiting Input";
+                    setPipelineStatus("Awaiting Input");
                 }
             }
         }
 
         // Continuous streaming
         function toggleContinuousStream() {
-            const btn = document.getElementById('btn-live-stream');
-            const text = document.getElementById('stream-btn-text');
             const pill = document.getElementById('live-prediction-pill');
             const gestureStatus = document.getElementById('gesture-stream-status');
 
             if (isStreaming) {
                 clearInterval(streamInterval);
                 isStreaming = false;
-                text.innerText = "Continuous Stream: OFF";
-                btn.classList.remove('btn-danger');
-                btn.classList.add('btn-secondary');
-                pill.style.display = 'none';
-                gestureStatus.innerText = "Mode: Single Capture";
-                showToast("Continuous stream paused");
+                if (pill) pill.style.display = 'none';
+                if (gestureStatus) gestureStatus.innerText = "";
             } else {
                 if (!stream) {
                     showToast("Please click 'Start Camera' first");
                     return;
                 }
                 isStreaming = true;
-                text.innerText = "Continuous Stream: ON 🟢";
-                btn.classList.remove('btn-secondary');
-                btn.classList.add('btn-danger');
-                pill.style.display = 'flex';
-                gestureStatus.innerText = "Mode: Streaming in Real Time";
+                if (pill) pill.style.display = 'flex';
+                if (gestureStatus) gestureStatus.innerText = "Mode: Streaming in Real Time";
                 streamInterval = setInterval(streamTick, 350);
-                showToast("Continuous real-time recognition active");
             }
         }
 
@@ -1914,7 +1672,10 @@
                     const data = await res.json();
 
                     if (data.annotated_image) {
-                        document.getElementById('stage-img-yolo').innerHTML = `<img src="${data.annotated_image}" alt="MediaPipe Overlay">`;
+                        const yoloStage = document.getElementById('stage-img-yolo');
+                        if (yoloStage) {
+                            yoloStage.innerHTML = `<img src="${data.annotated_image}" alt="MediaPipe Overlay">`;
+                        }
                     }
 
                     if (data.gesture_completed && data.prediction) {
@@ -1977,11 +1738,6 @@
                         wordHoldCount = 0;
                     }
 
-                    // Word mode latency breakdown
-                    document.getElementById('latency-yolo').innerText = '16 ms';
-                    document.getElementById('latency-skin').innerText = '10 ms';
-                    document.getElementById('latency-nn').innerText = '11 ms';
-                    document.getElementById('latency-total').innerText = '37 ms';
                 }
             } catch (err) {
                 // Ignore transient frame errors during fast stream
@@ -2109,6 +1865,7 @@
             const activationText = document.getElementById('activation-status-text');
             const activationCount = document.getElementById('activation-count-text');
             const barFill = document.getElementById('activation-bar-fill');
+            if (!activationCard || !activationText || !barFill) return;
 
             activationCard.style.display = 'block';
             activationText.innerText = "Stage 0: Detecting face to trigger gesture recording...";
@@ -2138,7 +1895,7 @@
 
                     if (faceCount >= requiredFrames) {
                         clearInterval(faceInterval);
-                        activationText.innerText = "Face confirmed! Performing 4-stage pipeline analysis...";
+                        activationText.innerText = "Face confirmed! Performing pipeline analysis...";
                         setTimeout(async () => {
                             await captureAndTranslate();
                             activationCard.style.display = 'none';
@@ -2456,17 +2213,21 @@
         }
 
         function renderStageImages(images) {
-            if (images.original) {
-                document.getElementById('stage-img-raw').innerHTML = `<img src="data:image/jpeg;base64,${images.original}" alt="Raw">`;
+            const raw = document.getElementById('stage-img-raw');
+            const yolo = document.getElementById('stage-img-yolo');
+            const crop = document.getElementById('stage-img-crop');
+            const skin = document.getElementById('stage-img-skin');
+            if (images.original && raw) {
+                raw.innerHTML = `<img src="data:image/jpeg;base64,${images.original}" alt="Raw">`;
             }
-            if (images.annotated) {
-                document.getElementById('stage-img-yolo').innerHTML = `<img src="data:image/jpeg;base64,${images.annotated}" alt="YOLO">`;
+            if (images.annotated && yolo) {
+                yolo.innerHTML = `<img src="data:image/jpeg;base64,${images.annotated}" alt="YOLO">`;
             }
-            if (images.cropped) {
-                document.getElementById('stage-img-crop').innerHTML = `<img src="data:image/jpeg;base64,${images.cropped}" alt="Cropped">`;
+            if (images.cropped && crop) {
+                crop.innerHTML = `<img src="data:image/jpeg;base64,${images.cropped}" alt="Cropped">`;
             }
-            if (images.segmented) {
-                document.getElementById('stage-img-skin').innerHTML = `<img src="data:image/jpeg;base64,${images.segmented}" alt="Segmented">`;
+            if (images.segmented && skin) {
+                skin.innerHTML = `<img src="data:image/jpeg;base64,${images.segmented}" alt="Segmented">`;
             }
         }
 
@@ -2522,11 +2283,7 @@
         }
 
         function renderLatencies(timings) {
-            if (!timings) return;
-            document.getElementById('latency-yolo').innerText = (timings.yolo || 0) + ' ms';
-            document.getElementById('latency-skin').innerText = (timings.skin_segmentation || 0) + ' ms';
-            document.getElementById('latency-nn').innerText = (timings.squeezenet || 0) + ' ms';
-            document.getElementById('latency-total').innerText = (timings.total || 0) + ' ms';
+            // Latency breakdown card removed from UI
         }
 
         function speakCurrentSign() {

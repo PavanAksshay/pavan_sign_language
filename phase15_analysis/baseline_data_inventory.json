@@ -1,0 +1,493 @@
+{
+  "audit_timestamp": "2026-10-15T19:05:00Z",
+  "phase": "Phase 15",
+  "summary": {
+    "total_static_crops": 5312,
+    "total_video_recordings": 5,
+    "total_video_frames": 662,
+    "unique_signers": [
+      "historical_signer_01",
+      "webcam_signer_01"
+    ],
+    "total_unique_signers": 2,
+    "unique_sessions_static": [
+      "session_20200514_16h",
+      "session_20200515_00h",
+      "session_20200515_03h",
+      "session_20200515_04h",
+      "session_20200515_05h",
+      "session_20200516_12h"
+    ],
+    "total_unique_sessions_static": 6,
+    "exact_duplicate_samples_in_manifests": 1
+  },
+  "target_framework_plan": {
+    "target_signers": 3,
+    "target_conditions_per_signer": 2,
+    "target_classes": 26,
+    "target_frames_per_class": 30,
+    "target_total_frames": 4680,
+    "actual_collected_multi_signer_frames": 0,
+    "collection_status": "workflow_established_pending_physical_collection"
+  },
+  "split_assignments": {
+    "train": {
+      "sample_count": 3077,
+      "signer_id": "historical_signer_01",
+      "sessions": [
+        "session_20200515_00h",
+        "session_20200515_03h",
+        "session_20200515_04h",
+        "session_20200515_05h",
+        "session_20200516_12h"
+      ]
+    },
+    "val": {
+      "sample_count": 1134,
+      "signer_id": "historical_signer_01",
+      "sessions": [
+        "session_20200515_00h",
+        "session_20200515_03h",
+        "session_20200515_04h",
+        "session_20200516_12h"
+      ]
+    },
+    "test_al_independent": {
+      "sample_count": 381,
+      "signer_id": "historical_signer_01",
+      "sessions": [
+        "session_20200514_16h"
+      ],
+      "note": "Independent held-out session recorded on May 14, 2020. Valid held-out session for A-L."
+    },
+    "test_mz_provisional": {
+      "sample_count": 720,
+      "signer_id": "historical_signer_01",
+      "sessions": [
+        "session_20200516_12h"
+      ],
+      "note": "PROVISIONAL. Drawn from session_20200516_12h, which is shared with train and val partitions."
+    }
+  },
+  "webcam_video_recordings": [
+    {
+      "file": "recording_A_20261014_165529.mp4",
+      "letter": "A",
+      "condition": "webcam_standard",
+      "frame_count": 143,
+      "fps": 30.0,
+      "resolution": "1280x720",
+      "signer_id": "webcam_signer_01"
+    },
+    {
+      "file": "recording_C_20261014_164912.mp4",
+      "letter": "C",
+      "condition": "webcam_frontal",
+      "frame_count": 146,
+      "fps": 30.0,
+      "resolution": "1280x720",
+      "signer_id": "webcam_signer_01"
+    },
+    {
+      "file": "recording_C_20261014_165234.mp4",
+      "letter": "C",
+      "condition": "webcam_second",
+      "frame_count": 143,
+      "fps": 30.0,
+      "resolution": "1280x720",
+      "signer_id": "webcam_signer_01"
+    },
+    {
+      "file": "recording_C_lateral_profile_calibrated.mp4",
+      "letter": "C",
+      "condition": "webcam_lateral_dark",
+      "frame_count": 84,
+      "fps": 30.0,
+      "resolution": "1280x720",
+      "signer_id": "webcam_signer_01"
+    },
+    {
+      "file": "recording_L_20261014_165754.mp4",
+      "letter": "L",
+      "condition": "webcam_standard",
+      "frame_count": 146,
+      "fps": 30.0,
+      "resolution": "1280x720",
+      "signer_id": "webcam_signer_01"
+    }
+  ],
+  "per_letter_inventory": {
+    "A": {
+      "letter": "A",
+      "train_samples": 164,
+      "val_samples": 45,
+      "test_al_samples": 23,
+      "test_mz_samples": 0,
+      "total_static_crops": 232,
+      "webcam_video_frames": 143,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "webcam_signer_01 (continuous video)"
+    },
+    "B": {
+      "letter": "B",
+      "train_samples": 155,
+      "val_samples": 44,
+      "test_al_samples": 27,
+      "test_mz_samples": 0,
+      "total_static_crops": 226,
+      "webcam_video_frames": 0,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "C": {
+      "letter": "C",
+      "train_samples": 159,
+      "val_samples": 48,
+      "test_al_samples": 25,
+      "test_mz_samples": 0,
+      "total_static_crops": 232,
+      "webcam_video_frames": 373,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "webcam_signer_01 (continuous video)"
+    },
+    "D": {
+      "letter": "D",
+      "train_samples": 149,
+      "val_samples": 44,
+      "test_al_samples": 22,
+      "test_mz_samples": 0,
+      "total_static_crops": 215,
+      "webcam_video_frames": 0,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "E": {
+      "letter": "E",
+      "train_samples": 176,
+      "val_samples": 33,
+      "test_al_samples": 27,
+      "test_mz_samples": 0,
+      "total_static_crops": 236,
+      "webcam_video_frames": 0,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "F": {
+      "letter": "F",
+      "train_samples": 144,
+      "val_samples": 37,
+      "test_al_samples": 17,
+      "test_mz_samples": 0,
+      "total_static_crops": 198,
+      "webcam_video_frames": 0,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "G": {
+      "letter": "G",
+      "train_samples": 153,
+      "val_samples": 45,
+      "test_al_samples": 23,
+      "test_mz_samples": 0,
+      "total_static_crops": 221,
+      "webcam_video_frames": 0,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "H": {
+      "letter": "H",
+      "train_samples": 140,
+      "val_samples": 42,
+      "test_al_samples": 23,
+      "test_mz_samples": 0,
+      "total_static_crops": 205,
+      "webcam_video_frames": 0,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "I": {
+      "letter": "I",
+      "train_samples": 141,
+      "val_samples": 36,
+      "test_al_samples": 18,
+      "test_mz_samples": 0,
+      "total_static_crops": 195,
+      "webcam_video_frames": 0,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "J": {
+      "letter": "J",
+      "train_samples": 158,
+      "val_samples": 41,
+      "test_al_samples": 22,
+      "test_mz_samples": 0,
+      "total_static_crops": 221,
+      "webcam_video_frames": 0,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "K": {
+      "letter": "K",
+      "train_samples": 139,
+      "val_samples": 25,
+      "test_al_samples": 80,
+      "test_mz_samples": 0,
+      "total_static_crops": 244,
+      "webcam_video_frames": 0,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "L": {
+      "letter": "L",
+      "train_samples": 110,
+      "val_samples": 47,
+      "test_al_samples": 74,
+      "test_mz_samples": 0,
+      "total_static_crops": 231,
+      "webcam_video_frames": 146,
+      "session_evidence": "independent_session_may14",
+      "evidence_status": "validated_independent_session",
+      "signer_evidence": "webcam_signer_01 (continuous video)"
+    },
+    "M": {
+      "letter": "M",
+      "train_samples": 100,
+      "val_samples": 37,
+      "test_al_samples": 0,
+      "test_mz_samples": 38,
+      "total_static_crops": 175,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "N": {
+      "letter": "N",
+      "train_samples": 52,
+      "val_samples": 54,
+      "test_al_samples": 0,
+      "test_mz_samples": 52,
+      "total_static_crops": 158,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "O": {
+      "letter": "O",
+      "train_samples": 79,
+      "val_samples": 60,
+      "test_al_samples": 0,
+      "test_mz_samples": 43,
+      "total_static_crops": 182,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "P": {
+      "letter": "P",
+      "train_samples": 99,
+      "val_samples": 50,
+      "test_al_samples": 0,
+      "test_mz_samples": 67,
+      "total_static_crops": 216,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "Q": {
+      "letter": "Q",
+      "train_samples": 79,
+      "val_samples": 65,
+      "test_al_samples": 0,
+      "test_mz_samples": 80,
+      "total_static_crops": 224,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "R": {
+      "letter": "R",
+      "train_samples": 126,
+      "val_samples": 39,
+      "test_al_samples": 0,
+      "test_mz_samples": 51,
+      "total_static_crops": 216,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "S": {
+      "letter": "S",
+      "train_samples": 70,
+      "val_samples": 67,
+      "test_al_samples": 0,
+      "test_mz_samples": 68,
+      "total_static_crops": 205,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "T": {
+      "letter": "T",
+      "train_samples": 139,
+      "val_samples": 49,
+      "test_al_samples": 0,
+      "test_mz_samples": 61,
+      "total_static_crops": 249,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "U": {
+      "letter": "U",
+      "train_samples": 131,
+      "val_samples": 38,
+      "test_al_samples": 0,
+      "test_mz_samples": 46,
+      "total_static_crops": 215,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "V": {
+      "letter": "V",
+      "train_samples": 85,
+      "val_samples": 36,
+      "test_al_samples": 0,
+      "test_mz_samples": 38,
+      "total_static_crops": 159,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "W": {
+      "letter": "W",
+      "train_samples": 61,
+      "val_samples": 43,
+      "test_al_samples": 0,
+      "test_mz_samples": 36,
+      "total_static_crops": 140,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "X": {
+      "letter": "X",
+      "train_samples": 67,
+      "val_samples": 23,
+      "test_al_samples": 0,
+      "test_mz_samples": 39,
+      "total_static_crops": 129,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "Y": {
+      "letter": "Y",
+      "train_samples": 114,
+      "val_samples": 37,
+      "test_al_samples": 0,
+      "test_mz_samples": 47,
+      "total_static_crops": 198,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    },
+    "Z": {
+      "letter": "Z",
+      "train_samples": 87,
+      "val_samples": 49,
+      "test_al_samples": 0,
+      "test_mz_samples": 54,
+      "total_static_crops": 190,
+      "webcam_video_frames": 0,
+      "session_evidence": "provisional_session_may16 (overlaps with train/val session)",
+      "evidence_status": "provisional_same_session",
+      "signer_evidence": "none (only historical_signer_01)"
+    }
+  },
+  "classes_with_independent_session_evidence": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "classes_remaining_provisional": [
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z"
+  ],
+  "classes_with_independent_signer_video": [
+    "A",
+    "C",
+    "L"
+  ],
+  "classes_missing_independent_signer_video": [
+    "B",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z"
+  ]
+}

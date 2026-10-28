@@ -1,0 +1,62 @@
+{
+  "timestamp": "2026-10-23T17:50:00Z",
+  "phase": "Phase 25 — Model C Performance Optimization, Delegate Benchmarking, and Shadow Isolation Audit Integrity Audit",
+  "all_baseline_artifacts_unmodified": true,
+  "production_defaults_verified": {
+    "ISL_BACKEND_DETECTOR": "yolo",
+    "ISL_RECOGNITION_ARCH": "standard",
+    "ISL_TEMPORAL_SMOOTHING": false,
+    "ISL_SHADOW_MODE": false,
+    "ISL_MEDIAPIPE_DELEGATE": "cpu"
+  },
+  "artifacts_audited": {
+    "phase19_frozen_manifest.json": {
+      "sha256": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+      "matches_baseline": true
+    },
+    "phase19_frozen_external_benchmark_report.md": {
+      "sha256": "b35a1b1ab0fae37da1b8b472551b78c95a4b1ac6cf92cf148ca87fe45e4d6010",
+      "matches_baseline": true
+    },
+    "phase22_training_report.md": {
+      "sha256": "e90cabd514f2f7877ec18cd0d8541fe270d135c213b5e4f760e7acdb0345af7f",
+      "matches_baseline": true
+    },
+    "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib": {
+      "sha256": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+      "matches_baseline": true
+    },
+    "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib": {
+      "sha256": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+      "matches_baseline": true
+    },
+    "phase23_external_evaluation_report.md": {
+      "sha256": "3f215e9a4a24870eaf67c76884b523b157e2414a7f38072944668537cc1cc128",
+      "matches_baseline": true
+    },
+    "phase23_predictions.csv": {
+      "sha256": "da77036032fb3250141ccc16ba53d1dd7d4997b9817c6f525bbf9e000be45bfe",
+      "matches_baseline": true
+    },
+    "phase23_external_metrics.json": {
+      "sha256": "48468fa3008f564e4fc66663205ee0811b9da1b9add9d6adc111f7a0431e5534",
+      "matches_baseline": true
+    },
+    "phase23_integrity_audit.json": {
+      "sha256": "ee8ba55bf0c863d004fd3859ae0b440748bc9a5fba139ce4c6bfa8a421c1cbd0",
+      "matches_baseline": true
+    },
+    "phase24_runtime_integration_report.md": {
+      "sha256": "bc73ee59730a96c12c49ef56e2b19bfbacd45c733b0cea713982c2464ebf789c",
+      "matches_baseline": true
+    },
+    "phase24_runtime_metrics.json": {
+      "sha256": "aad2781a9fd8b4c558e374dd1588eea7858fca59c93a1cab1bb2b2aec9988ae1",
+      "matches_baseline": true
+    },
+    "phase24_integrity_audit.json": {
+      "sha256": "a8053f32d9a63ab0ca5e71016494fad03a51453caf000f3e210ad0b07916c82f",
+      "matches_baseline": true
+    }
+  }
+}

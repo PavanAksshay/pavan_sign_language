@@ -1,0 +1,13 @@
+{
+  "phase19_frozen_manifest.json": "9824eb510cc231249e9dd0722761de9112a02e7cecb681a479c4ef805b0fa797",
+  "phase19_analysis/phase19_benchmark_results.json": "c7ee501bf852c02f4703a0ed98b869370bbbe9c8c587c567302b03196ec47da7",
+  "phase19_analysis/phase19_predictions_raw.csv": "54bd1739ef73239e42c6bf2b15686d5fcffff8613668c2b55eafbacf14395649",
+  "phase19_frozen_external_benchmark_report.md": "b35a1b1ab0fae37da1b8b472551b78c95a4b1ac6cf92cf148ca87fe45e4d6010",
+  "data/collection_manifests/test_multisigner_manifest.json": "c25c5c452d6661f84d271ed5ebdf58fc23ad0803dbd4da2c5d76fa8c5cbaaeeb",
+  "data/collection_manifests/collection_ledger.json": "093b34156d827131ce1649776b38d0dc1cd2547efbae07675efbc86d4849f3f3",
+  "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner.joblib": "1fab3349e2e537d8b31ddbe3bdd5c21e3ed005f85aaac9d3875c72217e28cc98",
+  "phase22_analysis/models/Model_C_Occlusion_Aware_RF_multisigner_scaler.joblib": "93842932e7cfeb1d283e99f67a733fd487161d83cbff356d7458ced2c3de385d",
+  "phase22_analysis/models/phase22_model_manifest.json": "3791084ce1802522af313f20aa0ea06a5cab24bcfc5508e0fb713c891c5d1bf5",
+  "phase22_analysis/phase22_ablation_results.json": "074f13d0519b5856e50482981bbefde0a52f95ab5fb78b24251874c5195a1f80",
+  "phase22_training_report.md": "e90cabd514f2f7877ec18cd0d8541fe270d135c213b5e4f760e7acdb0345af7f"
+}

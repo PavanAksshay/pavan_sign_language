@@ -1,0 +1,13 @@
+{
+  "model_architecture": "SqueezeNet (MediaPipe Fine-Tuned v2)",
+  "base_model": "/Users/pavanaksshay/pavan_sign_language/App/final_model_26",
+  "random_seed": 42,
+  "epochs_run": 12,
+  "batch_size": 32,
+  "initial_learning_rate": 0.0003,
+  "optimizer": "tf_keras.optimizers.legacy.Adam",
+  "loss": "categorical_crossentropy",
+  "training_time_seconds": 340.37,
+  "best_val_accuracy": 0.5097001791000366,
+  "best_val_loss": 1.7009543180465698
+}

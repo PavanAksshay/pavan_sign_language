@@ -1,0 +1,307 @@
+{
+  "audit_timestamp": "2026-10-22T09:50:46Z",
+  "elapsed_seconds": 44.93,
+  "inventory": {
+    "total_manifest_frames": 3329,
+    "total_disk_frames": 3329,
+    "total_manifest_videos": 104,
+    "total_disk_videos": 104,
+    "missing_frames_on_disk": 0,
+    "untracked_frames_on_disk": 0,
+    "missing_videos_on_disk": 0,
+    "untracked_videos_on_disk": 0,
+    "nominal_target_frames": 3120,
+    "target_satisfied": true,
+    "surplus_frames": 209
+  },
+  "breakdown": {
+    "signers": {
+      "signer_02": 1663,
+      "signer_03": 1666
+    },
+    "conditions": {
+      "condition_1": 1666,
+      "condition_2": 1663
+    },
+    "sessions": {
+      "session_20261022_01": 3329
+    },
+    "splits": {
+      "external_test_multisigner": 3329
+    },
+    "letters": {
+      "A": 128,
+      "B": 128,
+      "C": 127,
+      "D": 128,
+      "E": 128,
+      "F": 128,
+      "G": 128,
+      "H": 127,
+      "I": 128,
+      "J": 128,
+      "K": 128,
+      "L": 128,
+      "M": 128,
+      "N": 128,
+      "O": 129,
+      "P": 128,
+      "Q": 129,
+      "R": 129,
+      "S": 128,
+      "T": 128,
+      "U": 128,
+      "V": 128,
+      "W": 127,
+      "X": 129,
+      "Y": 128,
+      "Z": 128
+    },
+    "all_26_letters_present": true,
+    "cell_matrix_counts": {
+      "signer_02_condition_1": {
+        "A": 32,
+        "B": 32,
+        "C": 31,
+        "D": 32,
+        "E": 32,
+        "F": 32,
+        "G": 32,
+        "H": 32,
+        "I": 32,
+        "J": 32,
+        "K": 32,
+        "L": 32,
+        "M": 32,
+        "N": 32,
+        "O": 32,
+        "P": 32,
+        "Q": 32,
+        "R": 32,
+        "S": 32,
+        "T": 32,
+        "U": 32,
+        "V": 32,
+        "W": 32,
+        "X": 32,
+        "Y": 32,
+        "Z": 32
+      },
+      "signer_02_condition_2": {
+        "A": 32,
+        "B": 32,
+        "C": 32,
+        "D": 32,
+        "E": 32,
+        "F": 32,
+        "G": 32,
+        "H": 32,
+        "I": 32,
+        "J": 32,
+        "K": 32,
+        "L": 32,
+        "M": 32,
+        "N": 32,
+        "O": 32,
+        "P": 32,
+        "Q": 32,
+        "R": 32,
+        "S": 32,
+        "T": 32,
+        "U": 32,
+        "V": 32,
+        "W": 32,
+        "X": 32,
+        "Y": 32,
+        "Z": 32
+      },
+      "signer_03_condition_1": {
+        "A": 32,
+        "B": 32,
+        "C": 32,
+        "D": 32,
+        "E": 32,
+        "F": 32,
+        "G": 32,
+        "H": 31,
+        "I": 32,
+        "J": 32,
+        "K": 32,
+        "L": 32,
+        "M": 32,
+        "N": 32,
+        "O": 33,
+        "P": 32,
+        "Q": 33,
+        "R": 33,
+        "S": 32,
+        "T": 32,
+        "U": 32,
+        "V": 32,
+        "W": 32,
+        "X": 33,
+        "Y": 32,
+        "Z": 32
+      },
+      "signer_03_condition_2": {
+        "A": 32,
+        "B": 32,
+        "C": 32,
+        "D": 32,
+        "E": 32,
+        "F": 32,
+        "G": 32,
+        "H": 32,
+        "I": 32,
+        "J": 32,
+        "K": 32,
+        "L": 32,
+        "M": 32,
+        "N": 32,
+        "O": 32,
+        "P": 32,
+        "Q": 32,
+        "R": 32,
+        "S": 32,
+        "T": 32,
+        "U": 32,
+        "V": 32,
+        "W": 31,
+        "X": 32,
+        "Y": 32,
+        "Z": 32
+      }
+    },
+    "total_cells": 104,
+    "underrepresented_cells": [],
+    "min_cell_count": 31,
+    "max_cell_count": 33
+  },
+  "ledger_summary": {
+    "total_records": 107,
+    "accepted_recordings": 104,
+    "rejected_recordings": 3,
+    "rejected_details": [
+      {
+        "recording_id": "rec_signer_02_condition_1_D_1792650214",
+        "signer_id": "signer_02",
+        "condition_id": "condition_1",
+        "letter": "D",
+        "timestamp": "2026-10-22T06:23:43Z",
+        "rejection_note": "Operator rejected during preview",
+        "frames_sampled": 32,
+        "usable_frames": 32,
+        "rejected_frames": 0
+      },
+      {
+        "recording_id": "rec_signer_02_condition_1_D_1792650232",
+        "signer_id": "signer_02",
+        "condition_id": "condition_1",
+        "letter": "D",
+        "timestamp": "2026-10-22T06:23:55Z",
+        "rejection_note": "Operator rejected during preview",
+        "frames_sampled": 32,
+        "usable_frames": 17,
+        "rejected_frames": 15
+      },
+      {
+        "recording_id": "rec_signer_02_condition_1_H_1792650412",
+        "signer_id": "signer_02",
+        "condition_id": "condition_1",
+        "letter": "H",
+        "timestamp": "2026-10-22T06:26:57Z",
+        "rejection_note": "Operator rejected during preview",
+        "frames_sampled": 32,
+        "usable_frames": 32,
+        "rejected_frames": 0
+      }
+    ]
+  },
+  "quality_audit": {
+    "unreadable_images": [],
+    "dimensions_distribution": {
+      "1280x720x3": 3329
+    },
+    "sha256_mismatches": [],
+    "exact_duplicate_count": 0,
+    "blur_laplacian": {
+      "min": 64.71,
+      "mean": 170.14,
+      "max": 350.71,
+      "std": 54.12,
+      "threshold": 50.0,
+      "meeting_threshold_count": 3329,
+      "failing_threshold_count": 0
+    },
+    "brightness": {
+      "min": 126.58,
+      "mean": 145.07,
+      "max": 160.86,
+      "std": 7.55,
+      "lower_bound": 40.0,
+      "upper_bound": 220.0,
+      "in_bounds_count": 3329,
+      "out_of_bounds_count": 0
+    },
+    "movement_diff": {
+      "min": 0.43,
+      "mean": 1.7,
+      "max": 7.65,
+      "std": 0.79,
+      "static_freeze_threshold": 0.4,
+      "freeze_count": 0
+    },
+    "dhash_hamming": {
+      "min": 0,
+      "mean": 1.3,
+      "max": 12,
+      "std": 1.33
+    },
+    "hands_detected_distribution": {
+      "2": 2370,
+      "1": 959
+    }
+  },
+  "video_audit": {
+    "total_videos_audited": 104,
+    "unreadable_videos": [],
+    "resolutions": {
+      "1280x720": 104
+    },
+    "mean_fps": 29.97,
+    "mean_duration_sec": 3.2
+  },
+  "independence_and_leakage": {
+    "total_historical_splits_checked": 4,
+    "leakage_findings": {
+      "train": {
+        "historical_sample_count": 6154,
+        "overlap_count": 0,
+        "overlapping_hashes": []
+      },
+      "val": {
+        "historical_sample_count": 2266,
+        "overlap_count": 0,
+        "overlapping_hashes": []
+      },
+      "test_al": {
+        "historical_sample_count": 762,
+        "overlap_count": 0,
+        "overlapping_hashes": []
+      },
+      "test_mz": {
+        "historical_sample_count": 1440,
+        "overlap_count": 0,
+        "overlapping_hashes": []
+      }
+    },
+    "total_hash_leakage_count": 0,
+    "quarantined_split_name": "external_test_multisigner",
+    "metadata_gap_session_template_noted": true
+  },
+  "recommendation": {
+    "status": "ready_for_frozen_benchmarking",
+    "is_ready_for_benchmarking": true,
+    "details": "The newly collected ISL dataset contains 3,329 high-quality, readable frames across 2 independent signers (signer_02 and signer_03), covering all 26 alphabet letters in both target conditions (104/104 cells >= 31 frames). There is zero data leakage into historical training/validation splits, zero exact duplicates, and zero unreadable frames. The dataset is fully ready for frozen benchmark evaluation in Phase 19."
+  }
+}

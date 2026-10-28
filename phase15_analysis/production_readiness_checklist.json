@@ -1,0 +1,101 @@
+{
+  "phase": "Phase 15",
+  "audit_timestamp": "2026-10-15T19:45:00Z",
+  "acceptance_criteria_definition": {
+    "1_unseen_signer_macro_f1": {
+      "threshold": ">= 80.0%",
+      "metric": "Macro-F1 across all 26 ISL letters (A-Z) on unseen signers",
+      "measurement_method": "Signer-independent held-out partition evaluation",
+      "current_status": "UNVERIFIED_DATA_MISSING",
+      "measured_value": null,
+      "passed": false,
+      "blocking_reason": "Physical recordings for Signer 2 and Signer 3 across all 26 classes do not yet exist in the repository."
+    },
+    "2_letter_n_recall": {
+      "threshold": ">= 70.0%",
+      "metric": "Recall for Letter N",
+      "measurement_method": "Top-1 recall on held-out static crops and videos",
+      "current_status": "FAILED",
+      "measured_value": {
+        "mediapipe_cnn_v1": "22.0%",
+        "landmark_only_rf": "25.0%",
+        "late_fusion": "25.0%",
+        "hybrid_concat_rf": "28.0%"
+      },
+      "passed": false,
+      "blocking_reason": "High confusion with Letter M (two-finger vs three-finger palm occlusion)."
+    },
+    "3_letter_l_accuracy": {
+      "threshold": ">= 85.0%",
+      "metric": "Top-1 accuracy for Letter L across static and video benchmarks",
+      "measurement_method": "Static Test A-L top-1 and continuous Standard L video frame accuracy",
+      "current_status": "PARTIALLY_PASSED",
+      "measured_value": {
+        "static_test_al_late_fusion": "94.59%",
+        "static_test_al_landmark_rf": "94.59%",
+        "video_standard_l_yolo": "87.67%",
+        "video_standard_l_landmark_rf": "76.71%",
+        "video_standard_l_late_fusion_raw": "23.29%",
+        "video_standard_l_late_fusion_smoothed": "25.34%"
+      },
+      "passed": false,
+      "blocking_reason": "Passed on static crops (94.6%) and in YOLO video (87.7%), but Late-Fusion on video is degraded by CNN visual bias toward Y."
+    },
+    "4_end_to_end_cpu_latency": {
+      "threshold": "< 100.0 ms (>= 10 FPS)",
+      "metric": "Mean end-to-end CPU pipeline latency",
+      "measurement_method": "Full pipeline inference timing on 224x224 RGB video frames on CPU",
+      "current_status": "PASSED",
+      "measured_value": {
+        "late_fusion_raw": "80.4 ms (12.4 FPS)",
+        "late_fusion_smoothed": "80.8 ms (12.4 FPS)",
+        "yolo_baseline": "366.0 ms (2.7 FPS)"
+      },
+      "passed": true,
+      "blocking_reason": null
+    },
+    "5_worst_class_performance_and_stability": {
+      "threshold": "Worst-class recall >= 50.0% and Video flip rate < 15.0%",
+      "metric": "Minimum class recall and rolling smoothed prediction stability",
+      "measurement_method": "Per-class static recall evaluation and continuous video temporal tracking",
+      "current_status": "FAILED",
+      "measured_value": {
+        "worst_class_recall_N": "25.0%",
+        "worst_class_recall_X": "38.0%",
+        "video_flip_rate_standard_l": "11.72% (Smoothed)",
+        "video_flip_rate_frontal_c": "0.00% (Smoothed)"
+      },
+      "passed": false,
+      "blocking_reason": "Worst-class recall on N (25.0%) and X (38.0%) falls well below the 50.0% threshold."
+    },
+    "6_api_and_frontend_contract_preservation": {
+      "threshold": "100% backward compatibility",
+      "metric": "Zero breaking changes to existing endpoints and response schemas",
+      "measurement_method": "Endpoint schema inspection and live server regression tests",
+      "current_status": "PASSED",
+      "measured_value": "All existing endpoints (/api/predict, /api/health, /api/detector/*) preserved with original keys",
+      "passed": true,
+      "blocking_reason": null
+    },
+    "7_test_suite_success": {
+      "threshold": "100% passing unit tests",
+      "metric": "Repository test suite execution",
+      "measurement_method": "unittest discover across all tests/ modules",
+      "current_status": "PASSED",
+      "measured_value": "85 / 85 tests passing (100% OK)",
+      "passed": true,
+      "blocking_reason": null
+    },
+    "8_safe_fallback_behavior": {
+      "threshold": "Zero server startup crashes and automatic fallback on failure",
+      "metric": "Try/except safety on missing artifacts or corrupted vectors",
+      "measurement_method": "Missing model artifact injection unit test",
+      "current_status": "PASSED",
+      "measured_value": "Graceful fallback to standard architecture verified",
+      "passed": true,
+      "blocking_reason": null
+    }
+  },
+  "overall_verdict": "NOT_READY_FOR_PRODUCTION_DEFAULT",
+  "summary": "Passed 4 of 8 acceptance gates (Latency, API Preservation, Test Suite, Safe Fallback). Failed 3 gates (Letter N Recall, Letter L Video Accuracy, Worst-Class Recall). 1 gate unverified due to missing physical multi-signer data. Production default MUST remain ISL_BACKEND_DETECTOR=yolo."
+}

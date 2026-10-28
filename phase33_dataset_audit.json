@@ -1,0 +1,118 @@
+{
+  "audit_metadata": {
+    "phase": "Phase 33 — Multi-Signer Training Strategy and Generalization Audit",
+    "timestamp": "2026-10-26T07:20:00Z",
+    "evaluator": "Antigravity Engineering Pair",
+    "status": "COMPLETE"
+  },
+  "development_data_census": {
+    "total_permitted_signers": 2,
+    "permitted_signer_ids": [
+      "signer_01",
+      "signer_04"
+    ],
+    "total_permitted_frames": 5832,
+    "total_permitted_recordings": 57,
+    "signers": {
+      "signer_01": {
+        "role": "Permitted Development Signer (Historical Synthetic/Webcam)",
+        "total_frames": 4211,
+        "train_frames": 3077,
+        "val_frames": 1134,
+        "unique_sessions": 5,
+        "sessions_breakdown": {
+          "session_20200516_12h": 1936,
+          "session_20200515_04h": 1326,
+          "session_20200515_03h": 750,
+          "session_20200515_00h": 179,
+          "session_20200515_05h": 20
+        },
+        "classes_count": 26,
+        "per_letter_min_frames": 90,
+        "per_letter_max_frames": 209,
+        "per_letter_mean_frames": 162.0,
+        "capture_setup": {
+          "camera_angle": "Frontal desktop webcam (approx 0 deg pitch/yaw)",
+          "distance": "Fixed torso/chest distance (~0.6m - 0.8m)",
+          "lighting": "Indoor ambient desktop fluorescent/room lighting",
+          "background": "Static interior wall/room background",
+          "resolution": "Various web crops scaled to 100x100 / 224x224",
+          "signing_style": "Isolated static letter holds"
+        },
+        "leakage_risk": "HIGH AT FRAME LEVEL: Train and validation splits were generated via random/stratified sampling within the same 5 video sessions. Adjacent frames from the same continuous stream exist in both train and val."
+      },
+      "signer_04": {
+        "role": "Permitted Development Signer (Phase 22 Multi-Condition Capture)",
+        "total_frames": 1621,
+        "usable_frames": 1621,
+        "unique_recordings": 52,
+        "conditions_breakdown": {
+          "condition_1": 789,
+          "condition_2": 832
+        },
+        "classes_count": 26,
+        "per_letter_min_frames": 58,
+        "per_letter_max_frames": 64,
+        "per_letter_mean_frames": 62.3,
+        "capture_setup": {
+          "condition_1": "Frontal desk camera, neutral upright sitting position, 789 frames across 26 recordings",
+          "condition_2": "Lateral elevated angle (approx 30 deg offset), resting lap hand visible in lower frame, 832 frames across 26 recordings",
+          "distance": "Arm-length desktop distance (~0.8m)",
+          "lighting": "Controlled indoor natural/room light",
+          "background": "Office interior",
+          "resolution": "1920x1080 @ 30fps (MediaPipe cropped)",
+          "signing_style": "Deliberate static letter holds with natural breathing tremor"
+        },
+        "leakage_risk": "ZERO IN PHASE 22/32 BALANCED SPLIT: Split is partitioned strictly by recording (Letters A-M Cond 1 vs Cond 2; Letters N-Z Cond 2 vs Cond 1; 26 recordings train, 26 recordings val; 0 shared recordings). However, within each letter-condition cell, there is only 1 single continuous recording take."
+      }
+    }
+  },
+  "isolated_benchmark_and_holdout_census": {
+    "signer_02": {
+      "role": "FROZEN BENCHMARK (Phase 19-23)",
+      "status": "STRICTLY_ISOLATED",
+      "recordings": 78,
+      "extracted_frames": 1665,
+      "benchmark_frames": 3083,
+      "used_for_dev": false
+    },
+    "signer_03": {
+      "role": "FROZEN BENCHMARK (Phase 19-23)",
+      "status": "STRICTLY_ISOLATED",
+      "recordings": 52,
+      "extracted_frames": 1666,
+      "benchmark_frames": 2752,
+      "used_for_dev": false
+    },
+    "signer_05": {
+      "role": "SEALED EXTERNAL HOLDOUT (Phase 30)",
+      "status": "STRICTLY_QUARANTINED",
+      "recordings": 52,
+      "extracted_frames": 1638,
+      "used_for_dev": false,
+      "used_for_tuning": false
+    }
+  },
+  "key_architectural_deficits": [
+    {
+      "issue": "N_signers = 2 in permitted development data",
+      "impact": "Statistical sample size for between-signer variance is N=2. A classifier trained on N=1 or N=2 signers overfits to individual anatomical ratios (finger bone lengths, palm breadth, knuckle spacing) and camera angles.",
+      "evidence": "Model C trained on signer_01 drops from ~70% within-signer to 40.16% zero-shot on signer_04, and achieves only 59.22% on sealed signer_05."
+    },
+    {
+      "issue": "The Frame-Level Hundreds-of-Samples Illusion",
+      "impact": "1,621 frames in signer_04 and 4,211 in signer_01 represent continuous sequential frames from a handful of takes. Adjacent frames differ by milliseconds and share 99% mutual information.",
+      "evidence": "Evaluating frame-level random splits creates an illusion of high accuracy that collapses when applied to an unseen signer."
+    },
+    {
+      "issue": "Single-Take Per Cell in signer_04",
+      "impact": "In signer_04, each letter in each condition was captured in exactly ONE continuous recording (~30 frames). There are zero independent replicates of the same sign by the same signer in the same condition.",
+      "evidence": "Cannot evaluate within-signer session-to-session repeatability on signer_04."
+    },
+    {
+      "issue": "Lack of Demographic and Physical Diversity",
+      "impact": "Zero variation in hand anatomy: no elderly hands, no youth hands, no diverse skin tones (Fitzpatrick scale representation is restricted to single tone in s1 and s4).",
+      "evidence": "MediaPipe detection confidence and keypoint precision vary systematically across skin pigmentation and hand morphology."
+    }
+  ]
+}
